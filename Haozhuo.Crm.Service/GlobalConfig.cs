@@ -69,5 +69,7 @@ namespace Haozhuo.Crm.Service
         ///根据市Id获取其下所有的县市区
         /// </summary>
         public static string GET_COUNTIES_BY_CITY_ID = Domain + "/regions/cities/{cityId}/counties";
+
+        public static String USER_LOGIN = Domain + "/users/login";
     }
 }

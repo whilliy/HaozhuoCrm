@@ -1,5 +1,6 @@
 ﻿using Haozhuo.Crm.Service;
 using Haozhuo.Crm.Service.Dto;
+using Haozhuo.Crm.Service.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -26,7 +27,16 @@ namespace HaoZhuoCRM
 
         private void FormMyClients_Load(object sender, EventArgs e)
         {
-            IList<ProvinceDto> provinces = RegionService.getAllProvinces();
+            IList<ProvinceDto> provinces = null;
+            try
+            {
+                provinces = RegionService.getAllProvinces();
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("获取省/自治区/直辖市列表失败:" + ex.Message);
+                return;
+            }
             provinces.Insert(0, new ProvinceDto(string.Empty, String.Empty));
             //注意：一定先指定 ValueMember 和 DisplayMember 再设定 DataSource 否则提前触发 CmbProvinces_SelectedIndexChanged
             cmbProvinces.ValueMember = "provinceId";
@@ -51,7 +61,17 @@ namespace HaoZhuoCRM
                 cmbCities.Items.Clear();
                 return;
             }
-            var cities = RegionService.getCitiesByProviceId(provinceId);
+            IList<CityDto> cities = null;
+            try
+            {
+                cities = RegionService.getCitiesByProviceId(provinceId);
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("获取省/自治区/直辖市列表失败:" + ex.Message);
+                return;
+
+            }
             cities.Insert(0, new CityDto(String.Empty, String.Empty));
             cmbCities.ValueMember = "CityId";
             cmbCities.DisplayMember = "cityName";
@@ -74,7 +94,15 @@ namespace HaoZhuoCRM
                 cmbCounties.Items.Clear();
                 return;
             }
-            var counties = RegionService.getCountiesByCityId(cityId);
+            IList<CountyDto> counties = null;
+            try
+            {
+                counties = RegionService.getCountiesByCityId(cityId);
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("获取 县/市/区 列表失败:" + ex.Message);
+            }
             counties.Insert(0, new CountyDto(String.Empty, String.Empty));
             cmbCounties.ValueMember = "countyId";
             cmbCounties.DisplayMember = "countyName";

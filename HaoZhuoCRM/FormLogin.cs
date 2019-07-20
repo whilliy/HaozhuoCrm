@@ -1,4 +1,6 @@
 ﻿using Haozhuo.Crm.Service;
+using Haozhuo.Crm.Service.Dto;
+using Haozhuo.Crm.Service.vo;
 using System;
 using System.Windows.Forms;
 
@@ -27,7 +29,19 @@ namespace HaoZhuoCRM
                 txtPassword.Focus();
                 return;
             }
-
+            UserLoginVo vo = new UserLoginVo();
+            vo.password = txtPassword.Text;
+            vo.principalName = txtAccountNo.Text;
+            try
+            {
+                UserLoginDto login = LoginService.Login(vo);
+                Global.USER_TOKEN = login.Token;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             this.DialogResult = DialogResult.OK;
         }
 

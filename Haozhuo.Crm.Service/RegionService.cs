@@ -17,12 +17,20 @@ namespace Haozhuo.Crm.Service
             try
             {
                 var response = restClient.Get(request);
+                if (response.StatusCode == 0)
+                {
+                    throw new BusinessException("网络异常");
+                }
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
                     throw new BusinessException(response.Content);
                 }
                 IList<ProvinceDto> provinces = JsonConvert.DeserializeObject<List<ProvinceDto>>(response.Content);
                 return provinces;
+            }
+            catch(BusinessException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
