@@ -36,6 +36,7 @@ namespace HaoZhuoCRM
             {
                 UserLoginDto login = LoginService.Login(vo);
                 Global.USER_TOKEN = login.Token;
+                int five = 5;
             }
             catch (Exception ex)
             {
