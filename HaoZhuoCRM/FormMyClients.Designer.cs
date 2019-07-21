@@ -35,14 +35,14 @@
             this.panelQuery = new System.Windows.Forms.Panel();
             this.butReset = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comCustomerType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbCounties = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbCities = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMobile = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -91,6 +91,7 @@
             this.butQuery.TabIndex = 12;
             this.butQuery.Text = "查询(&Q)";
             this.butQuery.UseVisualStyleBackColor = true;
+            this.butQuery.Click += new System.EventHandler(this.ButQuery_Click);
             // 
             // txtName
             // 
@@ -104,7 +105,7 @@
             // 
             this.panelQuery.Controls.Add(this.butReset);
             this.panelQuery.Controls.Add(this.label5);
-            this.panelQuery.Controls.Add(this.comboBox4);
+            this.panelQuery.Controls.Add(this.comCustomerType);
             this.panelQuery.Controls.Add(this.label4);
             this.panelQuery.Controls.Add(this.cmbCounties);
             this.panelQuery.Controls.Add(this.label3);
@@ -112,7 +113,7 @@
             this.panelQuery.Controls.Add(this.label2);
             this.panelQuery.Controls.Add(this.label1);
             this.panelQuery.Controls.Add(this.cmbProvinces);
-            this.panelQuery.Controls.Add(this.textBox1);
+            this.panelQuery.Controls.Add(this.txtMobile);
             this.panelQuery.Controls.Add(this.labelName);
             this.panelQuery.Controls.Add(this.butQuery);
             this.panelQuery.Controls.Add(this.txtName);
@@ -141,13 +142,14 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "客户等级：";
             // 
-            // comboBox4
+            // comCustomerType
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(935, 31);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 32);
-            this.comboBox4.TabIndex = 5;
+            this.comCustomerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comCustomerType.FormattingEnabled = true;
+            this.comCustomerType.Location = new System.Drawing.Point(928, 27);
+            this.comCustomerType.Name = "comCustomerType";
+            this.comCustomerType.Size = new System.Drawing.Size(121, 32);
+            this.comCustomerType.TabIndex = 5;
             // 
             // label4
             // 
@@ -204,14 +206,14 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "手机号码：";
             // 
-            // textBox1
+            // txtMobile
             // 
-            this.textBox1.Location = new System.Drawing.Point(520, 30);
-            this.textBox1.MaxLength = 11;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(235, 35);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.WordWrap = false;
+            this.txtMobile.Location = new System.Drawing.Point(520, 30);
+            this.txtMobile.MaxLength = 11;
+            this.txtMobile.Name = "txtMobile";
+            this.txtMobile.Size = new System.Drawing.Size(235, 35);
+            this.txtMobile.TabIndex = 3;
+            this.txtMobile.WordWrap = false;
             // 
             // panel1
             // 
@@ -360,14 +362,14 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Panel panelQuery;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMobile;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbCounties;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbCities;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox comCustomerType;
         private System.Windows.Forms.Button butReset;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;

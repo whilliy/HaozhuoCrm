@@ -7,6 +7,8 @@ namespace Haozhuo.Crm.Service
 {
     public class GlobalConfig
     {
+        public static readonly String AUTHORIZATION = "Authorization";
+        public static readonly String X_TOTAL_COUNT = "X_TOTAL_COUNT";
         private static readonly object lockS = new object();
         private static String domain;
         public static String Domain
@@ -70,6 +72,14 @@ namespace Haozhuo.Crm.Service
         /// </summary>
         public static string GET_COUNTIES_BY_CITY_ID = Domain + "/regions/cities/{cityId}/counties";
 
+        /// <summary>
+        /// 用戶登陸
+        /// </summary>
         public static String USER_LOGIN = Domain + "/users/login";
+
+        /// <summary>
+        /// 客戶相關
+        /// </summary>
+        public static String CUSTOMERS = Domain + "/customers";
     }
 }

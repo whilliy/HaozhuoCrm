@@ -115,5 +115,22 @@ namespace HaoZhuoCRM
         {
             cmbProvinces.SelectedIndex = 0;
         }
+
+        private void ButQuery_Click(object sender, EventArgs e)
+        {
+            txtName.Text = txtName.Text.Trim();
+            txtMobile.Text = txtMobile.Text.Trim();
+            try
+            {
+                String provinceId = cmbProvinces.SelectedValue != null ? cmbProvinces.SelectedValue.ToString() : String.Empty;
+                String cityId = cmbCities.SelectedValue != null ? cmbCities.SelectedValue.ToString() : String.Empty;
+                String countyId = cmbCounties.SelectedValue != null ? cmbCounties.SelectedValue.ToString() : String.Empty;
+                List<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, 1, 10, 1, 1, 1, txtName.Text, txtMobile.Text, provinceId, cityId, countyId);
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

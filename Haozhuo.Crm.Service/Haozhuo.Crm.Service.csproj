@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerService.cs" />
+    <Compile Include="Dto\CustomerDto.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="RegionService.cs" />
