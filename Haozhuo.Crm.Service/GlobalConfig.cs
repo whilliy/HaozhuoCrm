@@ -81,5 +81,15 @@ namespace Haozhuo.Crm.Service
         /// 客戶相關
         /// </summary>
         public static String CUSTOMERS = Domain + "/customers";
+
+        /// <summary>
+        /// 所有的客户类型
+        /// </summary>
+        public static String CUSTOMER_TYPES = CUSTOMERS + "/types";
+
+        /// <summary>
+        /// 所有的客户来源
+        /// </summary>
+        public static String CUSTOMER_SOURCES = CUSTOMERS + "/sources";
     }
 }

@@ -6,18 +6,22 @@ using System.Threading.Tasks;
 
 namespace Haozhuo.Crm.Service.Utils
 {
-    public class CustomException : Exception
+    public class CustomException
     {
-        public int CustomCode { get; set; }
+        public int customCode { get; set; }
 
-        public CustomException(int code):base()
+        public string message { get; set; }
+
+        public CustomException(int code)
         {
-            CustomCode = code;
+            customCode = code;
         }
 
-        public CustomException(String message) : base(message)
+        public CustomException(String message)
         {
 
         }
+
+        public CustomException(){ }
     }
 }

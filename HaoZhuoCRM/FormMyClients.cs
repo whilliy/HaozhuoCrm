@@ -27,6 +27,38 @@ namespace HaoZhuoCRM
 
         private void FormMyClients_Load(object sender, EventArgs e)
         {
+            //获取所有的客户类型
+
+            IList<CustomerTypeDto> types = new List<CustomerTypeDto>();
+            try
+            {
+                types = CustomerService.getAllCustomerTypes(Global.USER_TOKEN);
+                types.Insert(0, new CustomerTypeDto() { id = -1, name = "" });
+                cmbCustomerTypes.ValueMember = "id";
+                cmbCustomerTypes.DisplayMember = "name";
+                cmbCustomerTypes.DataSource = types;
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("获取所有客户类型时发生错误:" + ex.Message);
+                return;
+            }
+            IList<CustomerSourceDto> sources = new List<CustomerSourceDto>();
+            try
+            {
+                sources = CustomerService.getAllCustomerSources(Global.USER_TOKEN);
+                sources.Insert(0, new CustomerSourceDto() { id = -1, name = "" });
+                cmbCustomerSources.ValueMember = "id";
+                cmbCustomerSources.DisplayMember = "name";
+                cmbCustomerSources.DataSource = sources;
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("获取所有客户来源时发生错误:" + ex.Message);
+                return;
+            }
+
+
             IList<ProvinceDto> provinces = null;
             try
             {
@@ -113,7 +145,10 @@ namespace HaoZhuoCRM
 
         private void ButReset_Click(object sender, EventArgs e)
         {
+            cmbCustomerSources.SelectedIndex = 0;
+            cmbCustomerTypes.SelectedIndex = 0;
             cmbProvinces.SelectedIndex = 0;
+
         }
 
         private void ButQuery_Click(object sender, EventArgs e)

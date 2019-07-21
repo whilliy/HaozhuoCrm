@@ -31,7 +31,7 @@ namespace Haozhuo.Crm.Service
                 else
                 {
                     var x = JsonConvert.DeserializeObject<CustomException>(response.Content);
-                    throw new BusinessException(x.Message);
+                    throw new BusinessException(x.message);
                 }
             }
             catch (BusinessException ex)
