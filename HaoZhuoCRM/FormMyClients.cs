@@ -192,11 +192,18 @@ namespace HaoZhuoCRM
             int i = 1;
             foreach (CustomerDto customer in customers.getResults())
             {
-                ListViewItem lvi = new ListViewItem(i.ToString());
+                ListViewItem lvi = new ListViewItem();
+                lvi.SubItems.Add(i.ToString());
                 lvi.SubItems.Add(customer.name);
                 lvi.SubItems.Add(customer.mobile);
                 lvi.SubItems.Add(CustomerService.DicCustomerTypes[customer.type]);
                 lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
+                lvi.SubItems.Add(customer.provinceName);
+                lvi.SubItems.Add(customer.cityName);
+                lvi.SubItems.Add(customer.countyName);
+                lvi.SubItems.Add(customer.createdTime==null?"":customer.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                lvi.SubItems.Add(customer.previousFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                lvi.SubItems.Add(customer.previousFollowUserName);
                 lvClients.Items.Add(lvi);
                 i++;
 
