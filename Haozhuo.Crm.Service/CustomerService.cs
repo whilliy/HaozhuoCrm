@@ -10,16 +10,94 @@ namespace Haozhuo.Crm.Service
 {
     public class CustomerService : BaseService
     {
+        private static readonly object obj1 = new object();
+        private static readonly object obj2 = new object();
+
+        private static IList<CustomerTypeDto> cusomterTypes;
+
+        public static IList<CustomerTypeDto> CustomerTypes
+        {
+            get
+            {
+                if (cusomterTypes == null)
+                {
+                    lock (obj1)
+                    {
+                        if (cusomterTypes == null)
+                        {
+                            cusomterTypes = getAllCustomerTypes();
+                        }
+                    }
+                }
+                return cusomterTypes;
+            }
+        }
+
+        private static IList<CustomerSourceDto> customerSources;
+
+        public static IList<CustomerSourceDto> CustomerSources
+        {
+            get
+            {
+                if (customerSources == null)
+                {
+                    lock (obj2)
+                    {
+                        if (customerSources == null)
+                        {
+                            customerSources = getAllCustomerSources();
+                        }
+                    }
+                }
+                return customerSources;
+            }
+        }
+
+        private static IDictionary<Int32, String> dicCustomerSources;
+
+        public static IDictionary<Int32, String> DicCustomerSources
+        {
+            get
+            {
+                if (dicCustomerSources == null)
+                {
+                    dicCustomerSources = new Dictionary<Int32, String>();
+                    foreach (CustomerSourceDto source in CustomerSources)
+                    {
+                        dicCustomerSources.Add(source.id, source.name);
+                    }
+                }
+                return dicCustomerSources;
+            }
+        }
+        private static IDictionary<Int32, String> dicCustomerTypes;
+
+        public static IDictionary<Int32, String> DicCustomerTypes
+        {
+            get
+            {
+                if (dicCustomerTypes == null)
+                {
+                    dicCustomerTypes = new Dictionary<Int32, String>();
+                    foreach (CustomerTypeDto type in cusomterTypes)
+                    {
+                        dicCustomerTypes.Add(type.id, type.name);
+                    }
+                }
+                return dicCustomerTypes;
+            }
+        }
+
 
         /// <summary>
         /// 获取所有的客户类型
         /// </summary>
         /// <returns></returns>
-        public static List<CustomerTypeDto> getAllCustomerTypes(string token)
+        public static List<CustomerTypeDto> getAllCustomerTypes()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_TYPES);
-            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            //request.AddHeader(GlobalConfig.AUTHORIZATION, token);
             IRestResponse response;
             try
             {
@@ -56,11 +134,11 @@ namespace Haozhuo.Crm.Service
         /// 获取所有的客户
         /// </summary>
         /// <returns></returns>
-        public static List<CustomerSourceDto> getAllCustomerSources(string token)
+        public static List<CustomerSourceDto> getAllCustomerSources()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_SOURCES);
-            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            //request.AddHeader(GlobalConfig.AUTHORIZATION, token);
             IRestResponse response;
             try
             {

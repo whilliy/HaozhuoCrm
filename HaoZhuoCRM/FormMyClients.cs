@@ -32,7 +32,7 @@ namespace HaoZhuoCRM
             IList<CustomerTypeDto> types = new List<CustomerTypeDto>();
             try
             {
-                types = CustomerService.getAllCustomerTypes(Global.USER_TOKEN);
+                types = CustomerService.CustomerTypes;
                 types.Insert(0, new CustomerTypeDto() { id = -1, name = "" });
                 cmbCustomerTypes.ValueMember = "id";
                 cmbCustomerTypes.DisplayMember = "name";
@@ -46,7 +46,7 @@ namespace HaoZhuoCRM
             IList<CustomerSourceDto> sources = new List<CustomerSourceDto>();
             try
             {
-                sources = CustomerService.getAllCustomerSources(Global.USER_TOKEN);
+                sources = CustomerService.CustomerSources;
                 sources.Insert(0, new CustomerSourceDto() { id = -1, name = "" });
                 cmbCustomerSources.ValueMember = "id";
                 cmbCustomerSources.DisplayMember = "name";
@@ -185,9 +185,29 @@ namespace HaoZhuoCRM
             return customers;
         }
 
+        private void BindingDatas(ResultsWithCount<CustomerDto> customers)
+        {
+            lvClients.BeginUpdate();
+            lvClients.Items.Clear();
+            int i = 1;
+            foreach (CustomerDto customer in customers.getResults())
+            {
+                ListViewItem lvi = new ListViewItem(i.ToString());
+                lvi.SubItems.Add(customer.name);
+                lvi.SubItems.Add(customer.mobile);
+                lvi.SubItems.Add(CustomerService.DicCustomerTypes[customer.type]);
+                lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
+                lvClients.Items.Add(lvi);
+                i++;
+
+            }
+            lvClients.EndUpdate();
+        }
+
         private void ButQuery_Click(object sender, EventArgs e)
         {
             ResultsWithCount<CustomerDto> customers = QueryCustomers();
+            BindingDatas(customers);
         }
     }
 }

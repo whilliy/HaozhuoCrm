@@ -33,6 +33,10 @@
             this.butQuery = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panelQuery = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbCustomerSources = new System.Windows.Forms.ComboBox();
             this.butReset = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbCustomerTypes = new System.Windows.Forms.ComboBox();
@@ -49,9 +53,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lvClients = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -59,10 +63,6 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbCustomerSources = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -128,8 +128,44 @@
             this.panelQuery.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelQuery.Location = new System.Drawing.Point(0, 0);
             this.panelQuery.Name = "panelQuery";
-            this.panelQuery.Size = new System.Drawing.Size(2148, 100);
+            this.panelQuery.Size = new System.Drawing.Size(2161, 100);
             this.panelQuery.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(908, 29);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 24);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "状态";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Location = new System.Drawing.Point(990, 25);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(121, 32);
+            this.cmbStatus.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(672, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 24);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "来源";
+            // 
+            // cmbCustomerSources
+            // 
+            this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCustomerSources.FormattingEnabled = true;
+            this.cmbCustomerSources.Location = new System.Drawing.Point(754, 25);
+            this.cmbCustomerSources.Name = "cmbCustomerSources";
+            this.cmbCustomerSources.Size = new System.Drawing.Size(121, 32);
+            this.cmbCustomerSources.TabIndex = 15;
             // 
             // butReset
             // 
@@ -227,9 +263,9 @@
             // 
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 916);
+            this.panel1.Location = new System.Drawing.Point(0, 919);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2148, 74);
+            this.panel1.Size = new System.Drawing.Size(2161, 74);
             this.panel1.TabIndex = 2;
             // 
             // btnNew
@@ -249,24 +285,24 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(2148, 816);
+            this.panel2.Size = new System.Drawing.Size(2161, 819);
             this.panel2.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 743);
+            this.panel3.Location = new System.Drawing.Point(0, 746);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2148, 73);
+            this.panel3.Size = new System.Drawing.Size(2161, 73);
             this.panel3.TabIndex = 3;
             // 
             // lvClients
             // 
             this.lvClients.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader4,
             this.columnHeader2,
             this.columnHeader3,
+            this.columnHeader4,
             this.columnHeader8,
             this.columnHeader5,
             this.columnHeader6,
@@ -280,7 +316,7 @@
             this.lvClients.Location = new System.Drawing.Point(0, 0);
             this.lvClients.MultiSelect = false;
             this.lvClients.Name = "lvClients";
-            this.lvClients.Size = new System.Drawing.Size(2148, 816);
+            this.lvClients.Size = new System.Drawing.Size(2161, 819);
             this.lvClients.TabIndex = 2;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
@@ -290,25 +326,23 @@
             this.columnHeader1.Text = "序号";
             this.columnHeader1.Width = 105;
             // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "等级";
-            this.columnHeader4.Width = 112;
-            // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "姓名";
-            this.columnHeader2.Width = 161;
+            this.columnHeader2.Width = 123;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.DisplayIndex = 4;
             this.columnHeader3.Text = "手机号码";
             this.columnHeader3.Width = 176;
             // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "类型";
+            this.columnHeader4.Width = 112;
+            // 
             // columnHeader8
             // 
-            this.columnHeader8.DisplayIndex = 3;
             this.columnHeader8.Text = "数据来源";
             this.columnHeader8.Width = 203;
             // 
@@ -342,47 +376,11 @@
             this.columnHeader11.Text = "最后跟进时间";
             this.columnHeader11.Width = 247;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(672, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 24);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "来源";
-            // 
-            // cmbCustomerSources
-            // 
-            this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCustomerSources.FormattingEnabled = true;
-            this.cmbCustomerSources.Location = new System.Drawing.Point(754, 25);
-            this.cmbCustomerSources.Name = "cmbCustomerSources";
-            this.cmbCustomerSources.Size = new System.Drawing.Size(121, 32);
-            this.cmbCustomerSources.TabIndex = 15;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(908, 29);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 24);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "状态";
-            // 
-            // cmbStatus
-            // 
-            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(990, 25);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(121, 32);
-            this.cmbStatus.TabIndex = 17;
-            // 
             // FormMyClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2148, 990);
+            this.ClientSize = new System.Drawing.Size(2161, 993);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelQuery);
@@ -421,7 +419,6 @@
         private System.Windows.Forms.ListView lvClients;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader5;
@@ -435,5 +432,6 @@
         private System.Windows.Forms.ComboBox cmbCustomerSources;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
