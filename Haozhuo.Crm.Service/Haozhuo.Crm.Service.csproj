@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
     <Compile Include="CustomerService.cs" />
     <Compile Include="Dto\CustomerDto.cs" />
     <Compile Include="Dto\CustomerTypeDto.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\BusinessException.cs" />
     <Compile Include="Utils\CustomException.cs" />
+    <Compile Include="Utils\ResultsWithCount.cs" />
     <Compile Include="vo\UserLoginVo.cs" />
   </ItemGroup>
   <ItemGroup>

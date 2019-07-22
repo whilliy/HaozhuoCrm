@@ -151,21 +151,43 @@ namespace HaoZhuoCRM
 
         }
 
-        private void ButQuery_Click(object sender, EventArgs e)
+        private ResultsWithCount<CustomerDto> QueryCustomers()
         {
             txtName.Text = txtName.Text.Trim();
             txtMobile.Text = txtMobile.Text.Trim();
-            try
+            String provinceId = cmbProvinces.SelectedValue != null ? cmbProvinces.SelectedValue.ToString() : String.Empty;
+            String cityId = cmbCities.SelectedValue != null ? cmbCities.SelectedValue.ToString() : String.Empty;
+            String countyId = cmbCounties.SelectedValue != null ? cmbCounties.SelectedValue.ToString() : String.Empty;
+            Int32? status = null;
+            if (cmbStatus.SelectedValue != null)
             {
-                String provinceId = cmbProvinces.SelectedValue != null ? cmbProvinces.SelectedValue.ToString() : String.Empty;
-                String cityId = cmbCities.SelectedValue != null ? cmbCities.SelectedValue.ToString() : String.Empty;
-                String countyId = cmbCounties.SelectedValue != null ? cmbCounties.SelectedValue.ToString() : String.Empty;
-                List<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, 1, 10, 1, 1, 1, txtName.Text, txtMobile.Text, provinceId, cityId, countyId);
+                status = Convert.ToInt32(cmbStatus.SelectedValue.ToString());
             }
-            catch (BusinessException ex)
+            Int32? source = null;
+            if (cmbCustomerSources.SelectedValue != null)
             {
-                MessageBox.Show(ex.Message);
+                source = Convert.ToInt32(cmbCustomerSources.SelectedValue.ToString());
+                if (source == -1)
+                {
+                    source = null;
+                }
             }
+            Int32? type = null;
+            if (cmbCustomerTypes.SelectedValue != null)
+            {
+                type = Convert.ToInt32(cmbCustomerTypes.SelectedValue.ToString());
+                if (type == -1)
+                {
+                    type = null;
+                }
+            }
+            ResultsWithCount<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, 1, 10, status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId);
+            return customers;
+        }
+
+        private void ButQuery_Click(object sender, EventArgs e)
+        {
+            ResultsWithCount<CustomerDto> customers = QueryCustomers();
         }
     }
 }

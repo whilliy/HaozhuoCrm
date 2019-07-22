@@ -4,14 +4,11 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Haozhuo.Crm.Service
 {
-    public class CustomerService
+    public class CustomerService : BaseService
     {
 
         /// <summary>
@@ -56,7 +53,7 @@ namespace Haozhuo.Crm.Service
 
 
         /// <summary>
-        /// 获取所有的客户来源
+        /// 获取所有的客户
         /// </summary>
         /// <returns></returns>
         public static List<CustomerSourceDto> getAllCustomerSources(string token)
@@ -109,7 +106,7 @@ namespace Haozhuo.Crm.Service
         /// <param name="cityId"></param>
         /// <param name="countyId"></param>
         /// <returns></returns>
-        public static List<CustomerDto> QueryCustomers(String token, Int32? pageNum,
+        public static ResultsWithCount<CustomerDto> QueryCustomers(String token, Int32? pageNum,
                                                         Int32? pageSize,
                                                         Int32? status,
                                                         Int32? source,
@@ -166,9 +163,9 @@ namespace Haozhuo.Crm.Service
                 var response = rc.Get(request);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    var login = JsonConvert.DeserializeObject<List<CustomerDto>>(response.Content);
+                    var customers = rc.Deserialize<List<CustomerDto>>(response);
                     //var count = response.Headers[GlobalConfig.X_TOTAL_COUNT];
-                    return login;
+                    return ResultsWithCount<CustomerDto>.of(customers.Data, GetTotalCountFromResponseHeaders(response));
                 }
                 else if (response.StatusCode == 0)
                 {
