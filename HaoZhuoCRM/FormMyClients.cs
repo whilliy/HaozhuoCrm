@@ -62,7 +62,7 @@ namespace HaoZhuoCRM
             IList<ProvinceDto> provinces = null;
             try
             {
-                provinces = RegionService.getAllProvinces();
+                provinces = RegionService.PROVINCES;
             }
             catch (BusinessException ex)
             {
@@ -201,9 +201,13 @@ namespace HaoZhuoCRM
                 lvi.SubItems.Add(customer.provinceName);
                 lvi.SubItems.Add(customer.cityName);
                 lvi.SubItems.Add(customer.countyName);
-                lvi.SubItems.Add(customer.createdTime==null?"":customer.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
-                lvi.SubItems.Add(customer.previousFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                lvi.SubItems.Add(customer.previousFollowTime == null ? "" : customer.previousFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 lvi.SubItems.Add(customer.previousFollowUserName);
+                lvi.SubItems.Add(customer.lastFollowTime == null ? "" : customer.lastFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                lvi.SubItems.Add(customer.lastFollowUserName);
+                lvi.SubItems.Add(customer.nextFollowTime == null ? "" : customer.nextFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                lvi.Tag = customer;
                 lvClients.Items.Add(lvi);
                 i++;
 
@@ -213,8 +217,27 @@ namespace HaoZhuoCRM
 
         private void ButQuery_Click(object sender, EventArgs e)
         {
-            ResultsWithCount<CustomerDto> customers = QueryCustomers();
-            BindingDatas(customers);
+            try
+            {
+                ResultsWithCount<CustomerDto> customers = QueryCustomers();
+                BindingDatas(customers);
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void LvClients_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvClients.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            CustomerDto customer = (CustomerDto)(lvClients.SelectedItems[0].Tag);
+
+            FormUpateCustomer frmUpdateCustomer = new FormUpateCustomer(customer);
+            frmUpdateCustomer.ShowDialog();
         }
     }
 }

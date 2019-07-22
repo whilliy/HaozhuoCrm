@@ -54,6 +54,8 @@
     <Compile Include="Dto\CustomerDto.cs" />
     <Compile Include="Dto\CustomerTypeDto.cs" />
     <Compile Include="Dto\CustomerScourceDto.cs" />
+    <Compile Include="Dto\Gender.cs" />
+    <Compile Include="Dto\Genders.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="RegionService.cs" />

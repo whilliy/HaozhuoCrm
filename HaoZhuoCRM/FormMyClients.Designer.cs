@@ -66,6 +66,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -74,25 +75,25 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(5, 29);
+            this.labelName.Location = new System.Drawing.Point(5, 25);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(58, 24);
+            this.labelName.Size = new System.Drawing.Size(130, 24);
             this.labelName.TabIndex = 0;
-            this.labelName.Text = "姓名";
+            this.labelName.Text = "客户姓名：";
             // 
             // cmbProvinces
             // 
             this.cmbProvinces.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvinces.FormattingEnabled = true;
-            this.cmbProvinces.Location = new System.Drawing.Point(71, 91);
+            this.cmbProvinces.Location = new System.Drawing.Point(380, 93);
             this.cmbProvinces.Name = "cmbProvinces";
-            this.cmbProvinces.Size = new System.Drawing.Size(121, 32);
+            this.cmbProvinces.Size = new System.Drawing.Size(170, 32);
             this.cmbProvinces.TabIndex = 7;
             this.cmbProvinces.SelectedIndexChanged += new System.EventHandler(this.CmbProvinces_SelectedIndexChanged);
             // 
             // butQuery
             // 
-            this.butQuery.Location = new System.Drawing.Point(754, 86);
+            this.butQuery.Location = new System.Drawing.Point(1219, 16);
             this.butQuery.Name = "butQuery";
             this.butQuery.Size = new System.Drawing.Size(117, 42);
             this.butQuery.TabIndex = 12;
@@ -102,7 +103,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(65, 24);
+            this.txtName.Location = new System.Drawing.Point(146, 20);
             this.txtName.MaxLength = 20;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(142, 35);
@@ -137,42 +138,42 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(908, 29);
+            this.label7.Location = new System.Drawing.Point(11, 97);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 24);
+            this.label7.Size = new System.Drawing.Size(130, 24);
             this.label7.TabIndex = 16;
-            this.label7.Text = "状态";
+            this.label7.Text = "客户状态：";
             // 
             // cmbStatus
             // 
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(990, 25);
+            this.cmbStatus.Location = new System.Drawing.Point(146, 93);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(121, 32);
+            this.cmbStatus.Size = new System.Drawing.Size(142, 32);
             this.cmbStatus.TabIndex = 17;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(672, 29);
+            this.label6.Location = new System.Drawing.Point(894, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 24);
+            this.label6.Size = new System.Drawing.Size(130, 24);
             this.label6.TabIndex = 14;
-            this.label6.Text = "来源";
+            this.label6.Text = "客户来源：";
             // 
             // cmbCustomerSources
             // 
             this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerSources.FormattingEnabled = true;
-            this.cmbCustomerSources.Location = new System.Drawing.Point(754, 25);
+            this.cmbCustomerSources.Location = new System.Drawing.Point(1039, 21);
             this.cmbCustomerSources.Name = "cmbCustomerSources";
-            this.cmbCustomerSources.Size = new System.Drawing.Size(121, 32);
+            this.cmbCustomerSources.Size = new System.Drawing.Size(148, 32);
             this.cmbCustomerSources.TabIndex = 15;
             // 
             // butReset
             // 
-            this.butReset.Location = new System.Drawing.Point(912, 86);
+            this.butReset.Location = new System.Drawing.Point(1219, 88);
             this.butReset.Name = "butReset";
             this.butReset.Size = new System.Drawing.Size(117, 42);
             this.butReset.TabIndex = 13;
@@ -183,17 +184,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(501, 29);
+            this.label5.Location = new System.Drawing.Point(633, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 24);
+            this.label5.Size = new System.Drawing.Size(130, 24);
             this.label5.TabIndex = 4;
-            this.label5.Text = "类型";
+            this.label5.Text = "客户类型：";
             // 
             // cmbCustomerTypes
             // 
             this.cmbCustomerTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerTypes.FormattingEnabled = true;
-            this.cmbCustomerTypes.Location = new System.Drawing.Point(565, 25);
+            this.cmbCustomerTypes.Location = new System.Drawing.Point(774, 21);
             this.cmbCustomerTypes.Name = "cmbCustomerTypes";
             this.cmbCustomerTypes.Size = new System.Drawing.Size(83, 32);
             this.cmbCustomerTypes.TabIndex = 5;
@@ -201,7 +202,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(485, 95);
+            this.label4.Location = new System.Drawing.Point(918, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 24);
             this.label4.TabIndex = 10;
@@ -211,15 +212,15 @@
             // 
             this.cmbCounties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCounties.FormattingEnabled = true;
-            this.cmbCounties.Location = new System.Drawing.Point(549, 91);
+            this.cmbCounties.Location = new System.Drawing.Point(982, 93);
             this.cmbCounties.Name = "cmbCounties";
-            this.cmbCounties.Size = new System.Drawing.Size(121, 32);
+            this.cmbCounties.Size = new System.Drawing.Size(205, 32);
             this.cmbCounties.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(210, 95);
+            this.label3.Location = new System.Drawing.Point(570, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 24);
             this.label3.TabIndex = 8;
@@ -229,16 +230,16 @@
             // 
             this.cmbCities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCities.FormattingEnabled = true;
-            this.cmbCities.Location = new System.Drawing.Point(274, 91);
+            this.cmbCities.Location = new System.Drawing.Point(637, 93);
             this.cmbCities.Name = "cmbCities";
-            this.cmbCities.Size = new System.Drawing.Size(188, 32);
+            this.cmbCities.Size = new System.Drawing.Size(220, 32);
             this.cmbCities.TabIndex = 9;
             this.cmbCities.SelectedIndexChanged += new System.EventHandler(this.CmbCities_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 95);
+            this.label2.Location = new System.Drawing.Point(311, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 24);
             this.label2.TabIndex = 6;
@@ -247,15 +248,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(227, 29);
+            this.label1.Location = new System.Drawing.Point(304, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 24);
+            this.label1.Size = new System.Drawing.Size(130, 24);
             this.label1.TabIndex = 2;
-            this.label1.Text = "手机";
+            this.label1.Text = "手机号码：";
             // 
             // txtMobile
             // 
-            this.txtMobile.Location = new System.Drawing.Point(302, 24);
+            this.txtMobile.Location = new System.Drawing.Point(438, 20);
             this.txtMobile.MaxLength = 11;
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(172, 35);
@@ -308,7 +309,8 @@
             this.columnHeader10,
             this.columnHeader12,
             this.columnHeader11,
-            this.columnHeader13});
+            this.columnHeader13,
+            this.columnHeader14});
             this.lvClients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvClients.FullRowSelect = true;
             this.lvClients.GridLines = true;
@@ -321,6 +323,7 @@
             this.lvClients.TabIndex = 2;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
+            this.lvClients.DoubleClick += new System.EventHandler(this.LvClients_DoubleClick);
             // 
             // columnHeader0
             // 
@@ -401,6 +404,11 @@
             this.columnHeader13.Text = "最后跟进人";
             this.columnHeader13.Width = 150;
             // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "下次跟进时间";
+            this.columnHeader14.Width = 150;
+            // 
             // FormMyClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -461,5 +469,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader0;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
     }
 }

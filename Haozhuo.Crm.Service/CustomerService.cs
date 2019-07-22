@@ -10,8 +10,8 @@ namespace Haozhuo.Crm.Service
 {
     public class CustomerService : BaseService
     {
-        private static readonly object obj1 = new object();
-        private static readonly object obj2 = new object();
+        private static readonly object lockTypes= new object();
+        private static readonly object lockSources= new object();
 
         private static IList<CustomerTypeDto> cusomterTypes;
 
@@ -21,7 +21,7 @@ namespace Haozhuo.Crm.Service
             {
                 if (cusomterTypes == null)
                 {
-                    lock (obj1)
+                    lock (lockTypes)
                     {
                         if (cusomterTypes == null)
                         {
@@ -41,7 +41,7 @@ namespace Haozhuo.Crm.Service
             {
                 if (customerSources == null)
                 {
-                    lock (obj2)
+                    lock (lockSources)
                     {
                         if (customerSources == null)
                         {

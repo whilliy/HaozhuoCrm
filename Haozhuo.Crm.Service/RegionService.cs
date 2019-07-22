@@ -10,7 +10,28 @@ namespace Haozhuo.Crm.Service
 {
     public class RegionService
     {
-        public static IList<ProvinceDto> getAllProvinces()
+        private static IList<ProvinceDto> provinces;
+        private static readonly object obj = new object();
+
+        public static IList<ProvinceDto> PROVINCES
+        {
+            get
+            {
+                if (provinces == null)
+                {
+                    lock (obj)
+                    {
+                        if (provinces == null)
+                        {
+                            provinces = getAllProvinces();
+                        }
+                    }
+                }
+                return provinces;
+            }
+        }
+
+        private static IList<ProvinceDto> getAllProvinces()
         {
             RestClient restClient = new RestClient();
             IRestRequest request = new RestRequest(GlobalConfig.GET_ALL_PROVINCES, Method.GET);
@@ -28,7 +49,7 @@ namespace Haozhuo.Crm.Service
                 IList<ProvinceDto> provinces = JsonConvert.DeserializeObject<List<ProvinceDto>>(response.Content);
                 return provinces;
             }
-            catch(BusinessException ex)
+            catch (BusinessException ex)
             {
                 throw ex;
             }
