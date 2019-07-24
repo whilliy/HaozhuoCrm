@@ -33,6 +33,9 @@ namespace HaoZhuoCRM
                 cmbCustomerSources.ValueMember = "id";
                 cmbCustomerSources.SelectedValue = customer.source;
                 cmbGender.DataSource = Genders.ALL;
+                cmbCustomerStatus.DisplayMember = "name";
+                cmbCustomerStatus.ValueMember = "id";
+                cmbCustomerStatus.DataSource = CustomerService.CustomerStatuses;
                 cmbGender.ValueMember = "id";
                 cmbGender.DisplayMember = "name";
                 txtName.Text = customer.name;

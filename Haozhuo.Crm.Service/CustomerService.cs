@@ -10,8 +10,8 @@ namespace Haozhuo.Crm.Service
 {
     public class CustomerService : BaseService
     {
-        private static readonly object lockTypes= new object();
-        private static readonly object lockSources= new object();
+        private static readonly object lockTypes = new object();
+        private static readonly object lockSources = new object();
 
         private static IList<CustomerTypeDto> cusomterTypes;
 
@@ -79,7 +79,7 @@ namespace Haozhuo.Crm.Service
                 if (dicCustomerTypes == null)
                 {
                     dicCustomerTypes = new Dictionary<Int32, String>();
-                    foreach (CustomerTypeDto type in cusomterTypes)
+                    foreach (CustomerTypeDto type in CustomerTypes)
                     {
                         dicCustomerTypes.Add(type.id, type.name);
                     }
@@ -88,6 +88,86 @@ namespace Haozhuo.Crm.Service
             }
         }
 
+
+
+        private static readonly object objstatus = new object();
+        private static IList<CustomerStatus> statuses;
+        public static IList<CustomerStatus> CustomerStatuses
+        {
+            get
+            {
+                if (statuses == null)
+                {
+                    lock (objstatus)
+                    {
+                        if (statuses == null)
+                        {
+                            statuses = getCustomerStatuses();
+                        }
+                    }
+                }
+                return statuses;
+            }
+        }
+
+        private static IDictionary<Int32, String> dicCustomerStatuses;
+        public static IDictionary<Int32, String> DicCustomerStatuses
+        {
+            get
+            {
+                if (dicCustomerStatuses == null)
+                {
+                    lock (objstatus)
+                    {
+                        if (dicCustomerStatuses == null)
+                        {
+                            dicCustomerStatuses = new Dictionary<Int32, String>();
+                            foreach (CustomerStatus status in CustomerStatuses)
+                            {
+                                dicCustomerStatuses.Add(status.id, status.name);
+                            }
+                        }
+                    }
+                }
+                return dicCustomerStatuses;
+            }
+        }
+
+
+        public static IList<CustomerStatus> getCustomerStatuses()
+        {
+            RestClient rs = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOMER_STATUSES);
+            //request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            IRestResponse response;
+            try
+            {
+                response = rs.Execute(request, Method.GET);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                var res = rs.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var statuses = rs.Deserialize<List<CustomerStatus>>(response);
+                return statuses.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
 
         /// <summary>
         /// 获取所有的客户类型

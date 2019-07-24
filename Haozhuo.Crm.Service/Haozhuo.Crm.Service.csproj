@@ -52,6 +52,7 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="CustomerService.cs" />
     <Compile Include="Dto\CustomerDto.cs" />
+    <Compile Include="Dto\CustomerStatus.cs" />
     <Compile Include="Dto\CustomerTypeDto.cs" />
     <Compile Include="Dto\CustomerScourceDto.cs" />
     <Compile Include="Dto\Gender.cs" />

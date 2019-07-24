@@ -29,6 +29,18 @@ namespace HaoZhuoCRM
         {
             //获取所有的客户类型
 
+            try
+            {
+                cmbStatus.DisplayMember = "name";
+                cmbStatus.ValueMember = "id";
+                CustomerService.CustomerStatuses.Insert(0, new CustomerStatus(-1, ""));
+                cmbStatus.DataSource = CustomerService.CustomerStatuses;
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             IList<CustomerTypeDto> types = new List<CustomerTypeDto>();
             try
             {
@@ -162,6 +174,10 @@ namespace HaoZhuoCRM
             if (cmbStatus.SelectedValue != null)
             {
                 status = Convert.ToInt32(cmbStatus.SelectedValue.ToString());
+                if (status == -1)
+                {
+                    status = null;
+                }
             }
             Int32? source = null;
             if (cmbCustomerSources.SelectedValue != null)

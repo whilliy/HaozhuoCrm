@@ -91,5 +91,9 @@ namespace Haozhuo.Crm.Service
         /// 所有的客户来源
         /// </summary>
         public static String CUSTOMER_SOURCES = CUSTOMERS + "/sources";
+        /// <summary>
+        /// 所有的客户状态
+        /// </summary>
+        public static String CUSTOMER_STATUSES = CUSTOMERS + "/statuses";
     }
 }
