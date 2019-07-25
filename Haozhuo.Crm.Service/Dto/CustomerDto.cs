@@ -9,6 +9,7 @@ namespace Haozhuo.Crm.Service.Dto
     public class CustomerDto
     {
         public String id { get; set; }
+        public Int32 projectId { get; set; }
         public String name { get; set; }
         public String mobile { get; set; }
         public Int32 type { get; set; }

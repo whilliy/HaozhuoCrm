@@ -104,5 +104,10 @@ namespace Haozhuo.Crm.Service
         /// 指定客户
         /// </summary>
         public static String CUSTOER_SOMEONE = CUSTOMERS + "/{customerId}";
+
+        /// <summary>
+        /// 获取所有的项目
+        /// </summary>
+        public static String ALL_PROJECTS = Domain + "/projects";
     }
 }

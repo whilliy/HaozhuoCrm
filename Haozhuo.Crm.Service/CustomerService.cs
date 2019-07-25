@@ -448,8 +448,11 @@ namespace Haozhuo.Crm.Service
         /// <param name="cityId"></param>
         /// <param name="countyId"></param>
         /// <returns></returns>
-        public static ResultsWithCount<CustomerDto> QueryCustomers(String token, Int32? pageNum,
+        public static ResultsWithCount<CustomerDto> QueryCustomers(String token,
+                                                        Int32? pageNum,
                                                         Int32? pageSize,
+                                                        Int32? projectId,
+                                                        Int64? userId,
                                                         Int32? status,
                                                         Int32? source,
                                                         Int32? type,
@@ -466,6 +469,14 @@ namespace Haozhuo.Crm.Service
             if (pageNum != null)
             {
                 request.AddParameter("page", pageNum);
+            }
+            if (userId != null)
+            {
+                request.AddParameter("user_id", userId);
+            }
+            if (projectId != null)
+            {
+                request.AddParameter("project_id", projectId);
             }
             request.AddParameter("province_id", provinceId);
             if (pageSize != null)
