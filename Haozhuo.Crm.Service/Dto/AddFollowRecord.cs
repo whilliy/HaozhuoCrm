@@ -8,8 +8,8 @@ namespace Haozhuo.Crm.Service.Dto
 {
     public class AddFollowRecord
     {
-        private String remark { get; set; }
-        private DateTime communicationTime { get; set; }
+        public String remark { get; set; }
+        public DateTime communicationTime { get; set; }
 
         public AddFollowRecord()
         {

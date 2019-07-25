@@ -1,5 +1,6 @@
 ﻿using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
+using Haozhuo.Crm.Service.vo;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -301,6 +302,12 @@ namespace Haozhuo.Crm.Service
             }
         }
 
+        /// <summary>
+        /// 根据顾客Id获取顾客的所有跟进记录列表
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static IList<CustomerFollowRecord> GetFollowerRecordsByCusotmerId(String customerId, String token)
         {
             RestClient rc = new RestClient();
@@ -337,8 +344,93 @@ namespace Haozhuo.Crm.Service
             }
         }
 
-        public void AddFllowRecord(AddFollowRecord record)
+        /// <summary>
+        /// 添加客户跟进记录
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="token"></param>
+        /// <param name="record"></param>
+        /// <returns></returns>
+        public static CustomerFollowRecord AddFllowRecord(String customerId, String token, AddFollowRecord record)
         {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOER_FOLLOW_RECORDS);
+            request.AddUrlSegment("customerId", customerId);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddJsonBody(record);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.POST);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.Created)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var types = rc.Deserialize<CustomerFollowRecord>(response);
+                return types.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// 更新客户信息
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="token"></param>
+        /// <param name="record"></param>
+        /// <returns></returns>
+        public static CustomerDto updateCustomer(String customerId, String token, CustomerVo vo)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOER_SOMEONE);
+            request.AddUrlSegment("customerId", customerId);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddJsonBody(vo);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.PUT);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var types = rc.Deserialize<CustomerDto>(response);
+                return types.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
         }
 
         /// <summary>

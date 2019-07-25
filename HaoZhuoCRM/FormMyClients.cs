@@ -1,6 +1,7 @@
 ﻿using Haozhuo.Crm.Service;
 using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
+using HaoZhuoCRM.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -202,6 +203,25 @@ namespace HaoZhuoCRM
             return customers;
         }
 
+        private void bindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
+        {
+            lvi.SubItems.Add(sequence.ToString());
+            lvi.SubItems.Add(customer.name);
+            lvi.SubItems.Add(customer.mobile);
+            lvi.SubItems.Add(CustomerService.DicCustomerTypes[customer.type]);
+            lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
+            lvi.SubItems.Add(customer.provinceName);
+            lvi.SubItems.Add(customer.cityName);
+            lvi.SubItems.Add(customer.countyName);
+            lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(customer.previousFollowTime == null ? "" : customer.previousFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(customer.previousFollowUserName);
+            lvi.SubItems.Add(customer.lastFollowTime == null ? "" : customer.lastFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(customer.lastFollowUserName);
+            lvi.SubItems.Add(customer.nextFollowTime == null ? "" : customer.nextFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.Tag = customer;
+        }
+
         private void BindingDatas(ResultsWithCount<CustomerDto> customers)
         {
             lvClients.BeginUpdate();
@@ -210,21 +230,7 @@ namespace HaoZhuoCRM
             foreach (CustomerDto customer in customers.getResults())
             {
                 ListViewItem lvi = new ListViewItem();
-                lvi.SubItems.Add(i.ToString());
-                lvi.SubItems.Add(customer.name);
-                lvi.SubItems.Add(customer.mobile);
-                lvi.SubItems.Add(CustomerService.DicCustomerTypes[customer.type]);
-                lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
-                lvi.SubItems.Add(customer.provinceName);
-                lvi.SubItems.Add(customer.cityName);
-                lvi.SubItems.Add(customer.countyName);
-                lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
-                lvi.SubItems.Add(customer.previousFollowTime == null ? "" : customer.previousFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
-                lvi.SubItems.Add(customer.previousFollowUserName);
-                lvi.SubItems.Add(customer.lastFollowTime == null ? "" : customer.lastFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
-                lvi.SubItems.Add(customer.lastFollowUserName);
-                lvi.SubItems.Add(customer.nextFollowTime == null ? "" : customer.nextFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
-                lvi.Tag = customer;
+                bindingData(lvi, i, customer);
                 lvClients.Items.Add(lvi);
                 i++;
 
@@ -251,10 +257,48 @@ namespace HaoZhuoCRM
             {
                 return;
             }
-            CustomerDto customer = (CustomerDto)(lvClients.SelectedItems[0].Tag);
-
+            ListViewItem lviSelected = lvClients.SelectedItems[0];
+            CustomerDto customer = (CustomerDto)(lviSelected.Tag);
+            //this.Hide();
             FormUpateCustomer frmUpdateCustomer = new FormUpateCustomer(customer);
-            frmUpdateCustomer.ShowDialog();
+            DialogResult dialogResult = frmUpdateCustomer.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                CustomerDto currentCustomer = frmUpdateCustomer.CURRENT_CUSTOMER;
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "姓名").Value].Text = currentCustomer.name;
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "手机号码").Value].Text = currentCustomer.mobile;
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户类型").Value].Text = CustomerService.DicCustomerTypes[currentCustomer.type];
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户来源").Value].Text = CustomerService.DicCustomerSources[currentCustomer.source];
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "省").Value].Text = currentCustomer.provinceName;
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "市").Value].Text = currentCustomer.cityName;
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "区").Value].Text = currentCustomer.countyName;
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "录入时间").Value].Text = currentCustomer.createdTime.ToString("yyyy-MM-dd HH:mm:ss");
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "上次跟进时间").Value].Text = currentCustomer.previousFollowTime == null ? "" : currentCustomer.previousFollowTime.ToString("yyyy-MM-dd HH:mm:ss");
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "上次跟进人").Value].Text = currentCustomer.previousFollowUserName;
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进时间").Value].Text = currentCustomer.lastFollowTime == null ? "" : currentCustomer.lastFollowTime.ToString("yyyy-MM-dd HH:mm:ss");
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进人").Value].Text = frmUpdateCustomer.CURRENT_CUSTOMER.lastFollowUserName;
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "下次跟进时间").Value].Text = currentCustomer.nextFollowTime == null ? "" : currentCustomer.nextFollowTime.ToString("yyyy-MM-dd HH:mm:ss");
+                lviSelected.Tag = currentCustomer;
+                Int32? sequenceIndex = ListViewHelper.getIndexByText(lvClients, "序号");
+                //if (sequenceIndex != null)
+                //{
+                //    int index = Convert.ToInt32(lviSelected.SubItems[sequenceIndex.Value].Text);
+                //    ListViewItem lvi = new ListViewItem();
+                //    bindingData(lvi, index, frmUpdateCustomer.CURRENT_CUSTOMER);
+                //    int rowIndex = lviSelected.Index;
+                //    lvClients.Items.Remove(lviSelected);
+                //    lvClients.Items.Insert(rowIndex, lvi);
+                //    lvClients.Focus();
+                //    lviSelected.Selected = true;
+                //    lviSelected.Focused = true;
+
+                //}
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            lvClients.Items[0].Selected = true;
         }
     }
 }

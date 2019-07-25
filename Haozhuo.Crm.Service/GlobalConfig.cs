@@ -100,5 +100,9 @@ namespace Haozhuo.Crm.Service
         /// 获取客户的跟进记录
         /// </summary>
         public static String CUSTOER_FOLLOW_RECORDS = CUSTOMERS + "/{customerId}/follow_records";
+        /// <summary>
+        /// 指定客户
+        /// </summary>
+        public static String CUSTOER_SOMEONE = CUSTOMERS + "/{customerId}";
     }
 }
