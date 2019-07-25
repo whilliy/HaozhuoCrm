@@ -32,8 +32,10 @@
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.客户CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.公海PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miMyClients = new System.Windows.Forms.ToolStripMenuItem();
+            this.公海PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.设置SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemProjectManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,10 +44,12 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件FToolStripMenuItem,
-            this.客户CToolStripMenuItem});
+            this.客户CToolStripMenuItem,
+            this.设置SToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2173, 42);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(752, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -54,13 +58,13 @@
             this.文件FToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miExit});
             this.文件FToolStripMenuItem.Name = "文件FToolStripMenuItem";
-            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(111, 38);
+            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(58, 22);
             this.文件FToolStripMenuItem.Text = "文件(&F)";
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(224, 44);
+            this.miExit.Size = new System.Drawing.Size(115, 22);
             this.miExit.Text = "退出(&E)";
             this.miExit.Click += new System.EventHandler(this.MiExit_Click);
             // 
@@ -70,30 +74,46 @@
             this.miMyClients,
             this.公海PToolStripMenuItem});
             this.客户CToolStripMenuItem.Name = "客户CToolStripMenuItem";
-            this.客户CToolStripMenuItem.Size = new System.Drawing.Size(114, 38);
+            this.客户CToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
             this.客户CToolStripMenuItem.Text = "客户(&C)";
-            // 
-            // 公海PToolStripMenuItem
-            // 
-            this.公海PToolStripMenuItem.Name = "公海PToolStripMenuItem";
-            this.公海PToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
-            this.公海PToolStripMenuItem.Text = "公海(&P)";
             // 
             // miMyClients
             // 
             this.miMyClients.Name = "miMyClients";
-            this.miMyClients.Size = new System.Drawing.Size(359, 44);
+            this.miMyClients.Size = new System.Drawing.Size(180, 22);
             this.miMyClients.Text = "我的客户(&M)";
             this.miMyClients.Click += new System.EventHandler(this.MiMyClients_Click);
             // 
+            // 公海PToolStripMenuItem
+            // 
+            this.公海PToolStripMenuItem.Name = "公海PToolStripMenuItem";
+            this.公海PToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.公海PToolStripMenuItem.Text = "公海(&P)";
+            // 
+            // 设置SToolStripMenuItem
+            // 
+            this.设置SToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemProjectManagement});
+            this.设置SToolStripMenuItem.Name = "设置SToolStripMenuItem";
+            this.设置SToolStripMenuItem.Size = new System.Drawing.Size(59, 22);
+            this.设置SToolStripMenuItem.Text = "设置(&S)";
+            // 
+            // menuItemProjectManagement
+            // 
+            this.menuItemProjectManagement.Name = "menuItemProjectManagement";
+            this.menuItemProjectManagement.Size = new System.Drawing.Size(180, 22);
+            this.menuItemProjectManagement.Text = "项目管理(&P)";
+            this.menuItemProjectManagement.Click += new System.EventHandler(this.MenuItemProjectManagement_Click);
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2173, 1014);
+            this.ClientSize = new System.Drawing.Size(752, 490);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CRM系统";
@@ -114,6 +134,8 @@
         private System.Windows.Forms.ToolStripMenuItem 客户CToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miMyClients;
         private System.Windows.Forms.ToolStripMenuItem 公海PToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 设置SToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemProjectManagement;
     }
 }
 

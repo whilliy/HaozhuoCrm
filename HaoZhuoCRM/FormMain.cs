@@ -39,5 +39,11 @@ namespace HaoZhuoCRM
             formMyClients.MdiParent = this;
             formMyClients.Show();
         }
+
+        private void MenuItemProjectManagement_Click(object sender, EventArgs e)
+        {
+            FormProjectManagement formProjectManagement = new FormProjectManagement();
+            formProjectManagement.ShowDialog();
+        }
     }
 }
