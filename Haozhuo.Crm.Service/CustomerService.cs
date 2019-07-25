@@ -33,8 +33,25 @@ namespace Haozhuo.Crm.Service
             }
         }
 
+        /// <summary>
+        /// 客户类型列表新拷贝
+        /// </summary>
+        /// <returns></returns>
+        public static IList<CustomerTypeDto> CustomerTypesCopy()
+        {
+            IList<CustomerTypeDto> customerTypesCopy = new List<CustomerTypeDto>();
+            foreach (CustomerTypeDto c in CustomerTypes)
+            {
+                customerTypesCopy.Add(new CustomerTypeDto(c.id, c.name));
+            }
+            return customerTypesCopy;
+        }
+
         private static IList<CustomerSourceDto> customerSources;
 
+        /// <summary>
+        /// 客户来源列表
+        /// </summary>
         public static IList<CustomerSourceDto> CustomerSources
         {
             get
@@ -53,8 +70,24 @@ namespace Haozhuo.Crm.Service
             }
         }
 
-        private static IDictionary<Int32, String> dicCustomerSources;
+        /// <summary>
+        /// 获取客户来源的列表拷贝
+        /// </summary>
+        /// <returns></returns>
+        public static IList<CustomerSourceDto> CustomerSourcesCopy()
+        {
+            IList<CustomerSourceDto> cusotmerSourcesCopies = new List<CustomerSourceDto>();
+            foreach (CustomerSourceDto s in CustomerSources)
+            {
+                cusotmerSourcesCopies.Add(new CustomerSourceDto(s.id, s.name));
+            }
+            return cusotmerSourcesCopies;
+        }
 
+        private static IDictionary<Int32, String> dicCustomerSources;
+        /// <summary>
+        /// 客户来源值与名称字典
+        /// </summary>
         public static IDictionary<Int32, String> DicCustomerSources
         {
             get
@@ -71,7 +104,9 @@ namespace Haozhuo.Crm.Service
             }
         }
         private static IDictionary<Int32, String> dicCustomerTypes;
-
+        /// <summary>
+        /// 客户类型值与名称字典
+        /// </summary>
         public static IDictionary<Int32, String> DicCustomerTypes
         {
             get
@@ -92,6 +127,9 @@ namespace Haozhuo.Crm.Service
 
         private static readonly object objstatus = new object();
         private static IList<CustomerStatus> statuses;
+        /// <summary>
+        /// 客户状态列表
+        /// </summary>
         public static IList<CustomerStatus> CustomerStatuses
         {
             get
@@ -108,6 +146,20 @@ namespace Haozhuo.Crm.Service
                 }
                 return statuses;
             }
+        }
+
+        /// <summary>
+        /// 获取客户状态列表的副本
+        /// </summary>
+        /// <returns></returns>
+        public static IList<CustomerStatus> CustomerStatusesCopy()
+        {
+            IList<CustomerStatus> customerStatusesCopies = new List<CustomerStatus>();
+            foreach (CustomerStatus s in CustomerStatuses)
+            {
+                customerStatusesCopies.Add(new CustomerStatus(s.id, s.name));
+            }
+            return customerStatusesCopies;
         }
 
         private static IDictionary<Int32, String> dicCustomerStatuses;
@@ -134,7 +186,7 @@ namespace Haozhuo.Crm.Service
         }
 
 
-        public static IList<CustomerStatus> getCustomerStatuses()
+        private static IList<CustomerStatus> getCustomerStatuses()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_STATUSES);
@@ -173,7 +225,7 @@ namespace Haozhuo.Crm.Service
         /// 获取所有的客户类型
         /// </summary>
         /// <returns></returns>
-        public static List<CustomerTypeDto> getAllCustomerTypes()
+        private static List<CustomerTypeDto> getAllCustomerTypes()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_TYPES);
@@ -211,10 +263,10 @@ namespace Haozhuo.Crm.Service
 
 
         /// <summary>
-        /// 获取所有的客户
+        /// 获取所有的客户来源
         /// </summary>
         /// <returns></returns>
-        public static List<CustomerSourceDto> getAllCustomerSources()
+        private static List<CustomerSourceDto> getAllCustomerSources()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_SOURCES);
@@ -247,6 +299,46 @@ namespace Haozhuo.Crm.Service
             {
                 throw new BusinessException(ex.Message);
             }
+        }
+
+        public static IList<CustomerFollowRecord> GetFollowerRecordsByCusotmerId(String customerId, String token)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOER_FOLLOW_RECORDS);
+            request.AddUrlSegment("customerId", customerId);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.GET);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var types = rc.Deserialize<List<CustomerFollowRecord>>(response);
+                return types.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
+
+        public void AddFllowRecord(AddFollowRecord record)
+        {
         }
 
         /// <summary>

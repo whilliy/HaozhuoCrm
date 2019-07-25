@@ -14,6 +14,7 @@ namespace Haozhuo.Crm.Service.Dto
         public Int32 type { get; set; }
         public Int32 status { get; set; }
         public Int32 source { get; set; }
+        public Int32 gender { get; set; }
         public String provinceId { get; set; }
         public String provinceName { get; set; }
         public String cityId { get; set; }

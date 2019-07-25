@@ -24,7 +24,7 @@ namespace HaoZhuoCRM
         {
             try
             {
-                cmbCustomerTypes.DataSource = CustomerService.CustomerTypes;
+                cmbCustomerTypes.DataSource = CustomerService.CustomerTypesCopy();
                 cmbCustomerTypes.DisplayMember = "name";
                 cmbCustomerTypes.ValueMember = "id";
                 cmbCustomerTypes.SelectedValue = customer.type;
@@ -32,12 +32,14 @@ namespace HaoZhuoCRM
                 cmbCustomerSources.DisplayMember = "name";
                 cmbCustomerSources.ValueMember = "id";
                 cmbCustomerSources.SelectedValue = customer.source;
-                cmbGender.DataSource = Genders.ALL;
                 cmbCustomerStatus.DisplayMember = "name";
                 cmbCustomerStatus.ValueMember = "id";
-                cmbCustomerStatus.DataSource = CustomerService.CustomerStatuses;
+                cmbCustomerStatus.DataSource = CustomerService.CustomerStatusesCopy();
+                cmbCustomerStatus.SelectedValue = customer.status;
+                cmbGender.DataSource = Genders.ALL;
                 cmbGender.ValueMember = "id";
                 cmbGender.DisplayMember = "name";
+                cmbGender.SelectedValue = customer.gender;
                 txtName.Text = customer.name;
                 txtMobile.Text = customer.mobile;
                 cmbProvinces.DisplayMember = "provinceName";
@@ -54,6 +56,14 @@ namespace HaoZhuoCRM
                             cmbCounties.SelectedValue = customer.countyId;
                         }
                     }
+                }
+                IList<CustomerFollowRecord> records = CustomerService.GetFollowerRecordsByCusotmerId(customer.id, Global.USER_TOKEN);
+                foreach(CustomerFollowRecord record in records)
+                {
+                    ListViewItem lvi = new ListViewItem(record.communicationTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                    lvi.SubItems.Add(record.followUserName);
+                    lvi.SubItems.Add(record.remark);
+                    listView1.Items.Add(lvi);
                 }
             }
             catch (BusinessException ex)
@@ -125,6 +135,20 @@ namespace HaoZhuoCRM
             cmbCounties.DisplayMember = "countyName";
             cmbCounties.DataSource = counties;
             return;
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            txtRemark.Text = txtRemark.Text.Trim();
+            if (txtRemark.Text == String.Empty)
+            {
+                MessageBox.Show("必须输入沟通记录");
+                return;
+            }
+            if(DateTime.Compare(dtpActuallyTime.Value, DateTime.Now) <= 0){
+                MessageBox.Show("下次沟通时间必须晚于当前时间！");
+                return;
+            }
         }
     }
 }

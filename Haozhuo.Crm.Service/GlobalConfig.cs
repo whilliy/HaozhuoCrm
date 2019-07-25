@@ -95,5 +95,10 @@ namespace Haozhuo.Crm.Service
         /// 所有的客户状态
         /// </summary>
         public static String CUSTOMER_STATUSES = CUSTOMERS + "/statuses";
+
+        /// <summary>
+        /// 获取客户的跟进记录
+        /// </summary>
+        public static String CUSTOER_FOLLOW_RECORDS = CUSTOMERS + "/{customerId}/follow_records";
     }
 }

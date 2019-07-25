@@ -55,9 +55,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbGender = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpActuallyTime = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.txtRemark = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.dtpNextFollowTime = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -206,6 +209,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dtpNextFollowTime);
+            this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.cmbGender);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.cmbCustomerSources);
@@ -232,9 +237,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.txtRemark);
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.dtpActuallyTime);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.butConfirm);
@@ -323,31 +329,60 @@
             this.label10.TabIndex = 9;
             this.label10.Text = "实际跟进时间：";
             // 
-            // dateTimePicker1
+            // dtpActuallyTime
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd hh:mm";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(197, 69);
-            this.dateTimePicker1.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(277, 35);
-            this.dateTimePicker1.TabIndex = 10;
+            this.dtpActuallyTime.CustomFormat = "yyyy-MM-dd hh:mm";
+            this.dtpActuallyTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpActuallyTime.Location = new System.Drawing.Point(197, 69);
+            this.dtpActuallyTime.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpActuallyTime.Name = "dtpActuallyTime";
+            this.dtpActuallyTime.Size = new System.Drawing.Size(277, 35);
+            this.dtpActuallyTime.TabIndex = 10;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(106, 14);
+            this.label11.Location = new System.Drawing.Point(58, 20);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 24);
+            this.label11.Size = new System.Drawing.Size(130, 24);
             this.label11.TabIndex = 11;
-            this.label11.Text = "备注：";
+            this.label11.Text = "沟通记录：";
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(197, 9);
+            this.txtRemark.Location = new System.Drawing.Point(197, 15);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(1358, 35);
             this.txtRemark.TabIndex = 28;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(502, 69);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(136, 41);
+            this.btnAdd.TabIndex = 29;
+            this.btnAdd.Text = "添加(&A)";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            // 
+            // dtpNextFollowTime
+            // 
+            this.dtpNextFollowTime.CustomFormat = "yyyy-MM-dd hh:mm";
+            this.dtpNextFollowTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNextFollowTime.Location = new System.Drawing.Point(1136, 145);
+            this.dtpNextFollowTime.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpNextFollowTime.Name = "dtpNextFollowTime";
+            this.dtpNextFollowTime.Size = new System.Drawing.Size(277, 35);
+            this.dtpNextFollowTime.TabIndex = 29;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(949, 150);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(178, 24);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "实际跟进时间：";
             // 
             // FormUpateCustomer
             // 
@@ -407,6 +442,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtRemark;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpActuallyTime;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.DateTimePicker dtpNextFollowTime;
+        private System.Windows.Forms.Label label12;
     }
 }

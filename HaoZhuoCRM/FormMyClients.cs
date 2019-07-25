@@ -28,13 +28,14 @@ namespace HaoZhuoCRM
         private void FormMyClients_Load(object sender, EventArgs e)
         {
             //获取所有的客户类型
-
+            IList<CustomerStatus> customerStatuses = new List<CustomerStatus>();
             try
             {
                 cmbStatus.DisplayMember = "name";
                 cmbStatus.ValueMember = "id";
-                CustomerService.CustomerStatuses.Insert(0, new CustomerStatus(-1, ""));
-                cmbStatus.DataSource = CustomerService.CustomerStatuses;
+                customerStatuses = CustomerService.CustomerStatusesCopy();
+                customerStatuses.Insert(0, new CustomerStatus(-1, ""));
+                cmbStatus.DataSource = customerStatuses;
             }
             catch (BusinessException ex)
             {
@@ -44,7 +45,7 @@ namespace HaoZhuoCRM
             IList<CustomerTypeDto> types = new List<CustomerTypeDto>();
             try
             {
-                types = CustomerService.CustomerTypes;
+                types = CustomerService.CustomerTypesCopy();
                 types.Insert(0, new CustomerTypeDto() { id = -1, name = "" });
                 cmbCustomerTypes.ValueMember = "id";
                 cmbCustomerTypes.DisplayMember = "name";
@@ -58,7 +59,7 @@ namespace HaoZhuoCRM
             IList<CustomerSourceDto> sources = new List<CustomerSourceDto>();
             try
             {
-                sources = CustomerService.CustomerSources;
+                sources = CustomerService.CustomerSourcesCopy();
                 sources.Insert(0, new CustomerSourceDto() { id = -1, name = "" });
                 cmbCustomerSources.ValueMember = "id";
                 cmbCustomerSources.DisplayMember = "name";
@@ -138,7 +139,7 @@ namespace HaoZhuoCRM
                 cmbCounties.Items.Clear();
                 return;
             }
-            IList<CountyDto> counties = null;
+            IList<CountyDto> counties = new List<CountyDto>();
             try
             {
                 counties = RegionService.getCountiesByCityId(cityId);

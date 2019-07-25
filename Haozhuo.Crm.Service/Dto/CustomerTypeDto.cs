@@ -10,5 +10,16 @@ namespace Haozhuo.Crm.Service.Dto
     {
         public int id { get; set; }
         public String name { get; set; }
+
+        public CustomerTypeDto()
+        {
+
+        }
+
+        public CustomerTypeDto(Int32 id, String name)
+        {
+            this.id = id;
+            this.name = name;
+        }
     }
 }
