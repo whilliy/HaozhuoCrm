@@ -108,6 +108,11 @@ namespace Haozhuo.Crm.Service
         /// <summary>
         /// 获取所有的项目
         /// </summary>
-        public static String ALL_PROJECTS = Domain + "/projects";
+        public static String PROJECTS = Domain + "/projects";
+
+        /// <summary>
+        /// 指定项目
+        /// </summary>
+        public static String PROJECTS_SOMEONE = PROJECTS + "/{projectId}";
     }
 }

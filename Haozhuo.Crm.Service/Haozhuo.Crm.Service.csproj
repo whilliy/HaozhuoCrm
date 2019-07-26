@@ -74,6 +74,7 @@
     <Compile Include="Utils\BusinessException.cs" />
     <Compile Include="Utils\CustomException.cs" />
     <Compile Include="Utils\ResultsWithCount.cs" />
+    <Compile Include="vo\ProjectVo.cs" />
     <Compile Include="vo\CustomerVo.cs" />
     <Compile Include="vo\UserLoginVo.cs" />
   </ItemGroup>

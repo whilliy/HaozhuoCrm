@@ -89,6 +89,7 @@
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "更新(&U)";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // btnAdd
             // 

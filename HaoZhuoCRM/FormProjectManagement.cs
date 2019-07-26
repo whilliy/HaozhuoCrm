@@ -1,5 +1,6 @@
 ﻿using Haozhuo.Crm.Service;
 using Haozhuo.Crm.Service.Dto;
+using Haozhuo.Crm.Service.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -45,6 +46,45 @@ namespace HaoZhuoCRM
                 MessageBox.Show("必须输入项目名称");
                 txtProjectName.Focus();
                 return;
+            }
+            try
+            {
+                ProjectDto project = ProjectService.AddProject(txtProjectName.Text, Global.USER_TOKEN);
+                ListViewItem lvi = new ListViewItem(project.name);
+                lvi.Tag = project;
+                listView1.Items.Add(lvi).Selected = true;
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            txtProjectName.Text = txtProjectName.Text.Trim();
+            if (String.IsNullOrEmpty(txtProjectName.Text))
+            {
+                MessageBox.Show("必须输入项目名称");
+                txtProjectName.Focus();
+                return;
+            }
+            if (listView1.SelectedIndices.Count < 1)
+            {
+                MessageBox.Show("请选择要修改的项目记录");
+                return;
+            }
+            ListViewItem lvi = listView1.SelectedItems[0];
+            ProjectDto p = (ProjectDto)lvi.Tag;
+            try
+            {
+                ProjectDto project = ProjectService.UpdateProject(p.id, txtProjectName.Text, Global.USER_TOKEN);
+                lvi.Text = project.name;
+                lvi.Tag = project;
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
