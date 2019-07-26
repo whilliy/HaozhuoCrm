@@ -87,5 +87,26 @@ namespace HaoZhuoCRM
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedIndices.Count < 1)
+            {
+                MessageBox.Show("请选择要删除的项目");
+                return;
+            }
+            ListViewItem lvi = listView1.SelectedItems[0];
+            ProjectDto p = (ProjectDto)lvi.Tag;
+            try
+            {
+                ProjectService.DeleteProject(p.id, Global.USER_TOKEN);
+                listView1.Items.Remove(lvi);
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }

@@ -34,12 +34,13 @@ namespace Haozhuo.Crm.Service
         {
             get
             {
-                IList<ProjectDto> dtos = new List<ProjectDto>();
-                foreach (ProjectDto p in Projects)
-                {
-                    dtos.Add(new ProjectDto(p.id, p.name));
-                }
-                return dtos;
+                //IList<ProjectDto> dtos = new List<ProjectDto>();
+                //foreach (ProjectDto p in Projects)
+                //{
+                //    dtos.Add(new ProjectDto(p.id, p.name));
+                //}
+                //return dtos;
+                return allProjects();
             }
         }
 
@@ -48,14 +49,14 @@ namespace Haozhuo.Crm.Service
         {
             get
             {
-                if (dicProjects == null)
+                //if (dicProjects == null)
+                //{
+                dicProjects = new Dictionary<Int32, string>();
+                foreach (ProjectDto p in Projects)
                 {
-                    dicProjects = new Dictionary<Int32, string>();
-                    foreach (ProjectDto p in Projects)
-                    {
-                        dicProjects.Add(p.id, p.name);
-                    }
+                    dicProjects.Add(p.id, p.name);
                 }
+                //}
                 return dicProjects;
             }
         }
@@ -100,12 +101,13 @@ namespace Haozhuo.Crm.Service
             {
                 throw new BusinessException(ex.Message);
             }
-        } /// <summary>
-          /// 更新项目
-          /// </summary>
-          /// <param name="projectName"></param>
-          /// <param name="token"></param>
-          /// <returns></returns>
+        }
+        /// <summary>
+        /// 更新项目
+        /// </summary>
+        /// <param name="projectName"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static ProjectDto UpdateProject(Int32 projectId, String projectName, String token)
         {
             RestClient rs = new RestClient();
@@ -140,6 +142,38 @@ namespace Haozhuo.Crm.Service
             catch (Exception ex)
             {
                 throw new BusinessException(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 删除项目
+        /// </summary>
+        /// <param name="projectName"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static void DeleteProject(Int32 projectId, String token)
+        {
+            RestClient rs = new RestClient();
+            var request = new RestRequest(GlobalConfig.PROJECTS_SOMEONE);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddUrlSegment("projectId", projectId);
+            IRestResponse response;
+            try
+            {
+                response = rs.Execute(request, Method.DELETE);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.NoContent)
+            {
+                var res = rs.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
             }
         }
 

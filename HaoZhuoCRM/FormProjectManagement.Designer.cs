@@ -37,12 +37,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.txtProjectName);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.butClose);
@@ -73,7 +75,7 @@
             // butClose
             // 
             this.butClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.butClose.Location = new System.Drawing.Point(571, 32);
+            this.butClose.Location = new System.Drawing.Point(571, 33);
             this.butClose.Name = "butClose";
             this.butClose.Size = new System.Drawing.Size(75, 23);
             this.butClose.TabIndex = 2;
@@ -83,7 +85,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(101, 32);
+            this.btnUpdate.Location = new System.Drawing.Point(101, 33);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 1;
@@ -93,7 +95,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(9, 32);
+            this.btnAdd.Location = new System.Drawing.Point(9, 33);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 0;
@@ -133,6 +135,16 @@
             this.columnHeader1.Text = "项目名称";
             this.columnHeader1.Width = 200;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(193, 33);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "删除(&D)";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
             // FormProjectManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -166,5 +178,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProjectName;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
