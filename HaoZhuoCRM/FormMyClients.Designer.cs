@@ -33,6 +33,8 @@
             this.butQuery = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panelQuery = new System.Windows.Forms.Panel();
+            this.cmbProjects = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,7 +55,9 @@
             this.lvClients = new System.Windows.Forms.ListView();
             this.columnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -67,13 +71,25 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbProjects = new System.Windows.Forms.ComboBox();
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmbPagesizes = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lblTotalCount = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblPageCount = new System.Windows.Forms.Label();
+            this.lblCurrentPage = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnFirstPage = new System.Windows.Forms.Button();
+            this.btnPrePage = new System.Windows.Forms.Button();
+            this.btnNextPage = new System.Windows.Forms.Button();
+            this.btnLastPage = new System.Windows.Forms.Button();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelName
@@ -145,6 +161,26 @@
             this.panelQuery.Name = "panelQuery";
             this.panelQuery.Size = new System.Drawing.Size(1077, 82);
             this.panelQuery.TabIndex = 0;
+            // 
+            // cmbProjects
+            // 
+            this.cmbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProjects.FormattingEnabled = true;
+            this.cmbProjects.Location = new System.Drawing.Point(367, 9);
+            this.cmbProjects.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbProjects.Name = "cmbProjects";
+            this.cmbProjects.Size = new System.Drawing.Size(84, 20);
+            this.cmbProjects.TabIndex = 19;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(322, 13);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 12);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "项目：";
             // 
             // label7
             // 
@@ -366,10 +402,20 @@
             this.columnHeader1.Text = "序号";
             this.columnHeader1.Width = 40;
             // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "所属项目";
+            this.columnHeader16.Width = 100;
+            // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "姓名";
             this.columnHeader2.Width = 80;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "性别";
+            this.columnHeader15.Width = 46;
             // 
             // columnHeader3
             // 
@@ -434,6 +480,21 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel3.Controls.Add(this.btnLastPage);
+            this.panel3.Controls.Add(this.btnNextPage);
+            this.panel3.Controls.Add(this.btnPrePage);
+            this.panel3.Controls.Add(this.btnFirstPage);
+            this.panel3.Controls.Add(this.cmbPagesizes);
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.label15);
+            this.panel3.Controls.Add(this.label14);
+            this.panel3.Controls.Add(this.lblTotalCount);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.lblPageCount);
+            this.panel3.Controls.Add(this.lblCurrentPage);
+            this.panel3.Controls.Add(this.label9);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 354);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
@@ -441,35 +502,155 @@
             this.panel3.Size = new System.Drawing.Size(1077, 36);
             this.panel3.TabIndex = 3;
             // 
-            // columnHeader15
+            // cmbPagesizes
             // 
-            this.columnHeader15.Text = "性别";
-            this.columnHeader15.Width = 46;
+            this.cmbPagesizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPagesizes.FormattingEnabled = true;
+            this.cmbPagesizes.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "20"});
+            this.cmbPagesizes.Location = new System.Drawing.Point(436, 8);
+            this.cmbPagesizes.Name = "cmbPagesizes";
+            this.cmbPagesizes.Size = new System.Drawing.Size(52, 20);
+            this.cmbPagesizes.TabIndex = 15;
+            this.cmbPagesizes.SelectedIndexChanged += new System.EventHandler(this.CmbPagesizes_SelectedIndexChanged);
             // 
-            // label8
+            // button1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(322, 13);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 12);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "项目：";
+            this.button1.Location = new System.Drawing.Point(889, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "跳转";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // cmbProjects
+            // textBox2
             // 
-            this.cmbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProjects.FormattingEnabled = true;
-            this.cmbProjects.Location = new System.Drawing.Point(367, 9);
-            this.cmbProjects.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbProjects.Name = "cmbProjects";
-            this.cmbProjects.Size = new System.Drawing.Size(84, 20);
-            this.cmbProjects.TabIndex = 19;
+            this.textBox2.Location = new System.Drawing.Point(837, 8);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(46, 21);
+            this.textBox2.TabIndex = 13;
             // 
-            // columnHeader16
+            // label16
             // 
-            this.columnHeader16.Text = "所属项目";
-            this.columnHeader16.Width = 100;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(500, 12);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(17, 12);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "条";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(396, 12);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(29, 12);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "每页";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(269, 12);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 12);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "条记录";
+            // 
+            // lblTotalCount
+            // 
+            this.lblTotalCount.Location = new System.Drawing.Point(213, 12);
+            this.lblTotalCount.Name = "lblTotalCount";
+            this.lblTotalCount.Size = new System.Drawing.Size(52, 12);
+            this.lblTotalCount.TabIndex = 5;
+            this.lblTotalCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(194, 12);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(17, 12);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "共";
+            // 
+            // lblPageCount
+            // 
+            this.lblPageCount.Location = new System.Drawing.Point(97, 12);
+            this.lblPageCount.Name = "lblPageCount";
+            this.lblPageCount.Size = new System.Drawing.Size(41, 12);
+            this.lblPageCount.TabIndex = 3;
+            this.lblPageCount.Text = "1";
+            this.lblPageCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCurrentPage
+            // 
+            this.lblCurrentPage.Location = new System.Drawing.Point(27, 12);
+            this.lblCurrentPage.Name = "lblCurrentPage";
+            this.lblCurrentPage.Size = new System.Drawing.Size(47, 12);
+            this.lblCurrentPage.TabIndex = 2;
+            this.lblCurrentPage.Text = "1";
+            this.lblCurrentPage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(80, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 12);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "/";
+            // 
+            // btnFirstPage
+            // 
+            this.btnFirstPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFirstPage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnFirstPage.Location = new System.Drawing.Point(548, 7);
+            this.btnFirstPage.Name = "btnFirstPage";
+            this.btnFirstPage.Size = new System.Drawing.Size(56, 23);
+            this.btnFirstPage.TabIndex = 16;
+            this.btnFirstPage.Text = "首页";
+            this.btnFirstPage.UseVisualStyleBackColor = true;
+            this.btnFirstPage.Click += new System.EventHandler(this.BtnFirstPage_Click);
+            // 
+            // btnPrePage
+            // 
+            this.btnPrePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrePage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnPrePage.Location = new System.Drawing.Point(617, 7);
+            this.btnPrePage.Name = "btnPrePage";
+            this.btnPrePage.Size = new System.Drawing.Size(56, 23);
+            this.btnPrePage.TabIndex = 17;
+            this.btnPrePage.Text = "上页";
+            this.btnPrePage.UseVisualStyleBackColor = true;
+            this.btnPrePage.Click += new System.EventHandler(this.BtnPrePage_Click);
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnNextPage.Location = new System.Drawing.Point(686, 7);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(56, 23);
+            this.btnNextPage.TabIndex = 18;
+            this.btnNextPage.Text = "下页";
+            this.btnNextPage.UseVisualStyleBackColor = true;
+            this.btnNextPage.Click += new System.EventHandler(this.BtnNextPage_Click);
+            // 
+            // btnLastPage
+            // 
+            this.btnLastPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLastPage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLastPage.Location = new System.Drawing.Point(755, 7);
+            this.btnLastPage.Name = "btnLastPage";
+            this.btnLastPage.Size = new System.Drawing.Size(56, 23);
+            this.btnLastPage.TabIndex = 19;
+            this.btnLastPage.Text = "尾页";
+            this.btnLastPage.UseVisualStyleBackColor = true;
+            this.btnLastPage.Click += new System.EventHandler(this.BtnLastPage_Click);
             // 
             // FormMyClients
             // 
@@ -488,6 +669,8 @@
             this.panelQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -537,5 +720,20 @@
         private System.Windows.Forms.ComboBox cmbProjects;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblTotalCount;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblPageCount;
+        private System.Windows.Forms.Label lblCurrentPage;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbPagesizes;
+        private System.Windows.Forms.Button btnFirstPage;
+        private System.Windows.Forms.Button btnLastPage;
+        private System.Windows.Forms.Button btnNextPage;
+        private System.Windows.Forms.Button btnPrePage;
     }
 }

@@ -10,9 +10,29 @@ namespace HaoZhuoCRM
 {
     public partial class FormMyClients : Form
     {
+        private Int32 CurrentPage = 1;
+        private Int32 PageSize = 20;
+        private Int64 Count;
+        private Int32 PageCount = 1;
+        private Boolean Queried = false;
+
         public FormMyClients()
         {
             InitializeComponent();
+            InitialPage();
+        }
+
+        void InitialPage()
+        {
+            IntialPageButtons();
+        }
+
+        void IntialPageButtons()
+        {
+            btnFirstPage.Enabled = false;
+            btnLastPage.Enabled = false;
+            btnNextPage.Enabled = false;
+            btnPrePage.Enabled = false;
         }
 
         private void BtnNew_Click(object sender, EventArgs e)
@@ -35,6 +55,7 @@ namespace HaoZhuoCRM
                 cmbProjects.DisplayMember = "name";
                 cmbProjects.ValueMember = "id";
                 cmbProjects.DataSource = projects;
+                cmbPagesizes.Text = PageSize.ToString();
             }
             catch (BusinessException ex)
             {
@@ -221,7 +242,9 @@ namespace HaoZhuoCRM
                     type = null;
                 }
             }
-            ResultsWithCount<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, 1, 10, projectId,
+            //将每页数量改为下拉框内的值
+            PageSize = Convert.ToInt32(cmbPagesizes.Text);
+            ResultsWithCount<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, CurrentPage, PageSize, projectId,
                 Global.USER_ID, status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId);
             return customers;
         }
@@ -251,7 +274,7 @@ namespace HaoZhuoCRM
         {
             lvClients.BeginUpdate();
             lvClients.Items.Clear();
-            int i = 1;
+            int i = 1 + (CurrentPage - 1) * PageSize;
             foreach (CustomerDto customer in customers.getResults())
             {
                 ListViewItem lvi = new ListViewItem();
@@ -265,15 +288,60 @@ namespace HaoZhuoCRM
 
         private void ButQuery_Click(object sender, EventArgs e)
         {
+            getCustomersAndBindingDatas();
+        }
+
+        /// <summary>
+        /// 根据当前页码和总页数显示“首页”“下页”“前页”“尾页”状态
+        /// </summary>
+        private void SetPageButtons()
+        {
+            if (CurrentPage != 1)
+            {
+                btnPrePage.Enabled = true;
+                btnFirstPage.Enabled = true;
+            }
+            if (CurrentPage < PageCount)
+            {
+                btnNextPage.Enabled = true;
+                btnLastPage.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// 获取符合条件的数据并绑定到ListView和Pager区
+        /// </summary>
+        private void getCustomersAndBindingDatas()
+        {
             try
             {
                 ResultsWithCount<CustomerDto> customers = QueryCustomers();
                 BindingDatas(customers);
+                Assign(customers.getCount());
+                Queried = true;
             }
             catch (BusinessException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Assign(long count)
+        {
+            Count = count;
+            lblTotalCount.Text = count.ToString();
+            Int32 pageSize = Convert.ToInt32(cmbPagesizes.Text);
+            if (count % pageSize == 0)
+            {
+                PageCount = Convert.ToInt32(count / pageSize);
+                lblPageCount.Text = PageCount.ToString();
+            }
+            else
+            {
+                PageCount = Convert.ToInt32(count / pageSize + 1);
+                lblPageCount.Text = PageCount.ToString();
+            }
+            SetPageButtons();
         }
 
         private void LvClients_DoubleClick(object sender, EventArgs e)
@@ -306,21 +374,47 @@ namespace HaoZhuoCRM
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进人").Value].Text = frmUpdateCustomer.CURRENT_CUSTOMER.lastFollowUserName;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "下次跟进时间").Value].Text = currentCustomer.nextFollowTime == null ? "" : currentCustomer.nextFollowTime.ToString("yyyy-MM-dd HH:mm:ss");
                 lviSelected.Tag = currentCustomer;
-                //Int32? sequenceIndex = ListViewHelper.getIndexByText(lvClients, "序号");
-                //if (sequenceIndex != null)
-                //{
-                //    int index = Convert.ToInt32(lviSelected.SubItems[sequenceIndex.Value].Text);
-                //    ListViewItem lvi = new ListViewItem();
-                //    bindingData(lvi, index, frmUpdateCustomer.CURRENT_CUSTOMER);
-                //    int rowIndex = lviSelected.Index;
-                //    lvClients.Items.Remove(lviSelected);
-                //    lvClients.Items.Insert(rowIndex, lvi);
-                //    lvClients.Focus();
-                //    lviSelected.Selected = true;
-                //    lviSelected.Focused = true;
-
-                //}
             }
+        }
+
+        private void CmbPagesizes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PageSize = Convert.ToInt32(cmbPagesizes.Text);
+            CurrentPage = 1;
+            IntialPageButtons();
+            getCustomersAndBindingDatas();
+        }
+
+        private void BtnFirstPage_Click(object sender, EventArgs e)
+        {
+            CurrentPage = 1;
+            lblCurrentPage.Text = CurrentPage.ToString();
+            IntialPageButtons();
+            getCustomersAndBindingDatas();
+        }
+
+        private void BtnPrePage_Click(object sender, EventArgs e)
+        {
+            CurrentPage = Math.Max(1, CurrentPage - 1);
+            lblCurrentPage.Text = CurrentPage.ToString();
+            IntialPageButtons();
+            getCustomersAndBindingDatas();
+        }
+
+        private void BtnNextPage_Click(object sender, EventArgs e)
+        {
+            CurrentPage = Math.Min(CurrentPage + 1, PageCount);
+            IntialPageButtons();
+            lblCurrentPage.Text = CurrentPage.ToString();
+            getCustomersAndBindingDatas();
+        }
+
+        private void BtnLastPage_Click(object sender, EventArgs e)
+        {
+            CurrentPage = PageCount;
+            lblCurrentPage.Text = CurrentPage.ToString();
+            IntialPageButtons();
+            getCustomersAndBindingDatas();
         }
     }
 }
