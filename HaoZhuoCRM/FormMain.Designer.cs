@@ -36,6 +36,7 @@
             this.公海PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemProjectManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuModifyPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             // 文件FToolStripMenuItem
             // 
             this.文件FToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuModifyPassword,
             this.miExit});
             this.文件FToolStripMenuItem.Name = "文件FToolStripMenuItem";
             this.文件FToolStripMenuItem.Size = new System.Drawing.Size(58, 22);
@@ -64,7 +66,7 @@
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(115, 22);
+            this.miExit.Size = new System.Drawing.Size(180, 22);
             this.miExit.Text = "退出(&E)";
             this.miExit.Click += new System.EventHandler(this.MiExit_Click);
             // 
@@ -80,14 +82,14 @@
             // miMyClients
             // 
             this.miMyClients.Name = "miMyClients";
-            this.miMyClients.Size = new System.Drawing.Size(180, 22);
+            this.miMyClients.Size = new System.Drawing.Size(144, 22);
             this.miMyClients.Text = "我的客户(&M)";
             this.miMyClients.Click += new System.EventHandler(this.MiMyClients_Click);
             // 
             // 公海PToolStripMenuItem
             // 
             this.公海PToolStripMenuItem.Name = "公海PToolStripMenuItem";
-            this.公海PToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.公海PToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.公海PToolStripMenuItem.Text = "公海(&P)";
             // 
             // 设置SToolStripMenuItem
@@ -101,9 +103,16 @@
             // menuItemProjectManagement
             // 
             this.menuItemProjectManagement.Name = "menuItemProjectManagement";
-            this.menuItemProjectManagement.Size = new System.Drawing.Size(180, 22);
+            this.menuItemProjectManagement.Size = new System.Drawing.Size(139, 22);
             this.menuItemProjectManagement.Text = "项目管理(&P)";
             this.menuItemProjectManagement.Click += new System.EventHandler(this.MenuItemProjectManagement_Click);
+            // 
+            // menuModifyPassword
+            // 
+            this.menuModifyPassword.Name = "menuModifyPassword";
+            this.menuModifyPassword.Size = new System.Drawing.Size(180, 22);
+            this.menuModifyPassword.Text = "修改密码(&M)...";
+            this.menuModifyPassword.Click += new System.EventHandler(this.MenuModifyPassword_Click);
             // 
             // FormMain
             // 
@@ -113,7 +122,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CRM系统";
@@ -136,6 +145,7 @@
         private System.Windows.Forms.ToolStripMenuItem 公海PToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设置SToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemProjectManagement;
+        private System.Windows.Forms.ToolStripMenuItem menuModifyPassword;
     }
 }
 

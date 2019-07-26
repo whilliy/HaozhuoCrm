@@ -71,9 +71,11 @@
     <Compile Include="Dto\CountyDto.cs" />
     <Compile Include="Dto\ProvinceDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
     <Compile Include="Utils\BusinessException.cs" />
     <Compile Include="Utils\CustomException.cs" />
     <Compile Include="Utils\ResultsWithCount.cs" />
+    <Compile Include="vo\ModifyPassword.cs" />
     <Compile Include="vo\ProjectVo.cs" />
     <Compile Include="vo\CustomerVo.cs" />
     <Compile Include="vo\UserLoginVo.cs" />

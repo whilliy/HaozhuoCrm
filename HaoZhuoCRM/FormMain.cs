@@ -45,5 +45,11 @@ namespace HaoZhuoCRM
             FormProjectManagement formProjectManagement = new FormProjectManagement();
             formProjectManagement.ShowDialog();
         }
+
+        private void MenuModifyPassword_Click(object sender, EventArgs e)
+        {
+            FormModifyPassword formModifyPassword = new FormModifyPassword();
+            formModifyPassword.ShowDialog();
+        }
     }
 }
