@@ -97,6 +97,10 @@ namespace HaoZhuoCRM
             }
             ListViewItem lvi = listView1.SelectedItems[0];
             ProjectDto p = (ProjectDto)lvi.Tag;
+            if (DialogResult.No == MessageBox.Show("您确认要删除[" + p.name + "]项目吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1))
+            {
+                return;
+            }
             try
             {
                 ProjectService.DeleteProject(p.id, Global.USER_TOKEN);
