@@ -309,6 +309,7 @@
             this.btnResetPassword.TabIndex = 14;
             this.btnResetPassword.Text = "重置密码(&P)";
             this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.BtnResetPassword_Click);
             // 
             // FormUser
             // 

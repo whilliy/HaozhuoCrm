@@ -94,6 +94,12 @@
     <Compile Include="FormProjectManagement.Designer.cs">
       <DependentUpon>FormProjectManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormResetUserPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResetUserPass.Designer.cs">
+      <DependentUpon>FormResetUserPass.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUpateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormProjectManagement.resx">
       <DependentUpon>FormProjectManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResetUserPass.resx">
+      <DependentUpon>FormResetUserPass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUpateCustomer.resx">
       <DependentUpon>FormUpateCustomer.cs</DependentUpon>

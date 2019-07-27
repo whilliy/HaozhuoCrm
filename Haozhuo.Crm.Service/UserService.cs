@@ -42,7 +42,7 @@ namespace Haozhuo.Crm.Service
             }
         }
 
-        public static ResultsWithCount<UserDto> QueryCustomers(String token,
+        public static ResultsWithCount<UserDto> QueryUsers(String token,
                                                         Int32? pageNum,
                                                         Int32? pageSize,
                                                         String name,
@@ -103,6 +103,81 @@ namespace Haozhuo.Crm.Service
             catch (Exception ex)
             {
                 throw new BusinessException(ex.Message);
+            }
+        }
+        
+
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="projectName"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static UserDto AddUser(AddUserVo vo, String token)
+        {
+            RestClient rs = new RestClient();
+            var request = new RestRequest(GlobalConfig.USERS);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddJsonBody(vo);
+            IRestResponse response;
+            try
+            {
+                response = rs.Execute(request, Method.POST);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.Created)
+            {
+                var res = rs.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var types = rs.Deserialize<UserDto>(response);
+                return types.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="projectName"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static void ResetUserPassword(ResetUserPassword vo, String token)
+        {
+            RestClient rs = new RestClient();
+            var request = new RestRequest(GlobalConfig.RESET_USER_PASSWORD);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddJsonBody(vo);
+            IRestResponse response;
+            try
+            {
+                response = rs.Execute(request, Method.PATCH);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.NoContent)
+            {
+                var res = rs.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
             }
         }
     }

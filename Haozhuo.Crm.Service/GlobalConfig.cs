@@ -86,6 +86,11 @@ namespace Haozhuo.Crm.Service
         public static String USER_MODIFY_PASSWORD = USERS + "/modify_password";
 
         /// <summary>
+        /// 重置指定用户密码
+        /// </summary>
+        public static String RESET_USER_PASSWORD = USERS + "/reset_password";
+
+        /// <summary>
         /// 客戶相關
         /// </summary>
         public static String CUSTOMERS = Domain + "/customers";

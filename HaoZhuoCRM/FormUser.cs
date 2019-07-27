@@ -52,7 +52,7 @@ namespace HaoZhuoCRM
             {
                 active = false;
             }
-            return UserService.QueryCustomers(Global.USER_TOKEN, pager.PageIndex, pager.PageSize, txtName.Text,
+            return UserService.QueryUsers(Global.USER_TOKEN, pager.PageIndex, pager.PageSize, txtName.Text,
                 txtMobile.Text, gender, active);
         }
 
@@ -90,7 +90,9 @@ namespace HaoZhuoCRM
                 {
                     lvi.SubItems.Add("禁用");
                 }
+                lvi.Tag = user;
                 lvUsers.Items.Add(lvi);
+                index++;
             }
         }
 
@@ -144,6 +146,21 @@ namespace HaoZhuoCRM
         {
             FormAddUser frmAddUser = new FormAddUser();
             frmAddUser.ShowDialog();
+        }
+
+        private void BtnResetPassword_Click(object sender, EventArgs e)
+        {
+            if (lvUsers.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("请在列表中选择要重置密码的用户！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            ListViewItem lvi = lvUsers.SelectedItems[0];
+            UserDto user = (UserDto)lvi.Tag;
+            FormResetUserPass frmResetPass = new FormResetUserPass(user);
+            frmResetPass.ShowDialog();
+            lvUsers.Focus();
+            lvi.Selected = true;
         }
     }
 }
