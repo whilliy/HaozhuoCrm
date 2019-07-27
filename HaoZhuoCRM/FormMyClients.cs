@@ -19,14 +19,22 @@ namespace HaoZhuoCRM
         public FormMyClients()
         {
             InitializeComponent();
-            InitialPage();
+            InitialPager();
         }
 
-        void InitialPage()
+        void InitialPager()
         {
+            lblCurrentPage.Text = "1";
+            lblPageCount.Text = "1";
+            lblTotalCount.Text = "0";
+            cmbPagesizes.Text = "20";
+            txtJump.Text = "1";
             IntialPageButtons();
         }
 
+        /// <summary>
+        /// 指定“首页”上页，下页，尾页按钮的初始状态
+        /// </summary>
         void IntialPageButtons()
         {
             btnFirstPage.Enabled = false;
@@ -48,6 +56,7 @@ namespace HaoZhuoCRM
 
         private void FormMyClients_Load(object sender, EventArgs e)
         {
+            //获取项目列表
             try
             {
                 IList<ProjectDto> projects = ProjectService.ProjectsCopy;
@@ -60,6 +69,7 @@ namespace HaoZhuoCRM
             catch (BusinessException ex)
             {
                 MessageBox.Show("获取项目列表发生错误：" + ex.Message);
+                return;
             }
             //获取所有的客户类型
             IList<CustomerStatus> customerStatuses = new List<CustomerStatus>();
@@ -73,10 +83,10 @@ namespace HaoZhuoCRM
             }
             catch (BusinessException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("加载客户状态发生错误：" + ex.Message);
                 return;
             }
-
+            //加载客户类型
             IList<CustomerTypeDto> types = new List<CustomerTypeDto>();
             try
             {
@@ -91,6 +101,7 @@ namespace HaoZhuoCRM
                 MessageBox.Show("获取所有客户类型时发生错误:" + ex.Message);
                 return;
             }
+            //加载客户来源
             IList<CustomerSourceDto> sources = new List<CustomerSourceDto>();
             try
             {
@@ -106,7 +117,7 @@ namespace HaoZhuoCRM
                 return;
             }
 
-
+            //加载省
             IList<ProvinceDto> provinces = null;
             try
             {
@@ -153,7 +164,7 @@ namespace HaoZhuoCRM
 
             }
             cities.Insert(0, new CityDto(String.Empty, String.Empty));
-            cmbCities.ValueMember = "CityId";
+            cmbCities.ValueMember = "cityId";
             cmbCities.DisplayMember = "cityName";
             cmbCities.DataSource = cities;
         }
@@ -193,8 +204,11 @@ namespace HaoZhuoCRM
 
         private void ButReset_Click(object sender, EventArgs e)
         {
+            InitialPager();
+            txtName.Text = txtMobile.Text = "";
             cmbCustomerSources.SelectedIndex = 0;
             cmbCustomerTypes.SelectedIndex = 0;
+            cmbStatus.SelectedIndex = 0;
             cmbProvinces.SelectedIndex = 0;
 
         }
@@ -274,14 +288,13 @@ namespace HaoZhuoCRM
         {
             lvClients.BeginUpdate();
             lvClients.Items.Clear();
-            int i = 1 + (CurrentPage - 1) * PageSize;
+            int i = 1 + (CurrentPage - 1) * PageSize;//计算序号
             foreach (CustomerDto customer in customers.getResults())
             {
                 ListViewItem lvi = new ListViewItem();
                 bindingData(lvi, i, customer);
                 lvClients.Items.Add(lvi);
                 i++;
-
             }
             lvClients.EndUpdate();
         }
@@ -313,10 +326,15 @@ namespace HaoZhuoCRM
         /// </summary>
         private void getCustomersAndBindingDatas()
         {
+            //初始化几个按钮的状态
+            IntialPageButtons();
             try
             {
+                //查询符合条件的记录
                 ResultsWithCount<CustomerDto> customers = QueryCustomers();
+                //将数据绑定到ListView
                 BindingDatas(customers);
+                //处理分页相关
                 Assign(customers.getCount());
                 Queried = true;
             }
@@ -330,6 +348,10 @@ namespace HaoZhuoCRM
         {
             Count = count;
             lblTotalCount.Text = count.ToString();
+            //当前页Label修改
+            lblCurrentPage.Text = CurrentPage.ToString();
+            //跳转文本框内容修改
+            txtJump.Text = CurrentPage.ToString();
             Int32 pageSize = Convert.ToInt32(cmbPagesizes.Text);
             if (count % pageSize == 0)
             {
@@ -377,44 +399,53 @@ namespace HaoZhuoCRM
             }
         }
 
+
         private void CmbPagesizes_SelectedIndexChanged(object sender, EventArgs e)
         {
             PageSize = Convert.ToInt32(cmbPagesizes.Text);
-            CurrentPage = 1;
-            IntialPageButtons();
             getCustomersAndBindingDatas();
         }
 
         private void BtnFirstPage_Click(object sender, EventArgs e)
         {
             CurrentPage = 1;
-            lblCurrentPage.Text = CurrentPage.ToString();
-            IntialPageButtons();
             getCustomersAndBindingDatas();
         }
 
         private void BtnPrePage_Click(object sender, EventArgs e)
         {
             CurrentPage = Math.Max(1, CurrentPage - 1);
-            lblCurrentPage.Text = CurrentPage.ToString();
-            IntialPageButtons();
             getCustomersAndBindingDatas();
         }
 
         private void BtnNextPage_Click(object sender, EventArgs e)
         {
             CurrentPage = Math.Min(CurrentPage + 1, PageCount);
-            IntialPageButtons();
-            lblCurrentPage.Text = CurrentPage.ToString();
             getCustomersAndBindingDatas();
         }
 
         private void BtnLastPage_Click(object sender, EventArgs e)
         {
             CurrentPage = PageCount;
-            lblCurrentPage.Text = CurrentPage.ToString();
-            IntialPageButtons();
             getCustomersAndBindingDatas();
+        }
+
+        private void BtnJump_Click(object sender, EventArgs e)
+        {
+            txtJump.Text = txtJump.Text.Trim();
+            Int32 jumpPage = 1;
+            if (!Int32.TryParse(txtJump.Text, out jumpPage) || jumpPage < 1)
+            {
+                MessageBox.Show("跳转页码只能为正整数！");
+                txtJump.Focus();
+                txtJump.SelectAll();
+                return;
+            }
+            CurrentPage = Math.Min(PageCount, jumpPage);
+            getCustomersAndBindingDatas();
+            txtJump.Focus();
+            txtJump.SelectAll();
+
         }
     }
 }
