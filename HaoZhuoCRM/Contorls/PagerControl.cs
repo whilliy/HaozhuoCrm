@@ -12,6 +12,18 @@ namespace HaoZhuoCRM.Controls
             InitializeComponent();
         }
 
+        public void Reset()
+        {
+            needExcuteQuery = false;
+            PageIndex = 0;
+            PageSize = 20;
+            DrawControl(0);
+        }
+
+        private Boolean needExcuteQuery = false;
+
+        public virtual Boolean NeedExcuteQuery { get { return needExcuteQuery; } set { needExcuteQuery = true; } }
+
         #endregion
 
         #region 分页字段和属性
@@ -36,7 +48,9 @@ namespace HaoZhuoCRM.Controls
             set
             {
                 pageSize = value;
+                //cmbPageSizes.SelectedIndexChanged -= CmbPageSizes_SelectedIndexChanged;
                 cmbPageSizes.Text = value.ToString();
+                //cmbPageSizes.SelectedIndexChanged += CmbPageSizes_SelectedIndexChanged;
             }
         }
 
@@ -50,7 +64,7 @@ namespace HaoZhuoCRM.Controls
             set { recordCount = value; }
         }
 
-        private int pageCount = 1;
+        private int pageCount = 0;
         /// <summary>
         /// 总页数
         /// </summary>
@@ -149,7 +163,7 @@ namespace HaoZhuoCRM.Controls
                 OnPageChanged(this, null);//当前分页数字改变时，触发委托事件
             }
             SetFormCtrEnabled();
-            if (PageCount == 1)//有且仅有一页
+            if (PageCount <= 1)//有且仅有一页
             {
                 lnkFirst.Enabled = false;
                 lnkPrev.Enabled = false;
@@ -234,12 +248,33 @@ namespace HaoZhuoCRM.Controls
                 DrawControl(true);
             }
         }
+
+        ///// <summary>
+        ///// 给每页数量下拉框去除事件
+        ///// </summary>
+        //private void RemovePageSizeSelectedIndexChanged()
+        //{
+        //    cmbPageSizes.SelectedIndexChanged -= CmbPageSizes_SelectedIndexChanged;
+
+        //}
+        ///// <summary>
+        ///// 给每页数量下拉框添加事件
+        ///// </summary>
+        //public void AddPageSizeSelectedIndexChanged()
+        //{
+        //    cmbPageSizes.SelectedIndexChanged += CmbPageSizes_SelectedIndexChanged;
+
+        //}
+
         private void CmbPageSizes_SelectedIndexChanged(object sender, EventArgs e)
         {
             int num = 0;
             int.TryParse(cmbPageSizes.Text.Trim(), out num);
             pageSize = num;
-            lnkFirst_LinkClicked(null, null);
+            if (needExcuteQuery)
+            {
+                lnkFirst_LinkClicked(null, null);
+            }
         }
         #endregion
 

@@ -59,7 +59,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(826, 319);
+            this.groupBox1.Size = new System.Drawing.Size(826, 405);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "用户列表";
@@ -70,7 +70,7 @@
             this.pager.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(78)))), ((int)(((byte)(151)))));
             this.pager.JumpText = "Go";
-            this.pager.Location = new System.Drawing.Point(3, 280);
+            this.pager.Location = new System.Drawing.Point(3, 366);
             this.pager.Name = "pager";
             this.pager.PageIndex = 1;
             this.pager.PageSize = 1;
@@ -92,7 +92,7 @@
             this.lvUsers.GridLines = true;
             this.lvUsers.Location = new System.Drawing.Point(3, 54);
             this.lvUsers.Name = "lvUsers";
-            this.lvUsers.Size = new System.Drawing.Size(820, 226);
+            this.lvUsers.Size = new System.Drawing.Size(820, 312);
             this.lvUsers.TabIndex = 1;
             this.lvUsers.UseCompatibleStateImageBehavior = false;
             this.lvUsers.View = System.Windows.Forms.View.Details;
@@ -224,6 +224,7 @@
             this.btnReset.TabIndex = 9;
             this.btnReset.Text = "重置(&R)";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
             // 
             // FormUser
             // 

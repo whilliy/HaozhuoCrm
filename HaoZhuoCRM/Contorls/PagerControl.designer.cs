@@ -157,7 +157,7 @@
             this.lblTotalCount.Name = "lblTotalCount";
             this.lblTotalCount.Size = new System.Drawing.Size(41, 12);
             this.lblTotalCount.TabIndex = 51;
-            this.lblTotalCount.Text = "100000";
+            this.lblTotalCount.Text = "0";
             this.lblTotalCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblMsg1
@@ -237,7 +237,8 @@
             "2",
             "3",
             "20",
-            "80"});
+            "30",
+            "50"});
             this.cmbPageSizes.Location = new System.Drawing.Point(90, 9);
             this.cmbPageSizes.Name = "cmbPageSizes";
             this.cmbPageSizes.Size = new System.Drawing.Size(49, 20);

@@ -25,6 +25,9 @@ namespace HaoZhuoCRM
             cmbStatuses.Items.Add("");
             cmbStatuses.Items.Add("可用");
             cmbStatuses.Items.Add("禁用");
+            //初始化控件
+            pager.Reset();
+            //pager.RemovePageSizeSelectedIndexChanged();
         }
 
         private ResultsWithCount<UserDto> QueryUsers()
@@ -97,9 +100,11 @@ namespace HaoZhuoCRM
                 //根据条件查询用户
                 ResultsWithCount<UserDto> users = QueryUsers();
                 //获取符合条件的用户总数量后修改Pager的相关属性
+                pager.PageIndex = 1;
                 pager.DrawControl((int)users.getCount());
                 //更新用户列表
                 refresh(users.getResults());
+                pager.NeedExcuteQuery = true;
             }
             catch (BusinessException ex)
             {
@@ -118,6 +123,15 @@ namespace HaoZhuoCRM
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void BtnReset_Click(object sender, EventArgs e)
+        {
+            txtMobile.Text = txtName.Text = string.Empty;
+            cmbGenders.SelectedIndex = cmbStatuses.SelectedIndex = 0;
+            lvUsers.Items.Clear();
+            pager.Reset();
+            txtName.Focus();
         }
     }
 }
