@@ -1,7 +1,6 @@
 ﻿using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
 using Haozhuo.Crm.Service.vo;
-using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -464,7 +463,6 @@ namespace Haozhuo.Crm.Service
         {
             RestClient rc = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMERS, Method.GET);
-            //String json = JsonConvert.SerializeObject(vo);
             request.AddHeader(GlobalConfig.AUTHORIZATION, token);
             if (pageNum != null)
             {
@@ -517,7 +515,6 @@ namespace Haozhuo.Crm.Service
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var customers = rc.Deserialize<List<CustomerDto>>(response);
-                    //var count = response.Headers[GlobalConfig.X_TOTAL_COUNT];
                     return ResultsWithCount<CustomerDto>.of(customers.Data, GetTotalCountFromResponseHeaders(response));
                 }
                 else if (response.StatusCode == 0)
@@ -526,8 +523,9 @@ namespace Haozhuo.Crm.Service
                 }
                 else
                 {
-                    var x = JsonConvert.DeserializeObject<CustomException>(response.Content);
-                    throw new BusinessException(x.message);
+                    var res = rc.Deserialize<CustomException>(response);
+                    var customException = res.Data;
+                    throw new BusinessException(customException.message);
                 }
             }
             catch (BusinessException ex)

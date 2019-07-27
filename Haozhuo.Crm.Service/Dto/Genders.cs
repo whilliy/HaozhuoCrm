@@ -33,7 +33,20 @@ namespace Haozhuo.Crm.Service.Dto
             }
         }
 
-        public static IDictionary<Int32,String> DIC_GENDER
+        public static IList<Gender> ALL_COPY
+        {
+            get
+            {
+                IList<Gender> genders = new List<Gender>();
+                foreach (Gender g in ALL)
+                {
+                    genders.Add(g);
+                }
+                return genders;
+            }
+        }
+
+        public static IDictionary<Int32, String> DIC_GENDER
         {
             get
             {

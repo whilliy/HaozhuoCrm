@@ -51,5 +51,11 @@ namespace HaoZhuoCRM
             FormModifyPassword formModifyPassword = new FormModifyPassword();
             formModifyPassword.ShowDialog();
         }
+
+        private void MenuItemUser_Click(object sender, EventArgs e)
+        {
+            FormUser frmUser = new FormUser();
+            frmUser.ShowDialog();
+        }
     }
 }

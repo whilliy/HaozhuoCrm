@@ -73,13 +73,17 @@ namespace Haozhuo.Crm.Service
         public static string GET_COUNTIES_BY_CITY_ID = Domain + "/regions/cities/{cityId}/counties";
 
         /// <summary>
+        /// 用户管理
+        /// </summary>
+        public static string USERS = Domain + "/users";
+        /// <summary>
         /// 用戶登陸
         /// </summary>
-        public static String USER_LOGIN = Domain + "/users/login";
+        public static String USER_LOGIN = USERS + "/login";
         /// <summary>
         /// 用户修改密码
         /// </summary>
-        public static String USER_MODIFY_PASSWORD = Domain + "/users/modify_password";
+        public static String USER_MODIFY_PASSWORD = USERS + "/modify_password";
 
         /// <summary>
         /// 客戶相關
