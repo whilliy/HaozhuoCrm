@@ -71,6 +71,12 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnLastPage = new System.Windows.Forms.Button();
+            this.btnNextPage = new System.Windows.Forms.Button();
+            this.btnPrePage = new System.Windows.Forms.Button();
+            this.btnFirstPage = new System.Windows.Forms.Button();
             this.cmbPagesizes = new System.Windows.Forms.ComboBox();
             this.btnJump = new System.Windows.Forms.Button();
             this.txtJump = new System.Windows.Forms.TextBox();
@@ -82,12 +88,7 @@
             this.lblPageCount = new System.Windows.Forms.Label();
             this.lblCurrentPage = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnFirstPage = new System.Windows.Forms.Button();
-            this.btnPrePage = new System.Windows.Forms.Button();
-            this.btnNextPage = new System.Windows.Forms.Button();
-            this.btnLastPage = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -369,6 +370,7 @@
             this.columnHeader15,
             this.columnHeader3,
             this.columnHeader4,
+            this.columnHeader17,
             this.columnHeader8,
             this.columnHeader5,
             this.columnHeader6,
@@ -506,6 +508,72 @@
             this.panel3.Size = new System.Drawing.Size(1077, 36);
             this.panel3.TabIndex = 3;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 12);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 12);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "当前页数:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(164, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(17, 12);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "页";
+            // 
+            // btnLastPage
+            // 
+            this.btnLastPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLastPage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLastPage.Location = new System.Drawing.Point(798, 7);
+            this.btnLastPage.Name = "btnLastPage";
+            this.btnLastPage.Size = new System.Drawing.Size(56, 23);
+            this.btnLastPage.TabIndex = 19;
+            this.btnLastPage.Text = "尾页";
+            this.btnLastPage.UseVisualStyleBackColor = true;
+            this.btnLastPage.Click += new System.EventHandler(this.BtnLastPage_Click);
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnNextPage.Location = new System.Drawing.Point(729, 7);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(56, 23);
+            this.btnNextPage.TabIndex = 18;
+            this.btnNextPage.Text = "下页";
+            this.btnNextPage.UseVisualStyleBackColor = true;
+            this.btnNextPage.Click += new System.EventHandler(this.BtnNextPage_Click);
+            // 
+            // btnPrePage
+            // 
+            this.btnPrePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrePage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnPrePage.Location = new System.Drawing.Point(660, 7);
+            this.btnPrePage.Name = "btnPrePage";
+            this.btnPrePage.Size = new System.Drawing.Size(56, 23);
+            this.btnPrePage.TabIndex = 17;
+            this.btnPrePage.Text = "上页";
+            this.btnPrePage.UseVisualStyleBackColor = true;
+            this.btnPrePage.Click += new System.EventHandler(this.BtnPrePage_Click);
+            // 
+            // btnFirstPage
+            // 
+            this.btnFirstPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFirstPage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnFirstPage.Location = new System.Drawing.Point(591, 7);
+            this.btnFirstPage.Name = "btnFirstPage";
+            this.btnFirstPage.Size = new System.Drawing.Size(56, 23);
+            this.btnFirstPage.TabIndex = 16;
+            this.btnFirstPage.Text = "首页";
+            this.btnFirstPage.UseVisualStyleBackColor = true;
+            this.btnFirstPage.Click += new System.EventHandler(this.BtnFirstPage_Click);
+            // 
             // cmbPagesizes
             // 
             this.cmbPagesizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -617,71 +685,10 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "/ 共";
             // 
-            // btnFirstPage
+            // columnHeader17
             // 
-            this.btnFirstPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFirstPage.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnFirstPage.Location = new System.Drawing.Point(591, 7);
-            this.btnFirstPage.Name = "btnFirstPage";
-            this.btnFirstPage.Size = new System.Drawing.Size(56, 23);
-            this.btnFirstPage.TabIndex = 16;
-            this.btnFirstPage.Text = "首页";
-            this.btnFirstPage.UseVisualStyleBackColor = true;
-            this.btnFirstPage.Click += new System.EventHandler(this.BtnFirstPage_Click);
-            // 
-            // btnPrePage
-            // 
-            this.btnPrePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrePage.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnPrePage.Location = new System.Drawing.Point(660, 7);
-            this.btnPrePage.Name = "btnPrePage";
-            this.btnPrePage.Size = new System.Drawing.Size(56, 23);
-            this.btnPrePage.TabIndex = 17;
-            this.btnPrePage.Text = "上页";
-            this.btnPrePage.UseVisualStyleBackColor = true;
-            this.btnPrePage.Click += new System.EventHandler(this.BtnPrePage_Click);
-            // 
-            // btnNextPage
-            // 
-            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNextPage.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnNextPage.Location = new System.Drawing.Point(729, 7);
-            this.btnNextPage.Name = "btnNextPage";
-            this.btnNextPage.Size = new System.Drawing.Size(56, 23);
-            this.btnNextPage.TabIndex = 18;
-            this.btnNextPage.Text = "下页";
-            this.btnNextPage.UseVisualStyleBackColor = true;
-            this.btnNextPage.Click += new System.EventHandler(this.BtnNextPage_Click);
-            // 
-            // btnLastPage
-            // 
-            this.btnLastPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLastPage.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnLastPage.Location = new System.Drawing.Point(798, 7);
-            this.btnLastPage.Name = "btnLastPage";
-            this.btnLastPage.Size = new System.Drawing.Size(56, 23);
-            this.btnLastPage.TabIndex = 19;
-            this.btnLastPage.Text = "尾页";
-            this.btnLastPage.UseVisualStyleBackColor = true;
-            this.btnLastPage.Click += new System.EventHandler(this.BtnLastPage_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(164, 12);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 12);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "页";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 12);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 12);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "当前页数:";
+            this.columnHeader17.Text = "客户状态";
+            this.columnHeader17.Width = 70;
             // 
             // FormMyClients
             // 
@@ -768,5 +775,6 @@
         private System.Windows.Forms.Button btnPrePage;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
     }
 }

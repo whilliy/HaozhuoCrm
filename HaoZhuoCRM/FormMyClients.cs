@@ -271,6 +271,7 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(Genders.DIC_GENDER[customer.gender]);
             lvi.SubItems.Add(customer.mobile);
             lvi.SubItems.Add(CustomerService.DicCustomerTypes[customer.type]);
+            lvi.SubItems.Add(CustomerService.DicCustomerStatuses[customer.status]);
             lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);
@@ -385,6 +386,7 @@ namespace HaoZhuoCRM
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "性别").Value].Text = Genders.DIC_GENDER[currentCustomer.gender];
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "手机号码").Value].Text = currentCustomer.mobile;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户类型").Value].Text = CustomerService.DicCustomerTypes[currentCustomer.type];
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户状态").Value].Text = CustomerService.DicCustomerStatuses[currentCustomer.status];
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户来源").Value].Text = CustomerService.DicCustomerSources[currentCustomer.source];
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "省").Value].Text = currentCustomer.provinceName;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "市").Value].Text = currentCustomer.cityName;
