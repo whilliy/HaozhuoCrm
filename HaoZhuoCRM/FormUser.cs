@@ -64,6 +64,7 @@ namespace HaoZhuoCRM
             {
                 ListViewItem lvi = new ListViewItem(index.ToString());
                 lvi.SubItems.Add(user.name);
+                lvi.SubItems.Add(user.accountNo);
                 if (user.gender == null)
                 {
                     lvi.SubItems.Add("未知");
@@ -132,6 +133,17 @@ namespace HaoZhuoCRM
             lvUsers.Items.Clear();
             pager.Reset();
             txtName.Focus();
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            FormAddUser frmAddUser = new FormAddUser();
+            frmAddUser.ShowDialog();
         }
     }
 }

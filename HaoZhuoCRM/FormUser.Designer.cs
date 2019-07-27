@@ -47,8 +47,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnQuery = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnDisable = new System.Windows.Forms.Button();
+            this.btnEnable = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnResetPassword = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -56,10 +65,10 @@
             this.groupBox1.Controls.Add(this.lvUsers);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.pager);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(826, 405);
+            this.groupBox1.Size = new System.Drawing.Size(826, 441);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "用户列表";
@@ -70,7 +79,7 @@
             this.pager.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(78)))), ((int)(((byte)(151)))));
             this.pager.JumpText = "Go";
-            this.pager.Location = new System.Drawing.Point(3, 366);
+            this.pager.Location = new System.Drawing.Point(3, 402);
             this.pager.Name = "pager";
             this.pager.PageIndex = 1;
             this.pager.PageSize = 1;
@@ -84,6 +93,7 @@
             this.lvUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.columnHeader1,
+            this.columnHeader6,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
@@ -92,7 +102,7 @@
             this.lvUsers.GridLines = true;
             this.lvUsers.Location = new System.Drawing.Point(3, 54);
             this.lvUsers.Name = "lvUsers";
-            this.lvUsers.Size = new System.Drawing.Size(820, 312);
+            this.lvUsers.Size = new System.Drawing.Size(820, 348);
             this.lvUsers.TabIndex = 1;
             this.lvUsers.UseCompatibleStateImageBehavior = false;
             this.lvUsers.View = System.Windows.Forms.View.Details;
@@ -226,13 +236,89 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
             // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "账号";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnResetPassword);
+            this.panel2.Controls.Add(this.btnClose);
+            this.panel2.Controls.Add(this.btnEnable);
+            this.panel2.Controls.Add(this.btnDisable);
+            this.panel2.Controls.Add(this.btnModify);
+            this.panel2.Controls.Add(this.btnAdd);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 441);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(826, 35);
+            this.panel2.TabIndex = 1;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(3, 6);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 9;
+            this.btnAdd.Text = "添加(&A)";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            // 
+            // btnModify
+            // 
+            this.btnModify.Location = new System.Drawing.Point(84, 6);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(75, 23);
+            this.btnModify.TabIndex = 10;
+            this.btnModify.Text = "修改(&M)";
+            this.btnModify.UseVisualStyleBackColor = true;
+            // 
+            // btnDisable
+            // 
+            this.btnDisable.Location = new System.Drawing.Point(165, 6);
+            this.btnDisable.Name = "btnDisable";
+            this.btnDisable.Size = new System.Drawing.Size(75, 23);
+            this.btnDisable.TabIndex = 11;
+            this.btnDisable.Text = "禁用(&D)";
+            this.btnDisable.UseVisualStyleBackColor = true;
+            // 
+            // btnEnable
+            // 
+            this.btnEnable.Location = new System.Drawing.Point(246, 6);
+            this.btnEnable.Name = "btnEnable";
+            this.btnEnable.Size = new System.Drawing.Size(75, 23);
+            this.btnEnable.TabIndex = 12;
+            this.btnEnable.Text = "启用(&E)";
+            this.btnEnable.UseVisualStyleBackColor = true;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(748, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 13;
+            this.btnClose.Text = "关闭(&C)";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // btnResetPassword
+            // 
+            this.btnResetPassword.Location = new System.Drawing.Point(330, 6);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(95, 23);
+            this.btnResetPassword.TabIndex = 14;
+            this.btnResetPassword.Text = "重置密码(&P)";
+            this.btnResetPassword.UseVisualStyleBackColor = true;
+            // 
             // FormUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(826, 466);
+            this.CancelButton = this.btnClose;
+            this.ClientSize = new System.Drawing.Size(826, 476);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -244,6 +330,7 @@
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -269,5 +356,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnQuery;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnEnable;
+        private System.Windows.Forms.Button btnDisable;
+        private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnResetPassword;
     }
 }
