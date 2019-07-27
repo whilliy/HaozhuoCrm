@@ -9,12 +9,13 @@ using System.Net;
 namespace Haozhuo.Crm.Service
 {
     public class UserService : BaseService
-    {  /// <summary>
-       /// 修改用户密码
-       /// </summary>
-       /// <param name="customerId"></param>
-       /// <param name="token"></param>
-       /// <returns></returns>
+    {
+        /// <summary>
+        /// 修改用户密码
+        /// </summary>
+        /// <param name="oldPassword"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static void ModifyPassword(String token, String oldPassword, String newPassword)
         {
             RestClient rc = new RestClient();
@@ -105,12 +106,12 @@ namespace Haozhuo.Crm.Service
                 throw new BusinessException(ex.Message);
             }
         }
-        
+
 
         /// <summary>
         /// 添加用户
         /// </summary>
-        /// <param name="projectName"></param>
+        /// <param name="vo"></param>
         /// <param name="token"></param>
         /// <returns></returns>
         public static UserDto AddUser(AddUserVo vo, String token)
@@ -151,7 +152,7 @@ namespace Haozhuo.Crm.Service
         /// <summary>
         /// 添加用户
         /// </summary>
-        /// <param name="projectName"></param>
+        /// <param name="vo"></param>
         /// <param name="token"></param>
         /// <returns></returns>
         public static void ResetUserPassword(ResetUserPassword vo, String token)
@@ -176,6 +177,72 @@ namespace Haozhuo.Crm.Service
             if (response.StatusCode != HttpStatusCode.NoContent)
             {
                 var res = rs.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+        }
+
+        /// <summary>
+        /// 启用用户
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static void EnableUser(long userId, String token)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.USER_ENABLE);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddUrlSegment("userId", userId);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.PATCH);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.NoContent)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+        }
+
+        /// <summary>
+        /// 禁用用户
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static void DisableUser(long userId, String token)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.USER_DISABLE);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddUrlSegment("userId", userId);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.PATCH);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.NoContent)
+            {
+                var res = rc.Deserialize<CustomException>(response);
                 var customException = res.Data;
                 throw new BusinessException(customException.message);
             }

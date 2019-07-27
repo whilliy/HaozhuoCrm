@@ -89,6 +89,14 @@ namespace Haozhuo.Crm.Service
         /// 重置指定用户密码
         /// </summary>
         public static String RESET_USER_PASSWORD = USERS + "/reset_password";
+        /// <summary>
+        /// 禁用指定用户
+        /// </summary>
+        public static String USER_DISABLE = USERS + "/{userId}/disable";
+        /// <summary>
+        /// 激活指定用户
+        /// </summary>
+        public static String USER_ENABLE = USERS + "/{userId}/active";
 
         /// <summary>
         /// 客戶相關

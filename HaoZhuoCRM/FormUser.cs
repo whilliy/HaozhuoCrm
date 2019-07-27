@@ -1,6 +1,7 @@
 ﻿using Haozhuo.Crm.Service;
 using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
+using HaoZhuoCRM.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -161,6 +162,102 @@ namespace HaoZhuoCRM
             frmResetPass.ShowDialog();
             lvUsers.Focus();
             lvi.Selected = true;
+        }
+
+        private void LvUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvUsers.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            ListViewItem lvi = lvUsers.SelectedItems[0];
+            UserDto user = (UserDto)lvi.Tag;
+            if (user.active)
+            {
+                btnDisable.Enabled = true;
+                btnEnable.Enabled = false;
+            }
+            else
+            {
+                btnDisable.Enabled = false;
+                btnEnable.Enabled = true;
+            }
+        }
+
+        private void BtnDisable_Click(object sender, EventArgs e)
+        {
+            if (lvUsers.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("请在列表中选择用户！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            ListViewItem lvi = lvUsers.SelectedItems[0];
+            UserDto user = (UserDto)lvi.Tag;
+            if (!user.active)
+            {
+                btnDisable.Enabled = false;
+                btnEnable.Enabled = true;
+                lvi.SubItems[ListViewHelper.getIndexByText(lvUsers, "状态").Value].Text = "禁用";
+                lvUsers.Focus();
+                lvi.Selected = true;
+                return;
+            }
+            try
+            {
+                UserService.DisableUser(user.id, Global.USER_TOKEN);
+                btnDisable.Enabled = false;
+                btnEnable.Enabled = true;
+                user.active = false;
+                lvi.SubItems[ListViewHelper.getIndexByText(lvUsers, "状态").Value].Text = "禁用";
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("禁用用户失败：" + ex.Message);
+                return;
+            }
+            finally
+            {
+                lvUsers.Focus();
+                lvi.Selected = true;
+            }
+        }
+
+        private void BtnEnable_Click(object sender, EventArgs e)
+        {
+            if (lvUsers.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("请在列表中选择用户！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            ListViewItem lvi = lvUsers.SelectedItems[0];
+            UserDto user = (UserDto)lvi.Tag;
+            if (user.active)
+            {
+                btnDisable.Enabled = true;
+                btnEnable.Enabled = false;
+                lvi.SubItems[ListViewHelper.getIndexByText(lvUsers, "状态").Value].Text = "启用";
+                lvUsers.Focus();
+                lvi.Selected = true;
+                return;
+            }
+            try
+            {
+                UserService.EnableUser(user.id, Global.USER_TOKEN);
+                btnDisable.Enabled = true;
+                btnEnable.Enabled = false;
+                lvi.SubItems[ListViewHelper.getIndexByText(lvUsers, "状态").Value].Text = "启用";
+                user.active = true;
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("启用用户失败：" + ex.Message);
+                return;
+            }
+            finally
+            {
+                lvUsers.Focus();
+                lvi.Selected = true;
+            }
         }
     }
 }

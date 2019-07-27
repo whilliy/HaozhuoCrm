@@ -30,14 +30,15 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuModifyPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.客户CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miMyClients = new System.Windows.Forms.ToolStripMenuItem();
             this.公海PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemProjectManagement = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuModifyPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.组织架构OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,10 +65,17 @@
             this.文件FToolStripMenuItem.Size = new System.Drawing.Size(58, 22);
             this.文件FToolStripMenuItem.Text = "文件(&F)";
             // 
+            // menuModifyPassword
+            // 
+            this.menuModifyPassword.Name = "menuModifyPassword";
+            this.menuModifyPassword.Size = new System.Drawing.Size(153, 22);
+            this.menuModifyPassword.Text = "修改密码(&M)...";
+            this.menuModifyPassword.Click += new System.EventHandler(this.MenuModifyPassword_Click);
+            // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(180, 22);
+            this.miExit.Size = new System.Drawing.Size(153, 22);
             this.miExit.Text = "退出(&E)";
             this.miExit.Click += new System.EventHandler(this.MiExit_Click);
             // 
@@ -97,7 +105,8 @@
             // 
             this.设置SToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemProjectManagement,
-            this.menuItemUser});
+            this.menuItemUser,
+            this.组织架构OToolStripMenuItem});
             this.设置SToolStripMenuItem.Name = "设置SToolStripMenuItem";
             this.设置SToolStripMenuItem.Size = new System.Drawing.Size(64, 22);
             this.设置SToolStripMenuItem.Text = "管理(&M)";
@@ -109,19 +118,18 @@
             this.menuItemProjectManagement.Text = "项目管理(&P)";
             this.menuItemProjectManagement.Click += new System.EventHandler(this.MenuItemProjectManagement_Click);
             // 
-            // menuModifyPassword
-            // 
-            this.menuModifyPassword.Name = "menuModifyPassword";
-            this.menuModifyPassword.Size = new System.Drawing.Size(180, 22);
-            this.menuModifyPassword.Text = "修改密码(&M)...";
-            this.menuModifyPassword.Click += new System.EventHandler(this.MenuModifyPassword_Click);
-            // 
             // menuItemUser
             // 
             this.menuItemUser.Name = "menuItemUser";
             this.menuItemUser.Size = new System.Drawing.Size(180, 22);
             this.menuItemUser.Text = "用户管理(&U)...";
             this.menuItemUser.Click += new System.EventHandler(this.MenuItemUser_Click);
+            // 
+            // 组织架构OToolStripMenuItem
+            // 
+            this.组织架构OToolStripMenuItem.Name = "组织架构OToolStripMenuItem";
+            this.组织架构OToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.组织架构OToolStripMenuItem.Text = "组织架构(&O)...";
             // 
             // FormMain
             // 
@@ -156,6 +164,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemProjectManagement;
         private System.Windows.Forms.ToolStripMenuItem menuModifyPassword;
         private System.Windows.Forms.ToolStripMenuItem menuItemUser;
+        private System.Windows.Forms.ToolStripMenuItem 组织架构OToolStripMenuItem;
     }
 }
 
