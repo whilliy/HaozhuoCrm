@@ -193,6 +193,11 @@ namespace HaoZhuoCRM
             }
             ListViewItem lvi = lvUsers.SelectedItems[0];
             UserDto user = (UserDto)lvi.Tag;
+            if (user.accountNo == "admin")
+            {
+                MessageBox.Show("不能对[" + user.name + "]进行此操作");
+                return;
+            }
             if (!user.active)
             {
                 btnDisable.Enabled = false;
@@ -264,6 +269,11 @@ namespace HaoZhuoCRM
         {
             ListViewItem lvi = lvUsers.SelectedItems[0];
             UserDto user = (UserDto)lvi.Tag;
+            if (user.accountNo == "admin")
+            {
+                MessageBox.Show("不能对管理员账号进行修改");
+                return;
+            }
             FormUpdateUser formUpdateUser = new FormUpdateUser(user);
             if (DialogResult.OK == formUpdateUser.ShowDialog())
             {
