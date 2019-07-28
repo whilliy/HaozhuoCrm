@@ -35,6 +35,8 @@ namespace HaoZhuoCRM
             if (listView1.SelectedItems.Count > 0)
             {
                 txtProjectName.Text = listView1.SelectedItems[0].Text;
+                txtProjectName.Focus();
+                txtProjectName.SelectAll();
             }
         }
 
@@ -52,6 +54,7 @@ namespace HaoZhuoCRM
                 ProjectDto project = ProjectService.AddProject(txtProjectName.Text, Global.USER_TOKEN);
                 ListViewItem lvi = new ListViewItem(project.name);
                 lvi.Tag = project;
+                listView1.Focus();
                 listView1.Items.Add(lvi).Selected = true;
             }
             catch (BusinessException ex)
@@ -81,6 +84,9 @@ namespace HaoZhuoCRM
                 ProjectDto project = ProjectService.UpdateProject(p.id, txtProjectName.Text, Global.USER_TOKEN);
                 lvi.Text = project.name;
                 lvi.Tag = project;
+                txtProjectName.Text = string.Empty;
+                listView1.Focus();
+                lvi.Selected = true;
             }
             catch (BusinessException ex)
             {

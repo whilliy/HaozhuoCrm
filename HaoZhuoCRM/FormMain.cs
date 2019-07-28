@@ -57,5 +57,11 @@ namespace HaoZhuoCRM
             FormUser frmUser = new FormUser();
             frmUser.ShowDialog();
         }
+
+        private void 组织架构OToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormOrganization frmOrganizaiton = new FormOrganization();
+            frmOrganizaiton.ShowDialog();
+        }
     }
 }

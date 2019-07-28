@@ -130,6 +130,7 @@
             this.组织架构OToolStripMenuItem.Name = "组织架构OToolStripMenuItem";
             this.组织架构OToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.组织架构OToolStripMenuItem.Text = "组织架构(&O)...";
+            this.组织架构OToolStripMenuItem.Click += new System.EventHandler(this.组织架构OToolStripMenuItem_Click);
             // 
             // FormMain
             // 

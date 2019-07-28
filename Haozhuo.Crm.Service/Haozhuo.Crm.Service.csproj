@@ -61,10 +61,12 @@
     <Compile Include="Dto\CustomerScourceDto.cs" />
     <Compile Include="Dto\Gender.cs" />
     <Compile Include="Dto\Genders.cs" />
+    <Compile Include="Dto\OrganizationDto.cs" />
     <Compile Include="Dto\ProjectDto.cs" />
     <Compile Include="Dto\UserDto.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="LoginService.cs" />
+    <Compile Include="OrganizationService.cs" />
     <Compile Include="ProjectService.cs" />
     <Compile Include="RegionService.cs" />
     <Compile Include="Dto\CityDto.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Utils\ResultsWithCount.cs" />
     <Compile Include="vo\AddUserVo.cs" />
     <Compile Include="vo\ModifyPassword.cs" />
+    <Compile Include="vo\OrganizationVo.cs" />
     <Compile Include="vo\ResetUserPassword.cs" />
     <Compile Include="vo\ProjectVo.cs" />
     <Compile Include="vo\CustomerVo.cs" />

@@ -139,5 +139,14 @@ namespace Haozhuo.Crm.Service
         /// 指定项目
         /// </summary>
         public static String PROJECTS_SOMEONE = PROJECTS + "/{projectId}";
+        /// <summary>
+        /// 所有的组织
+        /// </summary>
+        public static String ORGANIZATIONS = Domain + "/organizations";
+
+        /// <summary>
+        /// 指定组织
+        /// </summary>
+        public static String ORGANIZATIONS_SOMEONE = ORGANIZATIONS + "/{organizationId}";
     }
 }
