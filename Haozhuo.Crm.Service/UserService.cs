@@ -150,6 +150,48 @@ namespace Haozhuo.Crm.Service
             }
         }
         /// <summary>
+        /// 跟新用户
+        /// </summary>
+        /// <param name="vo"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static UserDto UpdateUser(long userId, AddUserVo vo, String token)
+        {
+            RestClient rs = new RestClient();
+            var request = new RestRequest(GlobalConfig.USERS_SOMEONE);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddUrlSegment("userId", userId);
+            request.AddJsonBody(vo);
+            IRestResponse response;
+            try
+            {
+                response = rs.Execute(request, Method.PUT);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                var res = rs.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var types = rs.Deserialize<UserDto>(response);
+                return types.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
+        /// <summary>
         /// 添加用户
         /// </summary>
         /// <param name="vo"></param>

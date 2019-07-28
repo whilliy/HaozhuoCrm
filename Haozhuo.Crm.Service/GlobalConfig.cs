@@ -76,6 +76,11 @@ namespace Haozhuo.Crm.Service
         /// 用户管理
         /// </summary>
         public static string USERS = Domain + "/users";
+
+        /// <summary>
+        /// 某个用户
+        /// </summary>
+        public static String USERS_SOMEONE = USERS + "/{userId}";
         /// <summary>
         /// 用戶登陸
         /// </summary>

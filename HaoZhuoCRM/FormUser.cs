@@ -259,5 +259,47 @@ namespace HaoZhuoCRM
                 lvi.Selected = true;
             }
         }
+
+        private void ModifyUser()
+        {
+            ListViewItem lvi = lvUsers.SelectedItems[0];
+            UserDto user = (UserDto)lvi.Tag;
+            FormUpdateUser formUpdateUser = new FormUpdateUser(user);
+            if (DialogResult.OK == formUpdateUser.ShowDialog())
+            {
+                lvi.Tag = formUpdateUser.CurrentUser;
+                UserDto currentUser = formUpdateUser.CurrentUser;
+                lvi.SubItems[ListViewHelper.getIndexByText(lvUsers, "姓名").Value].Text = currentUser.name;
+                String gender = "";
+                if (currentUser.gender.HasValue)
+                {
+                    gender = Genders.DIC_GENDER[currentUser.gender.Value];
+                }
+                lvi.SubItems[ListViewHelper.getIndexByText(lvUsers, "性别").Value].Text = gender;
+                lvi.SubItems[ListViewHelper.getIndexByText(lvUsers, "手机号码").Value].Text = currentUser.mobile;
+                string status = user.active ? "可用" : "禁用";
+                lvi.SubItems[ListViewHelper.getIndexByText(lvUsers, "状态").Value].Text = status;
+            }
+
+        }
+
+        private void BtnModify_Click(object sender, EventArgs e)
+        {
+            if (lvUsers.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("请在列表中选择用户！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            ModifyUser();
+        }
+
+        private void LvUsers_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvUsers.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            ModifyUser();
+        }
     }
 }

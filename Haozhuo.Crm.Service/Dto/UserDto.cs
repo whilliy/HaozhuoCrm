@@ -11,5 +11,6 @@ namespace Haozhuo.Crm.Service.Dto
         public Boolean active { get; set; }
         public String accountNo { get; set; }
         public DateTime createdTime { get; set; }
+        public String organizationId { get; set; }
     }
 }

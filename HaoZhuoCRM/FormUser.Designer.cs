@@ -85,6 +85,7 @@
             this.lvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvUsers.FullRowSelect = true;
             this.lvUsers.GridLines = true;
+            this.lvUsers.HideSelection = false;
             this.lvUsers.Location = new System.Drawing.Point(3, 54);
             this.lvUsers.Name = "lvUsers";
             this.lvUsers.Size = new System.Drawing.Size(820, 348);
@@ -92,25 +93,28 @@
             this.lvUsers.UseCompatibleStateImageBehavior = false;
             this.lvUsers.View = System.Windows.Forms.View.Details;
             this.lvUsers.SelectedIndexChanged += new System.EventHandler(this.LvUsers_SelectedIndexChanged);
+            this.lvUsers.DoubleClick += new System.EventHandler(this.LvUsers_DoubleClick);
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "序号";
-            this.columnHeader2.Width = 40;
+            this.columnHeader2.Width = 50;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "姓名";
+            this.columnHeader1.Width = 80;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "账号";
-            this.columnHeader6.Width = 80;
+            this.columnHeader6.Width = 100;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "性别";
-            this.columnHeader3.Width = 40;
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 50;
             // 
             // columnHeader4
             // 
@@ -306,6 +310,7 @@
             this.btnModify.TabIndex = 10;
             this.btnModify.Text = "修改(&M)";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // btnAdd
             // 

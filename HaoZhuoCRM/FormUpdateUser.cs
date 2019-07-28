@@ -8,11 +8,13 @@ using System.Windows.Forms;
 
 namespace HaoZhuoCRM
 {
-    public partial class FormAddUser : Form
+    public partial class FormUpdateUser : Form
     {
-        public FormAddUser()
+        public UserDto CurrentUser { get; set; }
+        public FormUpdateUser(UserDto user)
         {
             InitializeComponent();
+            CurrentUser = user;
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -22,15 +24,8 @@ namespace HaoZhuoCRM
 
         private void BtnYes_Click(object sender, EventArgs e)
         {
-            txtAccountNo.Text = txtAccountNo.Text.Trim();
             txtName.Text = txtName.Text.Trim();
             txtMobile.Text = txtMobile.Text.Trim();
-            if (String.IsNullOrEmpty(txtAccountNo.Text))
-            {
-                MessageBox.Show("必须输入账号");
-                txtAccountNo.Focus();
-                return;
-            }
             if (String.IsNullOrEmpty(txtName.Text))
             {
                 MessageBox.Show("必须输入姓名");
@@ -56,7 +51,6 @@ namespace HaoZhuoCRM
                 return;
             }
             AddUserVo vo = new AddUserVo();
-            vo.accountNo = txtAccountNo.Text;
             vo.name = txtName.Text;
             vo.mobile = txtMobile.Text;
             vo.gender = Convert.ToInt32(cmbGenders.SelectedValue.ToString());
@@ -64,22 +58,17 @@ namespace HaoZhuoCRM
             vo.permissionIds = collectionUserAllPermissions();
             try
             {
-                UserDto user = UserService.AddUser(vo, Global.USER_TOKEN);
+                CurrentUser = UserService.UpdateUser(CurrentUser.id, vo, Global.USER_TOKEN);
             }
             catch (BusinessException ex)
             {
-                MessageBox.Show("添加用户发生错误：" + ex.Message, "提醒");
-                txtAccountNo.Focus();
+                MessageBox.Show("修改用户发生错误：" + ex.Message, "提醒");
+                txtName.Focus();
                 return;
             }
-            if (MessageBox.Show("用户添加成功！是否需要继续添加新的用户？", "提醒", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                reset();
-            }
-            else
-            {
-                DialogResult = DialogResult.OK;
-            }
+            MessageBox.Show("修改成功！", "提醒", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult = DialogResult.OK;
+
         }
 
         private void collectAllPermissions(IList<String> permissionIds, TreeNode node)
@@ -113,20 +102,17 @@ namespace HaoZhuoCRM
             return permissionIds;
         }
 
-        private void assignUserPermissions(long userid)
+        private void LoadInitalValues()
         {
-            IList<String> permissionIds = collectionUserAllPermissions();
-            UserService.modifyUserPermissions(userid, permissionIds, Global.USER_TOKEN);
-        }
-
-        private void reset()
-        {
-            txtAccountNo.Text = "";
-            txtName.Text = "";
-            txtMobile.Text = "";
-            cmbGenders.SelectedIndex = 0;
-            cmbOrganizations.SelectedIndex = 0;
-            txtAccountNo.Focus();
+            txtAccountNo.Text = CurrentUser.accountNo;
+            txtName.Text = CurrentUser.name;
+            txtMobile.Text = CurrentUser.mobile;
+            cmbGenders.SelectedValue = CurrentUser.gender;
+            if (!String.IsNullOrEmpty(CurrentUser.organizationId))
+            {
+                cmbOrganizations.SelectedValue = CurrentUser.organizationId;
+            }
+            txtName.Focus();
         }
 
         private void AssignTreeNode(TreeNode node)
@@ -167,6 +153,35 @@ namespace HaoZhuoCRM
             catch (BusinessException ex)
             {
                 MessageBox.Show("加载权限列表失败：" + ex.Message);
+                return;
+            }
+
+            try
+            {
+                var permissionIds = UserService.getUserPermissionIds(CurrentUser.id, Global.USER_TOKEN);
+
+                treeView1.AfterCheck -= TreeView1_AfterCheck;
+                foreach (TreeNode node in treeView1.Nodes)
+                {
+                    match(node, permissionIds);
+                }
+                treeView1.AfterCheck += TreeView1_AfterCheck;
+
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("获取该用户的权限信息失败：" + ex.Message);
+            }
+
+        }
+
+        private void match(TreeNode node, IList<String> permissionIds)
+        {
+            PermissionDto p = (PermissionDto)node.Tag;
+            node.Checked = permissionIds.Contains(p.id);
+            foreach (TreeNode leaf in node.Nodes)
+            {
+                match(leaf, permissionIds);
             }
         }
 
@@ -176,10 +191,12 @@ namespace HaoZhuoCRM
             cmbGenders.ValueMember = "id";
             cmbGenders.DisplayMember = "name";
             cmbGenders.DataSource = genders;
+            //cmbGenders.SelectedValue = CurrentUser.gender;
             var organizations = OrganizationService.OrganizationsCopy;
             cmbOrganizations.ValueMember = "id";
             cmbOrganizations.DisplayMember = "name";
             cmbOrganizations.DataSource = organizations;
+            LoadInitalValues();
             LoadPermissionTrees();
         }
 
