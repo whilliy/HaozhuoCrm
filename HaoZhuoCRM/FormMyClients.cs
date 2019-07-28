@@ -1,6 +1,7 @@
 ﻿using Haozhuo.Crm.Service;
 using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
+using Haozhuo.Crm.Service.vo;
 using HaoZhuoCRM.Utils;
 using System;
 using System.Collections.Generic;
@@ -448,6 +449,52 @@ namespace HaoZhuoCRM
             txtJump.Focus();
             txtJump.SelectAll();
 
+        }
+
+        private void MenuItemEdit_Click(object sender, EventArgs e)
+        {
+            LvClients_DoubleClick(null, null);
+        }
+
+        private void returnCustomersToPublic()
+        {
+            if (lvClients.CheckedIndices.Count < 1)
+            {
+                MessageBox.Show("请先选择用户,在用户记录前面打勾✔", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            ReturnCustomersToPublic vo = new ReturnCustomersToPublic();
+            vo.customerIds = new List<String>();
+            foreach (ListViewItem lvi in lvClients.CheckedItems)
+            {
+                CustomerDto customer = (CustomerDto)lvi.Tag;
+                vo.customerIds.Add(customer.id);
+            }
+            try
+            {
+                CustomerService.ReturnCustomersToPublic(vo, Global.USER_TOKEN);
+                getCustomersAndBindingDatas();
+
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("将选定客户扔回公海时发生错误：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            finally
+            {
+                lvClients.Focus();
+            }
+
+        }
+
+        private void MenuItemReturnToPublic_Click(object sender, EventArgs e)
+        {
+            returnCustomersToPublic();
+        }
+
+        private void BtnReturnToPublic_Click(object sender, EventArgs e)
+        {
+            returnCustomersToPublic();
         }
     }
 }

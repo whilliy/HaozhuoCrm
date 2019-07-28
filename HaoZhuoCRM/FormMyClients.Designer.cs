@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelName = new System.Windows.Forms.Label();
             this.cmbProvinces = new System.Windows.Forms.ComboBox();
             this.butQuery = new System.Windows.Forms.Button();
@@ -89,10 +90,16 @@
             this.lblCurrentPage = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuItemTransfer = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemReturnToPublic = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReturnToPublic = new System.Windows.Forms.Button();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelName
@@ -329,6 +336,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnReturnToPublic);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 472);
@@ -381,6 +389,7 @@
             this.columnHeader11,
             this.columnHeader13,
             this.columnHeader14});
+            this.lvClients.ContextMenuStrip = this.contextMenuStrip1;
             this.lvClients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvClients.FullRowSelect = true;
             this.lvClients.GridLines = true;
@@ -690,6 +699,46 @@
             this.columnHeader17.Text = "客户状态";
             this.columnHeader17.Width = 70;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemReturnToPublic,
+            this.menuItemTransfer,
+            this.menuItemEdit});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
+            // 
+            // menuItemTransfer
+            // 
+            this.menuItemTransfer.Name = "menuItemTransfer";
+            this.menuItemTransfer.Size = new System.Drawing.Size(124, 22);
+            this.menuItemTransfer.Text = "转让...";
+            // 
+            // menuItemReturnToPublic
+            // 
+            this.menuItemReturnToPublic.Name = "menuItemReturnToPublic";
+            this.menuItemReturnToPublic.Size = new System.Drawing.Size(124, 22);
+            this.menuItemReturnToPublic.Text = "丢回公海";
+            this.menuItemReturnToPublic.Click += new System.EventHandler(this.MenuItemReturnToPublic_Click);
+            // 
+            // menuItemEdit
+            // 
+            this.menuItemEdit.Name = "menuItemEdit";
+            this.menuItemEdit.Size = new System.Drawing.Size(124, 22);
+            this.menuItemEdit.Text = "编辑...";
+            this.menuItemEdit.Click += new System.EventHandler(this.MenuItemEdit_Click);
+            // 
+            // btnReturnToPublic
+            // 
+            this.btnReturnToPublic.Location = new System.Drawing.Point(84, 9);
+            this.btnReturnToPublic.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReturnToPublic.Name = "btnReturnToPublic";
+            this.btnReturnToPublic.Size = new System.Drawing.Size(97, 22);
+            this.btnReturnToPublic.TabIndex = 1;
+            this.btnReturnToPublic.Text = "扔回公海(&P)";
+            this.btnReturnToPublic.UseVisualStyleBackColor = true;
+            this.btnReturnToPublic.Click += new System.EventHandler(this.BtnReturnToPublic_Click);
+            // 
             // FormMyClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -709,6 +758,7 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -776,5 +826,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ColumnHeader columnHeader17;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuItemReturnToPublic;
+        private System.Windows.Forms.ToolStripMenuItem menuItemTransfer;
+        private System.Windows.Forms.ToolStripMenuItem menuItemEdit;
+        private System.Windows.Forms.Button btnReturnToPublic;
     }
 }

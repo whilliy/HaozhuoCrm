@@ -537,5 +537,39 @@ namespace Haozhuo.Crm.Service
                 throw new BusinessException(ex.Message);
             }
         }
+
+
+        /// <summary>
+        /// 扔回公海
+        /// </summary>
+        /// <param name="vo"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static void ReturnCustomersToPublic(ReturnCustomersToPublic vo, String token)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOER_RETURN_PUBLIC);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddJsonBody(vo);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.PATCH);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.NoContent)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+        }
     }
 }

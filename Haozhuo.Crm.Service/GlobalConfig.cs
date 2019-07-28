@@ -125,9 +125,13 @@ namespace Haozhuo.Crm.Service
         /// 指定客户
         /// </summary>
         public static String CUSTOER_SOMEONE = CUSTOMERS + "/{customerId}";
+        /// <summary>
+        /// 扔回公海
+        /// </summary>
+        public static String CUSTOER_RETURN_PUBLIC = CUSTOMERS + "/return_public";
 
         /// <summary>
-        /// 获取所有的项目
+        /// 所有的项目
         /// </summary>
         public static String PROJECTS = Domain + "/projects";
 

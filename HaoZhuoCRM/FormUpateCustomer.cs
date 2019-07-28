@@ -163,6 +163,7 @@ namespace HaoZhuoCRM
                 lvi.SubItems.Add(recordDto.followUserName);
                 lvi.SubItems.Add(txtRemark.Text);
                 listView1.Items.Insert(0, lvi);
+                txtRemark.Text = String.Empty;
             }
             catch (BusinessException ex)
             {
