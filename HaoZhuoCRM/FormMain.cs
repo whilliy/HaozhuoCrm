@@ -1,25 +1,55 @@
-﻿using System;
+﻿using Haozhuo.Crm.Service;
+using Haozhuo.Crm.Service.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HaoZhuoCRM
 {
     public partial class FormMain : Form
     {
+        private IDictionary<String, Control> permissionControl;
+        private Dictionary<String, ToolStripItem> PermissionControl = new Dictionary<string, ToolStripItem>();
         public FormMain()
         {
             InitializeComponent();
+            PermissionControl.Add("CUSTOMER", miClients);
+            PermissionControl.Add("EXIT", miExit);
+            PermissionControl.Add("FILE", miFile);
+            PermissionControl.Add("MANAGEMENT", miManagement);
+            PermissionControl.Add("MODIFY_PASWORD", miModifyPassword);
+            PermissionControl.Add("MY_CLIENTS", miMyClients);
+            PermissionControl.Add("ORGANIZATION_MANAGEMENT", miOrganizationManagement);
+            PermissionControl.Add("PROJECT_MANAGEMENT", miProjectManagement);
+            PermissionControl.Add("PUBLIC", miPublic);
+            PermissionControl.Add("USER_MANAGEMENT", miUserManagement);
         }
 
         private void MiExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void matchPermissions()
+        {
+            try
+            {
+                Global.PERMISSION_IDS = UserService.GetMyPermissionIds(Global.USER_TOKEN);
+                foreach (var item in PermissionControl)
+                {
+                    if (Global.PERMISSION_IDS.Contains(item.Key))
+                    {
+                        item.Value.Visible = true;
+                    }
+                }
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("获取用户权限失败：" + ex.Message);
+                Application.Exit();
+                return;
+            }
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -31,6 +61,7 @@ namespace HaoZhuoCRM
                 return;
             }
             frmLogin.Close();
+            matchPermissions();
         }
 
         private void MiMyClients_Click(object sender, EventArgs e)

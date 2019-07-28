@@ -159,5 +159,7 @@ namespace Haozhuo.Crm.Service
         public static String PERMISSION_TREES = PERMISSIONS + "/trees";
 
         public static String USER_PERMISSIONS = USERS + "/{userId}/permissions";
+
+        public static String MY_PERMISSIONS = USERS + "/my_permissions";
     }
 }

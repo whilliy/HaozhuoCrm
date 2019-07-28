@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HaoZhuoCRM
 {
@@ -10,5 +7,6 @@ namespace HaoZhuoCRM
     {
         public static String USER_TOKEN { get; set; }
         public static long USER_ID { get; set; }
+        public static IList<String> PERMISSION_IDS { get; set; }
     }
 }
