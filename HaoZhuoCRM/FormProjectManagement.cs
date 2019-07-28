@@ -20,6 +20,7 @@ namespace HaoZhuoCRM
             foreach (ProjectDto dto in projects)
             {
                 ListViewItem lvi = new ListViewItem(dto.name);
+                lvi.SubItems.Add(dto.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 lvi.Tag = dto;
                 listView1.Items.Add(lvi);
             }
@@ -53,6 +54,7 @@ namespace HaoZhuoCRM
             {
                 ProjectDto project = ProjectService.AddProject(txtProjectName.Text, Global.USER_TOKEN);
                 ListViewItem lvi = new ListViewItem(project.name);
+                lvi.SubItems.Add(project.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 lvi.Tag = project;
                 listView1.Focus();
                 listView1.Items.Add(lvi).Selected = true;

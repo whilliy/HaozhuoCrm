@@ -53,6 +53,7 @@ namespace HaoZhuoCRM
             vo.name = txtName.Text;
             vo.mobile = txtMobile.Text;
             vo.gender = Convert.ToInt32(cmbGenders.SelectedValue.ToString());
+            vo.organizationId = cmbOrganizations.SelectedValue.ToString();
             try
             {
                 UserDto user = UserService.AddUser(vo, Global.USER_TOKEN);
@@ -79,6 +80,7 @@ namespace HaoZhuoCRM
             txtName.Text = "";
             txtMobile.Text = "";
             cmbGenders.SelectedIndex = 0;
+            cmbOrganizations.SelectedIndex = 0;
             txtAccountNo.Focus();
         }
 
@@ -88,6 +90,10 @@ namespace HaoZhuoCRM
             cmbGenders.ValueMember = "id";
             cmbGenders.DisplayMember = "name";
             cmbGenders.DataSource = genders;
+            var organizations = OrganizationService.OrganizationsCopy;
+            cmbOrganizations.ValueMember = "id";
+            cmbOrganizations.DisplayMember = "name";
+            cmbOrganizations.DataSource = organizations;
         }
     }
 }

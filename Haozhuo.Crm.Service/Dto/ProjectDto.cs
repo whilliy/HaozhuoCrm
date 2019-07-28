@@ -6,6 +6,7 @@ namespace Haozhuo.Crm.Service.Dto
     {
         public Int32 id { get; set; }
         public String name { get; set; }
+        public DateTime createdTime { get; set; }
         public ProjectDto()
         {
 
