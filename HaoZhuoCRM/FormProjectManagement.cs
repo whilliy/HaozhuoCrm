@@ -36,8 +36,6 @@ namespace HaoZhuoCRM
             if (listView1.SelectedItems.Count > 0)
             {
                 txtProjectName.Text = listView1.SelectedItems[0].Text;
-                txtProjectName.Focus();
-                txtProjectName.SelectAll();
             }
         }
 

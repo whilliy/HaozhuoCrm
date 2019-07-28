@@ -68,7 +68,7 @@ namespace Haozhuo.Crm.Service
             }
             if (active != null)
             {
-                request.AddParameter("status", active);
+                request.AddParameter("active", active);
             }
             if (!String.IsNullOrEmpty(mobile))
             {
