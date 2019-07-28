@@ -62,11 +62,13 @@
     <Compile Include="Dto\Gender.cs" />
     <Compile Include="Dto\Genders.cs" />
     <Compile Include="Dto\OrganizationDto.cs" />
+    <Compile Include="Dto\PermissionDto.cs" />
     <Compile Include="Dto\ProjectDto.cs" />
     <Compile Include="Dto\UserDto.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="OrganizationService.cs" />
+    <Compile Include="PermissionService.cs" />
     <Compile Include="ProjectService.cs" />
     <Compile Include="RegionService.cs" />
     <Compile Include="Dto\CityDto.cs" />

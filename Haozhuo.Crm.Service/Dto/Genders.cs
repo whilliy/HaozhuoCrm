@@ -7,8 +7,8 @@ namespace Haozhuo.Crm.Service.Dto
     {
         private static readonly object obj = new object();
 
-        public static Gender MALE = new Gender(2, "女");
-        public static Gender FEMALE = new Gender(1, "男");
+        public static Gender MALE = new Gender(1, "男");
+        public static Gender FEMALE = new Gender(2, "女");
         public static Gender NONE = new Gender(0, "未知");
 
         private static IList<Gender> all;

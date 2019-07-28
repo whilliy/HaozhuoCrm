@@ -43,7 +43,9 @@
             this.btnYes = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbOrganizations = new System.Windows.Forms.ComboBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,6 +148,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.treeView1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 78);
             this.groupBox2.Name = "groupBox2";
@@ -205,6 +208,18 @@
             this.cmbOrganizations.Size = new System.Drawing.Size(192, 20);
             this.cmbOrganizations.TabIndex = 9;
             // 
+            // treeView1
+            // 
+            this.treeView1.CheckBoxes = true;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.FullRowSelect = true;
+            this.treeView1.HideSelection = false;
+            this.treeView1.Location = new System.Drawing.Point(3, 17);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(479, 311);
+            this.treeView1.TabIndex = 0;
+            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterCheck);
+            // 
             // FormAddUser
             // 
             this.AcceptButton = this.btnYes;
@@ -225,6 +240,7 @@
             this.Load += new System.EventHandler(this.FormAddUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -247,5 +263,6 @@
         private System.Windows.Forms.Button btnYes;
         private System.Windows.Forms.ComboBox cmbOrganizations;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }

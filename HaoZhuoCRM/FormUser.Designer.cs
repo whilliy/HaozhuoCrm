@@ -47,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pager = new HaoZhuoCRM.Controls.PagerControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -54,7 +55,6 @@
             this.btnDisable = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.pager = new HaoZhuoCRM.Controls.PagerControl();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -105,6 +105,7 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "账号";
+            this.columnHeader6.Width = 80;
             // 
             // columnHeader3
             // 
@@ -226,6 +227,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "姓名：";
             // 
+            // pager
+            // 
+            this.pager.BackColor = System.Drawing.SystemColors.Control;
+            this.pager.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(78)))), ((int)(((byte)(151)))));
+            this.pager.JumpText = "Go";
+            this.pager.Location = new System.Drawing.Point(3, 402);
+            this.pager.Name = "pager";
+            this.pager.NeedExcuteQuery = true;
+            this.pager.PageIndex = 1;
+            this.pager.PageSize = 1;
+            this.pager.RecordCount = 0;
+            this.pager.Size = new System.Drawing.Size(820, 36);
+            this.pager.TabIndex = 2;
+            this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnResetPassword);
@@ -299,22 +316,6 @@
             this.btnAdd.Text = "添加(&A)";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
-            // 
-            // pager
-            // 
-            this.pager.BackColor = System.Drawing.SystemColors.Control;
-            this.pager.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(78)))), ((int)(((byte)(151)))));
-            this.pager.JumpText = "Go";
-            this.pager.Location = new System.Drawing.Point(3, 402);
-            this.pager.Name = "pager";
-            this.pager.NeedExcuteQuery = true;
-            this.pager.PageIndex = 1;
-            this.pager.PageSize = 1;
-            this.pager.RecordCount = 0;
-            this.pager.Size = new System.Drawing.Size(820, 36);
-            this.pager.TabIndex = 2;
-            this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
             // FormUser
             // 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Haozhuo.Crm.Service.vo
 {
@@ -9,5 +10,6 @@ namespace Haozhuo.Crm.Service.vo
         public string name { get; set; }
         public string mobile { get; set; }
         public Int32 gender { get; set; }
+        public IList<String> permissionIds { get; set; }
     }
 }

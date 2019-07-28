@@ -148,5 +148,11 @@ namespace Haozhuo.Crm.Service
         /// 指定组织
         /// </summary>
         public static String ORGANIZATIONS_SOMEONE = ORGANIZATIONS + "/{organizationId}";
+
+        public static String PERMISSIONS = Domain + "/permissions";
+
+        public static String PERMISSION_TREES = PERMISSIONS + "/trees";
+
+        public static String USER_PERMISSIONS = USERS + "/{userId}/permissions";
     }
 }
