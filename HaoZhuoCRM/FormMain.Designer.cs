@@ -40,7 +40,12 @@
             this.miProjectManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miUserManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miOrganizationManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.labelCurrentName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.miDispatch = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -71,7 +76,7 @@
             // miModifyPassword
             // 
             this.miModifyPassword.Name = "miModifyPassword";
-            this.miModifyPassword.Size = new System.Drawing.Size(153, 22);
+            this.miModifyPassword.Size = new System.Drawing.Size(180, 22);
             this.miModifyPassword.Text = "修改密码(&M)...";
             this.miModifyPassword.Visible = false;
             this.miModifyPassword.Click += new System.EventHandler(this.MenuModifyPassword_Click);
@@ -79,7 +84,7 @@
             // miChangeUser
             // 
             this.miChangeUser.Name = "miChangeUser";
-            this.miChangeUser.Size = new System.Drawing.Size(153, 22);
+            this.miChangeUser.Size = new System.Drawing.Size(180, 22);
             this.miChangeUser.Text = "切换用户(&C)...";
             this.miChangeUser.Visible = false;
             this.miChangeUser.Click += new System.EventHandler(this.MiChangeUser_Click);
@@ -87,7 +92,7 @@
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(153, 22);
+            this.miExit.Size = new System.Drawing.Size(180, 22);
             this.miExit.Text = "退出(&E)";
             this.miExit.Visible = false;
             this.miExit.Click += new System.EventHandler(this.MiExit_Click);
@@ -96,7 +101,8 @@
             // 
             this.miClients.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miMyClients,
-            this.miPublic});
+            this.miPublic,
+            this.miDispatch});
             this.miClients.Name = "miClients";
             this.miClients.Size = new System.Drawing.Size(60, 22);
             this.miClients.Text = "客户(&C)";
@@ -106,7 +112,7 @@
             // 
             this.miMyClients.Name = "miMyClients";
             this.miMyClients.Size = new System.Drawing.Size(180, 22);
-            this.miMyClients.Text = "我的客户(&M)";
+            this.miMyClients.Text = "我的(&M)";
             this.miMyClients.Visible = false;
             this.miMyClients.Click += new System.EventHandler(this.MiMyClients_Click);
             // 
@@ -153,11 +159,41 @@
             this.miOrganizationManagement.Visible = false;
             this.miOrganizationManagement.Click += new System.EventHandler(this.组织架构OToolStripMenuItem_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.labelCurrentName});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 468);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(752, 22);
+            this.statusStrip1.TabIndex = 3;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(68, 17);
+            this.toolStripStatusLabel1.Text = "当前用户：";
+            // 
+            // labelCurrentName
+            // 
+            this.labelCurrentName.Name = "labelCurrentName";
+            this.labelCurrentName.Size = new System.Drawing.Size(0, 17);
+            // 
+            // miDispatch
+            // 
+            this.miDispatch.Name = "miDispatch";
+            this.miDispatch.Size = new System.Drawing.Size(180, 22);
+            this.miDispatch.Text = "分派(&D)";
+            this.miDispatch.Visible = false;
+            this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 490);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -169,6 +205,8 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,6 +226,10 @@
         private System.Windows.Forms.ToolStripMenuItem miUserManagement;
         private System.Windows.Forms.ToolStripMenuItem miOrganizationManagement;
         private System.Windows.Forms.ToolStripMenuItem miChangeUser;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel labelCurrentName;
+        private System.Windows.Forms.ToolStripMenuItem miDispatch;
     }
 }
 

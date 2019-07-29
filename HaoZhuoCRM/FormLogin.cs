@@ -37,6 +37,7 @@ namespace HaoZhuoCRM
                 UserLoginDto login = LoginService.Login(vo);
                 Global.USER_TOKEN = login.Token;
                 Global.USER_ID = login.Id;
+                Global.USER_NAME = login.Name;
             }
             catch (Exception ex)
             {

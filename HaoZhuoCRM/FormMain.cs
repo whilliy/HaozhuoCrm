@@ -23,6 +23,7 @@ namespace HaoZhuoCRM
             PermissionControl.Add("PUBLIC", miPublic);
             PermissionControl.Add("USER_MANAGEMENT", miUserManagement);
             PermissionControl.Add("CHANGE_USER", miChangeUser);
+            PermissionControl.Add("DISPATCH", miDispatch);
         }
 
         private void MiExit_Click(object sender, EventArgs e)
@@ -65,6 +66,7 @@ namespace HaoZhuoCRM
             }
             frmLogin.Close();
             matchPermissions();
+            labelCurrentName.Text = Global.USER_NAME;
         }
 
         private void MiMyClients_Click(object sender, EventArgs e)
@@ -105,6 +107,7 @@ namespace HaoZhuoCRM
             {
                 matchPermissions();
             }
+            labelCurrentName.Text = Global.USER_NAME;
         }
 
         private void MiPublic_Click(object sender, EventArgs e)
@@ -112,6 +115,13 @@ namespace HaoZhuoCRM
             FormPublic formPublic = new FormPublic();
             formPublic.MdiParent = this;
             formPublic.Show();
+        }
+
+        private void MiDispatch_Click(object sender, EventArgs e)
+        {
+            FormDispatch formDispatch = new FormDispatch();
+            formDispatch.MdiParent = this;
+            formDispatch.Show();
         }
     }
 }

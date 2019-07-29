@@ -52,6 +52,12 @@
     <Compile Include="Contorls\PagerControl.designer.cs">
       <DependentUpon>PagerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDispatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDispatch.Designer.cs">
+      <DependentUpon>FormDispatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPublic.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     <Compile Include="Utils\ListViewHelper.cs" />
     <EmbeddedResource Include="Contorls\PagerControl.resx">
       <DependentUpon>PagerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDispatch.resx">
+      <DependentUpon>FormDispatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPublic.resx">
       <DependentUpon>FormPublic.cs</DependentUpon>

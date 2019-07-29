@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace HaoZhuoCRM
 {
-    public partial class FormPublic : Form
+    public partial class FormDispatch : Form
     {
-        public FormPublic()
+        public FormDispatch()
         {
             InitializeComponent();
         }
