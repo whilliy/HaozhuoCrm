@@ -15,7 +15,6 @@ namespace HaoZhuoCRM
         private Int32 PageSize = 20;
         private Int64 Count;
         private Int32 PageCount = 1;
-        private Boolean Queried = false;
 
         public FormMyClients()
         {
@@ -78,7 +77,7 @@ namespace HaoZhuoCRM
             {
                 cmbStatus.DisplayMember = "name";
                 cmbStatus.ValueMember = "id";
-                customerStatuses = CustomerService.CustomerStatusesCopy();
+                customerStatuses = CustomerService.CustomerAssignStatusesCopy();
                 customerStatuses.Insert(0, new CustomerStatus(-1, ""));
                 cmbStatus.DataSource = customerStatuses;
             }
@@ -260,7 +259,7 @@ namespace HaoZhuoCRM
             //将每页数量改为下拉框内的值
             PageSize = Convert.ToInt32(cmbPagesizes.Text);
             ResultsWithCount<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, CurrentPage, PageSize, projectId,
-                Global.USER_ID, status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId);
+                 status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId);
             return customers;
         }
 
@@ -338,7 +337,6 @@ namespace HaoZhuoCRM
                 BindingDatas(customers);
                 //处理分页相关
                 Assign(customers.getCount());
-                Queried = true;
             }
             catch (BusinessException ex)
             {

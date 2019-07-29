@@ -169,7 +169,7 @@
             this.panelQuery.Location = new System.Drawing.Point(0, 0);
             this.panelQuery.Margin = new System.Windows.Forms.Padding(2);
             this.panelQuery.Name = "panelQuery";
-            this.panelQuery.Size = new System.Drawing.Size(1077, 82);
+            this.panelQuery.Size = new System.Drawing.Size(1084, 82);
             this.panelQuery.TabIndex = 0;
             // 
             // cmbProjects
@@ -339,10 +339,10 @@
             this.panel1.Controls.Add(this.btnReturnToPublic);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 472);
+            this.panel1.Location = new System.Drawing.Point(0, 474);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1077, 37);
+            this.panel1.Size = new System.Drawing.Size(1084, 37);
             this.panel1.TabIndex = 2;
             // 
             // btnReturnToPublic
@@ -375,7 +375,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 82);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1077, 390);
+            this.panel2.Size = new System.Drawing.Size(1084, 392);
             this.panel2.TabIndex = 3;
             // 
             // lvClients
@@ -410,7 +410,7 @@
             this.lvClients.Margin = new System.Windows.Forms.Padding(2);
             this.lvClients.MultiSelect = false;
             this.lvClients.Name = "lvClients";
-            this.lvClients.Size = new System.Drawing.Size(1077, 354);
+            this.lvClients.Size = new System.Drawing.Size(1084, 356);
             this.lvClients.TabIndex = 2;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
@@ -513,7 +513,7 @@
             this.menuItemTransfer,
             this.menuItemEdit});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
             // 
             // menuItemReturnToPublic
             // 
@@ -525,7 +525,7 @@
             // menuItemTransfer
             // 
             this.menuItemTransfer.Name = "menuItemTransfer";
-            this.menuItemTransfer.Size = new System.Drawing.Size(180, 22);
+            this.menuItemTransfer.Size = new System.Drawing.Size(124, 22);
             this.menuItemTransfer.Text = "转让...";
             this.menuItemTransfer.Click += new System.EventHandler(this.MenuItemTransfer_Click);
             // 
@@ -557,10 +557,10 @@
             this.panel3.Controls.Add(this.lblCurrentPage);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 354);
+            this.panel3.Location = new System.Drawing.Point(0, 356);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1077, 36);
+            this.panel3.Size = new System.Drawing.Size(1084, 36);
             this.panel3.TabIndex = 3;
             // 
             // label11
@@ -744,7 +744,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 509);
+            this.ClientSize = new System.Drawing.Size(1084, 511);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelQuery);

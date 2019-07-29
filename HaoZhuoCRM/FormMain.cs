@@ -106,5 +106,12 @@ namespace HaoZhuoCRM
                 matchPermissions();
             }
         }
+
+        private void MiPublic_Click(object sender, EventArgs e)
+        {
+            FormPublic formPublic = new FormPublic();
+            formPublic.MdiParent = this;
+            formPublic.Show();
+        }
     }
 }

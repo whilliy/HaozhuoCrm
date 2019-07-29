@@ -126,7 +126,9 @@ namespace Haozhuo.Crm.Service
 
 
         private static readonly object objstatus = new object();
+        private static readonly object objAssignedStatus = new object();
         private static IList<CustomerStatus> statuses;
+        private static IList<CustomerStatus> assignedStatuses;
         /// <summary>
         /// 客户状态列表
         /// </summary>
@@ -146,6 +148,25 @@ namespace Haozhuo.Crm.Service
                 }
                 return statuses;
             }
+        } /// <summary>
+          /// 客户状态列表（分派过后的）
+          /// </summary>
+        public static IList<CustomerStatus> AssignedCustomerStatuses
+        {
+            get
+            {
+                if (assignedStatuses == null)
+                {
+                    lock (objAssignedStatus)
+                    {
+                        if (assignedStatuses == null)
+                        {
+                            assignedStatuses = getCustomerAssignedStatuses();
+                        }
+                    }
+                }
+                return assignedStatuses;
+            }
         }
 
         /// <summary>
@@ -160,6 +181,20 @@ namespace Haozhuo.Crm.Service
                 customerStatusesCopies.Add(new CustomerStatus(s.id, s.name));
             }
             return customerStatusesCopies;
+        }
+
+        /// <summary>
+        /// 获取客户状态列表的副本
+        /// </summary>
+        /// <returns></returns>
+        public static IList<CustomerStatus> CustomerAssignStatusesCopy()
+        {
+            IList<CustomerStatus> customerAssignedStatusesCopies = new List<CustomerStatus>();
+            foreach (CustomerStatus s in AssignedCustomerStatuses)
+            {
+                customerAssignedStatusesCopies.Add(new CustomerStatus(s.id, s.name));
+            }
+            return customerAssignedStatusesCopies;
         }
 
         private static IDictionary<Int32, String> dicCustomerStatuses;
@@ -185,11 +220,53 @@ namespace Haozhuo.Crm.Service
             }
         }
 
-
+        /// <summary>
+        /// 获取所有的客户状态列表
+        /// </summary>
+        /// <returns></returns>
         private static IList<CustomerStatus> getCustomerStatuses()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_STATUSES);
+            //request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            IRestResponse response;
+            try
+            {
+                response = rs.Execute(request, Method.GET);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                var res = rs.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var statuses = rs.Deserialize<List<CustomerStatus>>(response);
+                return statuses.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 获取所有分派之后的客户状态列表
+        /// </summary>
+        /// <returns></returns>
+        private static IList<CustomerStatus> getCustomerAssignedStatuses()
+        {
+            RestClient rs = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOMER_ASSIGNED_STATUSES);
             //request.AddHeader(GlobalConfig.AUTHORIZATION, token);
             IRestResponse response;
             try
@@ -451,7 +528,6 @@ namespace Haozhuo.Crm.Service
                                                         Int32? pageNum,
                                                         Int32? pageSize,
                                                         Int32? projectId,
-                                                        Int64? userId,
                                                         Int32? status,
                                                         Int32? source,
                                                         Int32? type,
@@ -467,10 +543,6 @@ namespace Haozhuo.Crm.Service
             if (pageNum != null)
             {
                 request.AddParameter("page", pageNum);
-            }
-            if (userId != null)
-            {
-                request.AddParameter("user_id", userId);
             }
             if (projectId != null)
             {
@@ -538,6 +610,106 @@ namespace Haozhuo.Crm.Service
             }
         }
 
+        /// <summary>
+        /// 根據條件查詢客戶信息(公海）
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="pageNum"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="status"></param>
+        /// <param name="source"></param>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
+        /// <param name="mobile"></param>
+        /// <param name="provinceId"></param>
+        /// <param name="cityId"></param>
+        /// <param name="countyId"></param>
+        /// <returns></returns>
+        public static ResultsWithCount<CustomerDto> QueryCustomersFromPublic(String token,
+                                                        Int32? pageNum,
+                                                        Int32? pageSize,
+                                                        Int32? projectId,
+                                                        Int32? status,
+                                                        Int32? source,
+                                                        Int32? type,
+                                                        String name,
+                                                        String mobile,
+                                                        String provinceId,
+                                                        String cityId,
+                                                        String countyId)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOMERS_PUBLIC, Method.GET);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            if (pageNum != null)
+            {
+                request.AddParameter("page", pageNum);
+            }
+            if (projectId != null)
+            {
+                request.AddParameter("project_id", projectId);
+            }
+            request.AddParameter("province_id", provinceId);
+            if (pageSize != null)
+            {
+                request.AddParameter("page_size", pageSize);
+            }
+            if (status != null)
+            {
+                request.AddParameter("status", status);
+            }
+            if (source != null)
+            {
+                request.AddParameter("source", source);
+            }
+            if (type != null)
+            {
+                request.AddParameter("type", type);
+            }
+            if (!String.IsNullOrEmpty(mobile))
+            {
+                request.AddParameter("mobile", mobile);
+            }
+            if (!String.IsNullOrEmpty(cityId))
+            {
+                request.AddParameter("city_id", cityId);
+            }
+            if (!String.IsNullOrEmpty(countyId))
+            {
+                request.AddParameter("county_id", countyId);
+            }
+            if (!String.IsNullOrEmpty(name))
+            {
+                request.AddParameter("name", name);
+            }
+            try
+            {
+                var response = rc.Get(request);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var customers = rc.Deserialize<List<CustomerDto>>(response);
+                    return ResultsWithCount<CustomerDto>.of(customers.Data, GetTotalCountFromResponseHeaders(response));
+                }
+                else if (response.StatusCode == 0)
+                {
+                    throw new BusinessException("请检查网络");
+                }
+                else
+                {
+                    var res = rc.Deserialize<CustomException>(response);
+                    var customException = res.Data;
+                    throw new BusinessException(customException.message);
+                }
+            }
+            catch (BusinessException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
 
         /// <summary>
         /// 扔回公海
@@ -583,6 +755,38 @@ namespace Haozhuo.Crm.Service
             var request = new RestRequest(GlobalConfig.CUSTOMER_TRANSFER);
             request.AddHeader(GlobalConfig.AUTHORIZATION, token);
             request.AddJsonBody(vo);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.PATCH);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.NoContent)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+        }
+        /// <summary>
+        /// 将选定顾客转移给目标用户
+        /// </summary>
+        /// <param name="vo"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static void GraspCustomersFromPublic(IList<String> customerIds, String token)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.GRASP_CUSTOMERS_FROM_PUBLIC);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddJsonBody(customerIds);
             IRestResponse response;
             try
             {

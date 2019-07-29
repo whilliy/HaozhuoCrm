@@ -112,6 +112,10 @@ namespace Haozhuo.Crm.Service
         /// 客戶相關
         /// </summary>
         public static String CUSTOMERS = Domain + "/customers";
+        /// <summary>
+        /// 公海查询
+        /// </summary>
+        public static String CUSTOMERS_PUBLIC = CUSTOMERS + "/public";
 
         /// <summary>
         /// 所有的客户类型
@@ -126,11 +130,19 @@ namespace Haozhuo.Crm.Service
         /// 所有的客户状态
         /// </summary>
         public static String CUSTOMER_STATUSES = CUSTOMERS + "/statuses";
+        /// <summary>
+        /// 所有的客户状态（分派之后的）
+        /// </summary>
+        public static String CUSTOMER_ASSIGNED_STATUSES = CUSTOMERS + "/assigned_statuses";
 
         /// <summary>
         /// 将选定顾客转移给目标用户
         /// </summary>
         public static String CUSTOMER_TRANSFER = CUSTOMERS + "/transfer_customers";
+        /// <summary>
+        /// 将选定顾客转移给目标用户
+        /// </summary>
+        public static String GRASP_CUSTOMERS_FROM_PUBLIC = CUSTOMERS + "/grasp_customers_from_public";
 
         /// <summary>
         /// 获取客户的跟进记录

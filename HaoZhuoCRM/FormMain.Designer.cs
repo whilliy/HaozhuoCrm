@@ -71,7 +71,7 @@
             // miModifyPassword
             // 
             this.miModifyPassword.Name = "miModifyPassword";
-            this.miModifyPassword.Size = new System.Drawing.Size(180, 22);
+            this.miModifyPassword.Size = new System.Drawing.Size(153, 22);
             this.miModifyPassword.Text = "修改密码(&M)...";
             this.miModifyPassword.Visible = false;
             this.miModifyPassword.Click += new System.EventHandler(this.MenuModifyPassword_Click);
@@ -79,7 +79,7 @@
             // miChangeUser
             // 
             this.miChangeUser.Name = "miChangeUser";
-            this.miChangeUser.Size = new System.Drawing.Size(180, 22);
+            this.miChangeUser.Size = new System.Drawing.Size(153, 22);
             this.miChangeUser.Text = "切换用户(&C)...";
             this.miChangeUser.Visible = false;
             this.miChangeUser.Click += new System.EventHandler(this.MiChangeUser_Click);
@@ -87,7 +87,7 @@
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(180, 22);
+            this.miExit.Size = new System.Drawing.Size(153, 22);
             this.miExit.Text = "退出(&E)";
             this.miExit.Visible = false;
             this.miExit.Click += new System.EventHandler(this.MiExit_Click);
@@ -105,7 +105,7 @@
             // miMyClients
             // 
             this.miMyClients.Name = "miMyClients";
-            this.miMyClients.Size = new System.Drawing.Size(144, 22);
+            this.miMyClients.Size = new System.Drawing.Size(180, 22);
             this.miMyClients.Text = "我的客户(&M)";
             this.miMyClients.Visible = false;
             this.miMyClients.Click += new System.EventHandler(this.MiMyClients_Click);
@@ -113,9 +113,10 @@
             // miPublic
             // 
             this.miPublic.Name = "miPublic";
-            this.miPublic.Size = new System.Drawing.Size(144, 22);
+            this.miPublic.Size = new System.Drawing.Size(180, 22);
             this.miPublic.Text = "公海(&P)";
             this.miPublic.Visible = false;
+            this.miPublic.Click += new System.EventHandler(this.MiPublic_Click);
             // 
             // miManagement
             // 
