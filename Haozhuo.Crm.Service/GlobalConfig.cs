@@ -78,6 +78,11 @@ namespace Haozhuo.Crm.Service
         public static string USERS = Domain + "/users";
 
         /// <summary>
+        /// 与当前用户同组织下的所有可用用户
+        /// </summary>
+        public static String USERS_SAME_ORGANIZATION = USERS + "/same_organization_users";
+
+        /// <summary>
         /// 某个用户
         /// </summary>
         public static String USERS_SOMEONE = USERS + "/{userId}";
@@ -121,6 +126,11 @@ namespace Haozhuo.Crm.Service
         /// 所有的客户状态
         /// </summary>
         public static String CUSTOMER_STATUSES = CUSTOMERS + "/statuses";
+
+        /// <summary>
+        /// 将选定顾客转移给目标用户
+        /// </summary>
+        public static String CUSTOMER_TRANSFER = CUSTOMERS + "/transfer_customers";
 
         /// <summary>
         /// 获取客户的跟进记录

@@ -2,14 +2,12 @@
 using Haozhuo.Crm.Service.Utils;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace HaoZhuoCRM
 {
     public partial class FormMain : Form
     {
-        private IDictionary<String, Control> permissionControl;
         private Dictionary<String, ToolStripItem> PermissionControl = new Dictionary<string, ToolStripItem>();
         public FormMain()
         {
@@ -24,6 +22,7 @@ namespace HaoZhuoCRM
             PermissionControl.Add("PROJECT_MANAGEMENT", miProjectManagement);
             PermissionControl.Add("PUBLIC", miPublic);
             PermissionControl.Add("USER_MANAGEMENT", miUserManagement);
+            PermissionControl.Add("CHANGE_USER", miChangeUser);
         }
 
         private void MiExit_Click(object sender, EventArgs e)
@@ -41,6 +40,10 @@ namespace HaoZhuoCRM
                     if (Global.PERMISSION_IDS.Contains(item.Key))
                     {
                         item.Value.Visible = true;
+                    }
+                    else
+                    {
+                        item.Value.Visible = false;
                     }
                 }
             }
@@ -93,6 +96,15 @@ namespace HaoZhuoCRM
         {
             FormOrganization frmOrganizaiton = new FormOrganization();
             frmOrganizaiton.ShowDialog();
+        }
+
+        private void MiChangeUser_Click(object sender, EventArgs e)
+        {
+            FormLogin frmLogin = new FormLogin();
+            if (frmLogin.ShowDialog() == DialogResult.OK)
+            {
+                matchPermissions();
+            }
         }
     }
 }

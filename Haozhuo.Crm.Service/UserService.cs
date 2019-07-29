@@ -367,6 +367,44 @@ namespace Haozhuo.Crm.Service
                 throw new BusinessException(ex.Message);
             }
         }
+        /// <summary>
+        /// 获取用户同组织下所有激活用户
+        /// </summary>
+        /// <returns></returns>
+        public static IList<UserDto> GetUsersSameByOrganization(String token)
+        {
+            RestClient rs = new RestClient();
+            var request = new RestRequest(GlobalConfig.USERS_SAME_ORGANIZATION);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            IRestResponse response;
+            try
+            {
+                response = rs.Execute(request, Method.GET);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                var res = rs.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var types = rs.Deserialize<List<UserDto>>(response);
+                return types.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
 
         /// <summary>
         /// 修改指定用户的权限列表

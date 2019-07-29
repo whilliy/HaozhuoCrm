@@ -496,5 +496,40 @@ namespace HaoZhuoCRM
         {
             returnCustomersToPublic();
         }
+
+        private void MenuItemTransfer_Click(object sender, EventArgs e)
+        {
+            if (lvClients.CheckedItems.Count < 1)
+            {
+                MessageBox.Show("请在需要转移的客户记录前打勾✔", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            IList<String> customerIds = new List<String>();
+            foreach (ListViewItem lvi in lvClients.CheckedItems)
+            {
+                CustomerDto customer = (CustomerDto)lvi.Tag;
+                customerIds.Add(customer.id);
+            }
+            IList<UserDto> userTargets = null;
+            try
+            {
+                userTargets = UserService.GetUsersSameByOrganization(Global.USER_TOKEN);
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("获取目标用户列表失败：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            FormTransferToOther formTransfer = new FormTransferToOther(customerIds, userTargets);
+            if (formTransfer.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            foreach (ListViewItem lvi in lvClients.CheckedItems)
+            {
+                lvClients.Items.Remove(lvi);
+            }
+        }
     }
 }

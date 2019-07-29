@@ -51,6 +51,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtMobile = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnReturnToPublic = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lvClients = new System.Windows.Forms.ListView();
@@ -61,6 +62,7 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -71,6 +73,10 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuItemReturnToPublic = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemTransfer = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -89,17 +95,11 @@
             this.lblPageCount = new System.Windows.Forms.Label();
             this.lblCurrentPage = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuItemTransfer = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemReturnToPublic = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReturnToPublic = new System.Windows.Forms.Button();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelName
@@ -345,6 +345,17 @@
             this.panel1.Size = new System.Drawing.Size(1077, 37);
             this.panel1.TabIndex = 2;
             // 
+            // btnReturnToPublic
+            // 
+            this.btnReturnToPublic.Location = new System.Drawing.Point(84, 9);
+            this.btnReturnToPublic.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReturnToPublic.Name = "btnReturnToPublic";
+            this.btnReturnToPublic.Size = new System.Drawing.Size(97, 22);
+            this.btnReturnToPublic.TabIndex = 1;
+            this.btnReturnToPublic.Text = "扔回公海(&P)";
+            this.btnReturnToPublic.UseVisualStyleBackColor = true;
+            this.btnReturnToPublic.Click += new System.EventHandler(this.BtnReturnToPublic_Click);
+            // 
             // btnNew
             // 
             this.btnNew.Location = new System.Drawing.Point(6, 9);
@@ -440,6 +451,11 @@
             this.columnHeader4.Text = "客户类型";
             this.columnHeader4.Width = 70;
             // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "客户状态";
+            this.columnHeader17.Width = 70;
+            // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "客户来源";
@@ -489,6 +505,36 @@
             // 
             this.columnHeader14.Text = "下次跟进时间";
             this.columnHeader14.Width = 150;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemReturnToPublic,
+            this.menuItemTransfer,
+            this.menuItemEdit});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            // 
+            // menuItemReturnToPublic
+            // 
+            this.menuItemReturnToPublic.Name = "menuItemReturnToPublic";
+            this.menuItemReturnToPublic.Size = new System.Drawing.Size(124, 22);
+            this.menuItemReturnToPublic.Text = "丢回公海";
+            this.menuItemReturnToPublic.Click += new System.EventHandler(this.MenuItemReturnToPublic_Click);
+            // 
+            // menuItemTransfer
+            // 
+            this.menuItemTransfer.Name = "menuItemTransfer";
+            this.menuItemTransfer.Size = new System.Drawing.Size(180, 22);
+            this.menuItemTransfer.Text = "转让...";
+            this.menuItemTransfer.Click += new System.EventHandler(this.MenuItemTransfer_Click);
+            // 
+            // menuItemEdit
+            // 
+            this.menuItemEdit.Name = "menuItemEdit";
+            this.menuItemEdit.Size = new System.Drawing.Size(124, 22);
+            this.menuItemEdit.Text = "编辑...";
+            this.menuItemEdit.Click += new System.EventHandler(this.MenuItemEdit_Click);
             // 
             // panel3
             // 
@@ -694,51 +740,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "/ 共";
             // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "客户状态";
-            this.columnHeader17.Width = 70;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemReturnToPublic,
-            this.menuItemTransfer,
-            this.menuItemEdit});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
-            // 
-            // menuItemTransfer
-            // 
-            this.menuItemTransfer.Name = "menuItemTransfer";
-            this.menuItemTransfer.Size = new System.Drawing.Size(124, 22);
-            this.menuItemTransfer.Text = "转让...";
-            // 
-            // menuItemReturnToPublic
-            // 
-            this.menuItemReturnToPublic.Name = "menuItemReturnToPublic";
-            this.menuItemReturnToPublic.Size = new System.Drawing.Size(124, 22);
-            this.menuItemReturnToPublic.Text = "丢回公海";
-            this.menuItemReturnToPublic.Click += new System.EventHandler(this.MenuItemReturnToPublic_Click);
-            // 
-            // menuItemEdit
-            // 
-            this.menuItemEdit.Name = "menuItemEdit";
-            this.menuItemEdit.Size = new System.Drawing.Size(124, 22);
-            this.menuItemEdit.Text = "编辑...";
-            this.menuItemEdit.Click += new System.EventHandler(this.MenuItemEdit_Click);
-            // 
-            // btnReturnToPublic
-            // 
-            this.btnReturnToPublic.Location = new System.Drawing.Point(84, 9);
-            this.btnReturnToPublic.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReturnToPublic.Name = "btnReturnToPublic";
-            this.btnReturnToPublic.Size = new System.Drawing.Size(97, 22);
-            this.btnReturnToPublic.TabIndex = 1;
-            this.btnReturnToPublic.Text = "扔回公海(&P)";
-            this.btnReturnToPublic.UseVisualStyleBackColor = true;
-            this.btnReturnToPublic.Click += new System.EventHandler(this.BtnReturnToPublic_Click);
-            // 
             // FormMyClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -756,9 +757,9 @@
             this.panelQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -571,5 +571,37 @@ namespace Haozhuo.Crm.Service
                 throw new BusinessException(customException.message);
             }
         }
+        /// <summary>
+        /// 将选定顾客转移给目标用户
+        /// </summary>
+        /// <param name="vo"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static void TransferCustomersToTargetUsers(TransterCustomerVo vo, String token)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOMER_TRANSFER);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddJsonBody(vo);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.PATCH);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.NoContent)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+        }
     }
 }

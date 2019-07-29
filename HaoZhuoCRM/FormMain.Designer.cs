@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.miFile = new System.Windows.Forms.ToolStripMenuItem();
             this.miModifyPassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.miChangeUser = new System.Windows.Forms.ToolStripMenuItem();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.miClients = new System.Windows.Forms.ToolStripMenuItem();
             this.miMyClients = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +61,7 @@
             // 
             this.miFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miModifyPassword,
+            this.miChangeUser,
             this.miExit});
             this.miFile.Name = "miFile";
             this.miFile.Size = new System.Drawing.Size(58, 22);
@@ -73,6 +75,14 @@
             this.miModifyPassword.Text = "修改密码(&M)...";
             this.miModifyPassword.Visible = false;
             this.miModifyPassword.Click += new System.EventHandler(this.MenuModifyPassword_Click);
+            // 
+            // miChangeUser
+            // 
+            this.miChangeUser.Name = "miChangeUser";
+            this.miChangeUser.Size = new System.Drawing.Size(180, 22);
+            this.miChangeUser.Text = "切换用户(&C)...";
+            this.miChangeUser.Visible = false;
+            this.miChangeUser.Click += new System.EventHandler(this.MiChangeUser_Click);
             // 
             // miExit
             // 
@@ -95,7 +105,7 @@
             // miMyClients
             // 
             this.miMyClients.Name = "miMyClients";
-            this.miMyClients.Size = new System.Drawing.Size(180, 22);
+            this.miMyClients.Size = new System.Drawing.Size(144, 22);
             this.miMyClients.Text = "我的客户(&M)";
             this.miMyClients.Visible = false;
             this.miMyClients.Click += new System.EventHandler(this.MiMyClients_Click);
@@ -103,7 +113,7 @@
             // miPublic
             // 
             this.miPublic.Name = "miPublic";
-            this.miPublic.Size = new System.Drawing.Size(180, 22);
+            this.miPublic.Size = new System.Drawing.Size(144, 22);
             this.miPublic.Text = "公海(&P)";
             this.miPublic.Visible = false;
             // 
@@ -121,7 +131,7 @@
             // miProjectManagement
             // 
             this.miProjectManagement.Name = "miProjectManagement";
-            this.miProjectManagement.Size = new System.Drawing.Size(180, 22);
+            this.miProjectManagement.Size = new System.Drawing.Size(151, 22);
             this.miProjectManagement.Text = "项目管理(&P)";
             this.miProjectManagement.Visible = false;
             this.miProjectManagement.Click += new System.EventHandler(this.MenuItemProjectManagement_Click);
@@ -129,7 +139,7 @@
             // miUserManagement
             // 
             this.miUserManagement.Name = "miUserManagement";
-            this.miUserManagement.Size = new System.Drawing.Size(180, 22);
+            this.miUserManagement.Size = new System.Drawing.Size(151, 22);
             this.miUserManagement.Text = "用户管理(&U)...";
             this.miUserManagement.Visible = false;
             this.miUserManagement.Click += new System.EventHandler(this.MenuItemUser_Click);
@@ -137,7 +147,7 @@
             // miOrganizationManagement
             // 
             this.miOrganizationManagement.Name = "miOrganizationManagement";
-            this.miOrganizationManagement.Size = new System.Drawing.Size(180, 22);
+            this.miOrganizationManagement.Size = new System.Drawing.Size(151, 22);
             this.miOrganizationManagement.Text = "组织架构(&O)...";
             this.miOrganizationManagement.Visible = false;
             this.miOrganizationManagement.Click += new System.EventHandler(this.组织架构OToolStripMenuItem_Click);
@@ -176,6 +186,7 @@
         private System.Windows.Forms.ToolStripMenuItem miModifyPassword;
         private System.Windows.Forms.ToolStripMenuItem miUserManagement;
         private System.Windows.Forms.ToolStripMenuItem miOrganizationManagement;
+        private System.Windows.Forms.ToolStripMenuItem miChangeUser;
     }
 }
 

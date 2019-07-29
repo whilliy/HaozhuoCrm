@@ -87,6 +87,7 @@
     <Compile Include="vo\ProjectVo.cs" />
     <Compile Include="vo\CustomerVo.cs" />
     <Compile Include="vo\ReturnCustomersToPublic.cs" />
+    <Compile Include="vo\TransterCustomerVo.cs" />
     <Compile Include="vo\UserLoginVo.cs" />
   </ItemGroup>
   <ItemGroup>
