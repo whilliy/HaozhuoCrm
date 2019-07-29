@@ -144,6 +144,10 @@ namespace Haozhuo.Crm.Service
         /// <summary>
         /// 将选定顾客转移给目标用户
         /// </summary>
+        public static String CUSTOMER_DISPATCH = CUSTOMERS + "/dispatch_customers";
+        /// <summary>
+        /// 从公海中抓取数据
+        /// </summary>
         public static String GRASP_CUSTOMERS_FROM_PUBLIC = CUSTOMERS + "/grasp_customers_from_public";
 
         /// <summary>

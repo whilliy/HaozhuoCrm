@@ -57,6 +57,9 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.btnDispatch = new System.Windows.Forms.Button();
+            this.miDispatch = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -84,8 +87,10 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miDispatch});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             // 
             // columnHeader8
             // 
@@ -214,6 +219,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDispatch);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 475);
@@ -320,6 +326,24 @@
             this.pager.TabIndex = 3;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
+            // btnDispatch
+            // 
+            this.btnDispatch.Location = new System.Drawing.Point(84, 9);
+            this.btnDispatch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDispatch.Name = "btnDispatch";
+            this.btnDispatch.Size = new System.Drawing.Size(68, 22);
+            this.btnDispatch.TabIndex = 1;
+            this.btnDispatch.Text = "分派(&D)";
+            this.btnDispatch.UseVisualStyleBackColor = true;
+            this.btnDispatch.Click += new System.EventHandler(this.BtnDispatch_Click);
+            // 
+            // miDispatch
+            // 
+            this.miDispatch.Name = "miDispatch";
+            this.miDispatch.Size = new System.Drawing.Size(180, 22);
+            this.miDispatch.Text = "分派(&D)";
+            this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
+            // 
             // FormDispatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -333,6 +357,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "数据分派";
             this.Load += new System.EventHandler(this.FormPublic_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panelQuery.ResumeLayout(false);
             this.panelQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -370,5 +395,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private Controls.PagerControl pager;
+        private System.Windows.Forms.Button btnDispatch;
+        private System.Windows.Forms.ToolStripMenuItem miDispatch;
     }
 }

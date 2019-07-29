@@ -513,7 +513,7 @@ namespace HaoZhuoCRM
             IList<UserDto> userTargets = null;
             try
             {
-                userTargets = UserService.GetUsersSameByOrganization(Global.USER_TOKEN);
+                userTargets = UserService.GetUsersSameByOrganization(Global.USER_TOKEN, false);
             }
             catch (BusinessException ex)
             {

@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace HaoZhuoCRM
 {
-    public partial class FormTransferToOther : Form
+    public partial class FormDispatchTo : Form
     {
         private IList<string> customerIds;
         private IList<UserDto> targetUsers;
-        public FormTransferToOther(IList<string> customerIds, IList<UserDto> targetUsers)
+        public FormDispatchTo(IList<string> customerIds, IList<UserDto> targetUsers)
         {
             InitializeComponent();
             this.customerIds = customerIds;
@@ -50,7 +50,7 @@ namespace HaoZhuoCRM
         {
             if (lvUsers.SelectedItems.Count < 1)
             {
-                MessageBox.Show("请选择一个客户", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("至少选择一个客户", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             ListViewItem lviSelected = lvUsers.SelectedItems[0];
@@ -60,12 +60,12 @@ namespace HaoZhuoCRM
                 TransterCustomerVo vo = new TransterCustomerVo();
                 vo.customerIds = customerIds;
                 vo.targetUserId = target.id;
-                CustomerService.TransferCustomersToTargetUsers(vo, Global.USER_TOKEN);
+                CustomerService.DispatchCustomersToTargetUsers(vo, Global.USER_TOKEN);
                 DialogResult = DialogResult.OK;
             }
             catch (BusinessException ex)
             {
-                MessageBox.Show("客户转移发生错误" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("客户分派发生错误：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

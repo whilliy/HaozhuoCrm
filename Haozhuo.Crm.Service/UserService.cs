@@ -371,11 +371,12 @@ namespace Haozhuo.Crm.Service
         /// 获取用户同组织下所有激活用户
         /// </summary>
         /// <returns></returns>
-        public static IList<UserDto> GetUsersSameByOrganization(String token)
+        public static IList<UserDto> GetUsersSameByOrganization(String token, bool includeMyself = false)
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.USERS_SAME_ORGANIZATION);
             request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddParameter("include_myself", includeMyself);
             IRestResponse response;
             try
             {
