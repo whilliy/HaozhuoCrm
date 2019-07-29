@@ -427,7 +427,7 @@ namespace Haozhuo.Crm.Service
         /// <param name="token"></param>
         /// <param name="record"></param>
         /// <returns></returns>
-        public static CustomerFollowRecord AddFllowRecord(String customerId, String token, AddFollowRecord record)
+        public static CustomerDto AddFllowRecord(String customerId, String token, AddFollowRecord record)
         {
             RestClient rc = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOER_FOLLOW_RECORDS);
@@ -455,7 +455,7 @@ namespace Haozhuo.Crm.Service
             }
             try
             {
-                var types = rc.Deserialize<CustomerFollowRecord>(response);
+                var types = rc.Deserialize<CustomerDto>(response);
                 return types.Data;
             }
             catch (Exception ex)

@@ -11,6 +11,7 @@ namespace HaoZhuoCRM
     public partial class FormUpateCustomer : Form
     {
         public CustomerDto CURRENT_CUSTOMER { get; set; }
+        public Boolean InformationChanged = false;
         public FormUpateCustomer()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace HaoZhuoCRM
             {
                 dtpActuallyTime.Value = DateTime.Now;
                 dtpNextFollowTime.Value = DateTime.Now.AddDays(1);
+                txtProjectName.Text = CURRENT_CUSTOMER.projectId == 0 ? "" : ProjectService.DicProjects[CURRENT_CUSTOMER.projectId];
                 cmbCustomerTypes.DataSource = CustomerService.CustomerTypesCopy();
                 cmbCustomerTypes.DisplayMember = "name";
                 cmbCustomerTypes.ValueMember = "id";
@@ -37,7 +39,7 @@ namespace HaoZhuoCRM
                 cmbCustomerSources.SelectedValue = CURRENT_CUSTOMER.source;
                 cmbCustomerStatus.DisplayMember = "name";
                 cmbCustomerStatus.ValueMember = "id";
-                cmbCustomerStatus.DataSource = CustomerService.CustomerStatusesCopy();
+                cmbCustomerStatus.DataSource = CustomerService.CustomerAssignStatusesCopy();
                 cmbCustomerStatus.SelectedValue = CURRENT_CUSTOMER.status;
                 cmbGender.DataSource = Genders.ALL;
                 cmbGender.ValueMember = "id";
@@ -64,7 +66,10 @@ namespace HaoZhuoCRM
                 foreach (CustomerFollowRecord record in records)
                 {
                     ListViewItem lvi = new ListViewItem(record.communicationTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                    lvi.SubItems.Add(record.customerStatus.HasValue ? CustomerService.DicCustomerStatuses[record.customerStatus.Value] : "");
+                    lvi.SubItems.Add(record.customerType.HasValue ? CustomerService.DicCustomerTypes[record.customerType.Value] : "");
                     lvi.SubItems.Add(record.followUserName);
+                    lvi.SubItems.Add(record.nextFollowTime.HasValue ? record.nextFollowTime.Value.ToString("MM-dd HH:mm") : "");
                     lvi.SubItems.Add(record.remark);
                     listView1.Items.Add(lvi);
                 }
@@ -142,32 +147,87 @@ namespace HaoZhuoCRM
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
+            txtName.Text = txtName.Text.Trim();
+            if (String.IsNullOrEmpty(txtName.Text))
+            {
+                MessageBox.Show("客户姓名不能为空");
+                txtName.Focus();
+                return;
+            }
+            //txtMobile.Text = txtMobile.Text.Trim();
+            if (cmbCustomerTypes.Text == String.Empty)
+            {
+                MessageBox.Show("请指定客户类型");
+                cmbCustomerTypes.Focus();
+                return;
+            }
+            //if (cmbCustomerSources.Text == String.Empty)
+            //{
+            //    MessageBox.Show("请指定客户数据来源");
+            //    cmbCustomerSources.Focus();
+            //    return;
+            //}
+            if (cmbCustomerStatus.Text == String.Empty)
+            {
+                MessageBox.Show("请指定客户状态");
+                cmbCustomerTypes.Focus();
+                return;
+            }
+            if (cmbProvinces.Text == String.Empty)
+            {
+                MessageBox.Show("请指定客户所在区域");
+                cmbProvinces.Focus();
+                return;
+            }
+            DateTime nextCommTime = dtpNextFollowTime.Value;
+            if (DateTime.Compare(nextCommTime, DateTime.Now) < 0)
+            {
+                MessageBox.Show("下次跟进时间不能早于当前时间！");
+                dtpNextFollowTime.Focus();
+                return;
+            }
             txtRemark.Text = txtRemark.Text.Trim();
             if (txtRemark.Text == String.Empty)
             {
                 MessageBox.Show("必须输入沟通记录");
+                txtRemark.Focus();
                 return;
             }
             if (DateTime.Compare(dtpActuallyTime.Value, DateTime.Now) > 0)
             {
                 MessageBox.Show("实际跟进时间不能晚于当前时间！");
+                dtpActuallyTime.Focus();
                 return;
             }
             try
             {
-                AddFollowRecord record = new AddFollowRecord();
-                record.communicationTime = dtpActuallyTime.Value;
-                record.remark = txtRemark.Text;
-                CustomerFollowRecord recordDto = CustomerService.AddFllowRecord(CURRENT_CUSTOMER.id, Global.USER_TOKEN, record);
-                ListViewItem lvi = new ListViewItem(record.communicationTime.ToString("yyyy-MM-dd HH:mm:ss"));
-                lvi.SubItems.Add(recordDto.followUserName);
+                AddFollowRecord vo = new AddFollowRecord();
+                vo.communicationTime = dtpActuallyTime.Value;
+                vo.remark = txtRemark.Text;
+                vo.cityId = cmbCities.SelectedValue.ToString();
+                vo.countyId = cmbCounties.SelectedValue.ToString();
+                vo.gender = cmbGender.SelectedValue == null ? 0 : Convert.ToInt32(cmbGender.SelectedValue.ToString());
+                vo.provinceId = cmbProvinces.SelectedValue.ToString();
+                //vo.mobile = txtMobile.Text;
+                vo.name = txtName.Text;
+                vo.nextFollowTime = dtpNextFollowTime.Value;
+                //vo.source = Convert.ToInt32(cmbCustomerSources.SelectedValue.ToString());
+                vo.type = Convert.ToInt32(cmbCustomerTypes.SelectedValue.ToString());
+                vo.status = Convert.ToInt32(cmbCustomerStatus.SelectedValue.ToString());
+                CURRENT_CUSTOMER = CustomerService.AddFllowRecord(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
+                ListViewItem lvi = new ListViewItem(vo.communicationTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                lvi.SubItems.Add(cmbCustomerStatus.Text);
+                lvi.SubItems.Add(cmbCustomerTypes.Text);
+                lvi.SubItems.Add(CURRENT_CUSTOMER.lastFollowUserName);
+                lvi.SubItems.Add(dtpNextFollowTime.Value.ToString("MM-dd HH:mm"));
                 lvi.SubItems.Add(txtRemark.Text);
                 listView1.Items.Insert(0, lvi);
                 txtRemark.Text = String.Empty;
+                InformationChanged = true;
             }
             catch (BusinessException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("添加跟进记录发生错误:" + ex.Message);
                 return;
             }
         }
@@ -175,7 +235,7 @@ namespace HaoZhuoCRM
         private void ButConfirm_Click(object sender, EventArgs e)
         {
             txtName.Text = txtName.Text.Trim();
-            txtMobile.Text = txtMobile.Text.Trim();
+            //txtMobile.Text = txtMobile.Text.Trim();
             if (cmbCustomerTypes.Text == String.Empty)
             {
                 MessageBox.Show("请指定客户类型");
@@ -222,6 +282,7 @@ namespace HaoZhuoCRM
                 vo.status = Convert.ToInt32(cmbCustomerStatus.SelectedValue.ToString());
                 //当前客户已经更新
                 CURRENT_CUSTOMER = CustomerService.updateCustomer(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
+                DialogResult = DialogResult.OK;
             }
             catch (BusinessException ex)
             {
@@ -233,7 +294,11 @@ namespace HaoZhuoCRM
                 MessageBox.Show(ex.Message);
                 return;
             }
-            DialogResult = DialogResult.OK;
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

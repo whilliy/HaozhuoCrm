@@ -379,7 +379,8 @@ namespace HaoZhuoCRM
             //this.Hide();
             FormUpateCustomer frmUpdateCustomer = new FormUpateCustomer(customer);
             DialogResult dialogResult = frmUpdateCustomer.ShowDialog();
-            if (dialogResult == DialogResult.OK)
+            //if (dialogResult == DialogResult.OK)
+            if (frmUpdateCustomer.InformationChanged)
             {
                 CustomerDto currentCustomer = frmUpdateCustomer.CURRENT_CUSTOMER;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "姓名").Value].Text = currentCustomer.name;
