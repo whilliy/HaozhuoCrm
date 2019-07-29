@@ -65,6 +65,7 @@
             this.butQuery = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnGrab = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lvClients = new System.Windows.Forms.ListView();
@@ -75,7 +76,6 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.btnGrab = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -142,7 +142,7 @@
             // menuItemTransfer
             // 
             this.menuItemTransfer.Name = "menuItemTransfer";
-            this.menuItemTransfer.Size = new System.Drawing.Size(180, 22);
+            this.menuItemTransfer.Size = new System.Drawing.Size(126, 22);
             this.menuItemTransfer.Text = "抓取(&G)...";
             this.menuItemTransfer.Click += new System.EventHandler(this.MenuItemTransfer_Click);
             // 
@@ -225,6 +225,7 @@
             this.butReset.TabIndex = 13;
             this.butReset.Text = "清空(&R)";
             this.butReset.UseVisualStyleBackColor = true;
+            this.butReset.Click += new System.EventHandler(this.ButReset_Click);
             // 
             // label5
             // 
@@ -398,6 +399,17 @@
             this.panel1.Size = new System.Drawing.Size(1084, 36);
             this.panel1.TabIndex = 5;
             // 
+            // btnGrab
+            // 
+            this.btnGrab.Location = new System.Drawing.Point(84, 9);
+            this.btnGrab.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGrab.Name = "btnGrab";
+            this.btnGrab.Size = new System.Drawing.Size(68, 22);
+            this.btnGrab.TabIndex = 1;
+            this.btnGrab.Text = "抓取(&N)";
+            this.btnGrab.UseVisualStyleBackColor = true;
+            this.btnGrab.Click += new System.EventHandler(this.BtnGrab_Click);
+            // 
             // btnNew
             // 
             this.btnNew.Location = new System.Drawing.Point(6, 9);
@@ -495,24 +507,13 @@
             this.pager.JumpText = "Go";
             this.pager.Location = new System.Drawing.Point(0, 359);
             this.pager.Name = "pager";
-            this.pager.NeedExcuteQuery = false;
+            this.pager.NeedExcuteQuery = true;
             this.pager.PageIndex = 1;
             this.pager.PageSize = 20;
             this.pager.RecordCount = 0;
             this.pager.Size = new System.Drawing.Size(1084, 34);
             this.pager.TabIndex = 3;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
-            // 
-            // btnGrab
-            // 
-            this.btnGrab.Location = new System.Drawing.Point(84, 9);
-            this.btnGrab.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGrab.Name = "btnGrab";
-            this.btnGrab.Size = new System.Drawing.Size(68, 22);
-            this.btnGrab.TabIndex = 1;
-            this.btnGrab.Text = "抓取(&N)";
-            this.btnGrab.UseVisualStyleBackColor = true;
-            this.btnGrab.Click += new System.EventHandler(this.BtnGrab_Click);
             // 
             // FormPublic
             // 

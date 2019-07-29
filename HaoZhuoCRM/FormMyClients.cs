@@ -210,6 +210,8 @@ namespace HaoZhuoCRM
             cmbCustomerTypes.SelectedIndex = 0;
             cmbStatus.SelectedIndex = 0;
             cmbProvinces.SelectedIndex = 0;
+            lvClients.Items.Clear();
+            txtName.Focus();
 
         }
 

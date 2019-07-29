@@ -548,7 +548,6 @@ namespace Haozhuo.Crm.Service
             {
                 request.AddParameter("project_id", projectId);
             }
-            request.AddParameter("province_id", provinceId);
             if (pageSize != null)
             {
                 request.AddParameter("page_size", pageSize);
@@ -568,6 +567,10 @@ namespace Haozhuo.Crm.Service
             if (!String.IsNullOrEmpty(mobile))
             {
                 request.AddParameter("mobile", mobile);
+            }
+            if (!String.IsNullOrEmpty(provinceId))
+            {
+                request.AddParameter("province_id", provinceId);
             }
             if (!String.IsNullOrEmpty(cityId))
             {
@@ -649,7 +652,6 @@ namespace Haozhuo.Crm.Service
             {
                 request.AddParameter("project_id", projectId);
             }
-            request.AddParameter("province_id", provinceId);
             if (pageSize != null)
             {
                 request.AddParameter("page_size", pageSize);
@@ -669,6 +671,10 @@ namespace Haozhuo.Crm.Service
             if (!String.IsNullOrEmpty(mobile))
             {
                 request.AddParameter("mobile", mobile);
+            }
+            if (!String.IsNullOrEmpty(provinceId))
+            {
+                request.AddParameter("province_id", provinceId);
             }
             if (!String.IsNullOrEmpty(cityId))
             {
@@ -711,6 +717,84 @@ namespace Haozhuo.Crm.Service
             }
         }
 
+        /// <summary>
+        /// 根據條件查詢客戶信息(公海）
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="pageNum"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="status"></param>
+        /// <param name="source"></param>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
+        /// <param name="mobile"></param>
+        /// <param name="provinceId"></param>
+        /// <param name="cityId"></param>
+        /// <param name="countyId"></param>
+        /// <returns></returns>
+        public static ResultsWithCount<CustomerDto> QueryUnAssignedCustomers(String token,
+                                                        Int32? pageNum,
+                                                        Int32? pageSize,
+                                                        Int32? projectId,
+                                                        Int32? source,
+                                                        String name,
+                                                        String mobile)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOMERS_UNASSIGNED, Method.GET);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            if (pageNum != null)
+            {
+                request.AddParameter("page", pageNum);
+            }
+            if (projectId != null)
+            {
+                request.AddParameter("project_id", projectId);
+            }
+            if (pageSize != null)
+            {
+                request.AddParameter("page_size", pageSize);
+            }
+            if (source != null)
+            {
+                request.AddParameter("source", source);
+            }
+            if (!String.IsNullOrEmpty(mobile))
+            {
+                request.AddParameter("mobile", mobile);
+            }
+            if (!String.IsNullOrEmpty(name))
+            {
+                request.AddParameter("name", name);
+            }
+            try
+            {
+                var response = rc.Get(request);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var customers = rc.Deserialize<List<CustomerDto>>(response);
+                    return ResultsWithCount<CustomerDto>.of(customers.Data, GetTotalCountFromResponseHeaders(response));
+                }
+                else if (response.StatusCode == 0)
+                {
+                    throw new BusinessException("请检查网络");
+                }
+                else
+                {
+                    var res = rc.Deserialize<CustomException>(response);
+                    var customException = res.Data;
+                    throw new BusinessException(customException.message);
+                }
+            }
+            catch (BusinessException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
         /// <summary>
         /// 扔回公海
         /// </summary>

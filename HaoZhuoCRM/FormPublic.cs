@@ -319,5 +319,18 @@ namespace HaoZhuoCRM
         {
             Grasp();
         }
+
+        private void ButReset_Click(object sender, EventArgs e)
+        {
+            txtName.Text = txtMobile.Text = "";
+            cmbCustomerSources.SelectedIndex = 0;
+            cmbCustomerTypes.SelectedIndex = 0;
+            cmbStatus.SelectedIndex = 0;
+            cmbProvinces.SelectedIndex = 0;
+            lvClients.Items.Clear();
+            pager.Reset();
+            txtName.Focus();
+
+        }
     }
 }

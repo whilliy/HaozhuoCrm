@@ -117,6 +117,8 @@ namespace Haozhuo.Crm.Service
         /// </summary>
         public static String CUSTOMERS_PUBLIC = CUSTOMERS + "/public";
 
+        public static String CUSTOMERS_UNASSIGNED = CUSTOMERS + "/unassigned";
+
         /// <summary>
         /// 所有的客户类型
         /// </summary>
