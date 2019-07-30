@@ -51,6 +51,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtMobile = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxAll = new System.Windows.Forms.CheckBox();
             this.btnReturnToPublic = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lvClients = new System.Windows.Forms.ListView();
@@ -335,6 +336,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkBoxAll);
             this.panel1.Controls.Add(this.btnReturnToPublic);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 474);
@@ -343,9 +345,20 @@
             this.panel1.Size = new System.Drawing.Size(1084, 37);
             this.panel1.TabIndex = 2;
             // 
+            // checkBoxAll
+            // 
+            this.checkBoxAll.AutoSize = true;
+            this.checkBoxAll.Location = new System.Drawing.Point(10, 12);
+            this.checkBoxAll.Name = "checkBoxAll";
+            this.checkBoxAll.Size = new System.Drawing.Size(66, 16);
+            this.checkBoxAll.TabIndex = 2;
+            this.checkBoxAll.Text = "全选(&A)";
+            this.checkBoxAll.UseVisualStyleBackColor = true;
+            this.checkBoxAll.CheckedChanged += new System.EventHandler(this.CheckBoxAll_CheckedChanged);
+            // 
             // btnReturnToPublic
             // 
-            this.btnReturnToPublic.Location = new System.Drawing.Point(5, 9);
+            this.btnReturnToPublic.Location = new System.Drawing.Point(96, 8);
             this.btnReturnToPublic.Margin = new System.Windows.Forms.Padding(2);
             this.btnReturnToPublic.Name = "btnReturnToPublic";
             this.btnReturnToPublic.Size = new System.Drawing.Size(97, 22);
@@ -621,10 +634,10 @@
             this.cmbPagesizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPagesizes.FormattingEnabled = true;
             this.cmbPagesizes.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "20"});
+            "10",
+            "20",
+            "30",
+            "50"});
             this.cmbPagesizes.Location = new System.Drawing.Point(479, 8);
             this.cmbPagesizes.Name = "cmbPagesizes";
             this.cmbPagesizes.Size = new System.Drawing.Size(52, 20);
@@ -742,6 +755,7 @@
             this.panelQuery.ResumeLayout(false);
             this.panelQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -817,5 +831,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemTransfer;
         private System.Windows.Forms.ToolStripMenuItem menuItemEdit;
         private System.Windows.Forms.Button btnReturnToPublic;
+        private System.Windows.Forms.CheckBox checkBoxAll;
     }
 }

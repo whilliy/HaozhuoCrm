@@ -59,6 +59,7 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.checkBoxAll = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -226,6 +227,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkBoxAll);
             this.panel1.Controls.Add(this.btnDispatch);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -237,7 +239,7 @@
             // 
             // btnDispatch
             // 
-            this.btnDispatch.Location = new System.Drawing.Point(84, 9);
+            this.btnDispatch.Location = new System.Drawing.Point(162, 10);
             this.btnDispatch.Margin = new System.Windows.Forms.Padding(2);
             this.btnDispatch.Name = "btnDispatch";
             this.btnDispatch.Size = new System.Drawing.Size(68, 22);
@@ -248,7 +250,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(6, 9);
+            this.btnNew.Location = new System.Drawing.Point(6, 10);
             this.btnNew.Margin = new System.Windows.Forms.Padding(2);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(68, 22);
@@ -345,6 +347,17 @@
             this.pager.TabIndex = 3;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
+            // checkBoxAll
+            // 
+            this.checkBoxAll.AutoSize = true;
+            this.checkBoxAll.Location = new System.Drawing.Point(86, 13);
+            this.checkBoxAll.Name = "checkBoxAll";
+            this.checkBoxAll.Size = new System.Drawing.Size(66, 16);
+            this.checkBoxAll.TabIndex = 7;
+            this.checkBoxAll.Text = "全选(&A)";
+            this.checkBoxAll.UseVisualStyleBackColor = true;
+            this.checkBoxAll.CheckedChanged += new System.EventHandler(this.CheckBoxAll_CheckedChanged);
+            // 
             // FormDispatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -361,6 +374,7 @@
             this.panelQuery.ResumeLayout(false);
             this.panelQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -397,5 +411,6 @@
         private Controls.PagerControl pager;
         private System.Windows.Forms.Button btnDispatch;
         private System.Windows.Forms.ToolStripMenuItem miDispatch;
+        private System.Windows.Forms.CheckBox checkBoxAll;
     }
 }

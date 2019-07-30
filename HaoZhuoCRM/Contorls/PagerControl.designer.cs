@@ -233,9 +233,7 @@
             this.cmbPageSizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPageSizes.FormattingEnabled = true;
             this.cmbPageSizes.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
+            "10",
             "20",
             "30",
             "50"});

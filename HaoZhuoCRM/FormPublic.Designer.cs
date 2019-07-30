@@ -75,6 +75,7 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.checkBoxAll = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -389,6 +390,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkBoxAll);
             this.panel1.Controls.Add(this.btnGrab);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 475);
@@ -399,7 +401,7 @@
             // 
             // btnGrab
             // 
-            this.btnGrab.Location = new System.Drawing.Point(8, 9);
+            this.btnGrab.Location = new System.Drawing.Point(83, 9);
             this.btnGrab.Margin = new System.Windows.Forms.Padding(2);
             this.btnGrab.Name = "btnGrab";
             this.btnGrab.Size = new System.Drawing.Size(68, 22);
@@ -503,6 +505,17 @@
             this.pager.TabIndex = 3;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
+            // checkBoxAll
+            // 
+            this.checkBoxAll.AutoSize = true;
+            this.checkBoxAll.Location = new System.Drawing.Point(12, 12);
+            this.checkBoxAll.Name = "checkBoxAll";
+            this.checkBoxAll.Size = new System.Drawing.Size(66, 16);
+            this.checkBoxAll.TabIndex = 3;
+            this.checkBoxAll.Text = "全选(&A)";
+            this.checkBoxAll.UseVisualStyleBackColor = true;
+            this.checkBoxAll.CheckedChanged += new System.EventHandler(this.CheckBoxAll_CheckedChanged);
+            // 
             // FormPublic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -519,6 +532,7 @@
             this.panelQuery.ResumeLayout(false);
             this.panelQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -572,5 +586,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private Controls.PagerControl pager;
         private System.Windows.Forms.Button btnGrab;
+        private System.Windows.Forms.CheckBox checkBoxAll;
     }
 }

@@ -222,5 +222,13 @@ namespace HaoZhuoCRM
             FormAddCustomer frmCustomer = new FormAddCustomer();
             frmCustomer.ShowDialog();
         }
+
+        private void CheckBoxAll_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (ListViewItem lvi in lvClients.Items)
+            {
+                lvi.Checked = checkBoxAll.Checked;
+            }
+        }
     }
 }
