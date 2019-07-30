@@ -63,9 +63,9 @@ namespace HaoZhuoCRM.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 微信图片_20190730181118 {
+        internal static System.Drawing.Bitmap alipay {
             get {
-                object obj = ResourceManager.GetObject("微信图片_20190730181118", resourceCulture);
+                object obj = ResourceManager.GetObject("alipay", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

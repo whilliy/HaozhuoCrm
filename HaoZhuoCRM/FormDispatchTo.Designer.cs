@@ -44,7 +44,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 346);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 29);
+            this.panel1.Size = new System.Drawing.Size(246, 29);
             this.panel1.TabIndex = 0;
             // 
             // buttonOK
@@ -63,7 +63,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(230, 346);
+            this.groupBox1.Size = new System.Drawing.Size(246, 346);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "同部门用户列表";
@@ -81,7 +81,7 @@
             this.lvUsers.Location = new System.Drawing.Point(3, 17);
             this.lvUsers.MultiSelect = false;
             this.lvUsers.Name = "lvUsers";
-            this.lvUsers.Size = new System.Drawing.Size(224, 326);
+            this.lvUsers.Size = new System.Drawing.Size(240, 326);
             this.lvUsers.TabIndex = 0;
             this.lvUsers.UseCompatibleStateImageBehavior = false;
             this.lvUsers.View = System.Windows.Forms.View.Details;
@@ -90,7 +90,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "姓名";
-            this.columnHeader1.Width = 80;
+            this.columnHeader1.Width = 102;
             // 
             // columnHeader2
             // 
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(230, 375);
+            this.ClientSize = new System.Drawing.Size(246, 375);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

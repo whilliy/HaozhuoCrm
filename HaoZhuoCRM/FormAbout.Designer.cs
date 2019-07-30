@@ -38,7 +38,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(44, 267);
+            this.btnOK.Location = new System.Drawing.Point(55, 267);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
@@ -75,7 +75,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::HaoZhuoCRM.Properties.Resources.微信图片_20190730181118;
+            this.pictureBox1.Image = global::HaoZhuoCRM.Properties.Resources.alipay;
             this.pictureBox1.Location = new System.Drawing.Point(-2, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 193);
@@ -87,7 +87,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(196, 299);
+            this.ClientSize = new System.Drawing.Size(192, 295);
+            this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -97,6 +98,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAbout";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "关于";
