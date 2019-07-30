@@ -45,7 +45,7 @@ namespace HaoZhuoCRM
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            FormClient frmClient = new FormClient();
+            FormCustomer frmClient = new FormCustomer();
             DialogResult dialogResult = frmClient.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
@@ -71,7 +71,7 @@ namespace HaoZhuoCRM
                 MessageBox.Show("获取项目列表发生错误：" + ex.Message);
                 return;
             }
-            //获取所有的客户类型
+            //获取所有的客户状态
             IList<CustomerStatus> customerStatuses = new List<CustomerStatus>();
             try
             {
@@ -272,8 +272,8 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(customer.name);
             lvi.SubItems.Add(Genders.DIC_GENDER[customer.gender]);
             lvi.SubItems.Add(customer.mobile);
-            lvi.SubItems.Add(CustomerService.DicCustomerTypes[customer.type]);
-            lvi.SubItems.Add(CustomerService.DicCustomerStatuses[customer.status]);
+            lvi.SubItems.Add(customer.type.HasValue ? CustomerService.DicCustomerTypes[customer.type.Value] : "");
+            lvi.SubItems.Add(customer.status.HasValue ? CustomerService.DicCustomerStatuses[customer.status.Value] : "");
             lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);
@@ -387,8 +387,8 @@ namespace HaoZhuoCRM
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "所属项目").Value].Text = ProjectService.DicProjects[currentCustomer.projectId];
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "性别").Value].Text = Genders.DIC_GENDER[currentCustomer.gender];
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "手机号码").Value].Text = currentCustomer.mobile;
-                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户类型").Value].Text = CustomerService.DicCustomerTypes[currentCustomer.type];
-                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户状态").Value].Text = CustomerService.DicCustomerStatuses[currentCustomer.status];
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户类型").Value].Text = currentCustomer.type.HasValue ? CustomerService.DicCustomerTypes[currentCustomer.type.Value] : "";
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户状态").Value].Text = currentCustomer.status.HasValue ? CustomerService.DicCustomerStatuses[currentCustomer.status.Value] : "";
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户来源").Value].Text = CustomerService.DicCustomerSources[currentCustomer.source];
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "省").Value].Text = currentCustomer.provinceName;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "市").Value].Text = currentCustomer.cityName;

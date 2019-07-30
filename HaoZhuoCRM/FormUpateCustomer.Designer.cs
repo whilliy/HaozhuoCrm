@@ -45,6 +45,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbProvinces = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -268,6 +268,17 @@
             this.panel1.Size = new System.Drawing.Size(877, 133);
             this.panel1.TabIndex = 0;
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(785, 103);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(68, 20);
+            this.btnClose.TabIndex = 27;
+            this.btnClose.Text = "关闭(&C)";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
             // txtProjectName
             // 
             this.txtProjectName.Enabled = false;
@@ -289,7 +300,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(714, 104);
+            this.btnAdd.Location = new System.Drawing.Point(701, 103);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(68, 20);
@@ -463,17 +474,6 @@
             this.columnHeader3.Text = "沟通结果";
             this.columnHeader3.Width = 409;
             // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(798, 104);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(68, 20);
-            this.btnClose.TabIndex = 27;
-            this.btnClose.Text = "关闭(&C)";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            // 
             // FormUpateCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -490,7 +490,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "更新客户信息";
+            this.Text = "更新客户信息（跟进）";
             this.Load += new System.EventHandler(this.FormUpateCustomer_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

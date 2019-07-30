@@ -88,11 +88,11 @@
     <Compile Include="FormAddUser.Designer.cs">
       <DependentUpon>FormAddUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormClient.cs">
+    <Compile Include="FormCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormClient.Designer.cs">
-      <DependentUpon>FormClient.cs</DependentUpon>
+    <Compile Include="FormCustomer.Designer.cs">
+      <DependentUpon>FormCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -173,8 +173,8 @@
     <EmbeddedResource Include="FormAddUser.resx">
       <DependentUpon>FormAddUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormClient.resx">
-      <DependentUpon>FormClient.cs</DependentUpon>
+    <EmbeddedResource Include="FormCustomer.resx">
+      <DependentUpon>FormCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

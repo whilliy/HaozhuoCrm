@@ -32,7 +32,10 @@ namespace HaoZhuoCRM
                 cmbCustomerTypes.DataSource = CustomerService.CustomerTypesCopy();
                 cmbCustomerTypes.DisplayMember = "name";
                 cmbCustomerTypes.ValueMember = "id";
-                cmbCustomerTypes.SelectedValue = CURRENT_CUSTOMER.type;
+                if (CURRENT_CUSTOMER.type.HasValue)
+                {
+                    cmbCustomerTypes.SelectedValue = CURRENT_CUSTOMER.type;
+                }
                 cmbCustomerSources.DataSource = CustomerService.CustomerSources;
                 cmbCustomerSources.DisplayMember = "name";
                 cmbCustomerSources.ValueMember = "id";
@@ -40,7 +43,10 @@ namespace HaoZhuoCRM
                 cmbCustomerStatus.DisplayMember = "name";
                 cmbCustomerStatus.ValueMember = "id";
                 cmbCustomerStatus.DataSource = CustomerService.CustomerAssignStatusesCopy();
-                cmbCustomerStatus.SelectedValue = CURRENT_CUSTOMER.status;
+                if (CURRENT_CUSTOMER.status.HasValue)
+                {
+                    cmbCustomerStatus.SelectedValue = CURRENT_CUSTOMER.status;
+                }
                 cmbGender.DataSource = Genders.ALL;
                 cmbGender.ValueMember = "id";
                 cmbGender.DisplayMember = "name";

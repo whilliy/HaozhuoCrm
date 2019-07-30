@@ -464,7 +464,47 @@ namespace Haozhuo.Crm.Service
             }
         }
 
-
+        /// <summary>
+        /// 批量添加客户
+        /// </summary>
+        /// <param name="customers">客户列表</param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static IList<CustomerDto> AddCustomers(IList<AddCustomerVo> customers, String token)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOMERS);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddJsonBody(customers);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.POST);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.Created)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var types = rc.Deserialize<IList<CustomerDto>>(response);
+                return types.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+        }
         /// <summary>
         /// 更新客户信息
         /// </summary>

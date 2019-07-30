@@ -219,8 +219,8 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(customer.name);
             lvi.SubItems.Add(Genders.DIC_GENDER[customer.gender]);
             lvi.SubItems.Add(customer.mobile);
-            lvi.SubItems.Add(CustomerService.DicCustomerTypes[customer.type]);
-            lvi.SubItems.Add(CustomerService.DicCustomerStatuses[customer.status]);
+            lvi.SubItems.Add(customer.type.HasValue ? CustomerService.DicCustomerTypes[customer.type.Value] : "");
+            lvi.SubItems.Add(customer.status.HasValue ? CustomerService.DicCustomerStatuses[customer.status.Value] : "");
             lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);

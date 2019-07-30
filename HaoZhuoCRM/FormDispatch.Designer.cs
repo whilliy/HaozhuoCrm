@@ -34,6 +34,7 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.miDispatch = new System.Windows.Forms.ToolStripMenuItem();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmbProjects = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.butQuery = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDispatch = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lvClients = new System.Windows.Forms.ListView();
@@ -57,8 +59,6 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.btnDispatch = new System.Windows.Forms.Button();
-            this.miDispatch = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -90,7 +90,14 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miDispatch});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 26);
+            // 
+            // miDispatch
+            // 
+            this.miDispatch.Name = "miDispatch";
+            this.miDispatch.Size = new System.Drawing.Size(117, 22);
+            this.miDispatch.Text = "分派(&D)";
+            this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
             // 
             // columnHeader8
             // 
@@ -228,6 +235,17 @@
             this.panel1.Size = new System.Drawing.Size(971, 36);
             this.panel1.TabIndex = 5;
             // 
+            // btnDispatch
+            // 
+            this.btnDispatch.Location = new System.Drawing.Point(84, 9);
+            this.btnDispatch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDispatch.Name = "btnDispatch";
+            this.btnDispatch.Size = new System.Drawing.Size(68, 22);
+            this.btnDispatch.TabIndex = 1;
+            this.btnDispatch.Text = "分派(&D)";
+            this.btnDispatch.UseVisualStyleBackColor = true;
+            this.btnDispatch.Click += new System.EventHandler(this.BtnDispatch_Click);
+            // 
             // btnNew
             // 
             this.btnNew.Location = new System.Drawing.Point(6, 9);
@@ -237,6 +255,7 @@
             this.btnNew.TabIndex = 0;
             this.btnNew.Text = "新增(&N)";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.BtnNew_Click);
             // 
             // panel2
             // 
@@ -325,24 +344,6 @@
             this.pager.Size = new System.Drawing.Size(971, 34);
             this.pager.TabIndex = 3;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
-            // 
-            // btnDispatch
-            // 
-            this.btnDispatch.Location = new System.Drawing.Point(84, 9);
-            this.btnDispatch.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDispatch.Name = "btnDispatch";
-            this.btnDispatch.Size = new System.Drawing.Size(68, 22);
-            this.btnDispatch.TabIndex = 1;
-            this.btnDispatch.Text = "分派(&D)";
-            this.btnDispatch.UseVisualStyleBackColor = true;
-            this.btnDispatch.Click += new System.EventHandler(this.BtnDispatch_Click);
-            // 
-            // miDispatch
-            // 
-            this.miDispatch.Name = "miDispatch";
-            this.miDispatch.Size = new System.Drawing.Size(180, 22);
-            this.miDispatch.Text = "分派(&D)";
-            this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
             // 
             // FormDispatch
             // 

@@ -80,6 +80,7 @@
     <Compile Include="Utils\BusinessException.cs" />
     <Compile Include="Utils\CustomException.cs" />
     <Compile Include="Utils\ResultsWithCount.cs" />
+    <Compile Include="vo\AddCustomerVo.cs" />
     <Compile Include="vo\AddUserVo.cs" />
     <Compile Include="vo\ModifyPassword.cs" />
     <Compile Include="vo\OrganizationVo.cs" />

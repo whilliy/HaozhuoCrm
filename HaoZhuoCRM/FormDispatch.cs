@@ -210,5 +210,11 @@ namespace HaoZhuoCRM
             }
 
         }
+
+        private void BtnNew_Click(object sender, EventArgs e)
+        {
+            FormCustomer frmCustomer = new FormCustomer();
+            frmCustomer.ShowDialog();
+        }
     }
 }
