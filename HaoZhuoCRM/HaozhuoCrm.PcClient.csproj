@@ -280,5 +280,10 @@
   <ItemGroup>
     <None Include="Resources\微信图片_20190730181118.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="microsoft.office.interop.excel.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
