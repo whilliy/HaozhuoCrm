@@ -1,6 +1,5 @@
 ﻿using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
-using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -52,7 +51,7 @@ namespace Haozhuo.Crm.Service
             }
             foreach (CityDto city in cities)
             {
-                if (city.cityName == cityName||city.cityName.Contains(cityName))
+                if (city.cityName == cityName || city.cityName.Contains(cityName))
                 {
                     return city.cityId;
                 }
@@ -73,10 +72,12 @@ namespace Haozhuo.Crm.Service
                 }
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    throw new BusinessException(response.Content);
+                    var res = restClient.Deserialize<CustomException>(response);
+                    var customException = res.Data;
+                    throw new BusinessException(customException.message);
                 }
-                IList<ProvinceDto> provinces = JsonConvert.DeserializeObject<List<ProvinceDto>>(response.Content);
-                return provinces;
+                var provinces = restClient.Deserialize<List<ProvinceDto>>(response);
+                return provinces.Data;
             }
             catch (BusinessException ex)
             {
@@ -99,10 +100,12 @@ namespace Haozhuo.Crm.Service
                 var response = rc.Get(request);
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    throw new BusinessException(response.Content);
+                    var res = rc.Deserialize<CustomException>(response);
+                    var customException = res.Data;
+                    throw new BusinessException(customException.message);
                 }
-                IList<CityDto> cities = JsonConvert.DeserializeObject<List<CityDto>>(response.Content);
-                return cities;
+                var cities = rc.Deserialize<List<CityDto>>(response);
+                return cities.Data;
             }
             catch (Exception ex)
             {
@@ -119,10 +122,12 @@ namespace Haozhuo.Crm.Service
                 var response = rc.Get(request);
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    throw new BusinessException(response.Content);
+                    var res = rc.Deserialize<CustomException>(response);
+                    var customException = res.Data;
+                    throw new BusinessException(customException.message);
                 }
-                IList<CountyDto> counties = JsonConvert.DeserializeObject<List<CountyDto>>(response.Content);
-                return counties;
+                var counties = rc.Deserialize<List<CountyDto>>(response);
+                return counties.Data;
             }
             catch (Exception ex)
             {

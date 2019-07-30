@@ -1,7 +1,6 @@
 ﻿using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
 using Haozhuo.Crm.Service.vo;
-using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Net;
@@ -21,8 +20,8 @@ namespace Haozhuo.Crm.Service
                 var response = rc.Post(request);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    var login = JsonConvert.DeserializeObject<UserLoginDto>(response.Content);
-                    return login;
+                    var login = rc.Deserialize<UserLoginDto>(response);
+                    return login.Data;
                 }
                 else if (response.StatusCode == 0)
                 {
@@ -30,8 +29,8 @@ namespace Haozhuo.Crm.Service
                 }
                 else
                 {
-                    var x = JsonConvert.DeserializeObject<CustomException>(response.Content);
-                    throw new BusinessException(x.message);
+                    var x = rc.Deserialize<CustomException>(response);
+                    throw new BusinessException(x.Data.message);
                 }
             }
             catch (BusinessException ex)
