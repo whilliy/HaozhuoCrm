@@ -66,7 +66,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnGrab = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lvClients = new System.Windows.Forms.ListView();
             this.columnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -391,7 +390,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnGrab);
-            this.panel1.Controls.Add(this.btnNew);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 475);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -401,7 +399,7 @@
             // 
             // btnGrab
             // 
-            this.btnGrab.Location = new System.Drawing.Point(84, 9);
+            this.btnGrab.Location = new System.Drawing.Point(8, 9);
             this.btnGrab.Margin = new System.Windows.Forms.Padding(2);
             this.btnGrab.Name = "btnGrab";
             this.btnGrab.Size = new System.Drawing.Size(68, 22);
@@ -409,16 +407,6 @@
             this.btnGrab.Text = "抓取(&N)";
             this.btnGrab.UseVisualStyleBackColor = true;
             this.btnGrab.Click += new System.EventHandler(this.BtnGrab_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(6, 9);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(68, 22);
-            this.btnNew.TabIndex = 0;
-            this.btnNew.Text = "新增(&N)";
-            this.btnNew.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -575,7 +563,6 @@
         private System.Windows.Forms.Button butQuery;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListView lvClients;
         private System.Windows.Forms.ColumnHeader columnHeader0;

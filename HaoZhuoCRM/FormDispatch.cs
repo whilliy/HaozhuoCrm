@@ -213,7 +213,7 @@ namespace HaoZhuoCRM
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            FormCustomer frmCustomer = new FormCustomer();
+            FormAddCustomer frmCustomer = new FormAddCustomer();
             frmCustomer.ShowDialog();
         }
     }

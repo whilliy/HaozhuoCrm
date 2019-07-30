@@ -52,7 +52,6 @@
             this.txtMobile = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnReturnToPublic = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lvClients = new System.Windows.Forms.ListView();
             this.columnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -337,7 +336,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnReturnToPublic);
-            this.panel1.Controls.Add(this.btnNew);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 474);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -347,7 +345,7 @@
             // 
             // btnReturnToPublic
             // 
-            this.btnReturnToPublic.Location = new System.Drawing.Point(84, 9);
+            this.btnReturnToPublic.Location = new System.Drawing.Point(5, 9);
             this.btnReturnToPublic.Margin = new System.Windows.Forms.Padding(2);
             this.btnReturnToPublic.Name = "btnReturnToPublic";
             this.btnReturnToPublic.Size = new System.Drawing.Size(97, 22);
@@ -355,17 +353,6 @@
             this.btnReturnToPublic.Text = "扔回公海(&P)";
             this.btnReturnToPublic.UseVisualStyleBackColor = true;
             this.btnReturnToPublic.Click += new System.EventHandler(this.BtnReturnToPublic_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(6, 9);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(68, 22);
-            this.btnNew.TabIndex = 0;
-            this.btnNew.Text = "新增(&N)";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.BtnNew_Click);
             // 
             // panel2
             // 
@@ -795,7 +782,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbCustomerSources;
         private System.Windows.Forms.Label label7;

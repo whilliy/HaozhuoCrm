@@ -45,7 +45,7 @@ namespace HaoZhuoCRM
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            FormCustomer frmClient = new FormCustomer();
+            FormAddCustomer frmClient = new FormAddCustomer();
             DialogResult dialogResult = frmClient.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
@@ -462,6 +462,10 @@ namespace HaoZhuoCRM
             if (lvClients.CheckedIndices.Count < 1)
             {
                 MessageBox.Show("请先选择用户,在用户记录前面打勾✔", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("您确认要将选中的用户放回公海吗？数据数量：" + lvClients.CheckedItems.Count, "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            {
                 return;
             }
             ReturnCustomersToPublic vo = new ReturnCustomersToPublic();

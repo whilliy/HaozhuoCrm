@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace HaoZhuoCRM
 {
-    public partial class FormCustomer : Form
+    public partial class FormAddCustomer : Form
     {
-        public FormCustomer()
+        public FormAddCustomer()
         {
             InitializeComponent();
         }
@@ -186,6 +186,10 @@ namespace HaoZhuoCRM
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             if (lvCustomers.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            if (MessageBox.Show("您确认要将选定用户移除吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
             {
                 return;
             }

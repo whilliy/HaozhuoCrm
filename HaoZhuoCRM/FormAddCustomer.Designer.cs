@@ -1,6 +1,6 @@
 ﻿namespace HaoZhuoCRM
 {
-    partial class FormCustomer
+    partial class FormAddCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -379,7 +379,7 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
-            // FormCustomer
+            // FormAddCustomer
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -393,7 +393,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormCustomer";
+            this.Name = "FormAddCustomer";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "添加客户";
