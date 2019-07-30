@@ -46,6 +46,8 @@
             this.labelCurrentName = new System.Windows.Forms.ToolStripStatusLabel();
             this.miAddCustomer = new System.Windows.Forms.ToolStripMenuItem();
             this.miImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lableCurrentOrganization = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -175,7 +177,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.labelCurrentName});
+            this.labelCurrentName,
+            this.toolStripStatusLabel2,
+            this.lableCurrentOrganization});
             this.statusStrip1.Location = new System.Drawing.Point(0, 468);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(752, 22);
@@ -189,6 +193,8 @@
             // 
             // labelCurrentName
             // 
+            this.labelCurrentName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelCurrentName.ForeColor = System.Drawing.Color.Blue;
             this.labelCurrentName.Name = "labelCurrentName";
             this.labelCurrentName.Size = new System.Drawing.Size(0, 17);
             // 
@@ -207,6 +213,20 @@
             this.miImport.Text = "导入(&I)";
             this.miImport.Visible = false;
             this.miImport.Click += new System.EventHandler(this.MiImport_Click);
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(68, 17);
+            this.toolStripStatusLabel2.Text = "当前部门：";
+            // 
+            // lableCurrentOrganization
+            // 
+            this.lableCurrentOrganization.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lableCurrentOrganization.ForeColor = System.Drawing.Color.Blue;
+            this.lableCurrentOrganization.Name = "lableCurrentOrganization";
+            this.lableCurrentOrganization.Size = new System.Drawing.Size(0, 17);
             // 
             // FormMain
             // 
@@ -252,6 +272,8 @@
         private System.Windows.Forms.ToolStripMenuItem miDispatch;
         private System.Windows.Forms.ToolStripMenuItem miAddCustomer;
         private System.Windows.Forms.ToolStripMenuItem miImport;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel lableCurrentOrganization;
     }
 }
 

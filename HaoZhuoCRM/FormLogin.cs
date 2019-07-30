@@ -38,6 +38,8 @@ namespace HaoZhuoCRM
                 Global.USER_TOKEN = login.Token;
                 Global.USER_ID = login.Id;
                 Global.USER_NAME = login.Name;
+                Global.ORGANIZAITON_NAME = login.organizationName;
+                Global.ORGANIZATION_ID = login.organizationId;
             }
             catch (Exception ex)
             {

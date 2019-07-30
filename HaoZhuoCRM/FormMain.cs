@@ -69,6 +69,7 @@ namespace HaoZhuoCRM
             frmLogin.Close();
             matchPermissions();
             labelCurrentName.Text = Global.USER_NAME;
+            lableCurrentOrganization.Text = Global.ORGANIZAITON_NAME;
         }
 
         private void MiMyClients_Click(object sender, EventArgs e)
@@ -110,6 +111,7 @@ namespace HaoZhuoCRM
                 matchPermissions();
             }
             labelCurrentName.Text = Global.USER_NAME;
+            lableCurrentOrganization.Text = Global.ORGANIZAITON_NAME;
         }
 
         private void MiPublic_Click(object sender, EventArgs e)

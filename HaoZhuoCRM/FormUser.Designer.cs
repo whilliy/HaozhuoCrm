@@ -103,7 +103,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "姓名";
-            this.columnHeader1.Width = 80;
+            this.columnHeader1.Width = 120;
             // 
             // columnHeader6
             // 
@@ -145,7 +145,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(664, 5);
+            this.btnReset.Location = new System.Drawing.Point(707, 5);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 9;
@@ -155,7 +155,7 @@
             // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(574, 5);
+            this.btnQuery.Location = new System.Drawing.Point(617, 5);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 8;
@@ -167,7 +167,7 @@
             // 
             this.cmbStatuses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatuses.FormattingEnabled = true;
-            this.cmbStatuses.Location = new System.Drawing.Point(498, 6);
+            this.cmbStatuses.Location = new System.Drawing.Point(541, 6);
             this.cmbStatuses.Name = "cmbStatuses";
             this.cmbStatuses.Size = new System.Drawing.Size(56, 20);
             this.cmbStatuses.TabIndex = 7;
@@ -175,7 +175,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(450, 10);
+            this.label4.Location = new System.Drawing.Point(493, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 6;
@@ -185,7 +185,7 @@
             // 
             this.cmbGenders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGenders.FormattingEnabled = true;
-            this.cmbGenders.Location = new System.Drawing.Point(373, 6);
+            this.cmbGenders.Location = new System.Drawing.Point(416, 6);
             this.cmbGenders.Name = "cmbGenders";
             this.cmbGenders.Size = new System.Drawing.Size(56, 20);
             this.cmbGenders.TabIndex = 5;
@@ -193,7 +193,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(325, 10);
+            this.label3.Location = new System.Drawing.Point(368, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 4;
@@ -201,7 +201,7 @@
             // 
             // txtMobile
             // 
-            this.txtMobile.Location = new System.Drawing.Point(213, 6);
+            this.txtMobile.Location = new System.Drawing.Point(256, 6);
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(97, 21);
             this.txtMobile.TabIndex = 3;
@@ -209,7 +209,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(142, 10);
+            this.label2.Location = new System.Drawing.Point(185, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 2;
@@ -219,7 +219,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(54, 6);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(72, 21);
+            this.txtName.Size = new System.Drawing.Size(125, 21);
             this.txtName.TabIndex = 1;
             // 
             // label1

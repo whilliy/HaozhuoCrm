@@ -37,13 +37,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtAccountNo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbOrganizations = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnYes = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbOrganizations = new System.Windows.Forms.ComboBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -72,7 +72,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(232, 20);
+            this.label1.Location = new System.Drawing.Point(202, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
@@ -81,11 +81,11 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(277, 16);
+            this.txtName.Location = new System.Drawing.Point(247, 16);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.MaxLength = 10;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(67, 21);
+            this.txtName.Size = new System.Drawing.Size(105, 21);
             this.txtName.TabIndex = 3;
             // 
             // label2
@@ -104,7 +104,7 @@
             this.txtMobile.Margin = new System.Windows.Forms.Padding(2);
             this.txtMobile.MaxLength = 11;
             this.txtMobile.Name = "txtMobile";
-            this.txtMobile.Size = new System.Drawing.Size(141, 21);
+            this.txtMobile.Size = new System.Drawing.Size(116, 21);
             this.txtMobile.TabIndex = 7;
             // 
             // label3
@@ -123,7 +123,7 @@
             this.txtAccountNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtAccountNo.MaxLength = 10;
             this.txtAccountNo.Name = "txtAccountNo";
-            this.txtAccountNo.Size = new System.Drawing.Size(141, 21);
+            this.txtAccountNo.Size = new System.Drawing.Size(116, 21);
             this.txtAccountNo.TabIndex = 1;
             // 
             // groupBox1
@@ -146,6 +146,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "基本信息";
             // 
+            // cmbOrganizations
+            // 
+            this.cmbOrganizations.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOrganizations.FormattingEnabled = true;
+            this.cmbOrganizations.Location = new System.Drawing.Point(247, 49);
+            this.cmbOrganizations.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbOrganizations.Name = "cmbOrganizations";
+            this.cmbOrganizations.Size = new System.Drawing.Size(222, 20);
+            this.cmbOrganizations.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(202, 53);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "部门：";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.treeView1);
@@ -156,6 +176,18 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "权限设置";
+            // 
+            // treeView1
+            // 
+            this.treeView1.CheckBoxes = true;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.FullRowSelect = true;
+            this.treeView1.HideSelection = false;
+            this.treeView1.Location = new System.Drawing.Point(3, 17);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(479, 311);
+            this.treeView1.TabIndex = 0;
+            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterCheck);
             // 
             // panel1
             // 
@@ -187,38 +219,6 @@
             this.btnYes.Text = "确定(&Y)";
             this.btnYes.UseVisualStyleBackColor = true;
             this.btnYes.Click += new System.EventHandler(this.BtnYes_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(232, 53);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "部门：";
-            // 
-            // cmbOrganizations
-            // 
-            this.cmbOrganizations.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOrganizations.FormattingEnabled = true;
-            this.cmbOrganizations.Location = new System.Drawing.Point(277, 49);
-            this.cmbOrganizations.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbOrganizations.Name = "cmbOrganizations";
-            this.cmbOrganizations.Size = new System.Drawing.Size(192, 20);
-            this.cmbOrganizations.TabIndex = 9;
-            // 
-            // treeView1
-            // 
-            this.treeView1.CheckBoxes = true;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.FullRowSelect = true;
-            this.treeView1.HideSelection = false;
-            this.treeView1.Location = new System.Drawing.Point(3, 17);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(479, 311);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterCheck);
             // 
             // FormAddUser
             // 
