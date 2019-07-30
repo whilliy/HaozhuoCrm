@@ -24,6 +24,8 @@ namespace HaoZhuoCRM
             PermissionControl.Add("USER_MANAGEMENT", miUserManagement);
             PermissionControl.Add("CHANGE_USER", miChangeUser);
             PermissionControl.Add("DISPATCH", miDispatch);
+            PermissionControl.Add("IMPORT",miImport);
+            PermissionControl.Add("ADD_CUSTOMER", miAddCustomer);
         }
 
         private void MiExit_Click(object sender, EventArgs e)
@@ -122,6 +124,12 @@ namespace HaoZhuoCRM
             FormDispatch formDispatch = new FormDispatch();
             formDispatch.MdiParent = this;
             formDispatch.Show();
+        }
+
+        private void MiAddCustomer_Click(object sender, EventArgs e)
+        {
+            FormAddCustomer frmAddCustomer = new FormAddCustomer();
+            frmAddCustomer.ShowDialog();
         }
     }
 }

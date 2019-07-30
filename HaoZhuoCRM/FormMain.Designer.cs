@@ -36,6 +36,7 @@
             this.miClients = new System.Windows.Forms.ToolStripMenuItem();
             this.miMyClients = new System.Windows.Forms.ToolStripMenuItem();
             this.miPublic = new System.Windows.Forms.ToolStripMenuItem();
+            this.miDispatch = new System.Windows.Forms.ToolStripMenuItem();
             this.miManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miProjectManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miUserManagement = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +44,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelCurrentName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.miDispatch = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAddCustomer = new System.Windows.Forms.ToolStripMenuItem();
+            this.miImport = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +78,7 @@
             // miModifyPassword
             // 
             this.miModifyPassword.Name = "miModifyPassword";
-            this.miModifyPassword.Size = new System.Drawing.Size(180, 22);
+            this.miModifyPassword.Size = new System.Drawing.Size(153, 22);
             this.miModifyPassword.Text = "修改密码(&M)...";
             this.miModifyPassword.Visible = false;
             this.miModifyPassword.Click += new System.EventHandler(this.MenuModifyPassword_Click);
@@ -84,7 +86,7 @@
             // miChangeUser
             // 
             this.miChangeUser.Name = "miChangeUser";
-            this.miChangeUser.Size = new System.Drawing.Size(180, 22);
+            this.miChangeUser.Size = new System.Drawing.Size(153, 22);
             this.miChangeUser.Text = "切换用户(&C)...";
             this.miChangeUser.Visible = false;
             this.miChangeUser.Click += new System.EventHandler(this.MiChangeUser_Click);
@@ -92,7 +94,7 @@
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(180, 22);
+            this.miExit.Size = new System.Drawing.Size(153, 22);
             this.miExit.Text = "退出(&E)";
             this.miExit.Visible = false;
             this.miExit.Click += new System.EventHandler(this.MiExit_Click);
@@ -102,7 +104,9 @@
             this.miClients.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miMyClients,
             this.miPublic,
-            this.miDispatch});
+            this.miDispatch,
+            this.miAddCustomer,
+            this.miImport});
             this.miClients.Name = "miClients";
             this.miClients.Size = new System.Drawing.Size(60, 22);
             this.miClients.Text = "客户(&C)";
@@ -123,6 +127,14 @@
             this.miPublic.Text = "公海(&P)";
             this.miPublic.Visible = false;
             this.miPublic.Click += new System.EventHandler(this.MiPublic_Click);
+            // 
+            // miDispatch
+            // 
+            this.miDispatch.Name = "miDispatch";
+            this.miDispatch.Size = new System.Drawing.Size(180, 22);
+            this.miDispatch.Text = "分派(&D)";
+            this.miDispatch.Visible = false;
+            this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
             // 
             // miManagement
             // 
@@ -180,13 +192,20 @@
             this.labelCurrentName.Name = "labelCurrentName";
             this.labelCurrentName.Size = new System.Drawing.Size(0, 17);
             // 
-            // miDispatch
+            // miAddCustomer
             // 
-            this.miDispatch.Name = "miDispatch";
-            this.miDispatch.Size = new System.Drawing.Size(180, 22);
-            this.miDispatch.Text = "分派(&D)";
-            this.miDispatch.Visible = false;
-            this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
+            this.miAddCustomer.Name = "miAddCustomer";
+            this.miAddCustomer.Size = new System.Drawing.Size(180, 22);
+            this.miAddCustomer.Text = "新增(&N)";
+            this.miAddCustomer.Visible = false;
+            this.miAddCustomer.Click += new System.EventHandler(this.MiAddCustomer_Click);
+            // 
+            // miImport
+            // 
+            this.miImport.Name = "miImport";
+            this.miImport.Size = new System.Drawing.Size(180, 22);
+            this.miImport.Text = "导入(&I)";
+            this.miImport.Visible = false;
             // 
             // FormMain
             // 
@@ -230,6 +249,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel labelCurrentName;
         private System.Windows.Forms.ToolStripMenuItem miDispatch;
+        private System.Windows.Forms.ToolStripMenuItem miAddCustomer;
+        private System.Windows.Forms.ToolStripMenuItem miImport;
     }
 }
 
