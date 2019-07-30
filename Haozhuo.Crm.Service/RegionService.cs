@@ -31,6 +31,35 @@ namespace Haozhuo.Crm.Service
             }
         }
 
+        public static String getProvinceIdByName(String provinceName)
+        {
+            foreach (ProvinceDto province in PROVINCES)
+            {
+                if (province.provinceName == provinceName)
+                {
+                    return province.provinceId;
+                }
+            }
+            return null;
+        }
+
+        public static String getCityIdByName(String provinceId, String cityName)
+        {
+            IList<CityDto> cities = getCitiesByProviceId(provinceId);
+            if (cities == null || cities.Count < 1)
+            {
+                return null;
+            }
+            foreach (CityDto city in cities)
+            {
+                if (city.cityName == cityName||city.cityName.Contains(cityName))
+                {
+                    return city.cityId;
+                }
+            }
+            return null;
+        }
+
         private static IList<ProvinceDto> getAllProvinces()
         {
             RestClient restClient = new RestClient();

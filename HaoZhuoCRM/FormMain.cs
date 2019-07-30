@@ -24,7 +24,7 @@ namespace HaoZhuoCRM
             PermissionControl.Add("USER_MANAGEMENT", miUserManagement);
             PermissionControl.Add("CHANGE_USER", miChangeUser);
             PermissionControl.Add("DISPATCH", miDispatch);
-            PermissionControl.Add("IMPORT",miImport);
+            PermissionControl.Add("IMPORT", miImport);
             PermissionControl.Add("ADD_CUSTOMER", miAddCustomer);
         }
 
@@ -130,6 +130,12 @@ namespace HaoZhuoCRM
         {
             FormAddCustomer frmAddCustomer = new FormAddCustomer();
             frmAddCustomer.ShowDialog();
+        }
+
+        private void MiImport_Click(object sender, EventArgs e)
+        {
+            FormImportData frmImport = new FormImportData();
+            frmImport.ShowDialog();
         }
     }
 }

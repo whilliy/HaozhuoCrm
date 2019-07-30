@@ -206,6 +206,7 @@
             this.miImport.Size = new System.Drawing.Size(180, 22);
             this.miImport.Text = "导入(&I)";
             this.miImport.Visible = false;
+            this.miImport.Click += new System.EventHandler(this.MiImport_Click);
             // 
             // FormMain
             // 

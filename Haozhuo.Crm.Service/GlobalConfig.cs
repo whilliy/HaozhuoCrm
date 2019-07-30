@@ -123,7 +123,10 @@ namespace Haozhuo.Crm.Service
         /// 所有的客户类型
         /// </summary>
         public static String CUSTOMER_TYPES = CUSTOMERS + "/types";
-
+        /// <summary>
+        /// 导入客户
+        /// </summary>
+        public static String IMPORT_CUSTOMERS = CUSTOMERS + "/import_customers";
         /// <summary>
         /// 所有的客户来源
         /// </summary>

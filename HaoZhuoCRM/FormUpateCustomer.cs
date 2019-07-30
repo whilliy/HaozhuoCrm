@@ -230,6 +230,7 @@ namespace HaoZhuoCRM
                 listView1.Items.Insert(0, lvi);
                 txtRemark.Text = String.Empty;
                 InformationChanged = true;
+                MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (BusinessException ex)
             {

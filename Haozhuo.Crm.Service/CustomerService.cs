@@ -505,6 +505,39 @@ namespace Haozhuo.Crm.Service
                 throw new BusinessException(ex.Message);
             }
         }
+
+        /// <summary>
+        /// 导入客户
+        /// </summary>
+        /// <param name="customers">客户列表</param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static void ImportCustomerData(ImportCustomerVo vo, String token)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.IMPORT_CUSTOMERS);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddJsonBody(vo);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.POST);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+        }
         /// <summary>
         /// 更新客户信息
         /// </summary>

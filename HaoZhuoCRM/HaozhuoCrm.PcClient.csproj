@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="microsoft.office.interop.excel">
+      <HintPath>..\..\..\Users\Li Yongchun\Desktop\microsoft.office.interop.excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +61,12 @@
     </Compile>
     <Compile Include="FormDispatch.Designer.cs">
       <DependentUpon>FormDispatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormImportData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImportData.Designer.cs">
+      <DependentUpon>FormImportData.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPublic.cs">
       <SubType>Form</SubType>
@@ -158,6 +168,9 @@
     <EmbeddedResource Include="FormDispatch.resx">
       <DependentUpon>FormDispatch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormImportData.resx">
+      <DependentUpon>FormImportData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPublic.resx">
       <DependentUpon>FormPublic.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,6 +246,26 @@
       <Project>{79fdbb56-9952-43fa-b9c9-56b9a109cedc}</Project>
       <Name>Haozhuo.Crm.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Office">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>99</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
