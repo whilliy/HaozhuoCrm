@@ -139,5 +139,11 @@ namespace HaoZhuoCRM
             FormImportData frmImport = new FormImportData();
             frmImport.ShowDialog();
         }
+
+        private void MiAbout_Click(object sender, EventArgs e)
+        {
+            FormAbout frmAbout = new FormAbout();
+            frmAbout.ShowDialog();
+        }
     }
 }
