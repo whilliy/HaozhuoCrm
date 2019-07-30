@@ -189,7 +189,7 @@
             // 
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(79, 46);
+            this.cmbStatus.Location = new System.Drawing.Point(79, 44);
             this.cmbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(73, 20);
@@ -198,7 +198,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(596, 12);
+            this.label6.Location = new System.Drawing.Point(596, 13);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
@@ -209,7 +209,7 @@
             // 
             this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerSources.FormattingEnabled = true;
-            this.cmbCustomerSources.Location = new System.Drawing.Point(669, 10);
+            this.cmbCustomerSources.Location = new System.Drawing.Point(669, 9);
             this.cmbCustomerSources.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerSources.Name = "cmbCustomerSources";
             this.cmbCustomerSources.Size = new System.Drawing.Size(76, 20);
@@ -229,7 +229,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(465, 12);
+            this.label5.Location = new System.Drawing.Point(465, 13);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
@@ -240,7 +240,7 @@
             // 
             this.cmbCustomerTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerTypes.FormattingEnabled = true;
-            this.cmbCustomerTypes.Location = new System.Drawing.Point(536, 10);
+            this.cmbCustomerTypes.Location = new System.Drawing.Point(536, 9);
             this.cmbCustomerTypes.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerTypes.Name = "cmbCustomerTypes";
             this.cmbCustomerTypes.Size = new System.Drawing.Size(44, 20);
@@ -270,7 +270,7 @@
             // 
             this.cmbCities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCities.FormattingEnabled = true;
-            this.cmbCities.Location = new System.Drawing.Point(324, 46);
+            this.cmbCities.Location = new System.Drawing.Point(324, 44);
             this.cmbCities.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCities.Name = "cmbCities";
             this.cmbCities.Size = new System.Drawing.Size(112, 20);
@@ -290,7 +290,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(158, 12);
+            this.label1.Location = new System.Drawing.Point(158, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
@@ -301,7 +301,7 @@
             // 
             this.cmbProvinces.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvinces.FormattingEnabled = true;
-            this.cmbProvinces.Location = new System.Drawing.Point(196, 46);
+            this.cmbProvinces.Location = new System.Drawing.Point(196, 44);
             this.cmbProvinces.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProvinces.Name = "cmbProvinces";
             this.cmbProvinces.Size = new System.Drawing.Size(87, 20);
@@ -310,7 +310,7 @@
             // 
             // txtMobile
             // 
-            this.txtMobile.Location = new System.Drawing.Point(225, 10);
+            this.txtMobile.Location = new System.Drawing.Point(225, 9);
             this.txtMobile.Margin = new System.Windows.Forms.Padding(2);
             this.txtMobile.MaxLength = 11;
             this.txtMobile.Name = "txtMobile";
@@ -351,7 +351,7 @@
             // 
             this.cmbCounties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCounties.FormattingEnabled = true;
-            this.cmbCounties.Location = new System.Drawing.Point(497, 46);
+            this.cmbCounties.Location = new System.Drawing.Point(497, 44);
             this.cmbCounties.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCounties.Name = "cmbCounties";
             this.cmbCounties.Size = new System.Drawing.Size(104, 20);
@@ -360,7 +360,7 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(8, 12);
+            this.labelName.Location = new System.Drawing.Point(8, 13);
             this.labelName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(65, 12);
@@ -369,7 +369,7 @@
             // 
             // butQuery
             // 
-            this.butQuery.Location = new System.Drawing.Point(759, 8);
+            this.butQuery.Location = new System.Drawing.Point(759, 9);
             this.butQuery.Margin = new System.Windows.Forms.Padding(2);
             this.butQuery.Name = "butQuery";
             this.butQuery.Size = new System.Drawing.Size(58, 21);
@@ -380,7 +380,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(79, 10);
+            this.txtName.Location = new System.Drawing.Point(79, 9);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.MaxLength = 20;
             this.txtName.Name = "txtName";
@@ -512,7 +512,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelQuery);
             this.Name = "FormPublic";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "数据公海";
             this.Load += new System.EventHandler(this.FormPublic_Load);

@@ -354,7 +354,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelQuery);
             this.Name = "FormDispatch";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "数据分派";
             this.Load += new System.EventHandler(this.FormPublic_Load);

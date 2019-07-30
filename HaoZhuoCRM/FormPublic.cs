@@ -94,6 +94,7 @@ namespace HaoZhuoCRM
             cmbProvinces.DisplayMember = "provinceName";
             cmbProvinces.DataSource = provinces;
             pager.Reset();
+            query();
 
         }
 
@@ -225,12 +226,12 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);
             lvi.SubItems.Add(customer.countyName);
-            lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
-            lvi.SubItems.Add(customer.previousFollowTime == null ? "" : customer.previousFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString(GlobalConfig.DateTimeFormat));
+            lvi.SubItems.Add(!customer.previousFollowTime.HasValue ? "" : customer.previousFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
             lvi.SubItems.Add(customer.previousFollowUserName);
-            lvi.SubItems.Add(customer.lastFollowTime == null ? "" : customer.lastFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(!customer.lastFollowTime.HasValue ? "" : customer.lastFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
             lvi.SubItems.Add(customer.lastFollowUserName);
-            lvi.SubItems.Add(customer.nextFollowTime == null ? "" : customer.nextFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(!customer.nextFollowTime.HasValue ? "" : customer.nextFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
             lvi.Tag = customer;
         }
 
@@ -249,7 +250,7 @@ namespace HaoZhuoCRM
             lvClients.EndUpdate();
         }
 
-        private void ButQuery_Click(object sender, EventArgs e)
+        private void query()
         {
             try
             {
@@ -263,8 +264,13 @@ namespace HaoZhuoCRM
             }
             catch (BusinessException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("查询失败：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void ButQuery_Click(object sender, EventArgs e)
+        {
+            query();
         }
 
         private void Pager_OnPageChanged(object sender, EventArgs e)

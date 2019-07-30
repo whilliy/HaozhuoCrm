@@ -19,13 +19,13 @@ namespace HaoZhuoCRM
             txtPassword.Text = txtPassword.Text.Trim();
             if (txtAccountNo.Text.Length < 1)
             {
-                MessageBox.Show("请输入您的账号");
+                MessageBox.Show("请输入您的账号", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtAccountNo.Focus();
                 return;
             }
             if (txtPassword.Text == String.Empty)
             {
-                MessageBox.Show("请输入密码");
+                MessageBox.Show("请输入密码", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtPassword.Focus();
                 return;
             }
@@ -41,7 +41,7 @@ namespace HaoZhuoCRM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("登录失败：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             this.DialogResult = DialogResult.OK;
@@ -57,6 +57,39 @@ namespace HaoZhuoCRM
             if (DialogResult != DialogResult.OK)
             {
                 Application.Exit();
+            }
+        }
+
+        private void TxtAccountNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                txtAccountNo.Text = txtAccountNo.Text.Trim();
+                if (String.IsNullOrEmpty(txtAccountNo.Text))
+                {
+                    return;
+                }
+                txtPassword.Focus();
+                txtPassword.SelectAll();
+            }
+        }
+
+        private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                txtAccountNo.Text = txtAccountNo.Text.Trim();
+                txtPassword.Text = txtPassword.Text.Trim();
+                if (String.IsNullOrEmpty(txtPassword.Text))
+                {
+                    return;
+                }
+                if (String.IsNullOrEmpty(txtAccountNo.Text))
+                {
+                    txtAccountNo.Focus();
+                    return;
+                }
+                BtnLogin_Click(null, null);
             }
         }
     }

@@ -9,6 +9,7 @@ namespace Haozhuo.Crm.Service
     {
         public static readonly String AUTHORIZATION = "Authorization";
         public static readonly String X_TOTAL_COUNT = "X_TOTAL_COUNT";
+        public static readonly String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
         private static readonly object lockS = new object();
         private static String domain;
         public static String Domain

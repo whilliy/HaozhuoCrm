@@ -18,11 +18,12 @@ namespace Haozhuo.Crm.Service.Dto
         public String cityName { get; set; }
         public String countyId { get; set; }
         public String countyName { get; set; }
-        public DateTime previousFollowTime { get; set; }
+        public DateTime? leaveWordsTime { get; set; }
+        public DateTime? previousFollowTime { get; set; }
         public long previousFollowUserId { get; set; }
-        public DateTime lastFollowTime { get; set; }
+        public DateTime? lastFollowTime { get; set; }
         public long lastFollowUserId { get; set; }
-        public DateTime nextFollowTime { get; set; }
+        public DateTime? nextFollowTime { get; set; }
         public DateTime createdTime { get; set; }
         public String previousFollowUserName { get; set; }
         public String lastFollowUserName { get; set; }

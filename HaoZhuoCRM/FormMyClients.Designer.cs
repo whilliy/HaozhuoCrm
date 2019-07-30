@@ -629,7 +629,6 @@
             this.cmbPagesizes.Name = "cmbPagesizes";
             this.cmbPagesizes.Size = new System.Drawing.Size(52, 20);
             this.cmbPagesizes.TabIndex = 15;
-            this.cmbPagesizes.SelectedIndexChanged += new System.EventHandler(this.CmbPagesizes_SelectedIndexChanged);
             // 
             // btnJump
             // 

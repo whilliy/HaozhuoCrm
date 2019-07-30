@@ -61,7 +61,8 @@ namespace HaoZhuoCRM
             provinces.Insert(0, new ProvinceDto(string.Empty, String.Empty));
             //注意：一定先指定 ValueMember 和 DisplayMember 再设定 DataSource 否则提前触发 CmbProvinces_SelectedIndexChanged
             pager.Reset();
-
+            //查询
+            query();
         }
 
 
@@ -124,7 +125,7 @@ namespace HaoZhuoCRM
             lvClients.EndUpdate();
         }
 
-        private void ButQuery_Click(object sender, EventArgs e)
+        private void query()
         {
             try
             {
@@ -138,8 +139,13 @@ namespace HaoZhuoCRM
             }
             catch (BusinessException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("查询失败：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void ButQuery_Click(object sender, EventArgs e)
+        {
+            query();
         }
 
         private void Pager_OnPageChanged(object sender, EventArgs e)

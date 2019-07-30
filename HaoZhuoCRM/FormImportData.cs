@@ -187,7 +187,9 @@ namespace HaoZhuoCRM
                         Cursor = Cursors.Default;
                     }
                     #endregion
+                    Cursor = Cursors.Default;
                     lvCustomers.Items.Clear();
+                    Cursor = Cursors.WaitCursor;
                     foreach (CustomerData data in datas)
                     {
                         ListViewItem lvi = new ListViewItem(data.Sequence);
@@ -202,6 +204,12 @@ namespace HaoZhuoCRM
                     }
                     Cursor = Cursors.Default;
                 }
+                else
+                {
+                    Cursor = Cursors.Default;
+                    MessageBox.Show("暂不支持的文件格式！", "提示");
+                }
+                Cursor = Cursors.Default;
             }
         }
 

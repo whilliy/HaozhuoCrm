@@ -27,7 +27,9 @@ namespace HaoZhuoCRM
             lblCurrentPage.Text = "1";
             lblPageCount.Text = "1";
             lblTotalCount.Text = "0";
+            //cmbPagesizes.SelectedIndexChanged -= CmbPagesizes_SelectedIndexChanged;
             cmbPagesizes.Text = "20";
+            //cmbPagesizes.SelectedIndexChanged += CmbPagesizes_SelectedIndexChanged;
             txtJump.Text = "1";
             IntialPageButtons();
         }
@@ -133,6 +135,9 @@ namespace HaoZhuoCRM
             cmbProvinces.ValueMember = "provinceId";
             cmbProvinces.DisplayMember = "provinceName";
             cmbProvinces.DataSource = provinces;
+            cmbPagesizes.SelectedIndexChanged += CmbPagesizes_SelectedIndexChanged;
+            getCustomersAndBindingDatas();
+
 
         }
 
@@ -278,12 +283,12 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);
             lvi.SubItems.Add(customer.countyName);
-            lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
-            lvi.SubItems.Add(customer.previousFollowTime == null ? "" : customer.previousFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString(GlobalConfig.DateTimeFormat));
+            lvi.SubItems.Add(!customer.previousFollowTime.HasValue ? "" : customer.previousFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
             lvi.SubItems.Add(customer.previousFollowUserName);
-            lvi.SubItems.Add(customer.lastFollowTime == null ? "" : customer.lastFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(!customer.lastFollowTime.HasValue ? "" : customer.lastFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
             lvi.SubItems.Add(customer.lastFollowUserName);
-            lvi.SubItems.Add(customer.nextFollowTime == null ? "" : customer.nextFollowTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(!customer.nextFollowTime.HasValue ? "" : customer.nextFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
             lvi.Tag = customer;
         }
 
@@ -393,12 +398,12 @@ namespace HaoZhuoCRM
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "省").Value].Text = currentCustomer.provinceName;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "市").Value].Text = currentCustomer.cityName;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "区").Value].Text = currentCustomer.countyName;
-                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "录入时间").Value].Text = currentCustomer.createdTime.ToString("yyyy-MM-dd HH:mm:ss");
-                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "上次跟进时间").Value].Text = currentCustomer.previousFollowTime == null ? "" : currentCustomer.previousFollowTime.ToString("yyyy-MM-dd HH:mm:ss");
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "录入时间").Value].Text = currentCustomer.createdTime.ToString(GlobalConfig.DateTimeFormat);
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "上次跟进时间").Value].Text = !currentCustomer.previousFollowTime.HasValue ? "" : currentCustomer.previousFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "上次跟进人").Value].Text = currentCustomer.previousFollowUserName;
-                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进时间").Value].Text = currentCustomer.lastFollowTime == null ? "" : currentCustomer.lastFollowTime.ToString("yyyy-MM-dd HH:mm:ss");
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进时间").Value].Text = !currentCustomer.lastFollowTime.HasValue ? "" : currentCustomer.lastFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进人").Value].Text = frmUpdateCustomer.CURRENT_CUSTOMER.lastFollowUserName;
-                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "下次跟进时间").Value].Text = currentCustomer.nextFollowTime == null ? "" : currentCustomer.nextFollowTime.ToString("yyyy-MM-dd HH:mm:ss");
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "下次跟进时间").Value].Text = !currentCustomer.nextFollowTime.HasValue ? "" : currentCustomer.nextFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
                 lviSelected.Tag = currentCustomer;
             }
         }
