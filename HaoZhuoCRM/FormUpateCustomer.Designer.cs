@@ -404,6 +404,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Enabled = false;
             this.btnCancel.Location = new System.Drawing.Point(806, 2);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
@@ -414,6 +415,7 @@
             // 
             // butConfirm
             // 
+            this.butConfirm.Enabled = false;
             this.butConfirm.Location = new System.Drawing.Point(728, 2);
             this.butConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.butConfirm.Name = "butConfirm";

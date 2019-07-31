@@ -26,6 +26,7 @@ namespace HaoZhuoCRM
             PermissionControl.Add("DISPATCH", miDispatch);
             PermissionControl.Add("IMPORT", miImport);
             PermissionControl.Add("ADD_CUSTOMER", miAddCustomer);
+            PermissionControl.Add("ALL_CUSTOEMRS", miAllCustomers);
         }
 
         private void MiExit_Click(object sender, EventArgs e)
@@ -144,6 +145,12 @@ namespace HaoZhuoCRM
         {
             FormAbout frmAbout = new FormAbout();
             frmAbout.ShowDialog();
+        }
+
+        private void MiAllCustomers_Click(object sender, EventArgs e)
+        {
+            FormAllCustomers formAllCustomers = new FormAllCustomers();
+            formAllCustomers.Show();
         }
     }
 }

@@ -43,13 +43,14 @@
             this.miProjectManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miUserManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miOrganizationManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.labelCurrentName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lableCurrentOrganization = new System.Windows.Forms.ToolStripStatusLabel();
-            this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAllCustomers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -110,8 +111,9 @@
             this.miMyClients,
             this.miPublic,
             this.miDispatch,
+            this.miImport,
             this.miAddCustomer,
-            this.miImport});
+            this.miAllCustomers});
             this.miClients.Name = "miClients";
             this.miClients.Size = new System.Drawing.Size(60, 22);
             this.miClients.Text = "客户(&C)";
@@ -120,7 +122,7 @@
             // miMyClients
             // 
             this.miMyClients.Name = "miMyClients";
-            this.miMyClients.Size = new System.Drawing.Size(120, 22);
+            this.miMyClients.Size = new System.Drawing.Size(180, 22);
             this.miMyClients.Text = "我的(&M)";
             this.miMyClients.Visible = false;
             this.miMyClients.Click += new System.EventHandler(this.MiMyClients_Click);
@@ -128,7 +130,7 @@
             // miPublic
             // 
             this.miPublic.Name = "miPublic";
-            this.miPublic.Size = new System.Drawing.Size(120, 22);
+            this.miPublic.Size = new System.Drawing.Size(180, 22);
             this.miPublic.Text = "公海(&P)";
             this.miPublic.Visible = false;
             this.miPublic.Click += new System.EventHandler(this.MiPublic_Click);
@@ -136,7 +138,7 @@
             // miDispatch
             // 
             this.miDispatch.Name = "miDispatch";
-            this.miDispatch.Size = new System.Drawing.Size(120, 22);
+            this.miDispatch.Size = new System.Drawing.Size(180, 22);
             this.miDispatch.Text = "分派(&D)";
             this.miDispatch.Visible = false;
             this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
@@ -144,7 +146,7 @@
             // miAddCustomer
             // 
             this.miAddCustomer.Name = "miAddCustomer";
-            this.miAddCustomer.Size = new System.Drawing.Size(120, 22);
+            this.miAddCustomer.Size = new System.Drawing.Size(180, 22);
             this.miAddCustomer.Text = "新增(&N)";
             this.miAddCustomer.Visible = false;
             this.miAddCustomer.Click += new System.EventHandler(this.MiAddCustomer_Click);
@@ -152,7 +154,7 @@
             // miImport
             // 
             this.miImport.Name = "miImport";
-            this.miImport.Size = new System.Drawing.Size(120, 22);
+            this.miImport.Size = new System.Drawing.Size(180, 22);
             this.miImport.Text = "导入(&I)";
             this.miImport.Visible = false;
             this.miImport.Click += new System.EventHandler(this.MiImport_Click);
@@ -191,6 +193,21 @@
             this.miOrganizationManagement.Text = "组织架构(&O)...";
             this.miOrganizationManagement.Visible = false;
             this.miOrganizationManagement.Click += new System.EventHandler(this.组织架构OToolStripMenuItem_Click);
+            // 
+            // miHelp
+            // 
+            this.miHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miAbout});
+            this.miHelp.Name = "miHelp";
+            this.miHelp.Size = new System.Drawing.Size(61, 22);
+            this.miHelp.Text = "帮助(&H)";
+            // 
+            // miAbout
+            // 
+            this.miAbout.Name = "miAbout";
+            this.miAbout.Size = new System.Drawing.Size(125, 22);
+            this.miAbout.Text = "关于(&A)...";
+            this.miAbout.Click += new System.EventHandler(this.MiAbout_Click);
             // 
             // statusStrip1
             // 
@@ -231,20 +248,12 @@
             this.lableCurrentOrganization.Name = "lableCurrentOrganization";
             this.lableCurrentOrganization.Size = new System.Drawing.Size(0, 17);
             // 
-            // miHelp
+            // miAllCustomers
             // 
-            this.miHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miAbout});
-            this.miHelp.Name = "miHelp";
-            this.miHelp.Size = new System.Drawing.Size(61, 22);
-            this.miHelp.Text = "帮助(&H)";
-            // 
-            // miAbout
-            // 
-            this.miAbout.Name = "miAbout";
-            this.miAbout.Size = new System.Drawing.Size(180, 22);
-            this.miAbout.Text = "关于(&A)...";
-            this.miAbout.Click += new System.EventHandler(this.MiAbout_Click);
+            this.miAllCustomers.Name = "miAllCustomers";
+            this.miAllCustomers.Size = new System.Drawing.Size(180, 22);
+            this.miAllCustomers.Text = "所有(&A)";
+            this.miAllCustomers.Click += new System.EventHandler(this.MiAllCustomers_Click);
             // 
             // FormMain
             // 
@@ -294,6 +303,7 @@
         private System.Windows.Forms.ToolStripStatusLabel lableCurrentOrganization;
         private System.Windows.Forms.ToolStripMenuItem miHelp;
         private System.Windows.Forms.ToolStripMenuItem miAbout;
+        private System.Windows.Forms.ToolStripMenuItem miAllCustomers;
     }
 }
 
