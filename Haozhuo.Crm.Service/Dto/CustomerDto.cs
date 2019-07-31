@@ -8,6 +8,7 @@ namespace Haozhuo.Crm.Service.Dto
         public Int32 projectId { get; set; }
         public String name { get; set; }
         public String mobile { get; set; }
+        public Int64 currentUserId { get; set; }
         public String currentUserName { get; set; }
         public Int32? type { get; set; }
         public Int32? status { get; set; }

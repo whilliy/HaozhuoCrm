@@ -522,6 +522,7 @@
             this.btnSelect.TabIndex = 40;
             this.btnSelect.Text = "选";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
             // 
             // columnHeader18
             // 

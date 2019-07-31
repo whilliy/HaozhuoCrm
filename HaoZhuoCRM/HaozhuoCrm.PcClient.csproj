@@ -98,6 +98,12 @@
     <Compile Include="FormDispatchTo.Designer.cs">
       <DependentUpon>FormDispatchTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSelectUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectUser.Designer.cs">
+      <DependentUpon>FormSelectUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTransferToOther.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDispatchTo.resx">
       <DependentUpon>FormDispatchTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectUser.resx">
+      <DependentUpon>FormSelectUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTransferToOther.resx">
       <DependentUpon>FormTransferToOther.cs</DependentUpon>

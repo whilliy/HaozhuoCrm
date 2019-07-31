@@ -144,8 +144,13 @@ namespace HaoZhuoCRM
                     type = null;
                 }
             }
+            Int64? currentUserId = null;
+            if (txtFollowUserName.Tag != null && !String.IsNullOrEmpty(txtFollowUserName.Text))
+            {
+                currentUserId = Convert.ToInt64(txtFollowUserName.Tag.ToString());
+            }
             ResultsWithCount<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, pager.PageIndex, pager.PageSize,
-                projectId, status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId);
+                projectId, status, source, type, txtName.Text, txtMobile.Text, currentUserId, provinceId, cityId, countyId);
             return customers;
         }
 
@@ -232,6 +237,8 @@ namespace HaoZhuoCRM
             cmbCustomerSources.SelectedIndex = 0;
             cmbProvinces.SelectedIndex = 0;
             lvClients.Items.Clear();
+            txtFollowUserName.Tag = null;
+            txtFollowUserName.Text = "";
             pager.Reset();
             txtName.Focus();
 
@@ -355,6 +362,16 @@ namespace HaoZhuoCRM
             cmbCounties.DisplayMember = "countyName";
             cmbCounties.DataSource = counties;
             return;
+        }
+
+        private void BtnSelect_Click(object sender, EventArgs e)
+        {
+            FormSelectUser frmSelectUser = new FormSelectUser();
+            if (DialogResult.OK == frmSelectUser.ShowDialog())
+            {
+                txtFollowUserName.Text = frmSelectUser.SelectedUser.name;
+                txtFollowUserName.Tag = frmSelectUser.SelectedUser.id;
+            }
         }
     }
 }

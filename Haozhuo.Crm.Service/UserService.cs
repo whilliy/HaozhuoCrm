@@ -367,6 +367,7 @@ namespace Haozhuo.Crm.Service
                 throw new BusinessException(ex.Message);
             }
         }
+     
         /// <summary>
         /// 获取用户同组织下所有激活用户
         /// </summary>

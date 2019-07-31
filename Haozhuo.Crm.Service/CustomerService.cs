@@ -606,6 +606,7 @@ namespace Haozhuo.Crm.Service
                                                         Int32? type,
                                                         String name,
                                                         String mobile,
+                                                        Int64? currentUserId,
                                                         String provinceId,
                                                         String cityId,
                                                         String countyId)
@@ -636,6 +637,10 @@ namespace Haozhuo.Crm.Service
             if (type != null)
             {
                 request.AddParameter("type", type);
+            }
+            if (currentUserId.HasValue)
+            {
+                request.AddParameter("user_id", currentUserId);
             }
             if (!String.IsNullOrEmpty(mobile))
             {
