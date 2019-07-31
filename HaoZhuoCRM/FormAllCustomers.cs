@@ -181,8 +181,11 @@ namespace HaoZhuoCRM
 
         private void BindingDatas(ResultsWithCount<CustomerDto> customers)
         {
+            if (lvClients.Items.Count > 0)
+            {
+                lvClients.Items.Clear();
+            }
             lvClients.BeginUpdate();
-            lvClients.Items.Clear();
             int i = 1 + (pager.PageSize) * (pager.PageIndex - 1);//计算序号
             foreach (CustomerDto customer in customers.getResults())
             {
