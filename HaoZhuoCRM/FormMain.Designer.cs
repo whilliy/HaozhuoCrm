@@ -253,6 +253,7 @@
             this.miAllCustomers.Name = "miAllCustomers";
             this.miAllCustomers.Size = new System.Drawing.Size(180, 22);
             this.miAllCustomers.Text = "所有(&A)";
+            this.miAllCustomers.Visible = false;
             this.miAllCustomers.Click += new System.EventHandler(this.MiAllCustomers_Click);
             // 
             // FormMain

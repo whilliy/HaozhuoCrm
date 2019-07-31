@@ -75,7 +75,7 @@ namespace HaoZhuoCRM
 
         private void MiMyClients_Click(object sender, EventArgs e)
         {
-            FormMyClients formMyClients = new FormMyClients();
+            FormMyCustomers formMyClients = new FormMyCustomers();
             formMyClients.MdiParent = this;
             formMyClients.Show();
         }
@@ -150,6 +150,7 @@ namespace HaoZhuoCRM
         private void MiAllCustomers_Click(object sender, EventArgs e)
         {
             FormAllCustomers formAllCustomers = new FormAllCustomers();
+            formAllCustomers.MdiParent = this;
             formAllCustomers.Show();
         }
     }

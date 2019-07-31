@@ -114,6 +114,10 @@ namespace Haozhuo.Crm.Service
         /// </summary>
         public static String CUSTOMERS = Domain + "/customers";
         /// <summary>
+        /// 我的客戶相关
+        /// </summary>
+        public static String MY_CUSTOMERS = CUSTOMERS + "/my";
+        /// <summary>
         /// 公海查询
         /// </summary>
         public static String CUSTOMERS_PUBLIC = CUSTOMERS + "/public";

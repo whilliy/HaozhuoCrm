@@ -11,6 +11,7 @@ namespace HaoZhuoCRM
     public partial class FormModifyCustomer : Form
     {
         public CustomerDto CURRENT_CUSTOMER { get; set; }
+        public Boolean InformationChanged = false;
         public FormModifyCustomer(CustomerDto customer)
         {
             InitializeComponent();
@@ -188,6 +189,7 @@ namespace HaoZhuoCRM
                 vo.source = Convert.ToInt32(cmbCustomerSources.SelectedValue.ToString());
                 //当前客户已经更新
                 CURRENT_CUSTOMER = CustomerService.updateCustomer(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
+                InformationChanged = true;
                 DialogResult = DialogResult.OK;
             }
             catch (BusinessException ex)

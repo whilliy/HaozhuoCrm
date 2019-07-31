@@ -140,11 +140,11 @@
     <Compile Include="FormModifyPassword.Designer.cs">
       <DependentUpon>FormModifyPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMyClients.cs">
+    <Compile Include="FormMyCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMyClients.Designer.cs">
-      <DependentUpon>FormMyClients.cs</DependentUpon>
+    <Compile Include="FormMyCustomers.Designer.cs">
+      <DependentUpon>FormMyCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="FormOrganizations.cs">
       <SubType>Form</SubType>
@@ -230,8 +230,8 @@
     <EmbeddedResource Include="FormModifyPassword.resx">
       <DependentUpon>FormModifyPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMyClients.resx">
-      <DependentUpon>FormMyClients.cs</DependentUpon>
+    <EmbeddedResource Include="FormMyCustomers.resx">
+      <DependentUpon>FormMyCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormOrganizations.resx">
       <DependentUpon>FormOrganizations.cs</DependentUpon>

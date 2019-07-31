@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace HaoZhuoCRM
 {
-    public partial class FormMyClients : Form
+    public partial class FormMyCustomers : Form
     {
         private Int32 CurrentPage = 1;
         private Int32 PageSize = 20;
         private Int64 Count;
         private Int32 PageCount = 1;
 
-        public FormMyClients()
+        public FormMyCustomers()
         {
             InitializeComponent();
             InitialPager();
@@ -265,7 +265,7 @@ namespace HaoZhuoCRM
             }
             //将每页数量改为下拉框内的值
             PageSize = Convert.ToInt32(cmbPagesizes.Text);
-            ResultsWithCount<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, CurrentPage, PageSize, projectId,
+            ResultsWithCount<CustomerDto> customers = CustomerService.QueryMyCustomers(Global.USER_TOKEN, CurrentPage, PageSize, projectId,
                  status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId);
             return customers;
         }

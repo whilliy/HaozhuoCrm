@@ -1,6 +1,6 @@
 ﻿namespace HaoZhuoCRM
 {
-    partial class FormMyClients
+    partial class FormMyCustomers
     {
         /// <summary>
         /// Required designer variable.
