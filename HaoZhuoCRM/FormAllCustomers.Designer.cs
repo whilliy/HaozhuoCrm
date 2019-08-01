@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.miView = new System.Windows.Forms.ToolStripMenuItem();
+            this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.butReset = new System.Windows.Forms.Button();
             this.panelQuery = new System.Windows.Forms.Panel();
-            this.butQuery = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.miModify = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtFollowUserName = new System.Windows.Forms.TextBox();
             this.cmbProjects = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,6 +55,12 @@
             this.txtMobile = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.butQuery = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lvClients = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -63,32 +69,46 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtFollowUserName = new System.Windows.Forms.TextBox();
-            this.btnSelect = new System.Windows.Forms.Button();
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pager = new HaoZhuoCRM.Controls.PagerControl();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miView,
             this.miModify});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(121, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // miView
+            // 
+            this.miView.Name = "miView";
+            this.miView.Size = new System.Drawing.Size(180, 22);
+            this.miView.Text = "查看(&V)";
+            this.miView.Click += new System.EventHandler(this.MiView_Click);
+            // 
+            // miModify
+            // 
+            this.miModify.Name = "miModify";
+            this.miModify.Size = new System.Drawing.Size(120, 22);
+            this.miModify.Text = "修改(&M)";
+            this.miModify.Click += new System.EventHandler(this.MiModify_Click);
             // 
             // butReset
             // 
@@ -133,61 +153,36 @@
             this.panelQuery.Size = new System.Drawing.Size(971, 76);
             this.panelQuery.TabIndex = 4;
             // 
-            // butQuery
+            // btnSelect
             // 
-            this.butQuery.Location = new System.Drawing.Point(871, 7);
-            this.butQuery.Margin = new System.Windows.Forms.Padding(2);
-            this.butQuery.Name = "butQuery";
-            this.butQuery.Size = new System.Drawing.Size(58, 21);
-            this.butQuery.TabIndex = 12;
-            this.butQuery.Text = "查询(&Q)";
-            this.butQuery.UseVisualStyleBackColor = true;
-            this.butQuery.Click += new System.EventHandler(this.ButQuery_Click);
+            this.btnSelect.Location = new System.Drawing.Point(822, 43);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(33, 23);
+            this.btnSelect.TabIndex = 40;
+            this.btnSelect.Text = "选";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
             // 
-            // panel1
+            // label9
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 481);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(971, 30);
-            this.panel1.TabIndex = 5;
-            this.panel1.Visible = false;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(638, 48);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 12);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "当前跟进人：";
             // 
-            // panel2
+            // txtFollowUserName
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel2.Controls.Add(this.lvClients);
-            this.panel2.Controls.Add(this.pager);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 76);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(971, 405);
-            this.panel2.TabIndex = 6;
-            // 
-            // pager
-            // 
-            this.pager.BackColor = System.Drawing.SystemColors.Control;
-            this.pager.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(78)))), ((int)(((byte)(151)))));
-            this.pager.JumpText = "Go";
-            this.pager.Location = new System.Drawing.Point(0, 371);
-            this.pager.Name = "pager";
-            this.pager.NeedExcuteQuery = true;
-            this.pager.PageIndex = 1;
-            this.pager.PageSize = 20;
-            this.pager.RecordCount = 0;
-            this.pager.Size = new System.Drawing.Size(971, 34);
-            this.pager.TabIndex = 3;
-            this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
-            // 
-            // miModify
-            // 
-            this.miModify.Name = "miModify";
-            this.miModify.Size = new System.Drawing.Size(120, 22);
-            this.miModify.Text = "修改(&M)";
-            this.miModify.Click += new System.EventHandler(this.MiModify_Click);
+            this.txtFollowUserName.Location = new System.Drawing.Point(722, 44);
+            this.txtFollowUserName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFollowUserName.MaxLength = 11;
+            this.txtFollowUserName.Name = "txtFollowUserName";
+            this.txtFollowUserName.ReadOnly = true;
+            this.txtFollowUserName.Size = new System.Drawing.Size(94, 21);
+            this.txtFollowUserName.TabIndex = 39;
+            this.txtFollowUserName.WordWrap = false;
             // 
             // cmbProjects
             // 
@@ -370,6 +365,70 @@
             this.txtName.Size = new System.Drawing.Size(73, 21);
             this.txtName.TabIndex = 21;
             // 
+            // butQuery
+            // 
+            this.butQuery.Location = new System.Drawing.Point(871, 7);
+            this.butQuery.Margin = new System.Windows.Forms.Padding(2);
+            this.butQuery.Name = "butQuery";
+            this.butQuery.Size = new System.Drawing.Size(58, 21);
+            this.butQuery.TabIndex = 12;
+            this.butQuery.Text = "查询(&Q)";
+            this.butQuery.UseVisualStyleBackColor = true;
+            this.butQuery.Click += new System.EventHandler(this.ButQuery_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnView);
+            this.panel1.Controls.Add(this.btnModify);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 477);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(971, 34);
+            this.panel1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(884, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "查看(&V)";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(12, 6);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(75, 23);
+            this.btnView.TabIndex = 5;
+            this.btnView.Text = "查看(&V)";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.BtnView_Click);
+            // 
+            // btnModify
+            // 
+            this.btnModify.Location = new System.Drawing.Point(103, 6);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(75, 23);
+            this.btnModify.TabIndex = 6;
+            this.btnModify.Text = "修改(&M)";
+            this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.Controls.Add(this.lvClients);
+            this.panel2.Controls.Add(this.pager);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 76);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(971, 401);
+            this.panel2.TabIndex = 6;
+            // 
             // lvClients
             // 
             this.lvClients.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -402,7 +461,7 @@
             this.lvClients.Margin = new System.Windows.Forms.Padding(2);
             this.lvClients.MultiSelect = false;
             this.lvClients.Name = "lvClients";
-            this.lvClients.Size = new System.Drawing.Size(971, 371);
+            this.lvClients.Size = new System.Drawing.Size(971, 367);
             this.lvClients.TabIndex = 4;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
@@ -443,6 +502,11 @@
             this.columnHeader17.Text = "客户状态";
             this.columnHeader17.Width = 70;
             // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "当前跟进人";
+            this.columnHeader18.Width = 100;
+            // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "客户来源";
@@ -462,6 +526,11 @@
             // 
             this.columnHeader7.Text = "区";
             this.columnHeader7.Width = 80;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "留言时间";
+            this.columnHeader19.Width = 150;
             // 
             // columnHeader9
             // 
@@ -493,46 +562,21 @@
             this.columnHeader14.Text = "下次跟进时间";
             this.columnHeader14.Width = 150;
             // 
-            // label9
+            // pager
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(638, 48);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 12);
-            this.label9.TabIndex = 38;
-            this.label9.Text = "当前跟进人：";
-            // 
-            // txtFollowUserName
-            // 
-            this.txtFollowUserName.Location = new System.Drawing.Point(722, 44);
-            this.txtFollowUserName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFollowUserName.MaxLength = 11;
-            this.txtFollowUserName.Name = "txtFollowUserName";
-            this.txtFollowUserName.ReadOnly = true;
-            this.txtFollowUserName.Size = new System.Drawing.Size(94, 21);
-            this.txtFollowUserName.TabIndex = 39;
-            this.txtFollowUserName.WordWrap = false;
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Location = new System.Drawing.Point(822, 43);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(33, 23);
-            this.btnSelect.TabIndex = 40;
-            this.btnSelect.Text = "选";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
-            // 
-            // columnHeader18
-            // 
-            this.columnHeader18.Text = "当前跟进人";
-            this.columnHeader18.Width = 100;
-            // 
-            // columnHeader19
-            // 
-            this.columnHeader19.Text = "留言时间";
-            this.columnHeader19.Width = 150;
+            this.pager.BackColor = System.Drawing.SystemColors.Control;
+            this.pager.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(78)))), ((int)(((byte)(151)))));
+            this.pager.JumpText = "Go";
+            this.pager.Location = new System.Drawing.Point(0, 367);
+            this.pager.Name = "pager";
+            this.pager.NeedExcuteQuery = true;
+            this.pager.PageIndex = 1;
+            this.pager.PageSize = 20;
+            this.pager.RecordCount = 0;
+            this.pager.Size = new System.Drawing.Size(971, 34);
+            this.pager.TabIndex = 3;
+            this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
             // FormAllCustomers
             // 
@@ -549,6 +593,7 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.panelQuery.ResumeLayout(false);
             this.panelQuery.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -604,5 +649,9 @@
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem miView;
     }
 }

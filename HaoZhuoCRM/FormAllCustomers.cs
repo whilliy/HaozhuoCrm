@@ -249,6 +249,11 @@ namespace HaoZhuoCRM
 
         private void modify()
         {
+            if (lvClients.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("请选择要修改的客户记录");
+                return;
+            }
             ListViewItem lviSelected = lvClients.SelectedItems[0];
             CustomerDto customer = (CustomerDto)lviSelected.Tag;
             FormModifyCustomer modifyCustomer = new FormModifyCustomer(customer);
@@ -284,20 +289,11 @@ namespace HaoZhuoCRM
 
         private void LvClients_DoubleClick(object sender, EventArgs e)
         {
-            if (lvClients.SelectedItems.Count < 1)
-            {
-                return;
-            }
-            modify();
+            view();
         }
 
         private void MiModify_Click(object sender, EventArgs e)
         {
-            if (lvClients.SelectedItems.Count < 1)
-            {
-                MessageBox.Show("请选择要修改的客户记录");
-                return;
-            }
             modify();
         }
 
@@ -375,6 +371,33 @@ namespace HaoZhuoCRM
                 txtFollowUserName.Text = frmSelectUser.SelectedUser.name;
                 txtFollowUserName.Tag = frmSelectUser.SelectedUser.id;
             }
+        }
+
+        private void view()
+        {
+            if (lvClients.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("请选择要查看的客户记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            var customer = (CustomerDto)lvClients.SelectedItems[0].Tag;
+            FormViewCustomer formViewCustomer = new FormViewCustomer(customer);
+            formViewCustomer.ShowDialog();
+        }
+
+        private void BtnView_Click(object sender, EventArgs e)
+        {
+            view();
+        }
+
+        private void BtnModify_Click(object sender, EventArgs e)
+        {
+            modify();
+        }
+
+        private void MiView_Click(object sender, EventArgs e)
+        {
+            view();
         }
     }
 }
