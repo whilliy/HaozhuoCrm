@@ -82,10 +82,12 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -94,12 +96,12 @@
             this.miView,
             this.miModify});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(121, 48);
             // 
             // miView
             // 
             this.miView.Name = "miView";
-            this.miView.Size = new System.Drawing.Size(180, 22);
+            this.miView.Size = new System.Drawing.Size(120, 22);
             this.miView.Text = "查看(&V)";
             this.miView.Click += new System.EventHandler(this.MiView_Click);
             // 
@@ -378,7 +380,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btnView);
             this.panel1.Controls.Add(this.btnModify);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -390,12 +392,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(884, 6);
+            this.button1.Location = new System.Drawing.Point(121, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
-            this.button1.Text = "查看(&V)";
+            this.button1.Text = "退出(&E)";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // btnView
             // 
@@ -578,6 +581,15 @@
             this.pager.TabIndex = 3;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(768, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(203, 34);
+            this.panel3.TabIndex = 8;
+            // 
             // FormAllCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -595,6 +607,7 @@
             this.panelQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -653,5 +666,6 @@
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem miView;
+        private System.Windows.Forms.Panel panel3;
     }
 }

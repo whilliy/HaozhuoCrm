@@ -37,8 +37,9 @@
             this.miMyClients = new System.Windows.Forms.ToolStripMenuItem();
             this.miPublic = new System.Windows.Forms.ToolStripMenuItem();
             this.miDispatch = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAddCustomer = new System.Windows.Forms.ToolStripMenuItem();
             this.miImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAddCustomer = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAllCustomers = new System.Windows.Forms.ToolStripMenuItem();
             this.miManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miProjectManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miUserManagement = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,6 @@
             this.labelCurrentName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lableCurrentOrganization = new System.Windows.Forms.ToolStripStatusLabel();
-            this.miAllCustomers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -112,8 +112,8 @@
             this.miPublic,
             this.miDispatch,
             this.miImport,
-            this.miAddCustomer,
-            this.miAllCustomers});
+            this.miAllCustomers,
+            this.miAddCustomer});
             this.miClients.Name = "miClients";
             this.miClients.Size = new System.Drawing.Size(60, 22);
             this.miClients.Text = "客户(&C)";
@@ -143,6 +143,14 @@
             this.miDispatch.Visible = false;
             this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
             // 
+            // miImport
+            // 
+            this.miImport.Name = "miImport";
+            this.miImport.Size = new System.Drawing.Size(180, 22);
+            this.miImport.Text = "导入(&I)";
+            this.miImport.Visible = false;
+            this.miImport.Click += new System.EventHandler(this.MiImport_Click);
+            // 
             // miAddCustomer
             // 
             this.miAddCustomer.Name = "miAddCustomer";
@@ -151,13 +159,13 @@
             this.miAddCustomer.Visible = false;
             this.miAddCustomer.Click += new System.EventHandler(this.MiAddCustomer_Click);
             // 
-            // miImport
+            // miAllCustomers
             // 
-            this.miImport.Name = "miImport";
-            this.miImport.Size = new System.Drawing.Size(180, 22);
-            this.miImport.Text = "导入(&I)";
-            this.miImport.Visible = false;
-            this.miImport.Click += new System.EventHandler(this.MiImport_Click);
+            this.miAllCustomers.Name = "miAllCustomers";
+            this.miAllCustomers.Size = new System.Drawing.Size(180, 22);
+            this.miAllCustomers.Text = "所有(&A)";
+            this.miAllCustomers.Visible = false;
+            this.miAllCustomers.Click += new System.EventHandler(this.MiAllCustomers_Click);
             // 
             // miManagement
             // 
@@ -247,14 +255,6 @@
             this.lableCurrentOrganization.ForeColor = System.Drawing.Color.Blue;
             this.lableCurrentOrganization.Name = "lableCurrentOrganization";
             this.lableCurrentOrganization.Size = new System.Drawing.Size(0, 17);
-            // 
-            // miAllCustomers
-            // 
-            this.miAllCustomers.Name = "miAllCustomers";
-            this.miAllCustomers.Size = new System.Drawing.Size(180, 22);
-            this.miAllCustomers.Text = "所有(&A)";
-            this.miAllCustomers.Visible = false;
-            this.miAllCustomers.Click += new System.EventHandler(this.MiAllCustomers_Click);
             // 
             // FormMain
             // 
