@@ -25,7 +25,7 @@ namespace Haozhuo.Crm.Service
                     {
                         if (cusomterTypes == null)
                         {
-                            cusomterTypes = getAllCustomerTypes();
+                            cusomterTypes = GetAllCustomerTypes();
                         }
                     }
                 }
@@ -142,7 +142,7 @@ namespace Haozhuo.Crm.Service
                     {
                         if (statuses == null)
                         {
-                            statuses = getCustomerStatuses();
+                            statuses = GetCustomerStatuses();
                         }
                     }
                 }
@@ -161,7 +161,7 @@ namespace Haozhuo.Crm.Service
                     {
                         if (assignedStatuses == null)
                         {
-                            assignedStatuses = getCustomerAssignedStatuses();
+                            assignedStatuses = GetCustomerAssignedStatuses();
                         }
                     }
                 }
@@ -224,7 +224,7 @@ namespace Haozhuo.Crm.Service
         /// 获取所有的客户状态列表
         /// </summary>
         /// <returns></returns>
-        private static IList<CustomerStatus> getCustomerStatuses()
+        private static IList<CustomerStatus> GetCustomerStatuses()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_STATUSES);
@@ -263,7 +263,7 @@ namespace Haozhuo.Crm.Service
         /// 获取所有分派之后的客户状态列表
         /// </summary>
         /// <returns></returns>
-        private static IList<CustomerStatus> getCustomerAssignedStatuses()
+        private static IList<CustomerStatus> GetCustomerAssignedStatuses()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_ASSIGNED_STATUSES);
@@ -302,7 +302,7 @@ namespace Haozhuo.Crm.Service
         /// 获取所有的客户类型
         /// </summary>
         /// <returns></returns>
-        private static List<CustomerTypeDto> getAllCustomerTypes()
+        private static List<CustomerTypeDto> GetAllCustomerTypes()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_TYPES);

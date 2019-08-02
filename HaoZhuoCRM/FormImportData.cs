@@ -68,8 +68,8 @@ namespace HaoZhuoCRM
         {
             province = new ProvinceDto();
             city = new CityDto();
-            var regions = region.Split(new char[] { '+' });
-            if (regions.Length < 2)
+            var regions = region.Split(new char[] { '+', ',', '，' });
+            if (regions.Length < 1)
             {
                 throw new Exception("地区[" + region + "]格式错误，必须为 省+市");
             }
@@ -80,13 +80,16 @@ namespace HaoZhuoCRM
                 throw new Exception("系统暂时不识别的省份名称:" + province.provinceName);
             }
             province.provinceId = provinceId;
-            city.cityName = regions[1];
-            var cityId = RegionService.getCityIdByName(provinceId, regions[1]);
-            if (cityId == null)
+            if (regions.Length > 1)
             {
-                throw new Exception("系统暂时不识别的城市（地区）名称:" + regions[1]);
+                city.cityName = regions[1];
+                var cityId = RegionService.getCityIdByName(provinceId, regions[1]);
+                if (cityId == null)
+                {
+                    throw new Exception("系统暂时不识别的城市（地区）名称:" + regions[1]);
+                }
+                city.cityId = cityId;
             }
-            city.cityId = cityId;
         }
 
         private void ButOpen_Click(object sender, EventArgs e)

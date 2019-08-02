@@ -210,8 +210,8 @@ namespace HaoZhuoCRM
                 AddFollowRecord vo = new AddFollowRecord();
                 vo.communicationTime = dtpActuallyTime.Value;
                 vo.remark = txtRemark.Text;
-                vo.cityId = cmbCities.SelectedValue.ToString();
-                vo.countyId = cmbCounties.SelectedValue.ToString();
+                vo.cityId = cmbCities.SelectedValue != null ? cmbCities.SelectedValue.ToString() : null;
+                vo.countyId = cmbCounties.SelectedValue != null ? cmbCounties.SelectedValue.ToString() : null;
                 vo.gender = cmbGender.SelectedValue == null ? 0 : Convert.ToInt32(cmbGender.SelectedValue.ToString());
                 vo.provinceId = cmbProvinces.SelectedValue.ToString();
                 //vo.mobile = txtMobile.Text;
