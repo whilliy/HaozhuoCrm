@@ -123,7 +123,7 @@ namespace HaoZhuoCRM
                         }
                         int rowCount = WorkSheeet.UsedRange.Cells.Rows.Count;
                         Excel.Range range = WorkSheeet.UsedRange;
-                        for (int row = 1; row < rowCount; row++)
+                        for (int row = 1; row <= rowCount; row++)
                         {
                             var data = new CustomerData();
                             for (int column = 1; column < columnCount; column++)
