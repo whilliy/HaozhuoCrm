@@ -251,5 +251,18 @@ namespace HaoZhuoCRM
                 MessageBox.Show("导入数据失败:" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (lvCustomers.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("请选择要删除的客户数据（不会影响数据文件）", "提醒", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            foreach (ListViewItem lvi in lvCustomers.SelectedItems)
+            {
+                lvCustomers.Items.Remove(lvi);
+            }
+        }
     }
 }

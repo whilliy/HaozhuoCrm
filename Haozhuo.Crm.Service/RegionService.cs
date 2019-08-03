@@ -30,6 +30,19 @@ namespace Haozhuo.Crm.Service
             }
         }
 
+        public static IList<ProvinceDto> PROVINCES_COPY
+        {
+            get
+            {
+                IList<ProvinceDto> provinceDtos = new List<ProvinceDto>();
+                foreach (ProvinceDto dto in PROVINCES)
+                {
+                    provinceDtos.Add(dto);
+                }
+                return provinceDtos;
+            }
+        }
+
         public static String getProvinceIdByName(String provinceName)
         {
             foreach (ProvinceDto province in PROVINCES)

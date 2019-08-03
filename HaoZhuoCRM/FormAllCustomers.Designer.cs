@@ -57,6 +57,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.butQuery = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
@@ -82,12 +83,15 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.cbLeaveWordsTime = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dtpLeaveWordsTimeEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpLeaveWordsTimeBegin = new System.Windows.Forms.DateTimePicker();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -114,17 +118,21 @@
             // 
             // butReset
             // 
-            this.butReset.Location = new System.Drawing.Point(871, 46);
+            this.butReset.Location = new System.Drawing.Point(989, 44);
             this.butReset.Margin = new System.Windows.Forms.Padding(2);
             this.butReset.Name = "butReset";
             this.butReset.Size = new System.Drawing.Size(58, 21);
-            this.butReset.TabIndex = 13;
+            this.butReset.TabIndex = 26;
             this.butReset.Text = "清空(&R)";
             this.butReset.UseVisualStyleBackColor = true;
             this.butReset.Click += new System.EventHandler(this.ButReset_Click);
             // 
             // panelQuery
             // 
+            this.panelQuery.Controls.Add(this.cbLeaveWordsTime);
+            this.panelQuery.Controls.Add(this.label17);
+            this.panelQuery.Controls.Add(this.dtpLeaveWordsTimeEnd);
+            this.panelQuery.Controls.Add(this.dtpLeaveWordsTimeBegin);
             this.panelQuery.Controls.Add(this.btnSelect);
             this.panelQuery.Controls.Add(this.label9);
             this.panelQuery.Controls.Add(this.txtFollowUserName);
@@ -152,15 +160,15 @@
             this.panelQuery.Location = new System.Drawing.Point(0, 0);
             this.panelQuery.Margin = new System.Windows.Forms.Padding(2);
             this.panelQuery.Name = "panelQuery";
-            this.panelQuery.Size = new System.Drawing.Size(971, 76);
-            this.panelQuery.TabIndex = 4;
+            this.panelQuery.Size = new System.Drawing.Size(1058, 76);
+            this.panelQuery.TabIndex = 0;
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(822, 43);
+            this.btnSelect.Location = new System.Drawing.Point(945, 43);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(33, 23);
-            this.btnSelect.TabIndex = 40;
+            this.btnSelect.TabIndex = 24;
             this.btnSelect.Text = "选";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
@@ -168,22 +176,22 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(638, 48);
+            this.label9.Location = new System.Drawing.Point(761, 48);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(77, 12);
-            this.label9.TabIndex = 38;
+            this.label9.TabIndex = 22;
             this.label9.Text = "当前跟进人：";
             // 
             // txtFollowUserName
             // 
-            this.txtFollowUserName.Location = new System.Drawing.Point(722, 44);
+            this.txtFollowUserName.Location = new System.Drawing.Point(845, 44);
             this.txtFollowUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFollowUserName.MaxLength = 11;
             this.txtFollowUserName.Name = "txtFollowUserName";
             this.txtFollowUserName.ReadOnly = true;
             this.txtFollowUserName.Size = new System.Drawing.Size(94, 21);
-            this.txtFollowUserName.TabIndex = 39;
+            this.txtFollowUserName.TabIndex = 23;
             this.txtFollowUserName.WordWrap = false;
             // 
             // cmbProjects
@@ -194,7 +202,7 @@
             this.cmbProjects.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjects.Name = "cmbProjects";
             this.cmbProjects.Size = new System.Drawing.Size(84, 20);
-            this.cmbProjects.TabIndex = 37;
+            this.cmbProjects.TabIndex = 5;
             // 
             // label8
             // 
@@ -203,48 +211,48 @@
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 12);
-            this.label8.TabIndex = 36;
+            this.label8.TabIndex = 4;
             this.label8.Text = "项目：";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 47);
+            this.label7.Location = new System.Drawing.Point(832, 12);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 34;
+            this.label7.TabIndex = 10;
             this.label7.Text = "客户状态：";
             // 
             // cmbStatus
             // 
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(83, 43);
+            this.cmbStatus.Location = new System.Drawing.Point(903, 8);
             this.cmbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(73, 20);
-            this.cmbStatus.TabIndex = 35;
+            this.cmbStatus.TabIndex = 11;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(638, 11);
+            this.label6.Location = new System.Drawing.Point(638, 12);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
-            this.label6.TabIndex = 32;
+            this.label6.TabIndex = 8;
             this.label6.Text = "客户来源：";
             // 
             // cmbCustomerSources
             // 
             this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerSources.FormattingEnabled = true;
-            this.cmbCustomerSources.Location = new System.Drawing.Point(722, 7);
+            this.cmbCustomerSources.Location = new System.Drawing.Point(722, 8);
             this.cmbCustomerSources.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerSources.Name = "cmbCustomerSources";
             this.cmbCustomerSources.Size = new System.Drawing.Size(94, 20);
-            this.cmbCustomerSources.TabIndex = 33;
+            this.cmbCustomerSources.TabIndex = 9;
             // 
             // label5
             // 
@@ -253,7 +261,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 24;
+            this.label5.TabIndex = 6;
             this.label5.Text = "客户类型：";
             // 
             // cmbCustomerTypes
@@ -264,57 +272,57 @@
             this.cmbCustomerTypes.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerTypes.Name = "cmbCustomerTypes";
             this.cmbCustomerTypes.Size = new System.Drawing.Size(44, 20);
-            this.cmbCustomerTypes.TabIndex = 25;
+            this.cmbCustomerTypes.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(469, 47);
+            this.label4.Location = new System.Drawing.Point(632, 48);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 30;
+            this.label4.TabIndex = 20;
             this.label4.Text = "区：";
             // 
             // cmbCounties
             // 
             this.cmbCounties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCounties.FormattingEnabled = true;
-            this.cmbCounties.Location = new System.Drawing.Point(501, 43);
+            this.cmbCounties.Location = new System.Drawing.Point(664, 44);
             this.cmbCounties.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCounties.Name = "cmbCounties";
-            this.cmbCounties.Size = new System.Drawing.Size(104, 20);
-            this.cmbCounties.TabIndex = 31;
+            this.cmbCounties.Size = new System.Drawing.Size(93, 20);
+            this.cmbCounties.TabIndex = 21;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(295, 47);
+            this.label3.Location = new System.Drawing.Point(503, 48);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 28;
+            this.label3.TabIndex = 18;
             this.label3.Text = "市：";
             // 
             // cmbCities
             // 
             this.cmbCities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCities.FormattingEnabled = true;
-            this.cmbCities.Location = new System.Drawing.Point(328, 43);
+            this.cmbCities.Location = new System.Drawing.Point(536, 44);
             this.cmbCities.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCities.Name = "cmbCities";
-            this.cmbCities.Size = new System.Drawing.Size(112, 20);
-            this.cmbCities.TabIndex = 29;
+            this.cmbCities.Size = new System.Drawing.Size(92, 20);
+            this.cmbCities.TabIndex = 19;
             this.cmbCities.SelectedIndexChanged += new System.EventHandler(this.CmbCities_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(166, 47);
+            this.label2.Location = new System.Drawing.Point(374, 48);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 26;
+            this.label2.TabIndex = 16;
             this.label2.Text = "省：";
             // 
             // label1
@@ -324,18 +332,18 @@
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 22;
+            this.label1.TabIndex = 2;
             this.label1.Text = "手机号码：";
             // 
             // cmbProvinces
             // 
             this.cmbProvinces.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvinces.FormattingEnabled = true;
-            this.cmbProvinces.Location = new System.Drawing.Point(200, 43);
+            this.cmbProvinces.Location = new System.Drawing.Point(408, 44);
             this.cmbProvinces.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProvinces.Name = "cmbProvinces";
             this.cmbProvinces.Size = new System.Drawing.Size(87, 20);
-            this.cmbProvinces.TabIndex = 27;
+            this.cmbProvinces.TabIndex = 17;
             this.cmbProvinces.SelectedIndexChanged += new System.EventHandler(this.CmbProvinces_SelectedIndexChanged);
             // 
             // txtMobile
@@ -345,7 +353,7 @@
             this.txtMobile.MaxLength = 11;
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(88, 21);
-            this.txtMobile.TabIndex = 23;
+            this.txtMobile.TabIndex = 3;
             this.txtMobile.WordWrap = false;
             // 
             // labelName
@@ -355,7 +363,7 @@
             this.labelName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(65, 12);
-            this.labelName.TabIndex = 20;
+            this.labelName.TabIndex = 0;
             this.labelName.Text = "客户姓名：";
             // 
             // txtName
@@ -365,15 +373,15 @@
             this.txtName.MaxLength = 20;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(73, 21);
-            this.txtName.TabIndex = 21;
+            this.txtName.TabIndex = 1;
             // 
             // butQuery
             // 
-            this.butQuery.Location = new System.Drawing.Point(871, 7);
+            this.butQuery.Location = new System.Drawing.Point(989, 8);
             this.butQuery.Margin = new System.Windows.Forms.Padding(2);
             this.butQuery.Name = "butQuery";
             this.butQuery.Size = new System.Drawing.Size(58, 21);
-            this.butQuery.TabIndex = 12;
+            this.butQuery.TabIndex = 25;
             this.butQuery.Text = "查询(&Q)";
             this.butQuery.UseVisualStyleBackColor = true;
             this.butQuery.Click += new System.EventHandler(this.ButQuery_Click);
@@ -387,15 +395,24 @@
             this.panel1.Location = new System.Drawing.Point(0, 477);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(971, 34);
-            this.panel1.TabIndex = 5;
+            this.panel1.Size = new System.Drawing.Size(1058, 34);
+            this.panel1.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(855, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(203, 34);
+            this.panel3.TabIndex = 2;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(121, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 0;
             this.button1.Text = "退出(&E)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
@@ -405,7 +422,7 @@
             this.btnView.Location = new System.Drawing.Point(12, 6);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(75, 23);
-            this.btnView.TabIndex = 5;
+            this.btnView.TabIndex = 0;
             this.btnView.Text = "查看(&V)";
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.BtnView_Click);
@@ -415,7 +432,7 @@
             this.btnModify.Location = new System.Drawing.Point(103, 6);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(75, 23);
-            this.btnModify.TabIndex = 6;
+            this.btnModify.TabIndex = 1;
             this.btnModify.Text = "修改(&M)";
             this.btnModify.UseVisualStyleBackColor = true;
             this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
@@ -429,7 +446,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 76);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(971, 401);
+            this.panel2.Size = new System.Drawing.Size(1058, 401);
             this.panel2.TabIndex = 6;
             // 
             // lvClients
@@ -464,8 +481,8 @@
             this.lvClients.Margin = new System.Windows.Forms.Padding(2);
             this.lvClients.MultiSelect = false;
             this.lvClients.Name = "lvClients";
-            this.lvClients.Size = new System.Drawing.Size(971, 367);
-            this.lvClients.TabIndex = 4;
+            this.lvClients.Size = new System.Drawing.Size(1058, 367);
+            this.lvClients.TabIndex = 0;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
             this.lvClients.DoubleClick += new System.EventHandler(this.LvClients_DoubleClick);
@@ -577,24 +594,58 @@
             this.pager.PageIndex = 1;
             this.pager.PageSize = 20;
             this.pager.RecordCount = 0;
-            this.pager.Size = new System.Drawing.Size(971, 34);
-            this.pager.TabIndex = 3;
+            this.pager.Size = new System.Drawing.Size(1058, 34);
+            this.pager.TabIndex = 1;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
-            // panel3
+            // cbLeaveWordsTime
             // 
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(768, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(203, 34);
-            this.panel3.TabIndex = 8;
+            this.cbLeaveWordsTime.AutoSize = true;
+            this.cbLeaveWordsTime.Location = new System.Drawing.Point(9, 46);
+            this.cbLeaveWordsTime.Name = "cbLeaveWordsTime";
+            this.cbLeaveWordsTime.Size = new System.Drawing.Size(108, 16);
+            this.cbLeaveWordsTime.TabIndex = 12;
+            this.cbLeaveWordsTime.Text = "留言时间范围：";
+            this.cbLeaveWordsTime.UseVisualStyleBackColor = true;
+            this.cbLeaveWordsTime.CheckedChanged += new System.EventHandler(this.CbLeaveWordsTime_CheckedChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(232, 48);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(17, 12);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "至";
+            // 
+            // dtpLeaveWordsTimeEnd
+            // 
+            this.dtpLeaveWordsTimeEnd.CustomFormat = "yyyy-MM-dd";
+            this.dtpLeaveWordsTimeEnd.Enabled = false;
+            this.dtpLeaveWordsTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpLeaveWordsTimeEnd.Location = new System.Drawing.Point(254, 44);
+            this.dtpLeaveWordsTimeEnd.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpLeaveWordsTimeEnd.Name = "dtpLeaveWordsTimeEnd";
+            this.dtpLeaveWordsTimeEnd.Size = new System.Drawing.Size(104, 21);
+            this.dtpLeaveWordsTimeEnd.TabIndex = 15;
+            // 
+            // dtpLeaveWordsTimeBegin
+            // 
+            this.dtpLeaveWordsTimeBegin.CustomFormat = "yyyy-MM-dd";
+            this.dtpLeaveWordsTimeBegin.Enabled = false;
+            this.dtpLeaveWordsTimeBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpLeaveWordsTimeBegin.Location = new System.Drawing.Point(123, 44);
+            this.dtpLeaveWordsTimeBegin.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpLeaveWordsTimeBegin.Name = "dtpLeaveWordsTimeBegin";
+            this.dtpLeaveWordsTimeBegin.Size = new System.Drawing.Size(104, 21);
+            this.dtpLeaveWordsTimeBegin.TabIndex = 13;
             // 
             // FormAllCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 511);
+            this.ClientSize = new System.Drawing.Size(1058, 511);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelQuery);
@@ -606,8 +657,8 @@
             this.panelQuery.ResumeLayout(false);
             this.panelQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -667,5 +718,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem miView;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.CheckBox cbLeaveWordsTime;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DateTimePicker dtpLeaveWordsTimeEnd;
+        private System.Windows.Forms.DateTimePicker dtpLeaveWordsTimeBegin;
     }
 }

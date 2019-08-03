@@ -609,7 +609,9 @@ namespace Haozhuo.Crm.Service
                                                         Int64? currentUserId,
                                                         String provinceId,
                                                         String cityId,
-                                                        String countyId)
+                                                        String countyId,
+                                                        String leaveWordsTimeBegin,
+                                                        String leaveWordsTimeEnd)
         {
             RestClient rc = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMERS, Method.GET);
@@ -661,6 +663,14 @@ namespace Haozhuo.Crm.Service
             if (!String.IsNullOrEmpty(name))
             {
                 request.AddParameter("name", name);
+            }
+            if (!String.IsNullOrEmpty(leaveWordsTimeBegin))
+            {
+                request.AddParameter("leave_words_begin", leaveWordsTimeBegin);
+            }
+            if (!String.IsNullOrEmpty(leaveWordsTimeEnd))
+            {
+                request.AddParameter("leave_words_end", leaveWordsTimeEnd);
             }
             try
             {
@@ -717,7 +727,9 @@ namespace Haozhuo.Crm.Service
                                                         String mobile,
                                                         String provinceId,
                                                         String cityId,
-                                                        String countyId)
+                                                        String countyId,
+                                                        String leaveWordsTimeBegin,
+                                                        String leaveWordsTimeEnd)
         {
             RestClient rc = new RestClient();
             var request = new RestRequest(GlobalConfig.MY_CUSTOMERS, Method.GET);
@@ -765,6 +777,14 @@ namespace Haozhuo.Crm.Service
             if (!String.IsNullOrEmpty(name))
             {
                 request.AddParameter("name", name);
+            }
+            if (!String.IsNullOrEmpty(leaveWordsTimeBegin))
+            {
+                request.AddParameter("leave_words_begin", leaveWordsTimeBegin);
+            }
+            if (!String.IsNullOrEmpty(leaveWordsTimeEnd))
+            {
+                request.AddParameter("leave_words_end", leaveWordsTimeEnd);
             }
             try
             {

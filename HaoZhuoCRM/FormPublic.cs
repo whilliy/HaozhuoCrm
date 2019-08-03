@@ -81,7 +81,7 @@ namespace HaoZhuoCRM
             IList<ProvinceDto> provinces = null;
             try
             {
-                provinces = RegionService.PROVINCES;
+                provinces = RegionService.PROVINCES_COPY;
             }
             catch (BusinessException ex)
             {

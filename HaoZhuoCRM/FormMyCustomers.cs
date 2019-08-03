@@ -58,6 +58,7 @@ namespace HaoZhuoCRM
 
         private void FormMyClients_Load(object sender, EventArgs e)
         {
+            dtpLeaveWordsTimeEnd.Value = dtpLeaveWordsTimeBegin.Value = DateTime.Now;
             //获取项目列表
             try
             {
@@ -123,7 +124,7 @@ namespace HaoZhuoCRM
             IList<ProvinceDto> provinces = null;
             try
             {
-                provinces = RegionService.PROVINCES;
+                provinces = RegionService.PROVINCES_COPY;
             }
             catch (BusinessException ex)
             {
@@ -216,6 +217,7 @@ namespace HaoZhuoCRM
             cmbStatus.SelectedIndex = 0;
             cmbProvinces.SelectedIndex = 0;
             lvClients.Items.Clear();
+            cbLeaveWordsTime.Checked = false;
             txtName.Focus();
 
         }
@@ -265,8 +267,18 @@ namespace HaoZhuoCRM
             }
             //将每页数量改为下拉框内的值
             PageSize = Convert.ToInt32(cmbPagesizes.Text);
+            String leaveWordsTimeBegin = null, leaveWordsTimeEnd = null;
+            if (cbLeaveWordsTime.Checked)
+            {
+                if (dtpLeaveWordsTimeBegin.Value.CompareTo(dtpLeaveWordsTimeEnd.Value) > 0)
+                {
+                    throw new BusinessException("留言范围的截至时间不能早于起始时间");
+                }
+                leaveWordsTimeBegin = dtpLeaveWordsTimeBegin.Value.ToString("yyyy-MM-dd");
+                leaveWordsTimeEnd = dtpLeaveWordsTimeEnd.Value.ToString("yyyy-MM-dd");
+            }
             ResultsWithCount<CustomerDto> customers = CustomerService.QueryMyCustomers(Global.USER_TOKEN, CurrentPage, PageSize, projectId,
-                 status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId);
+                 status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId, leaveWordsTimeBegin, leaveWordsTimeEnd);
             return customers;
         }
 
@@ -283,12 +295,13 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);
             lvi.SubItems.Add(customer.countyName);
-            lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString(GlobalConfig.DateTimeFormat));
-            lvi.SubItems.Add(!customer.previousFollowTime.HasValue ? "" : customer.previousFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
-            lvi.SubItems.Add(customer.previousFollowUserName);
-            lvi.SubItems.Add(!customer.lastFollowTime.HasValue ? "" : customer.lastFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
-            lvi.SubItems.Add(customer.lastFollowUserName);
+            lvi.SubItems.Add(customer.leaveWordsTime.HasValue ? customer.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat) : "");
             lvi.SubItems.Add(!customer.nextFollowTime.HasValue ? "" : customer.nextFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
+            lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString(GlobalConfig.DateTimeFormat));
+            lvi.SubItems.Add(customer.lastFollowUserName);
+            lvi.SubItems.Add(!customer.lastFollowTime.HasValue ? "" : customer.lastFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
+            lvi.SubItems.Add(customer.previousFollowUserName);
+            lvi.SubItems.Add(!customer.previousFollowTime.HasValue ? "" : customer.previousFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
             lvi.Tag = customer;
         }
 
@@ -398,12 +411,13 @@ namespace HaoZhuoCRM
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "省").Value].Text = currentCustomer.provinceName;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "市").Value].Text = currentCustomer.cityName;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "区").Value].Text = currentCustomer.countyName;
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "留言时间").Value].Text = !currentCustomer.leaveWordsTime.HasValue ? "" : currentCustomer.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat);
+                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "下次跟进时间").Value].Text = !currentCustomer.nextFollowTime.HasValue ? "" : currentCustomer.nextFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "录入时间").Value].Text = currentCustomer.createdTime.ToString(GlobalConfig.DateTimeFormat);
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "上次跟进时间").Value].Text = !currentCustomer.previousFollowTime.HasValue ? "" : currentCustomer.previousFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "上次跟进人").Value].Text = currentCustomer.previousFollowUserName;
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进时间").Value].Text = !currentCustomer.lastFollowTime.HasValue ? "" : currentCustomer.lastFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进人").Value].Text = frmUpdateCustomer.CURRENT_CUSTOMER.lastFollowUserName;
-                lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "下次跟进时间").Value].Text = !currentCustomer.nextFollowTime.HasValue ? "" : currentCustomer.nextFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
                 lviSelected.Tag = currentCustomer;
             }
         }
@@ -548,6 +562,11 @@ namespace HaoZhuoCRM
             {
                 lvi.Checked = checkBoxAll.Checked;
             }
+        }
+
+        private void CbLeaveWordsTime_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpLeaveWordsTimeBegin.Enabled = dtpLeaveWordsTimeEnd.Enabled = cbLeaveWordsTime.Checked;
         }
     }
 }

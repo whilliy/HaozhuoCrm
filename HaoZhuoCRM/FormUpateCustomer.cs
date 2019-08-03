@@ -55,7 +55,7 @@ namespace HaoZhuoCRM
                 txtMobile.Text = CURRENT_CUSTOMER.mobile;
                 cmbProvinces.DisplayMember = "provinceName";
                 cmbProvinces.ValueMember = "provinceId";
-                cmbProvinces.DataSource = RegionService.PROVINCES;
+                cmbProvinces.DataSource = RegionService.PROVINCES_COPY;
                 if (CURRENT_CUSTOMER.provinceId != null)
                 {
                     cmbProvinces.SelectedValue = CURRENT_CUSTOMER.provinceId;

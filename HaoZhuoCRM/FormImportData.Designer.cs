@@ -29,25 +29,26 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lvCustomers = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.butOpen = new System.Windows.Forms.Button();
+            this.txtFile = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbProjects = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbCustomerSources = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFile = new System.Windows.Forms.TextBox();
-            this.butOpen = new System.Windows.Forms.Button();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnOK = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.lvCustomers = new System.Windows.Forms.ListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -67,62 +68,32 @@
             this.panel1.Size = new System.Drawing.Size(1013, 43);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // butOpen
             // 
-            this.panel2.Controls.Add(this.btnClose);
-            this.panel2.Controls.Add(this.btnOK);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 467);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1013, 43);
-            this.panel2.TabIndex = 0;
+            this.butOpen.Location = new System.Drawing.Point(834, 9);
+            this.butOpen.Name = "butOpen";
+            this.butOpen.Size = new System.Drawing.Size(75, 23);
+            this.butOpen.TabIndex = 16;
+            this.butOpen.Text = "打开(&O)";
+            this.butOpen.UseVisualStyleBackColor = true;
+            this.butOpen.Click += new System.EventHandler(this.ButOpen_Click);
             // 
-            // lvCustomers
+            // txtFile
             // 
-            this.lvCustomers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader9,
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader5,
-            this.columnHeader10,
-            this.columnHeader6,
-            this.columnHeader7});
-            this.lvCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvCustomers.FullRowSelect = true;
-            this.lvCustomers.GridLines = true;
-            this.lvCustomers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvCustomers.HideSelection = false;
-            this.lvCustomers.Location = new System.Drawing.Point(0, 43);
-            this.lvCustomers.Name = "lvCustomers";
-            this.lvCustomers.Size = new System.Drawing.Size(1013, 424);
-            this.lvCustomers.TabIndex = 2;
-            this.lvCustomers.UseCompatibleStateImageBehavior = false;
-            this.lvCustomers.View = System.Windows.Forms.View.Details;
+            this.txtFile.Location = new System.Drawing.Point(424, 10);
+            this.txtFile.Name = "txtFile";
+            this.txtFile.ReadOnly = true;
+            this.txtFile.Size = new System.Drawing.Size(400, 21);
+            this.txtFile.TabIndex = 15;
             // 
-            // columnHeader1
+            // label1
             // 
-            this.columnHeader1.Text = "姓名";
-            this.columnHeader1.Width = 80;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "手机号码";
-            this.columnHeader2.Width = 82;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "留言时间";
-            this.columnHeader5.Width = 150;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "省";
-            this.columnHeader6.Width = 80;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "市";
-            this.columnHeader7.Width = 100;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(365, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "文件：";
             // 
             // cmbProjects
             // 
@@ -164,48 +135,16 @@
             this.cmbCustomerSources.Size = new System.Drawing.Size(84, 20);
             this.cmbCustomerSources.TabIndex = 13;
             // 
-            // label1
+            // panel2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(365, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "文件：";
-            // 
-            // txtFile
-            // 
-            this.txtFile.Location = new System.Drawing.Point(424, 10);
-            this.txtFile.Name = "txtFile";
-            this.txtFile.ReadOnly = true;
-            this.txtFile.Size = new System.Drawing.Size(400, 21);
-            this.txtFile.TabIndex = 15;
-            // 
-            // butOpen
-            // 
-            this.butOpen.Location = new System.Drawing.Point(834, 9);
-            this.butOpen.Name = "butOpen";
-            this.butOpen.Size = new System.Drawing.Size(75, 23);
-            this.butOpen.TabIndex = 16;
-            this.butOpen.Text = "打开(&O)";
-            this.butOpen.UseVisualStyleBackColor = true;
-            this.butOpen.Click += new System.EventHandler(this.ButOpen_Click);
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.DefaultExt = "*.xlsx";
-            this.openFileDialog.Filter = "Excel文件|*.xls;*.xlsx|逗号分隔文件|*.csv";
-            this.openFileDialog.Title = "选择要导入的客户文件";
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(834, 10);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 17;
-            this.btnOK.Text = "确认(&Y)";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
+            this.panel2.Controls.Add(this.btnDelete);
+            this.panel2.Controls.Add(this.btnClose);
+            this.panel2.Controls.Add(this.btnOK);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 467);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1013, 43);
+            this.panel2.TabIndex = 0;
             // 
             // btnClose
             // 
@@ -218,15 +157,88 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(834, 10);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 17;
+            this.btnOK.Text = "确认(&Y)";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
+            // 
+            // lvCustomers
+            // 
+            this.lvCustomers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader9,
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader5,
+            this.columnHeader10,
+            this.columnHeader6,
+            this.columnHeader7});
+            this.lvCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvCustomers.FullRowSelect = true;
+            this.lvCustomers.GridLines = true;
+            this.lvCustomers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvCustomers.HideSelection = false;
+            this.lvCustomers.Location = new System.Drawing.Point(0, 43);
+            this.lvCustomers.Name = "lvCustomers";
+            this.lvCustomers.Size = new System.Drawing.Size(1013, 424);
+            this.lvCustomers.TabIndex = 2;
+            this.lvCustomers.UseCompatibleStateImageBehavior = false;
+            this.lvCustomers.View = System.Windows.Forms.View.Details;
+            // 
             // columnHeader9
             // 
             this.columnHeader9.Text = "序号";
             this.columnHeader9.Width = 40;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "姓名";
+            this.columnHeader1.Width = 80;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "手机号码";
+            this.columnHeader2.Width = 82;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "留言时间";
+            this.columnHeader5.Width = 150;
+            // 
             // columnHeader10
             // 
             this.columnHeader10.Text = "地区";
             this.columnHeader10.Width = 200;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "省";
+            this.columnHeader6.Width = 80;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "市";
+            this.columnHeader7.Width = 100;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.DefaultExt = "*.xlsx";
+            this.openFileDialog.Filter = "Excel文件|*.xls;*.xlsx|逗号分隔文件|*.csv";
+            this.openFileDialog.Title = "选择要导入的客户文件";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(13, 10);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "删除(&D)";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // FormImportData
             // 
@@ -272,5 +284,6 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

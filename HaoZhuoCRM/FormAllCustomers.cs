@@ -17,6 +17,7 @@ namespace HaoZhuoCRM
 
         private void FormPublic_Load(object sender, EventArgs e)
         {
+            dtpLeaveWordsTimeEnd.Value = dtpLeaveWordsTimeBegin.Value = DateTime.Now;
             //获取所有的客户状态
             IList<CustomerStatus> customerStatuses = new List<CustomerStatus>();
             try
@@ -82,7 +83,7 @@ namespace HaoZhuoCRM
             IList<ProvinceDto> provinces = null;
             try
             {
-                provinces = RegionService.PROVINCES;
+                provinces = RegionService.PROVINCES_COPY;
             }
             catch (BusinessException ex)
             {
@@ -149,8 +150,18 @@ namespace HaoZhuoCRM
             {
                 currentUserId = Convert.ToInt64(txtFollowUserName.Tag.ToString());
             }
+            String leaveWordsTimeBegin = null, leaveWordsTimeEnd = null;
+            if (cbLeaveWordsTime.Checked)
+            {
+                if (dtpLeaveWordsTimeBegin.Value.CompareTo(dtpLeaveWordsTimeEnd.Value) > 0)
+                {
+                    throw new BusinessException("留言范围的截至时间不能早于起始时间");
+                }
+                leaveWordsTimeBegin = dtpLeaveWordsTimeBegin.Value.ToString("yyyy-MM-dd");
+                leaveWordsTimeEnd = dtpLeaveWordsTimeEnd.Value.ToString("yyyy-MM-dd");
+            }
             ResultsWithCount<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, pager.PageIndex, pager.PageSize,
-                projectId, status, source, type, txtName.Text, txtMobile.Text, currentUserId, provinceId, cityId, countyId);
+                projectId, status, source, type, txtName.Text, txtMobile.Text, currentUserId, provinceId, cityId, countyId, leaveWordsTimeBegin, leaveWordsTimeEnd);
             return customers;
         }
 
@@ -242,6 +253,7 @@ namespace HaoZhuoCRM
             lvClients.Items.Clear();
             txtFollowUserName.Tag = null;
             txtFollowUserName.Text = "";
+            cbLeaveWordsTime.Checked = false;
             pager.Reset();
             txtName.Focus();
 
@@ -403,6 +415,11 @@ namespace HaoZhuoCRM
         private void Button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void CbLeaveWordsTime_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpLeaveWordsTimeBegin.Enabled = dtpLeaveWordsTimeEnd.Enabled = cbLeaveWordsTime.Checked;
         }
     }
 }
