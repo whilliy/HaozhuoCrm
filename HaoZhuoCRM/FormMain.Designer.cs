@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.miFile = new System.Windows.Forms.ToolStripMenuItem();
             this.miModifyPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.miChangeUser = new System.Windows.Forms.ToolStripMenuItem();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.miClients = new System.Windows.Forms.ToolStripMenuItem();
-            this.miMyClients = new System.Windows.Forms.ToolStripMenuItem();
             this.miPublic = new System.Windows.Forms.ToolStripMenuItem();
             this.miDispatch = new System.Windows.Forms.ToolStripMenuItem();
             this.miImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAddCustomer = new System.Windows.Forms.ToolStripMenuItem();
             this.miAllCustomers = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAddCustomer = new System.Windows.Forms.ToolStripMenuItem();
             this.miManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miProjectManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.miUserManagement = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +51,7 @@
             this.labelCurrentName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lableCurrentOrganization = new System.Windows.Forms.ToolStripStatusLabel();
+            this.miMyClients = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -119,18 +120,11 @@
             this.miClients.Text = "客户(&C)";
             this.miClients.Visible = false;
             // 
-            // miMyClients
-            // 
-            this.miMyClients.Name = "miMyClients";
-            this.miMyClients.Size = new System.Drawing.Size(180, 22);
-            this.miMyClients.Text = "我的(&M)";
-            this.miMyClients.Visible = false;
-            this.miMyClients.Click += new System.EventHandler(this.MiMyClients_Click);
-            // 
             // miPublic
             // 
+            this.miPublic.Image = global::HaoZhuoCRM.Properties.Resources._public;
             this.miPublic.Name = "miPublic";
-            this.miPublic.Size = new System.Drawing.Size(180, 22);
+            this.miPublic.Size = new System.Drawing.Size(196, 38);
             this.miPublic.Text = "公海(&P)";
             this.miPublic.Visible = false;
             this.miPublic.Click += new System.EventHandler(this.MiPublic_Click);
@@ -138,7 +132,7 @@
             // miDispatch
             // 
             this.miDispatch.Name = "miDispatch";
-            this.miDispatch.Size = new System.Drawing.Size(180, 22);
+            this.miDispatch.Size = new System.Drawing.Size(196, 38);
             this.miDispatch.Text = "分派(&D)";
             this.miDispatch.Visible = false;
             this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
@@ -146,26 +140,26 @@
             // miImport
             // 
             this.miImport.Name = "miImport";
-            this.miImport.Size = new System.Drawing.Size(180, 22);
+            this.miImport.Size = new System.Drawing.Size(196, 38);
             this.miImport.Text = "导入(&I)";
             this.miImport.Visible = false;
             this.miImport.Click += new System.EventHandler(this.MiImport_Click);
             // 
-            // miAddCustomer
-            // 
-            this.miAddCustomer.Name = "miAddCustomer";
-            this.miAddCustomer.Size = new System.Drawing.Size(180, 22);
-            this.miAddCustomer.Text = "新增(&N)";
-            this.miAddCustomer.Visible = false;
-            this.miAddCustomer.Click += new System.EventHandler(this.MiAddCustomer_Click);
-            // 
             // miAllCustomers
             // 
             this.miAllCustomers.Name = "miAllCustomers";
-            this.miAllCustomers.Size = new System.Drawing.Size(180, 22);
+            this.miAllCustomers.Size = new System.Drawing.Size(196, 38);
             this.miAllCustomers.Text = "所有(&A)";
             this.miAllCustomers.Visible = false;
             this.miAllCustomers.Click += new System.EventHandler(this.MiAllCustomers_Click);
+            // 
+            // miAddCustomer
+            // 
+            this.miAddCustomer.Name = "miAddCustomer";
+            this.miAddCustomer.Size = new System.Drawing.Size(196, 38);
+            this.miAddCustomer.Text = "新增(&N)";
+            this.miAddCustomer.Visible = false;
+            this.miAddCustomer.Click += new System.EventHandler(this.MiAddCustomer_Click);
             // 
             // miManagement
             // 
@@ -256,6 +250,15 @@
             this.lableCurrentOrganization.Name = "lableCurrentOrganization";
             this.lableCurrentOrganization.Size = new System.Drawing.Size(0, 17);
             // 
+            // miMyClients
+            // 
+            this.miMyClients.Image = global::HaoZhuoCRM.Properties.Resources.my_customers;
+            this.miMyClients.Name = "miMyClients";
+            this.miMyClients.Size = new System.Drawing.Size(196, 38);
+            this.miMyClients.Text = "我的(&M)";
+            this.miMyClients.Visible = false;
+            this.miMyClients.Click += new System.EventHandler(this.MiMyClients_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -263,6 +266,7 @@
             this.ClientSize = new System.Drawing.Size(752, 490);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);

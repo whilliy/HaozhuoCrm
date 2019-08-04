@@ -36,6 +36,13 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="microsoft.office.interop.excel">
       <HintPath>..\..\..\Users\Li Yongchun\Desktop\microsoft.office.interop.excel.dll</HintPath>
@@ -321,9 +328,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app.ico" />
+    <None Include="Images\my_customers.ico" />
+    <None Include="Images\public.ico" />
     <Content Include="libs\microsoft.office.interop.excel.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
