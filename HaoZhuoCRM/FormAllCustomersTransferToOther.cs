@@ -60,7 +60,7 @@ namespace HaoZhuoCRM
                 TransterCustomerVo vo = new TransterCustomerVo();
                 vo.customerIds = customerIds;
                 vo.targetUserId = target.id;
-                CustomerService.TransferCustomersToTargetUsers(vo, Global.USER_TOKEN);
+                CustomerService.AdminTransferCustomersToTargetUsers(vo, Global.USER_TOKEN);
                 DialogResult = DialogResult.OK;
             }
             catch (BusinessException ex)
