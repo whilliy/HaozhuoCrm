@@ -117,9 +117,9 @@ namespace HaoZhuoCRM
                            Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                         WorkSheeet = (Excel.Worksheet)WorkBook.Worksheets[1];
                         int columnCount = WorkSheeet.UsedRange.Cells.Columns.Count;
-                        if (columnCount != ColumnCount)
+                        if (columnCount < ColumnCount)
                         {
-                            throw new Exception("表的列数必须为6");
+                            throw new Exception("数据表格式错误，列数不能少于6");
                         }
                         int rowCount = WorkSheeet.UsedRange.Cells.Rows.Count;
                         Excel.Range range = WorkSheeet.UsedRange;

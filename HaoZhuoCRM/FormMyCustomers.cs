@@ -137,7 +137,7 @@ namespace HaoZhuoCRM
             cmbProvinces.DisplayMember = "provinceName";
             cmbProvinces.DataSource = provinces;
             cmbPagesizes.SelectedIndexChanged += CmbPagesizes_SelectedIndexChanged;
-            getCustomersAndBindingDatas();
+            GetCustomersAndBindingDatas();
 
 
         }
@@ -282,7 +282,7 @@ namespace HaoZhuoCRM
             return customers;
         }
 
-        private void bindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
+        private void BindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
         {
             lvi.SubItems.Add(sequence.ToString());
             lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId]);
@@ -313,7 +313,7 @@ namespace HaoZhuoCRM
             foreach (CustomerDto customer in customers.getResults())
             {
                 ListViewItem lvi = new ListViewItem();
-                bindingData(lvi, i, customer);
+                BindingData(lvi, i, customer);
                 lvClients.Items.Add(lvi);
                 i++;
             }
@@ -322,7 +322,7 @@ namespace HaoZhuoCRM
 
         private void ButQuery_Click(object sender, EventArgs e)
         {
-            getCustomersAndBindingDatas();
+            GetCustomersAndBindingDatas();
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace HaoZhuoCRM
         /// <summary>
         /// 获取符合条件的数据并绑定到ListView和Pager区
         /// </summary>
-        private void getCustomersAndBindingDatas()
+        private void GetCustomersAndBindingDatas()
         {
             //初始化几个按钮的状态
             IntialPageButtons();
@@ -420,37 +420,39 @@ namespace HaoZhuoCRM
                 lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进人").Value].Text = frmUpdateCustomer.CURRENT_CUSTOMER.lastFollowUserName;
                 lviSelected.Tag = currentCustomer;
             }
+            frmUpdateCustomer.Close();
+
         }
 
 
         private void CmbPagesizes_SelectedIndexChanged(object sender, EventArgs e)
         {
             PageSize = Convert.ToInt32(cmbPagesizes.Text);
-            getCustomersAndBindingDatas();
+            GetCustomersAndBindingDatas();
         }
 
         private void BtnFirstPage_Click(object sender, EventArgs e)
         {
             CurrentPage = 1;
-            getCustomersAndBindingDatas();
+            GetCustomersAndBindingDatas();
         }
 
         private void BtnPrePage_Click(object sender, EventArgs e)
         {
             CurrentPage = Math.Max(1, CurrentPage - 1);
-            getCustomersAndBindingDatas();
+            GetCustomersAndBindingDatas();
         }
 
         private void BtnNextPage_Click(object sender, EventArgs e)
         {
             CurrentPage = Math.Min(CurrentPage + 1, PageCount);
-            getCustomersAndBindingDatas();
+            GetCustomersAndBindingDatas();
         }
 
         private void BtnLastPage_Click(object sender, EventArgs e)
         {
             CurrentPage = PageCount;
-            getCustomersAndBindingDatas();
+            GetCustomersAndBindingDatas();
         }
 
         private void BtnJump_Click(object sender, EventArgs e)
@@ -465,7 +467,7 @@ namespace HaoZhuoCRM
                 return;
             }
             CurrentPage = Math.Min(PageCount, jumpPage);
-            getCustomersAndBindingDatas();
+            GetCustomersAndBindingDatas();
             txtJump.Focus();
             txtJump.SelectAll();
 
@@ -476,7 +478,7 @@ namespace HaoZhuoCRM
             LvClients_DoubleClick(null, null);
         }
 
-        private void returnCustomersToPublic()
+        private void ReturnCustomersToPublic()
         {
             if (lvClients.CheckedIndices.Count < 1)
             {
@@ -497,7 +499,7 @@ namespace HaoZhuoCRM
             try
             {
                 CustomerService.ReturnCustomersToPublic(vo, Global.USER_TOKEN);
-                getCustomersAndBindingDatas();
+                GetCustomersAndBindingDatas();
 
             }
             catch (BusinessException ex)
@@ -513,12 +515,12 @@ namespace HaoZhuoCRM
 
         private void MenuItemReturnToPublic_Click(object sender, EventArgs e)
         {
-            returnCustomersToPublic();
+            ReturnCustomersToPublic();
         }
 
         private void BtnReturnToPublic_Click(object sender, EventArgs e)
         {
-            returnCustomersToPublic();
+            ReturnCustomersToPublic();
         }
 
         private void MenuItemTransfer_Click(object sender, EventArgs e)
@@ -547,8 +549,10 @@ namespace HaoZhuoCRM
             FormTransferToOther formTransfer = new FormTransferToOther(customerIds, userTargets);
             if (formTransfer.ShowDialog() != DialogResult.OK)
             {
+                formTransfer.Close();
                 return;
             }
+            formTransfer.Close();
 
             foreach (ListViewItem lvi in lvClients.CheckedItems)
             {
