@@ -167,7 +167,8 @@ namespace HaoZhuoCRM
 
         private void bindingData(Int32 sequence, CustomerDto customer)
         {
-            ListViewItem lvi = new ListViewItem(sequence.ToString());
+            ListViewItem lvi = new ListViewItem();
+            lvi.SubItems.Add(sequence.ToString());
             lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId]);
             lvi.SubItems.Add(customer.name);
             lvi.SubItems.Add(Genders.DIC_GENDER[customer.gender]);
@@ -420,6 +421,44 @@ namespace HaoZhuoCRM
         private void CbLeaveWordsTime_CheckedChanged(object sender, EventArgs e)
         {
             dtpLeaveWordsTimeBegin.Enabled = dtpLeaveWordsTimeEnd.Enabled = cbLeaveWordsTime.Checked;
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (lvClients.CheckedItems.Count < 1)
+            {
+                MessageBox.Show("请在需要转移的客户记录前打勾✔", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            IList<String> customerIds = new List<String>();
+            foreach (ListViewItem lvi in lvClients.CheckedItems)
+            {
+                CustomerDto customer = (CustomerDto)lvi.Tag;
+                customerIds.Add(customer.id);
+            }
+            IList<UserDto> userTargets = null;
+            try
+            {
+                userTargets = UserService.GetUsersSameByOrganization(Global.USER_TOKEN, true);
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("获取部门用户列表失败：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            FormAllCustomersTransferToOther frmTransfer = new FormAllCustomersTransferToOther(customerIds, userTargets);
+            if (frmTransfer.ShowDialog() != DialogResult.OK)
+            {
+                frmTransfer.Close();
+                return;
+            }
+            frmTransfer.Close();
+
+            foreach (ListViewItem lvi in lvClients.CheckedItems)
+            {
+                lvClients.Items.Remove(lvi);
+            }
+
         }
     }
 }

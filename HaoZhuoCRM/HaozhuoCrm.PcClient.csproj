@@ -115,6 +115,12 @@
     <Compile Include="FormSelectUser.Designer.cs">
       <DependentUpon>FormSelectUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAllCustomersTransferToOther.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAllCustomersTransferToOther.Designer.cs">
+      <DependentUpon>FormAllCustomersTransferToOther.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTransferToOther.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSelectUser.resx">
       <DependentUpon>FormSelectUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAllCustomersTransferToOther.resx">
+      <DependentUpon>FormAllCustomersTransferToOther.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTransferToOther.resx">
       <DependentUpon>FormTransferToOther.cs</DependentUpon>

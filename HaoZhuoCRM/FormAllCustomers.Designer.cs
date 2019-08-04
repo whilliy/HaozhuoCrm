@@ -34,6 +34,10 @@
             this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.butReset = new System.Windows.Forms.Button();
             this.panelQuery = new System.Windows.Forms.Panel();
+            this.cbLeaveWordsTime = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dtpLeaveWordsTimeEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpLeaveWordsTimeBegin = new System.Windows.Forms.DateTimePicker();
             this.btnSelect = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtFollowUserName = new System.Windows.Forms.TextBox();
@@ -83,10 +87,8 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.cbLeaveWordsTime = new System.Windows.Forms.CheckBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dtpLeaveWordsTimeEnd = new System.Windows.Forms.DateTimePicker();
-            this.dtpLeaveWordsTimeBegin = new System.Windows.Forms.DateTimePicker();
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button2 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -162,6 +164,49 @@
             this.panelQuery.Name = "panelQuery";
             this.panelQuery.Size = new System.Drawing.Size(1058, 76);
             this.panelQuery.TabIndex = 0;
+            // 
+            // cbLeaveWordsTime
+            // 
+            this.cbLeaveWordsTime.AutoSize = true;
+            this.cbLeaveWordsTime.Location = new System.Drawing.Point(9, 46);
+            this.cbLeaveWordsTime.Name = "cbLeaveWordsTime";
+            this.cbLeaveWordsTime.Size = new System.Drawing.Size(108, 16);
+            this.cbLeaveWordsTime.TabIndex = 12;
+            this.cbLeaveWordsTime.Text = "留言时间范围：";
+            this.cbLeaveWordsTime.UseVisualStyleBackColor = true;
+            this.cbLeaveWordsTime.CheckedChanged += new System.EventHandler(this.CbLeaveWordsTime_CheckedChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(232, 48);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(17, 12);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "至";
+            // 
+            // dtpLeaveWordsTimeEnd
+            // 
+            this.dtpLeaveWordsTimeEnd.CustomFormat = "yyyy-MM-dd";
+            this.dtpLeaveWordsTimeEnd.Enabled = false;
+            this.dtpLeaveWordsTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpLeaveWordsTimeEnd.Location = new System.Drawing.Point(254, 44);
+            this.dtpLeaveWordsTimeEnd.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpLeaveWordsTimeEnd.Name = "dtpLeaveWordsTimeEnd";
+            this.dtpLeaveWordsTimeEnd.Size = new System.Drawing.Size(104, 21);
+            this.dtpLeaveWordsTimeEnd.TabIndex = 15;
+            // 
+            // dtpLeaveWordsTimeBegin
+            // 
+            this.dtpLeaveWordsTimeBegin.CustomFormat = "yyyy-MM-dd";
+            this.dtpLeaveWordsTimeBegin.Enabled = false;
+            this.dtpLeaveWordsTimeBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpLeaveWordsTimeBegin.Location = new System.Drawing.Point(123, 44);
+            this.dtpLeaveWordsTimeBegin.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpLeaveWordsTimeBegin.Name = "dtpLeaveWordsTimeBegin";
+            this.dtpLeaveWordsTimeBegin.Size = new System.Drawing.Size(104, 21);
+            this.dtpLeaveWordsTimeBegin.TabIndex = 13;
             // 
             // btnSelect
             // 
@@ -388,6 +433,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btnView);
             this.panel1.Controls.Add(this.btnModify);
@@ -451,7 +497,9 @@
             // 
             // lvClients
             // 
+            this.lvClients.CheckBoxes = true;
             this.lvClients.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader20,
             this.columnHeader1,
             this.columnHeader16,
             this.columnHeader2,
@@ -598,48 +646,20 @@
             this.pager.TabIndex = 1;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
-            // cbLeaveWordsTime
+            // columnHeader20
             // 
-            this.cbLeaveWordsTime.AutoSize = true;
-            this.cbLeaveWordsTime.Location = new System.Drawing.Point(9, 46);
-            this.cbLeaveWordsTime.Name = "cbLeaveWordsTime";
-            this.cbLeaveWordsTime.Size = new System.Drawing.Size(108, 16);
-            this.cbLeaveWordsTime.TabIndex = 12;
-            this.cbLeaveWordsTime.Text = "留言时间范围：";
-            this.cbLeaveWordsTime.UseVisualStyleBackColor = true;
-            this.cbLeaveWordsTime.CheckedChanged += new System.EventHandler(this.CbLeaveWordsTime_CheckedChanged);
+            this.columnHeader20.Text = "";
+            this.columnHeader20.Width = 25;
             // 
-            // label17
+            // button2
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(232, 48);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(17, 12);
-            this.label17.TabIndex = 14;
-            this.label17.Text = "至";
-            // 
-            // dtpLeaveWordsTimeEnd
-            // 
-            this.dtpLeaveWordsTimeEnd.CustomFormat = "yyyy-MM-dd";
-            this.dtpLeaveWordsTimeEnd.Enabled = false;
-            this.dtpLeaveWordsTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpLeaveWordsTimeEnd.Location = new System.Drawing.Point(254, 44);
-            this.dtpLeaveWordsTimeEnd.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
-            this.dtpLeaveWordsTimeEnd.Name = "dtpLeaveWordsTimeEnd";
-            this.dtpLeaveWordsTimeEnd.Size = new System.Drawing.Size(104, 21);
-            this.dtpLeaveWordsTimeEnd.TabIndex = 15;
-            // 
-            // dtpLeaveWordsTimeBegin
-            // 
-            this.dtpLeaveWordsTimeBegin.CustomFormat = "yyyy-MM-dd";
-            this.dtpLeaveWordsTimeBegin.Enabled = false;
-            this.dtpLeaveWordsTimeBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpLeaveWordsTimeBegin.Location = new System.Drawing.Point(123, 44);
-            this.dtpLeaveWordsTimeBegin.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
-            this.dtpLeaveWordsTimeBegin.Name = "dtpLeaveWordsTimeBegin";
-            this.dtpLeaveWordsTimeBegin.Size = new System.Drawing.Size(104, 21);
-            this.dtpLeaveWordsTimeBegin.TabIndex = 13;
+            this.button2.Location = new System.Drawing.Point(198, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(102, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "客户转移(&T)";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // FormAllCustomers
             // 
@@ -722,5 +742,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DateTimePicker dtpLeaveWordsTimeEnd;
         private System.Windows.Forms.DateTimePicker dtpLeaveWordsTimeBegin;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.Button button2;
     }
 }

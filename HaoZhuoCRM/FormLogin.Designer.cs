@@ -43,9 +43,9 @@
             this.labelWelcome.Location = new System.Drawing.Point(136, 36);
             this.labelWelcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(95, 12);
+            this.labelWelcome.Size = new System.Drawing.Size(107, 12);
             this.labelWelcome.TabIndex = 0;
-            this.labelWelcome.Text = "欢迎登录CRM系统";
+            this.labelWelcome.Text = "欢迎登录 CRM 系统";
             // 
             // label2
             // 
@@ -59,8 +59,10 @@
             // 
             // txtAccountNo
             // 
+            this.txtAccountNo.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtAccountNo.Location = new System.Drawing.Point(132, 74);
-            this.txtAccountNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAccountNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAccountNo.MaxLength = 20;
             this.txtAccountNo.Name = "txtAccountNo";
             this.txtAccountNo.Size = new System.Drawing.Size(178, 21);
             this.txtAccountNo.TabIndex = 2;
@@ -69,7 +71,8 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(132, 121);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPassword.MaxLength = 20;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(178, 21);
@@ -90,7 +93,7 @@
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(58, 170);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(84, 28);
             this.btnLogin.TabIndex = 5;
@@ -102,7 +105,7 @@
             // 
             this.butExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.butExit.Location = new System.Drawing.Point(239, 170);
-            this.butExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butExit.Margin = new System.Windows.Forms.Padding(2);
             this.butExit.Name = "butExit";
             this.butExit.Size = new System.Drawing.Size(84, 28);
             this.butExit.TabIndex = 6;
@@ -124,7 +127,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelWelcome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormLogin";

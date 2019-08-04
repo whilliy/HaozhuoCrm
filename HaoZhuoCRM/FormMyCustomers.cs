@@ -489,8 +489,10 @@ namespace HaoZhuoCRM
             {
                 return;
             }
-            ReturnCustomersToPublic vo = new ReturnCustomersToPublic();
-            vo.customerIds = new List<String>();
+            ReturnCustomersToPublic vo = new ReturnCustomersToPublic
+            {
+                customerIds = new List<String>()
+            };
             foreach (ListViewItem lvi in lvClients.CheckedItems)
             {
                 CustomerDto customer = (CustomerDto)lvi.Tag;

@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace HaoZhuoCRM
 {
-    public partial class FormTransferToOther : Form
+    public partial class FormAllCustomersTransferToOther : Form
     {
         private IList<string> customerIds;
         private IList<UserDto> targetUsers;
-        public FormTransferToOther(IList<string> customerIds, IList<UserDto> targetUsers)
+        public FormAllCustomersTransferToOther(IList<string> customerIds, IList<UserDto> targetUsers)
         {
             InitializeComponent();
             this.customerIds = customerIds;

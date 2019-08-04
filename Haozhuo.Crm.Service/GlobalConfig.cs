@@ -152,6 +152,10 @@ namespace Haozhuo.Crm.Service
         /// <summary>
         /// 将选定顾客转移给目标用户
         /// </summary>
+        public static String ADMIN_CUSTOMER_TRANSFER = CUSTOMERS + "/admin_transfer_customers";
+        /// <summary>
+        /// 将选定顾客转移给目标用户
+        /// </summary>
         public static String CUSTOMER_DISPATCH = CUSTOMERS + "/dispatch_customers";
         /// <summary>
         /// 从公海中抓取数据

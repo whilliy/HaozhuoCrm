@@ -28,17 +28,17 @@ namespace HaoZhuoCRM
             {
                 txtProjectName.Text = ProjectService.DicProjects[CURRENT_CUSTOMER.projectId];
             }
-            catch (Exception ex) { }
+            catch { }
             try
             {
                 txtGender.Text = Genders.DIC_GENDER[CURRENT_CUSTOMER.gender];
             }
-            catch (Exception ex) { }
+            catch { }
             try
             {
                 txtSource.Text = CustomerService.DicCustomerSources[CURRENT_CUSTOMER.source];
             }
-            catch (Exception ex) { }
+            catch { }
             txtStatus.Text = CURRENT_CUSTOMER.status.HasValue ? CustomerService.DicCustomerStatuses[CURRENT_CUSTOMER.status.Value] : "";
 
             txtType.Text = CURRENT_CUSTOMER.type.HasValue ? CustomerService.DicCustomerTypes[CURRENT_CUSTOMER.type.Value] : "";
