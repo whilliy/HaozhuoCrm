@@ -75,7 +75,7 @@ namespace HaoZhuoCRM
 
         private void MiMyClients_Click(object sender, EventArgs e)
         {
-            FormMyCustomers formMyClients = new FormMyCustomers();
+            FormMyCustomers2 formMyClients = new FormMyCustomers2();
             formMyClients.MdiParent = this;
             formMyClients.Show();
         }
