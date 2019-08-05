@@ -76,9 +76,10 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pager = new HaoZhuoCRM.Controls.PagerControl();
             this.btnView = new System.Windows.Forms.Button();
             this.miView = new System.Windows.Forms.ToolStripMenuItem();
+            this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -141,12 +142,12 @@
             this.menuItemTransfer,
             this.miView});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(127, 48);
             // 
             // menuItemTransfer
             // 
             this.menuItemTransfer.Name = "menuItemTransfer";
-            this.menuItemTransfer.Size = new System.Drawing.Size(180, 22);
+            this.menuItemTransfer.Size = new System.Drawing.Size(126, 22);
             this.menuItemTransfer.Text = "抓取(&G)...";
             this.menuItemTransfer.Click += new System.EventHandler(this.MenuItemTransfer_Click);
             // 
@@ -455,6 +456,7 @@
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader9,
+            this.columnHeader18,
             this.columnHeader10,
             this.columnHeader12,
             this.columnHeader11,
@@ -506,6 +508,24 @@
             this.columnHeader3.Text = "手机号码";
             this.columnHeader3.Width = 120;
             // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(164, 8);
+            this.btnView.Margin = new System.Windows.Forms.Padding(2);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(68, 22);
+            this.btnView.TabIndex = 4;
+            this.btnView.Text = "查看(&V)";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.BtnView_Click);
+            // 
+            // miView
+            // 
+            this.miView.Name = "miView";
+            this.miView.Size = new System.Drawing.Size(126, 22);
+            this.miView.Text = "查看(&V)";
+            this.miView.Click += new System.EventHandler(this.MiView_Click);
+            // 
             // pager
             // 
             this.pager.BackColor = System.Drawing.SystemColors.Control;
@@ -522,23 +542,10 @@
             this.pager.TabIndex = 3;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
-            // btnView
+            // columnHeader18
             // 
-            this.btnView.Location = new System.Drawing.Point(164, 8);
-            this.btnView.Margin = new System.Windows.Forms.Padding(2);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(68, 22);
-            this.btnView.TabIndex = 4;
-            this.btnView.Text = "查看(&V)";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.BtnView_Click);
-            // 
-            // miView
-            // 
-            this.miView.Name = "miView";
-            this.miView.Size = new System.Drawing.Size(180, 22);
-            this.miView.Text = "查看(&V)";
-            this.miView.Click += new System.EventHandler(this.MiView_Click);
+            this.columnHeader18.Text = "录入时间";
+            this.columnHeader18.Width = 150;
             // 
             // FormPublic
             // 
@@ -614,5 +621,6 @@
         private System.Windows.Forms.CheckBox checkBoxAll;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.ToolStripMenuItem miView;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
     }
 }
