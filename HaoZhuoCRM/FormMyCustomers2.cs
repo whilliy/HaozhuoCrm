@@ -112,8 +112,6 @@ namespace HaoZhuoCRM
             cmbProvinces.DataSource = provinces;
             pager.Reset();
             Query();
-
-
         }
 
         private void Query()

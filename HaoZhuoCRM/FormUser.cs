@@ -28,6 +28,7 @@ namespace HaoZhuoCRM
             cmbStatuses.Items.Add("禁用");
             //初始化控件
             pager.Reset();
+            Query();
             //pager.RemovePageSizeSelectedIndexChanged();
         }
 
@@ -97,7 +98,7 @@ namespace HaoZhuoCRM
             }
         }
 
-        private void BtnQuery_Click(object sender, EventArgs e)
+        public void Query()
         {
             try
             {
@@ -114,6 +115,12 @@ namespace HaoZhuoCRM
             {
                 MessageBox.Show(ex.Message);
             }
+
+        }
+
+        private void BtnQuery_Click(object sender, EventArgs e)
+        {
+            Query();
         }
 
         private void Pager_OnPageChanged(object sender, EventArgs e)
