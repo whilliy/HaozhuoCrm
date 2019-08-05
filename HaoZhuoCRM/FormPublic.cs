@@ -3,6 +3,7 @@ using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace HaoZhuoCRM
@@ -215,6 +216,7 @@ namespace HaoZhuoCRM
 
         private void BindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
         {
+            lvi.UseItemStyleForSubItems = false;
             lvi.SubItems.Add(sequence.ToString());
             lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId]);
             lvi.SubItems.Add(customer.name);
@@ -222,7 +224,11 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(customer.mobile);
             lvi.SubItems.Add(customer.type.HasValue ? CustomerService.DicCustomerTypes[customer.type.Value] : "");
             lvi.SubItems.Add(customer.status.HasValue ? CustomerService.DicCustomerStatuses[customer.status.Value] : "");
-            lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
+            ListViewItem.ListViewSubItem lviSource = lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
+            if (CustomerService.CUSTOMER_SOURCE_DATABASE == customer.source)
+            {
+                lviSource.BackColor = Color.GreenYellow;
+            }
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);
             lvi.SubItems.Add(customer.countyName);
@@ -309,7 +315,7 @@ namespace HaoZhuoCRM
             try
             {
                 CustomerService.GraspCustomersFromPublic(customerIds, Global.USER_TOKEN);
-                foreach (ListViewItem lvi in lvClients.Items)
+                foreach (ListViewItem lvi in lvClients.CheckedItems)
                 {
                     lvClients.Items.Remove(lvi);
                 }

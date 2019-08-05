@@ -5,6 +5,7 @@ using Haozhuo.Crm.Service.vo;
 using HaoZhuoCRM.Utils;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace HaoZhuoCRM
@@ -284,14 +285,23 @@ namespace HaoZhuoCRM
 
         private void BindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
         {
+            lvi.UseItemStyleForSubItems = false;
             lvi.SubItems.Add(sequence.ToString());
             lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId]);
             lvi.SubItems.Add(customer.name);
             lvi.SubItems.Add(Genders.DIC_GENDER[customer.gender]);
             lvi.SubItems.Add(customer.mobile);
             lvi.SubItems.Add(customer.type.HasValue ? CustomerService.DicCustomerTypes[customer.type.Value] : "");
-            lvi.SubItems.Add(customer.status.HasValue ? CustomerService.DicCustomerStatuses[customer.status.Value] : "");
-            lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
+            ListViewItem.ListViewSubItem lviType = lvi.SubItems.Add(customer.status.HasValue ? CustomerService.DicCustomerStatuses[customer.status.Value] : "");
+            if (customer.status.HasValue && CustomerService.CUSTOMER_STATUS_INIT == customer.status.Value)
+            {
+                lviType.BackColor = Color.MistyRose;//.Red;
+            }
+            ListViewItem.ListViewSubItem lviSource = lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
+            if (CustomerService.CUSTOMER_SOURCE_DATABASE == customer.source)
+            {
+                lviSource.BackColor = Color.GreenYellow;
+            }
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);
             lvi.SubItems.Add(customer.countyName);

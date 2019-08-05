@@ -13,6 +13,10 @@ namespace Haozhuo.Crm.Service
         private static readonly object lockTypes = new object();
         private static readonly object lockSources = new object();
 
+        public static readonly Int32 CUSTOMER_SOURCE_DATABASE = 4;
+        //客户状态未沟通
+        public static readonly Int32 CUSTOMER_STATUS_INIT = 5;
+
         private static IList<CustomerTypeDto> cusomterTypes;
 
         public static IList<CustomerTypeDto> CustomerTypes
