@@ -179,9 +179,9 @@ namespace HaoZhuoCRM
             try
             {
                 CustomerVo vo = new CustomerVo();
-                vo.cityId = cmbCities.SelectedValue.ToString();
+                vo.cityId = cmbCities.SelectedValue != null ? cmbCities.SelectedValue.ToString() : null;
                 vo.projectId = Convert.ToInt32(cmbProjects.SelectedValue.ToString());
-                vo.countyId = cmbCounties.SelectedValue.ToString();
+                vo.countyId = cmbCounties.SelectedValue != null ? cmbCounties.SelectedValue.ToString() : null;
                 vo.gender = cmbGender.SelectedValue == null ? 0 : Convert.ToInt32(cmbGender.SelectedValue.ToString());
                 vo.provinceId = cmbProvinces.SelectedValue.ToString();
                 vo.mobile = txtMobile.Text;
