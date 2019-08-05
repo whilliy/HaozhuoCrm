@@ -97,7 +97,7 @@ namespace HaoZhuoCRM
             cmbProvinces.DataSource = provinces;
             pager.Reset();
             //查询
-            query();
+            Query();
         }
 
 
@@ -165,7 +165,7 @@ namespace HaoZhuoCRM
             return customers;
         }
 
-        private void bindingData(Int32 sequence, CustomerDto customer)
+        private void BindingData(Int32 sequence, CustomerDto customer)
         {
             ListViewItem lvi = new ListViewItem();
             lvi.SubItems.Add(sequence.ToString());
@@ -201,13 +201,13 @@ namespace HaoZhuoCRM
             int i = 1 + (pager.PageSize) * (pager.PageIndex - 1);//计算序号
             foreach (CustomerDto customer in customers.getResults())
             {
-                bindingData(i, customer);
+                BindingData(i, customer);
                 i++;
             }
             lvClients.EndUpdate();
         }
 
-        private void query()
+        private void Query()
         {
             try
             {
@@ -227,7 +227,7 @@ namespace HaoZhuoCRM
 
         private void ButQuery_Click(object sender, EventArgs e)
         {
-            query();
+            Query();
         }
 
         private void Pager_OnPageChanged(object sender, EventArgs e)
@@ -260,7 +260,7 @@ namespace HaoZhuoCRM
 
         }
 
-        private void modify()
+        private void Modify()
         {
             if (lvClients.SelectedItems.Count < 1)
             {
@@ -297,17 +297,18 @@ namespace HaoZhuoCRM
                 }
 
             }
+            modifyCustomer.Close();
 
         }
 
         private void LvClients_DoubleClick(object sender, EventArgs e)
         {
-            view();
+            View();
         }
 
         private void MiModify_Click(object sender, EventArgs e)
         {
-            modify();
+            Modify();
         }
 
         private void CmbProvinces_SelectedIndexChanged(object sender, EventArgs e)
@@ -384,9 +385,10 @@ namespace HaoZhuoCRM
                 txtFollowUserName.Text = frmSelectUser.SelectedUser.name;
                 txtFollowUserName.Tag = frmSelectUser.SelectedUser.id;
             }
+            frmSelectUser.Close();
         }
 
-        private void view()
+        private void View()
         {
             if (lvClients.SelectedItems.Count < 1)
             {
@@ -396,21 +398,22 @@ namespace HaoZhuoCRM
             var customer = (CustomerDto)lvClients.SelectedItems[0].Tag;
             FormViewCustomer formViewCustomer = new FormViewCustomer(customer);
             formViewCustomer.ShowDialog();
+            formViewCustomer.Close();
         }
 
         private void BtnView_Click(object sender, EventArgs e)
         {
-            view();
+            View();
         }
 
         private void BtnModify_Click(object sender, EventArgs e)
         {
-            modify();
+            Modify();
         }
 
         private void MiView_Click(object sender, EventArgs e)
         {
-            view();
+            View();
         }
 
         private void Button1_Click(object sender, EventArgs e)

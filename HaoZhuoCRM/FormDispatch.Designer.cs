@@ -48,6 +48,7 @@
             this.butQuery = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxAll = new System.Windows.Forms.CheckBox();
             this.btnDispatch = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -59,7 +60,7 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.checkBoxAll = new System.Windows.Forms.CheckBox();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -79,7 +80,7 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "区";
-            this.columnHeader7.Width = 80;
+            this.columnHeader7.Width = 36;
             // 
             // columnHeader9
             // 
@@ -192,7 +193,7 @@
             this.panelQuery.Location = new System.Drawing.Point(0, 0);
             this.panelQuery.Margin = new System.Windows.Forms.Padding(2);
             this.panelQuery.Name = "panelQuery";
-            this.panelQuery.Size = new System.Drawing.Size(971, 38);
+            this.panelQuery.Size = new System.Drawing.Size(993, 38);
             this.panelQuery.TabIndex = 4;
             // 
             // labelName
@@ -234,8 +235,19 @@
             this.panel1.Location = new System.Drawing.Point(0, 475);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(971, 36);
+            this.panel1.Size = new System.Drawing.Size(993, 36);
             this.panel1.TabIndex = 5;
+            // 
+            // checkBoxAll
+            // 
+            this.checkBoxAll.AutoSize = true;
+            this.checkBoxAll.Location = new System.Drawing.Point(86, 13);
+            this.checkBoxAll.Name = "checkBoxAll";
+            this.checkBoxAll.Size = new System.Drawing.Size(66, 16);
+            this.checkBoxAll.TabIndex = 7;
+            this.checkBoxAll.Text = "全选(&A)";
+            this.checkBoxAll.UseVisualStyleBackColor = true;
+            this.checkBoxAll.CheckedChanged += new System.EventHandler(this.CheckBoxAll_CheckedChanged);
             // 
             // btnDispatch
             // 
@@ -268,7 +280,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 38);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(971, 437);
+            this.panel2.Size = new System.Drawing.Size(993, 437);
             this.panel2.TabIndex = 6;
             // 
             // lvClients
@@ -285,6 +297,7 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
+            this.columnHeader4,
             this.columnHeader9});
             this.lvClients.ContextMenuStrip = this.contextMenuStrip1;
             this.lvClients.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -296,7 +309,7 @@
             this.lvClients.Margin = new System.Windows.Forms.Padding(2);
             this.lvClients.MultiSelect = false;
             this.lvClients.Name = "lvClients";
-            this.lvClients.Size = new System.Drawing.Size(971, 403);
+            this.lvClients.Size = new System.Drawing.Size(993, 403);
             this.lvClients.TabIndex = 2;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
@@ -343,26 +356,20 @@
             this.pager.PageIndex = 1;
             this.pager.PageSize = 20;
             this.pager.RecordCount = 0;
-            this.pager.Size = new System.Drawing.Size(971, 34);
+            this.pager.Size = new System.Drawing.Size(993, 34);
             this.pager.TabIndex = 3;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
-            // checkBoxAll
+            // columnHeader4
             // 
-            this.checkBoxAll.AutoSize = true;
-            this.checkBoxAll.Location = new System.Drawing.Point(86, 13);
-            this.checkBoxAll.Name = "checkBoxAll";
-            this.checkBoxAll.Size = new System.Drawing.Size(66, 16);
-            this.checkBoxAll.TabIndex = 7;
-            this.checkBoxAll.Text = "全选(&A)";
-            this.checkBoxAll.UseVisualStyleBackColor = true;
-            this.checkBoxAll.CheckedChanged += new System.EventHandler(this.CheckBoxAll_CheckedChanged);
+            this.columnHeader4.Text = "留言时间";
+            this.columnHeader4.Width = 150;
             // 
             // FormDispatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 511);
+            this.ClientSize = new System.Drawing.Size(993, 511);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelQuery);
@@ -412,5 +419,6 @@
         private System.Windows.Forms.Button btnDispatch;
         private System.Windows.Forms.ToolStripMenuItem miDispatch;
         private System.Windows.Forms.CheckBox checkBoxAll;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

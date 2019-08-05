@@ -62,7 +62,7 @@ namespace HaoZhuoCRM
             //注意：一定先指定 ValueMember 和 DisplayMember 再设定 DataSource 否则提前触发 CmbProvinces_SelectedIndexChanged
             pager.Reset();
             //查询
-            query();
+            Query();
         }
 
 
@@ -95,7 +95,7 @@ namespace HaoZhuoCRM
             return customers;
         }
 
-        private void bindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
+        private void BindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
         {
             lvi.SubItems.Add(sequence.ToString());
             lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId]);
@@ -106,6 +106,7 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);
             lvi.SubItems.Add(customer.countyName);
+            lvi.SubItems.Add(customer.leaveWordsTime.HasValue ? customer.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat) : "");
             lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
             lvi.Tag = customer;
         }
@@ -118,14 +119,14 @@ namespace HaoZhuoCRM
             foreach (CustomerDto customer in customers.getResults())
             {
                 ListViewItem lvi = new ListViewItem();
-                bindingData(lvi, i, customer);
+                BindingData(lvi, i, customer);
                 lvClients.Items.Add(lvi);
                 i++;
             }
             lvClients.EndUpdate();
         }
 
-        private void query()
+        private void Query()
         {
             try
             {
@@ -145,7 +146,7 @@ namespace HaoZhuoCRM
 
         private void ButQuery_Click(object sender, EventArgs e)
         {
-            query();
+            Query();
         }
 
         private void Pager_OnPageChanged(object sender, EventArgs e)
@@ -173,15 +174,15 @@ namespace HaoZhuoCRM
 
         private void BtnDispatch_Click(object sender, EventArgs e)
         {
-            dispatch();
+            Dispatch();
         }
 
         private void MiDispatch_Click(object sender, EventArgs e)
         {
-            dispatch();
+            Dispatch();
         }
 
-        private void dispatch()
+        private void Dispatch()
         {
             if (lvClients.CheckedItems.Count < 1)
             {
@@ -207,8 +208,10 @@ namespace HaoZhuoCRM
             FormDispatchTo formTransfer = new FormDispatchTo(customerIds, userTargets);
             if (formTransfer.ShowDialog() != DialogResult.OK)
             {
+                formTransfer.Close();
                 return;
             }
+            formTransfer.Close();
 
             foreach (ListViewItem lvi in lvClients.CheckedItems)
             {
@@ -221,6 +224,7 @@ namespace HaoZhuoCRM
         {
             FormAddCustomer frmCustomer = new FormAddCustomer();
             frmCustomer.ShowDialog();
+            frmCustomer.Close();
         }
 
         private void CheckBoxAll_CheckedChanged(object sender, EventArgs e)

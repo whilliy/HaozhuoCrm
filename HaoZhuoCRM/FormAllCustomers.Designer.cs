@@ -61,12 +61,14 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.butQuery = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lvClients = new System.Windows.Forms.ListView();
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -87,8 +89,6 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button2 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -444,6 +444,16 @@
             this.panel1.Size = new System.Drawing.Size(1058, 34);
             this.panel1.TabIndex = 1;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(198, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(102, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "客户转移(&T)";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.button1);
@@ -535,6 +545,11 @@
             this.lvClients.View = System.Windows.Forms.View.Details;
             this.lvClients.DoubleClick += new System.EventHandler(this.LvClients_DoubleClick);
             // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "";
+            this.columnHeader20.Width = 25;
+            // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "序号";
@@ -563,7 +578,6 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "客户类型";
-            this.columnHeader4.Width = 62;
             // 
             // columnHeader17
             // 
@@ -593,7 +607,7 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "区";
-            this.columnHeader7.Width = 80;
+            this.columnHeader7.Width = 20;
             // 
             // columnHeader19
             // 
@@ -645,21 +659,6 @@
             this.pager.Size = new System.Drawing.Size(1058, 34);
             this.pager.TabIndex = 1;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
-            // 
-            // columnHeader20
-            // 
-            this.columnHeader20.Text = "";
-            this.columnHeader20.Width = 25;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(198, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "客户转移(&T)";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // FormAllCustomers
             // 

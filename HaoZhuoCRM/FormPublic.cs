@@ -94,7 +94,7 @@ namespace HaoZhuoCRM
             cmbProvinces.DisplayMember = "provinceName";
             cmbProvinces.DataSource = provinces;
             pager.Reset();
-            query();
+            Query();
 
         }
 
@@ -213,7 +213,7 @@ namespace HaoZhuoCRM
             return customers;
         }
 
-        private void bindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
+        private void BindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
         {
             lvi.SubItems.Add(sequence.ToString());
             lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId]);
@@ -226,7 +226,8 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(customer.provinceName);
             lvi.SubItems.Add(customer.cityName);
             lvi.SubItems.Add(customer.countyName);
-            lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString(GlobalConfig.DateTimeFormat));
+            lvi.SubItems.Add(!customer.leaveWordsTime.HasValue ? "" : customer.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat));
+            //lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString(GlobalConfig.DateTimeFormat));
             lvi.SubItems.Add(!customer.previousFollowTime.HasValue ? "" : customer.previousFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
             lvi.SubItems.Add(customer.previousFollowUserName);
             lvi.SubItems.Add(!customer.lastFollowTime.HasValue ? "" : customer.lastFollowTime.Value.ToString(GlobalConfig.DateTimeFormat));
@@ -243,14 +244,14 @@ namespace HaoZhuoCRM
             foreach (CustomerDto customer in customers.getResults())
             {
                 ListViewItem lvi = new ListViewItem();
-                bindingData(lvi, i, customer);
+                BindingData(lvi, i, customer);
                 lvClients.Items.Add(lvi);
                 i++;
             }
             lvClients.EndUpdate();
         }
 
-        private void query()
+        private void Query()
         {
             try
             {
@@ -270,7 +271,7 @@ namespace HaoZhuoCRM
 
         private void ButQuery_Click(object sender, EventArgs e)
         {
-            query();
+            Query();
         }
 
         private void Pager_OnPageChanged(object sender, EventArgs e)
@@ -345,6 +346,33 @@ namespace HaoZhuoCRM
             {
                 lvi.Checked = checkBoxAll.Checked;
             }
+        }
+
+        private void View()
+        {
+            if (lvClients.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("请选择要查看的客户记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            var customer = (CustomerDto)lvClients.SelectedItems[0].Tag;
+            FormViewCustomer formViewCustomer = new FormViewCustomer(customer);
+            formViewCustomer.ShowDialog();
+            formViewCustomer.Close();
+        }
+        private void LvClients_DoubleClick(object sender, EventArgs e)
+        {
+            View();
+        }
+
+        private void BtnView_Click(object sender, EventArgs e)
+        {
+            View();
+        }
+
+        private void MiView_Click(object sender, EventArgs e)
+        {
+            View();
         }
     }
 }
