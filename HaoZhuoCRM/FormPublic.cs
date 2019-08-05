@@ -302,7 +302,7 @@ namespace HaoZhuoCRM
                 return;
             }
             IList<String> customerIds = new List<String>();
-            foreach (ListViewItem lvi in lvClients.Items)
+            foreach (ListViewItem lvi in lvClients.CheckedItems)
             {
                 customerIds.Add(((CustomerDto)lvi.Tag).id);
             }
