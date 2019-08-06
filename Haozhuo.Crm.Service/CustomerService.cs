@@ -66,7 +66,7 @@ namespace Haozhuo.Crm.Service
                     {
                         if (customerSources == null)
                         {
-                            customerSources = getAllCustomerSources();
+                            customerSources = GetAllCustomerSources();
                         }
                     }
                 }
@@ -347,7 +347,7 @@ namespace Haozhuo.Crm.Service
         /// 获取所有的客户来源
         /// </summary>
         /// <returns></returns>
-        private static List<CustomerSourceDto> getAllCustomerSources()
+        private static List<CustomerSourceDto> GetAllCustomerSources()
         {
             RestClient rs = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOMER_SOURCES);
@@ -549,7 +549,7 @@ namespace Haozhuo.Crm.Service
         /// <param name="token"></param>
         /// <param name="record"></param>
         /// <returns></returns>
-        public static CustomerDto updateCustomer(String customerId, String token, CustomerVo vo)
+        public static CustomerDto UpdateCustomer(String customerId, String token, CustomerVo vo)
         {
             RestClient rc = new RestClient();
             var request = new RestRequest(GlobalConfig.CUSTOER_SOMEONE);

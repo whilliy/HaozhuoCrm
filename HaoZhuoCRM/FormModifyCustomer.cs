@@ -188,7 +188,7 @@ namespace HaoZhuoCRM
                 vo.name = txtName.Text;
                 vo.source = Convert.ToInt32(cmbCustomerSources.SelectedValue.ToString());
                 //当前客户已经更新
-                CURRENT_CUSTOMER = CustomerService.updateCustomer(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
+                CURRENT_CUSTOMER = CustomerService.UpdateCustomer(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
                 InformationChanged = true;
                 DialogResult = DialogResult.OK;
             }

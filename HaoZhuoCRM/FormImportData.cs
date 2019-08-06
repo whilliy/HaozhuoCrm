@@ -212,6 +212,7 @@ namespace HaoZhuoCRM
                     Cursor = Cursors.Default;
                     MessageBox.Show("暂不支持的文件格式！", "提示");
                 }
+                labelCount.Text = lvCustomers.Items.Count.ToString();
                 Cursor = Cursors.Default;
             }
         }
@@ -263,6 +264,7 @@ namespace HaoZhuoCRM
             {
                 lvCustomers.Items.Remove(lvi);
             }
+            labelCount.Text = lvCustomers.Items.Count.ToString();
         }
     }
 }

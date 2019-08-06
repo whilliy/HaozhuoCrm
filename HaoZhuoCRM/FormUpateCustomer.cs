@@ -288,7 +288,7 @@ namespace HaoZhuoCRM
                 vo.type = Convert.ToInt32(cmbCustomerTypes.SelectedValue.ToString());
                 vo.status = Convert.ToInt32(cmbCustomerStatus.SelectedValue.ToString());
                 //当前客户已经更新
-                CURRENT_CUSTOMER = CustomerService.updateCustomer(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
+                CURRENT_CUSTOMER = CustomerService.UpdateCustomer(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
                 DialogResult = DialogResult.OK;
             }
             catch (BusinessException ex)

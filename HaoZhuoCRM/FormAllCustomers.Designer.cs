@@ -89,6 +89,7 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.cbSelectAll = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -433,6 +434,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cbSelectAll);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btnView);
@@ -446,7 +448,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(198, 6);
+            this.button2.Location = new System.Drawing.Point(268, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 23);
             this.button2.TabIndex = 3;
@@ -660,6 +662,17 @@
             this.pager.TabIndex = 1;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
+            // cbSelectAll
+            // 
+            this.cbSelectAll.AutoSize = true;
+            this.cbSelectAll.Location = new System.Drawing.Point(214, 9);
+            this.cbSelectAll.Name = "cbSelectAll";
+            this.cbSelectAll.Size = new System.Drawing.Size(48, 16);
+            this.cbSelectAll.TabIndex = 4;
+            this.cbSelectAll.Text = "全选";
+            this.cbSelectAll.UseVisualStyleBackColor = true;
+            this.cbSelectAll.CheckedChanged += new System.EventHandler(this.CbSelectAll_CheckedChanged);
+            // 
             // FormAllCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -676,6 +689,7 @@
             this.panelQuery.ResumeLayout(false);
             this.panelQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -743,5 +757,6 @@
         private System.Windows.Forms.DateTimePicker dtpLeaveWordsTimeBegin;
         private System.Windows.Forms.ColumnHeader columnHeader20;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox cbSelectAll;
     }
 }

@@ -58,7 +58,7 @@ namespace HaoZhuoCRM
                 txtMobile.Text, gender, active);
         }
 
-        void refresh(IList<UserDto> users)
+        void Refresh(IList<UserDto> users)
         {
             lvUsers.Items.Clear();
             Int32 index = 1 + (pager.PageSize) * (pager.PageIndex - 1);
@@ -108,7 +108,7 @@ namespace HaoZhuoCRM
                 pager.PageIndex = 1;
                 pager.DrawControl((int)users.getCount());
                 //更新用户列表
-                refresh(users.getResults());
+                Refresh(users.getResults());
                 pager.NeedExcuteQuery = true;
             }
             catch (BusinessException ex)
@@ -128,7 +128,7 @@ namespace HaoZhuoCRM
             try
             {
                 ResultsWithCount<UserDto> users = QueryUsers();
-                refresh(users.getResults());
+                Refresh(users.getResults());
             }
             catch (BusinessException ex)
             {
@@ -154,6 +154,7 @@ namespace HaoZhuoCRM
         {
             FormAddUser frmAddUser = new FormAddUser();
             frmAddUser.ShowDialog();
+            frmAddUser.Close();
         }
 
         private void BtnResetPassword_Click(object sender, EventArgs e)
@@ -167,6 +168,7 @@ namespace HaoZhuoCRM
             UserDto user = (UserDto)lvi.Tag;
             FormResetUserPass frmResetPass = new FormResetUserPass(user);
             frmResetPass.ShowDialog();
+            frmResetPass.Close();
             lvUsers.Focus();
             lvi.Selected = true;
         }
@@ -282,7 +284,9 @@ namespace HaoZhuoCRM
             //    return;
             //}
             FormUpdateUser formUpdateUser = new FormUpdateUser(user);
-            if (DialogResult.OK == formUpdateUser.ShowDialog())
+            DialogResult dialogResult = formUpdateUser.ShowDialog();
+            formUpdateUser.Close();
+            if (DialogResult.OK == dialogResult)
             {
                 lvi.Tag = formUpdateUser.CurrentUser;
                 UserDto currentUser = formUpdateUser.CurrentUser;

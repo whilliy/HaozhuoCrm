@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbCustomerSources = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.lvCustomers = new System.Windows.Forms.ListView();
@@ -48,7 +49,9 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -137,6 +140,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.labelCount);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.btnOK);
@@ -145,6 +151,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1013, 43);
             this.panel2.TabIndex = 0;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(13, 10);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "删除(&D)";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // btnClose
             // 
@@ -230,15 +246,32 @@
             this.openFileDialog.Filter = "Excel文件|*.xls;*.xlsx|逗号分隔文件|*.csv";
             this.openFileDialog.Title = "选择要导入的客户文件";
             // 
-            // btnDelete
+            // label2
             // 
-            this.btnDelete.Location = new System.Drawing.Point(13, 10);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "删除(&D)";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(110, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 12);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "共";
+            // 
+            // labelCount
+            // 
+            this.labelCount.AutoSize = true;
+            this.labelCount.Location = new System.Drawing.Point(133, 15);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(11, 12);
+            this.labelCount.TabIndex = 21;
+            this.labelCount.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(157, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "条数据";
             // 
             // FormImportData
             // 
@@ -258,6 +291,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -285,5 +319,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelCount;
     }
 }
