@@ -67,6 +67,8 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label14 = new System.Windows.Forms.Label();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -94,7 +96,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(653, 12);
+            this.label3.Location = new System.Drawing.Point(653, 13);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
@@ -113,7 +115,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(154, 12);
+            this.label2.Location = new System.Drawing.Point(154, 13);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
@@ -125,7 +127,7 @@
             this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerSources.Enabled = false;
             this.cmbCustomerSources.FormattingEnabled = true;
-            this.cmbCustomerSources.Location = new System.Drawing.Point(725, 8);
+            this.cmbCustomerSources.Location = new System.Drawing.Point(725, 9);
             this.cmbCustomerSources.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerSources.Name = "cmbCustomerSources";
             this.cmbCustomerSources.Size = new System.Drawing.Size(128, 20);
@@ -133,7 +135,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(58, 7);
+            this.txtName.Location = new System.Drawing.Point(58, 9);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(85, 21);
@@ -142,7 +144,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Location = new System.Drawing.Point(12, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
@@ -265,12 +267,12 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(877, 133);
+            this.panel1.Size = new System.Drawing.Size(879, 152);
             this.panel1.TabIndex = 0;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(785, 103);
+            this.btnClose.Location = new System.Drawing.Point(785, 126);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(68, 20);
@@ -291,7 +293,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(302, 15);
+            this.label13.Location = new System.Drawing.Point(302, 13);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 12);
@@ -300,7 +302,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(701, 103);
+            this.btnAdd.Location = new System.Drawing.Point(701, 126);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(68, 20);
@@ -313,7 +315,7 @@
             // 
             this.dtpNextFollowTime.CustomFormat = "yyyy-MM-dd HH:mm";
             this.dtpNextFollowTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNextFollowTime.Location = new System.Drawing.Point(353, 103);
+            this.dtpNextFollowTime.Location = new System.Drawing.Point(542, 127);
             this.dtpNextFollowTime.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNextFollowTime.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dtpNextFollowTime.Name = "dtpNextFollowTime";
@@ -324,8 +326,9 @@
             // 
             this.txtRemark.Location = new System.Drawing.Point(81, 71);
             this.txtRemark.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(772, 21);
+            this.txtRemark.Size = new System.Drawing.Size(772, 51);
             this.txtRemark.TabIndex = 1;
             // 
             // label11
@@ -341,7 +344,8 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(260, 107);
+            this.label12.ForeColor = System.Drawing.Color.Blue;
+            this.label12.Location = new System.Drawing.Point(449, 131);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(89, 12);
@@ -352,7 +356,7 @@
             // 
             this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.Location = new System.Drawing.Point(561, 7);
+            this.cmbGender.Location = new System.Drawing.Point(561, 9);
             this.cmbGender.Margin = new System.Windows.Forms.Padding(2);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(77, 20);
@@ -362,7 +366,7 @@
             // 
             this.dtpActuallyTime.CustomFormat = "yyyy-MM-dd HH:mm";
             this.dtpActuallyTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpActuallyTime.Location = new System.Drawing.Point(103, 103);
+            this.dtpActuallyTime.Location = new System.Drawing.Point(103, 126);
             this.dtpActuallyTime.Margin = new System.Windows.Forms.Padding(2);
             this.dtpActuallyTime.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dtpActuallyTime.Name = "dtpActuallyTime";
@@ -372,7 +376,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(487, 11);
+            this.label9.Location = new System.Drawing.Point(487, 13);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
@@ -382,7 +386,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 107);
+            this.label10.Location = new System.Drawing.Point(10, 130);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(89, 12);
@@ -391,15 +395,15 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.butConfirm);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 443);
+            this.panel2.Location = new System.Drawing.Point(0, 464);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(877, 28);
+            this.panel2.Size = new System.Drawing.Size(879, 28);
             this.panel2.TabIndex = 2;
-            this.panel2.Visible = false;
             // 
             // btnCancel
             // 
@@ -412,6 +416,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
             // 
             // butConfirm
             // 
@@ -423,12 +428,14 @@
             this.butConfirm.TabIndex = 0;
             this.butConfirm.Text = "修改用户";
             this.butConfirm.UseVisualStyleBackColor = true;
+            this.butConfirm.Visible = false;
             this.butConfirm.Click += new System.EventHandler(this.ButConfirm_Click);
             // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
+            this.columnHeader7,
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader2,
@@ -439,14 +446,15 @@
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 133);
+            this.listView1.Location = new System.Drawing.Point(0, 152);
             this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(877, 310);
+            this.listView1.Size = new System.Drawing.Size(879, 312);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.DoubleClick += new System.EventHandler(this.ListView1_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -473,14 +481,30 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "沟通结果";
+            this.columnHeader3.Text = "沟通记录";
             this.columnHeader3.Width = 409;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(10, 7);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(337, 14);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "双击任意一条跟进记录可以查看更清晰的沟通记录";
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "跟进项目";
+            this.columnHeader7.Width = 80;
             // 
             // FormUpateCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 471);
+            this.ClientSize = new System.Drawing.Size(879, 492);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -496,6 +520,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -541,5 +566,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }

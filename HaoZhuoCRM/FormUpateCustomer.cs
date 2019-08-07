@@ -24,11 +24,18 @@ namespace HaoZhuoCRM
 
         private void FormUpateCustomer_Load(object sender, System.EventArgs e)
         {
+            if (!Global.CURRENT_PROJECT_ID.HasValue)
+            {
+                btnAdd.Enabled = false;
+            }
             try
             {
                 dtpActuallyTime.Value = DateTime.Now;
                 dtpNextFollowTime.Value = DateTime.Now.AddDays(1);
-                txtProjectName.Text = CURRENT_CUSTOMER.projectId == 0 ? "" : ProjectService.DicProjects[CURRENT_CUSTOMER.projectId];
+                if (CURRENT_CUSTOMER.projectId.HasValue && ProjectService.DicProjects.ContainsKey(CURRENT_CUSTOMER.projectId.Value))
+                {
+                    txtProjectName.Text = ProjectService.DicProjects[CURRENT_CUSTOMER.projectId.Value];
+                }
                 cmbCustomerTypes.DataSource = CustomerService.CustomerTypesCopy();
                 cmbCustomerTypes.DisplayMember = "name";
                 cmbCustomerTypes.ValueMember = "id";
@@ -72,11 +79,13 @@ namespace HaoZhuoCRM
                 foreach (CustomerFollowRecord record in records)
                 {
                     ListViewItem lvi = new ListViewItem(record.communicationTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                    lvi.SubItems.Add(record.projectName);
                     lvi.SubItems.Add(record.customerStatus.HasValue ? CustomerService.DicCustomerStatuses[record.customerStatus.Value] : "");
                     lvi.SubItems.Add(record.customerType.HasValue ? CustomerService.DicCustomerTypes[record.customerType.Value] : "");
                     lvi.SubItems.Add(record.followUserName);
                     lvi.SubItems.Add(record.nextFollowTime.HasValue ? record.nextFollowTime.Value.ToString("MM-dd HH:mm") : "");
                     lvi.SubItems.Add(record.remark);
+                    lvi.Tag = record;
                     listView1.Items.Add(lvi);
                 }
             }
@@ -153,6 +162,12 @@ namespace HaoZhuoCRM
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
+            if (!Global.CURRENT_PROJECT_ID.HasValue)
+            {
+                MessageBox.Show("您登录时未选择当前操作项目，所以添加跟进记录，请重新登录选择项目或者跟管理员确认您可以操作的项目");
+                return;
+
+            }
             txtName.Text = txtName.Text.Trim();
             if (String.IsNullOrEmpty(txtName.Text))
             {
@@ -219,14 +234,23 @@ namespace HaoZhuoCRM
                 vo.nextFollowTime = dtpNextFollowTime.Value;
                 //vo.source = Convert.ToInt32(cmbCustomerSources.SelectedValue.ToString());
                 vo.type = Convert.ToInt32(cmbCustomerTypes.SelectedValue.ToString());
+                vo.projectId = Global.CURRENT_PROJECT_ID.Value;
                 vo.status = Convert.ToInt32(cmbCustomerStatus.SelectedValue.ToString());
                 CURRENT_CUSTOMER = CustomerService.AddFllowRecord(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
                 ListViewItem lvi = new ListViewItem(vo.communicationTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                lvi.SubItems.Add(Global.CURRENT_PROJECT_NAME);
                 lvi.SubItems.Add(cmbCustomerStatus.Text);
                 lvi.SubItems.Add(cmbCustomerTypes.Text);
                 lvi.SubItems.Add(CURRENT_CUSTOMER.lastFollowUserName);
                 lvi.SubItems.Add(dtpNextFollowTime.Value.ToString("MM-dd HH:mm"));
                 lvi.SubItems.Add(txtRemark.Text);
+                CustomerFollowRecord record = new CustomerFollowRecord();//供查看详细信息时使用
+                record.projectName = Global.CURRENT_PROJECT_NAME;
+                record.communicationTime = dtpActuallyTime.Value;
+                record.followUserName = Global.USER_NAME;
+                record.nextFollowTime = dtpNextFollowTime.Value;
+                record.remark = txtRemark.Text;
+                lvi.Tag = record;
                 listView1.Items.Insert(0, lvi);
                 txtRemark.Text = String.Empty;
                 InformationChanged = true;
@@ -306,6 +330,17 @@ namespace HaoZhuoCRM
         private void BtnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ListView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            FormFollowRecordInfo frmFollowRecordInfo = new FormFollowRecordInfo((CustomerFollowRecord)listView1.SelectedItems[0].Tag);
+            frmFollowRecordInfo.ShowDialog();
+            frmFollowRecordInfo.Close();
         }
     }
 }

@@ -98,7 +98,14 @@ namespace HaoZhuoCRM
         private void BindingData(ListViewItem lvi, Int32 sequence, CustomerDto customer)
         {
             lvi.SubItems.Add(sequence.ToString());
-            lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId]);
+            if (customer.projectId.HasValue && ProjectService.DicProjects.ContainsKey(customer.projectId.Value))
+            {
+                lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId.Value]);
+            }
+            else
+            {
+                lvi.SubItems.Add("");
+            }
             lvi.SubItems.Add(customer.name);
             lvi.SubItems.Add(Genders.DIC_GENDER[customer.gender]);
             lvi.SubItems.Add(customer.mobile);

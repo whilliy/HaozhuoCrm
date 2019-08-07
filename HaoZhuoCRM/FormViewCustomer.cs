@@ -24,11 +24,10 @@ namespace HaoZhuoCRM
         {
             txtName.Text = CURRENT_CUSTOMER.name;
             txtMobile.Text = CURRENT_CUSTOMER.mobile;
-            try
+            if (CURRENT_CUSTOMER.projectId.HasValue && ProjectService.DicProjects.ContainsKey(CURRENT_CUSTOMER.projectId.Value))
             {
-                txtProjectName.Text = ProjectService.DicProjects[CURRENT_CUSTOMER.projectId];
+                txtProjectName.Text = ProjectService.DicProjects[CURRENT_CUSTOMER.projectId.Value];
             }
-            catch { }
             try
             {
                 txtGender.Text = Genders.DIC_GENDER[CURRENT_CUSTOMER.gender];
@@ -59,6 +58,7 @@ namespace HaoZhuoCRM
                     lvi.SubItems.Add(record.followUserName);
                     lvi.SubItems.Add(record.nextFollowTime.HasValue ? record.nextFollowTime.Value.ToString("MM-dd HH:mm") : "");
                     lvi.SubItems.Add(record.remark);
+                    lvi.Tag = record;
                     listView1.Items.Add(lvi);
                 }
             }
@@ -68,6 +68,15 @@ namespace HaoZhuoCRM
             }
         }
 
-
+        private void ListView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            FormFollowRecordInfo frmFollowRecordInfo = new FormFollowRecordInfo((CustomerFollowRecord)listView1.SelectedItems[0].Tag);
+            frmFollowRecordInfo.ShowDialog();
+            frmFollowRecordInfo.Close();
+        }
     }
 }

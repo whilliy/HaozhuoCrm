@@ -12,5 +12,7 @@ namespace Haozhuo.Crm.Service.Dto
         public String followUserName { get; set; }
         public DateTime communicationTime { get; set; }
         public DateTime createdTime { get; set; }
+        public Int32? projectId { get; set; }
+        public String projectName { get; set; }
     }
 }

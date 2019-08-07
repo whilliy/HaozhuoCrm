@@ -171,7 +171,14 @@ namespace HaoZhuoCRM
             ListViewItem lvi = new ListViewItem();
             lvi.UseItemStyleForSubItems = false;
             lvi.SubItems.Add(sequence.ToString());
-            lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId]);
+            if (customer.projectId.HasValue && ProjectService.DicProjects.ContainsKey(customer.projectId.Value))
+            {
+                lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId.Value]);
+            }
+            else
+            {
+                lvi.SubItems.Add("");
+            }
             lvi.SubItems.Add(customer.name);
             lvi.SubItems.Add(Genders.DIC_GENDER[customer.gender]);
             lvi.SubItems.Add(customer.mobile);
@@ -286,7 +293,15 @@ namespace HaoZhuoCRM
                 {
                     CustomerDto currentCustomer = modifyCustomer.CURRENT_CUSTOMER;
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "姓名").Value].Text = currentCustomer.name;
-                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "所属项目").Value].Text = ProjectService.DicProjects[currentCustomer.projectId];
+                    if (currentCustomer.projectId.HasValue && ProjectService.DicProjects.ContainsKey(currentCustomer.projectId.Value))
+                    {
+                        lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "所属项目").Value].Text =
+                            ProjectService.DicProjects[currentCustomer.projectId.Value];
+                    }
+                    else
+                    {
+                        lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "所属项目").Value].Text = "";
+                    }
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "性别").Value].Text = Genders.DIC_GENDER[currentCustomer.gender];
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "手机号码").Value].Text = currentCustomer.mobile;
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "当前跟进人").Value].Text = currentCustomer.currentUserName;
@@ -476,7 +491,7 @@ namespace HaoZhuoCRM
 
         private void CbSelectAll_CheckedChanged(object sender, EventArgs e)
         {
-            foreach(ListViewItem lvi in lvClients.Items)
+            foreach (ListViewItem lvi in lvClients.Items)
             {
                 lvi.Checked = cbSelectAll.Checked;
             }

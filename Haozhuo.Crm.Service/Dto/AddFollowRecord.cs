@@ -18,5 +18,7 @@ namespace Haozhuo.Crm.Service.Dto
         //public DateTime lastFollowTime { get; set; }
         public DateTime nextFollowTime { get; set; }
 
+        public Int32 projectId { get; set; }
+
     }
 }

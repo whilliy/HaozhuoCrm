@@ -49,6 +49,7 @@
             this.txtProvince = new System.Windows.Forms.TextBox();
             this.txtSource = new System.Windows.Forms.TextBox();
             this.txtGender = new System.Windows.Forms.TextBox();
+            this.txtProjectName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -59,7 +60,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txtProjectName = new System.Windows.Forms.TextBox();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -288,6 +289,16 @@
             this.txtGender.Size = new System.Drawing.Size(83, 21);
             this.txtGender.TabIndex = 7;
             // 
+            // txtProjectName
+            // 
+            this.txtProjectName.Enabled = false;
+            this.txtProjectName.Location = new System.Drawing.Point(372, 9);
+            this.txtProjectName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProjectName.Name = "txtProjectName";
+            this.txtProjectName.ReadOnly = true;
+            this.txtProjectName.Size = new System.Drawing.Size(117, 21);
+            this.txtProjectName.TabIndex = 5;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -326,7 +337,8 @@
             this.columnHeader5,
             this.columnHeader2,
             this.columnHeader6,
-            this.columnHeader3});
+            this.columnHeader3,
+            this.columnHeader7});
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
@@ -340,6 +352,7 @@
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.DoubleClick += new System.EventHandler(this.ListView1_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -348,36 +361,37 @@
             // 
             // columnHeader4
             // 
+            this.columnHeader4.DisplayIndex = 2;
             this.columnHeader4.Text = "状态";
             // 
             // columnHeader5
             // 
+            this.columnHeader5.DisplayIndex = 3;
             this.columnHeader5.Text = "类型";
             // 
             // columnHeader2
             // 
+            this.columnHeader2.DisplayIndex = 4;
             this.columnHeader2.Text = "沟通人";
             this.columnHeader2.Width = 80;
             // 
             // columnHeader6
             // 
+            this.columnHeader6.DisplayIndex = 5;
             this.columnHeader6.Text = "下次跟进";
             this.columnHeader6.Width = 100;
             // 
             // columnHeader3
             // 
+            this.columnHeader3.DisplayIndex = 6;
             this.columnHeader3.Text = "沟通结果";
             this.columnHeader3.Width = 409;
             // 
-            // txtProjectName
+            // columnHeader7
             // 
-            this.txtProjectName.Enabled = false;
-            this.txtProjectName.Location = new System.Drawing.Point(372, 9);
-            this.txtProjectName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.ReadOnly = true;
-            this.txtProjectName.Size = new System.Drawing.Size(117, 21);
-            this.txtProjectName.TabIndex = 5;
+            this.columnHeader7.DisplayIndex = 1;
+            this.columnHeader7.Text = "跟进项目";
+            this.columnHeader7.Width = 80;
             // 
             // FormViewCustomer
             // 
@@ -434,5 +448,6 @@
         private System.Windows.Forms.TextBox txtGender;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtProjectName;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }

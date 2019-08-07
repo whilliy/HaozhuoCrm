@@ -1,6 +1,7 @@
 ﻿using Haozhuo.Crm.Service;
 using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
+using Haozhuo.Crm.Service.vo;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -218,7 +219,14 @@ namespace HaoZhuoCRM
         {
             lvi.UseItemStyleForSubItems = false;
             lvi.SubItems.Add(sequence.ToString());
-            lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId]);
+            if (customer.projectId.HasValue && ProjectService.DicProjects.ContainsKey(customer.projectId.Value))
+            {
+                lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId.Value]);
+            }
+            else
+            {
+                lvi.SubItems.Add("");
+            }
             lvi.SubItems.Add(customer.name);
             lvi.SubItems.Add(Genders.DIC_GENDER[customer.gender]);
             lvi.SubItems.Add(customer.mobile);
@@ -301,20 +309,28 @@ namespace HaoZhuoCRM
 
         private void Grasp()
         {
+            if (Global.CURRENT_PROJECT_ID.HasValue == false)
+            {
+                MessageBox.Show("您登录时未选择当前操作项目，所以不能抓取数据，请重新登录选择项目或者跟管理员确认您可以操作的项目");
+                return;
+            }
             if (lvClients.CheckedIndices.Count < 1)
             {
                 MessageBox.Show("请选择要抓取的记录然后在其前面打勾✔", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 lvClients.Focus();
                 return;
             }
+            GraspCustomerVo vo = new GraspCustomerVo();
             IList<String> customerIds = new List<String>();
             foreach (ListViewItem lvi in lvClients.CheckedItems)
             {
                 customerIds.Add(((CustomerDto)lvi.Tag).id);
             }
+            vo.customerIds = customerIds;
+            vo.projectId = Global.CURRENT_PROJECT_ID.Value;
             try
             {
-                CustomerService.GraspCustomersFromPublic(customerIds, Global.USER_TOKEN);
+                CustomerService.GraspCustomersFromPublic(vo, Global.USER_TOKEN);
                 foreach (ListViewItem lvi in lvClients.CheckedItems)
                 {
                     lvClients.Items.Remove(lvi);

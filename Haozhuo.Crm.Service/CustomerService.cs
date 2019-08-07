@@ -1134,12 +1134,12 @@ namespace Haozhuo.Crm.Service
         /// <param name="vo"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static void GraspCustomersFromPublic(IList<String> customerIds, String token)
+        public static void GraspCustomersFromPublic(GraspCustomerVo vo, String token)
         {
             RestClient rc = new RestClient();
             var request = new RestRequest(GlobalConfig.GRASP_CUSTOMERS_FROM_PUBLIC);
             request.AddHeader(GlobalConfig.AUTHORIZATION, token);
-            request.AddJsonBody(customerIds);
+            request.AddJsonBody(vo);
             IRestResponse response;
             try
             {

@@ -86,6 +86,7 @@
     <Compile Include="vo\AddCustomerVo.cs" />
     <Compile Include="vo\AddUserVo.cs" />
     <Compile Include="vo\CustomerData.cs" />
+    <Compile Include="vo\GraspCustomerVo.cs" />
     <Compile Include="vo\ImportCustomerVo.cs" />
     <Compile Include="vo\ModifyPassword.cs" />
     <Compile Include="vo\OrganizationVo.cs" />

@@ -85,6 +85,12 @@
     <Compile Include="FormDispatch.Designer.cs">
       <DependentUpon>FormDispatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFollowRecordInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFollowRecordInfo.Designer.cs">
+      <DependentUpon>FormFollowRecordInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormImportData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDispatch.resx">
       <DependentUpon>FormDispatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFollowRecordInfo.resx">
+      <DependentUpon>FormFollowRecordInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormImportData.resx">
       <DependentUpon>FormImportData.cs</DependentUpon>
