@@ -29,5 +29,10 @@ namespace Haozhuo.Crm.Service.Dto
         public DateTime createdTime { get; set; }
         public String previousFollowUserName { get; set; }
         public String lastFollowUserName { get; set; }
+
+        public Int32? firstOwnerId { get; set; }
+        public DateTime? dispatchedTime { get; set; }
+        public String firstOwnerName { get; set; }
+        public String remark { get; set; }
     }
 }

@@ -224,6 +224,11 @@ namespace HaoZhuoCRM
                 MessageBox.Show("请先加载数据到列表中！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 return;
             }
+            if (MessageBox.Show("您确认要将数据导入到项目【" + cmbProjects.Text + "】，并且设定数据来源为【" + cmbCustomerSources.Text + "】？",
+                "提醒", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
             ImportCustomerVo vo = new ImportCustomerVo();
             vo.projectId = Convert.ToInt32(cmbProjects.SelectedValue.ToString());
             vo.source = Convert.ToInt32(cmbCustomerSources.SelectedValue.ToString());

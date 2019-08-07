@@ -12,39 +12,13 @@ namespace HaoZhuoCRM
 {
     public partial class FormMyCustomers : Form
     {
-        private Int32 CurrentPage = 1;
-        private Int32 PageSize = 20;
-        private Int64 Count;
-        private Int32 PageCount = 1;
 
         public FormMyCustomers()
         {
             InitializeComponent();
-            InitialPager();
         }
 
-        void InitialPager()
-        {
-            lblCurrentPage.Text = "1";
-            lblPageCount.Text = "1";
-            lblTotalCount.Text = "0";
-            //cmbPagesizes.SelectedIndexChanged -= CmbPagesizes_SelectedIndexChanged;
-            cmbPagesizes.Text = "20";
-            //cmbPagesizes.SelectedIndexChanged += CmbPagesizes_SelectedIndexChanged;
-            txtJump.Text = "1";
-            IntialPageButtons();
-        }
 
-        /// <summary>
-        /// 指定“首页”上页，下页，尾页按钮的初始状态
-        /// </summary>
-        void IntialPageButtons()
-        {
-            btnFirstPage.Enabled = false;
-            btnLastPage.Enabled = false;
-            btnNextPage.Enabled = false;
-            btnPrePage.Enabled = false;
-        }
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
@@ -68,7 +42,6 @@ namespace HaoZhuoCRM
                 cmbProjects.DisplayMember = "name";
                 cmbProjects.ValueMember = "id";
                 cmbProjects.DataSource = projects;
-                cmbPagesizes.Text = PageSize.ToString();
             }
             catch (BusinessException ex)
             {
@@ -137,10 +110,26 @@ namespace HaoZhuoCRM
             cmbProvinces.ValueMember = "provinceId";
             cmbProvinces.DisplayMember = "provinceName";
             cmbProvinces.DataSource = provinces;
-            cmbPagesizes.SelectedIndexChanged += CmbPagesizes_SelectedIndexChanged;
-            GetCustomersAndBindingDatas();
+            pager.Reset();
+            Query();
+        }
 
-
+        private void Query()
+        {
+            try
+            {
+                //查询符合条件的记录
+                ResultsWithCount<CustomerDto> customers = QueryCustomers();
+                pager.PageIndex = 1;
+                pager.DrawControl((int)customers.getCount());
+                //将数据绑定到ListView
+                BindingDatas(customers);
+                pager.NeedExcuteQuery = true;
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show("查询失败：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void CmbProvinces_SelectedIndexChanged(object sender, EventArgs e)
@@ -211,7 +200,6 @@ namespace HaoZhuoCRM
 
         private void ButReset_Click(object sender, EventArgs e)
         {
-            InitialPager();
             txtName.Text = txtMobile.Text = "";
             cmbCustomerSources.SelectedIndex = 0;
             cmbCustomerTypes.SelectedIndex = 0;
@@ -219,6 +207,7 @@ namespace HaoZhuoCRM
             cmbProvinces.SelectedIndex = 0;
             lvClients.Items.Clear();
             cbLeaveWordsTime.Checked = false;
+            pager.Reset();
             txtName.Focus();
 
         }
@@ -267,7 +256,6 @@ namespace HaoZhuoCRM
                 }
             }
             //将每页数量改为下拉框内的值
-            PageSize = Convert.ToInt32(cmbPagesizes.Text);
             String leaveWordsTimeBegin = null, leaveWordsTimeEnd = null;
             if (cbLeaveWordsTime.Checked)
             {
@@ -278,7 +266,7 @@ namespace HaoZhuoCRM
                 leaveWordsTimeBegin = dtpLeaveWordsTimeBegin.Value.ToString("yyyy-MM-dd");
                 leaveWordsTimeEnd = dtpLeaveWordsTimeEnd.Value.ToString("yyyy-MM-dd");
             }
-            ResultsWithCount<CustomerDto> customers = CustomerService.QueryMyCustomers(Global.USER_TOKEN, CurrentPage, PageSize, projectId,
+            ResultsWithCount<CustomerDto> customers = CustomerService.QueryMyCustomers(Global.USER_TOKEN, pager.PageIndex, pager.PageSize, projectId,
                  status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId, leaveWordsTimeBegin, leaveWordsTimeEnd);
             return customers;
         }
@@ -287,7 +275,6 @@ namespace HaoZhuoCRM
         {
             lvi.UseItemStyleForSubItems = false;
             lvi.SubItems.Add(sequence.ToString());
-
             if (customer.projectId.HasValue && ProjectService.DicProjects.ContainsKey(customer.projectId.Value))
             {
                 lvi.SubItems.Add(ProjectService.DicProjects[customer.projectId.Value]);
@@ -327,7 +314,7 @@ namespace HaoZhuoCRM
         {
             lvClients.BeginUpdate();
             lvClients.Items.Clear();
-            int i = 1 + (CurrentPage - 1) * PageSize;//计算序号
+            int i = 1 + (pager.PageSize) * (pager.PageIndex - 1);//计算序号
             foreach (CustomerDto customer in customers.getResults())
             {
                 ListViewItem lvi = new ListViewItem();
@@ -340,68 +327,7 @@ namespace HaoZhuoCRM
 
         private void ButQuery_Click(object sender, EventArgs e)
         {
-            GetCustomersAndBindingDatas();
-        }
-
-        /// <summary>
-        /// 根据当前页码和总页数显示“首页”“下页”“前页”“尾页”状态
-        /// </summary>
-        private void SetPageButtons()
-        {
-            if (CurrentPage != 1)
-            {
-                btnPrePage.Enabled = true;
-                btnFirstPage.Enabled = true;
-            }
-            if (CurrentPage < PageCount)
-            {
-                btnNextPage.Enabled = true;
-                btnLastPage.Enabled = true;
-            }
-        }
-
-        /// <summary>
-        /// 获取符合条件的数据并绑定到ListView和Pager区
-        /// </summary>
-        private void GetCustomersAndBindingDatas()
-        {
-            //初始化几个按钮的状态
-            IntialPageButtons();
-            try
-            {
-                //查询符合条件的记录
-                ResultsWithCount<CustomerDto> customers = QueryCustomers();
-                //将数据绑定到ListView
-                BindingDatas(customers);
-                //处理分页相关
-                Assign(customers.getCount());
-            }
-            catch (BusinessException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void Assign(long count)
-        {
-            Count = count;
-            lblTotalCount.Text = count.ToString();
-            //当前页Label修改
-            lblCurrentPage.Text = CurrentPage.ToString();
-            //跳转文本框内容修改
-            txtJump.Text = CurrentPage.ToString();
-            Int32 pageSize = Convert.ToInt32(cmbPagesizes.Text);
-            if (count % pageSize == 0)
-            {
-                PageCount = Convert.ToInt32(count / pageSize);
-                lblPageCount.Text = PageCount.ToString();
-            }
-            else
-            {
-                PageCount = Convert.ToInt32(count / pageSize + 1);
-                lblPageCount.Text = PageCount.ToString();
-            }
-            SetPageButtons();
+            Query();
         }
 
         private void LvClients_DoubleClick(object sender, EventArgs e)
@@ -449,55 +375,6 @@ namespace HaoZhuoCRM
 
         }
 
-
-        private void CmbPagesizes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            PageSize = Convert.ToInt32(cmbPagesizes.Text);
-            GetCustomersAndBindingDatas();
-        }
-
-        private void BtnFirstPage_Click(object sender, EventArgs e)
-        {
-            CurrentPage = 1;
-            GetCustomersAndBindingDatas();
-        }
-
-        private void BtnPrePage_Click(object sender, EventArgs e)
-        {
-            CurrentPage = Math.Max(1, CurrentPage - 1);
-            GetCustomersAndBindingDatas();
-        }
-
-        private void BtnNextPage_Click(object sender, EventArgs e)
-        {
-            CurrentPage = Math.Min(CurrentPage + 1, PageCount);
-            GetCustomersAndBindingDatas();
-        }
-
-        private void BtnLastPage_Click(object sender, EventArgs e)
-        {
-            CurrentPage = PageCount;
-            GetCustomersAndBindingDatas();
-        }
-
-        private void BtnJump_Click(object sender, EventArgs e)
-        {
-            txtJump.Text = txtJump.Text.Trim();
-            Int32 jumpPage = 1;
-            if (!Int32.TryParse(txtJump.Text, out jumpPage) || jumpPage < 1)
-            {
-                MessageBox.Show("跳转页码只能为正整数！");
-                txtJump.Focus();
-                txtJump.SelectAll();
-                return;
-            }
-            CurrentPage = Math.Min(PageCount, jumpPage);
-            GetCustomersAndBindingDatas();
-            txtJump.Focus();
-            txtJump.SelectAll();
-
-        }
-
         private void MenuItemEdit_Click(object sender, EventArgs e)
         {
             LvClients_DoubleClick(null, null);
@@ -526,8 +403,7 @@ namespace HaoZhuoCRM
             try
             {
                 CustomerService.ReturnCustomersToPublic(vo, Global.USER_TOKEN);
-                GetCustomersAndBindingDatas();
-
+                Query();
             }
             catch (BusinessException ex)
             {
@@ -536,6 +412,10 @@ namespace HaoZhuoCRM
             finally
             {
                 lvClients.Focus();
+            }
+            foreach (ListViewItem lvi in lvClients.CheckedItems)
+            {
+                lvClients.Items.Remove(lvi);
             }
 
         }
@@ -598,6 +478,20 @@ namespace HaoZhuoCRM
         private void CbLeaveWordsTime_CheckedChanged(object sender, EventArgs e)
         {
             dtpLeaveWordsTimeBegin.Enabled = dtpLeaveWordsTimeEnd.Enabled = cbLeaveWordsTime.Checked;
+        }
+
+        private void Pager_OnPageChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ResultsWithCount<CustomerDto> customers = QueryCustomers();
+                //将数据绑定到ListView
+                BindingDatas(customers);
+            }
+            catch (BusinessException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

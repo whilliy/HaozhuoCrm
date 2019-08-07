@@ -16,7 +16,7 @@ namespace HaoZhuoCRM.Controls
         {
             needExcuteQuery = false;
             PageIndex = 0;
-            PageSize = 20;
+            PageSize = 50;
             DrawControl(0);
         }
 
@@ -38,7 +38,7 @@ namespace HaoZhuoCRM.Controls
             set { pageIndex = value; }
         }
 
-        private int pageSize = 20;
+        private int pageSize = 50;
         /// <summary>
         /// 每页记录数
         /// </summary>
