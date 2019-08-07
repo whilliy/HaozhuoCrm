@@ -115,6 +115,12 @@
     <Compile Include="FormDispatchTo.Designer.cs">
       <DependentUpon>FormDispatchTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSelectProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectProject.Designer.cs">
+      <DependentUpon>FormSelectProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSelectUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDispatchTo.resx">
       <DependentUpon>FormDispatchTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectProject.resx">
+      <DependentUpon>FormSelectProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSelectUser.resx">
       <DependentUpon>FormSelectUser.cs</DependentUpon>

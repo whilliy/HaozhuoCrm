@@ -442,7 +442,7 @@ namespace Haozhuo.Crm.Service
 
 
         /// <summary>
-        /// 获取指定用户的权限列表
+        /// 获取指定用户的项目列表
         /// </summary>
         /// <returns></returns>
         public static IList<UserProjectDto> GetProjectsByUserId(long userId, String token)
