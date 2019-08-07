@@ -11,5 +11,6 @@ namespace Haozhuo.Crm.Service.vo
         public string mobile { get; set; }
         public Int32 gender { get; set; }
         public IList<String> permissionIds { get; set; }
+        public IList<Int32> projectIds { get; set; }
     }
 }

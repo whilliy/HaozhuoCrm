@@ -200,6 +200,8 @@ namespace Haozhuo.Crm.Service
 
         public static String USER_PERMISSIONS = USERS + "/{userId}/permissions";
 
+        public static String USER_PROJECTS = USERS + "/{userId}/projects";
+
         public static String MY_PERMISSIONS = USERS + "/my_permissions";
     }
 }

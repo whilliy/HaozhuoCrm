@@ -40,10 +40,11 @@
             this.cmbOrganizations = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tvPermissions = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnYes = new System.Windows.Forms.Button();
+            this.tvProjects = new System.Windows.Forms.TreeView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -168,26 +169,27 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.treeView1);
+            this.groupBox2.Controls.Add(this.tvProjects);
+            this.groupBox2.Controls.Add(this.tvPermissions);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 78);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(485, 331);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "权限设置";
+            this.groupBox2.Text = "权限、部门设置";
             // 
-            // treeView1
+            // tvPermissions
             // 
-            this.treeView1.CheckBoxes = true;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.FullRowSelect = true;
-            this.treeView1.HideSelection = false;
-            this.treeView1.Location = new System.Drawing.Point(3, 17);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(479, 311);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterCheck);
+            this.tvPermissions.CheckBoxes = true;
+            this.tvPermissions.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tvPermissions.FullRowSelect = true;
+            this.tvPermissions.HideSelection = false;
+            this.tvPermissions.Location = new System.Drawing.Point(3, 17);
+            this.tvPermissions.Name = "tvPermissions";
+            this.tvPermissions.Size = new System.Drawing.Size(240, 311);
+            this.tvPermissions.TabIndex = 0;
+            this.tvPermissions.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterCheck);
             // 
             // panel1
             // 
@@ -219,6 +221,17 @@
             this.btnYes.Text = "确定(&Y)";
             this.btnYes.UseVisualStyleBackColor = true;
             this.btnYes.Click += new System.EventHandler(this.BtnYes_Click);
+            // 
+            // tvOrganizations
+            // 
+            this.tvProjects.CheckBoxes = true;
+            this.tvProjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvProjects.FullRowSelect = true;
+            this.tvProjects.HideSelection = false;
+            this.tvProjects.Location = new System.Drawing.Point(243, 17);
+            this.tvProjects.Name = "tvOrganizations";
+            this.tvProjects.Size = new System.Drawing.Size(239, 311);
+            this.tvProjects.TabIndex = 1;
             // 
             // FormAddUser
             // 
@@ -263,6 +276,7 @@
         private System.Windows.Forms.Button btnYes;
         private System.Windows.Forms.ComboBox cmbOrganizations;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tvPermissions;
+        private System.Windows.Forms.TreeView tvProjects;
     }
 }
