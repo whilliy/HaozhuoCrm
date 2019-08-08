@@ -62,6 +62,20 @@ namespace HaoZhuoCRM
                 return;
             }
 
+            cmbCustomerTypes.DataSource = CustomerService.CustomerTypesCopy();
+            cmbCustomerTypes.DisplayMember = "name";
+            cmbCustomerTypes.ValueMember = "id";
+            if (CURRENT_CUSTOMER.type.HasValue)
+            {
+                cmbCustomerTypes.SelectedValue = CURRENT_CUSTOMER.type;
+            }
+            cmbCustomerStatus.DisplayMember = "name";
+            cmbCustomerStatus.ValueMember = "id";
+            cmbCustomerStatus.DataSource = CustomerService.CustomerAssignStatusesCopy();
+            if (CURRENT_CUSTOMER.status.HasValue)
+            {
+                cmbCustomerStatus.SelectedValue = CURRENT_CUSTOMER.status;
+            }
             //加载省
             IList<ProvinceDto> provinces = null;
             try
@@ -187,6 +201,8 @@ namespace HaoZhuoCRM
                 vo.mobile = txtMobile.Text;
                 vo.name = txtName.Text;
                 vo.source = Convert.ToInt32(cmbCustomerSources.SelectedValue.ToString());
+                vo.type = Convert.ToInt32(cmbCustomerTypes.SelectedValue.ToString());
+                vo.status = Convert.ToInt32(cmbCustomerStatus.SelectedValue.ToString());
                 //当前客户已经更新
                 CURRENT_CUSTOMER = CustomerService.UpdateCustomer(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
                 InformationChanged = true;

@@ -431,7 +431,7 @@ namespace HaoZhuoCRM
             View();
         }
 
-        private void BtnModify_Click(object sender, EventArgs e)
+        private void BtnFollow_Click(object sender, EventArgs e)
         {
             Modify();
         }

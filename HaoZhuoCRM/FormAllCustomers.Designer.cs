@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miView = new System.Windows.Forms.ToolStripMenuItem();
-            this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.butReset = new System.Windows.Forms.Button();
             this.panelQuery = new System.Windows.Forms.Panel();
             this.cbLeaveWordsTime = new System.Windows.Forms.CheckBox();
@@ -61,6 +60,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.butQuery = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbSelectAll = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -89,7 +89,7 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.cbSelectAll = new System.Windows.Forms.CheckBox();
+            this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -111,13 +111,6 @@
             this.miView.Size = new System.Drawing.Size(120, 22);
             this.miView.Text = "查看(&V)";
             this.miView.Click += new System.EventHandler(this.MiView_Click);
-            // 
-            // miModify
-            // 
-            this.miModify.Name = "miModify";
-            this.miModify.Size = new System.Drawing.Size(120, 22);
-            this.miModify.Text = "修改(&M)";
-            this.miModify.Click += new System.EventHandler(this.MiModify_Click);
             // 
             // butReset
             // 
@@ -446,6 +439,17 @@
             this.panel1.Size = new System.Drawing.Size(1058, 34);
             this.panel1.TabIndex = 1;
             // 
+            // cbSelectAll
+            // 
+            this.cbSelectAll.AutoSize = true;
+            this.cbSelectAll.Location = new System.Drawing.Point(214, 9);
+            this.cbSelectAll.Name = "cbSelectAll";
+            this.cbSelectAll.Size = new System.Drawing.Size(48, 16);
+            this.cbSelectAll.TabIndex = 4;
+            this.cbSelectAll.Text = "全选";
+            this.cbSelectAll.UseVisualStyleBackColor = true;
+            this.cbSelectAll.CheckedChanged += new System.EventHandler(this.CbSelectAll_CheckedChanged);
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(268, 6);
@@ -493,7 +497,7 @@
             this.btnModify.TabIndex = 1;
             this.btnModify.Text = "修改(&M)";
             this.btnModify.UseVisualStyleBackColor = true;
-            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
+            this.btnModify.Click += new System.EventHandler(this.BtnFollow_Click);
             // 
             // panel2
             // 
@@ -662,16 +666,13 @@
             this.pager.TabIndex = 1;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
-            // cbSelectAll
+            // miModify
             // 
-            this.cbSelectAll.AutoSize = true;
-            this.cbSelectAll.Location = new System.Drawing.Point(214, 9);
-            this.cbSelectAll.Name = "cbSelectAll";
-            this.cbSelectAll.Size = new System.Drawing.Size(48, 16);
-            this.cbSelectAll.TabIndex = 4;
-            this.cbSelectAll.Text = "全选";
-            this.cbSelectAll.UseVisualStyleBackColor = true;
-            this.cbSelectAll.CheckedChanged += new System.EventHandler(this.CbSelectAll_CheckedChanged);
+            this.miModify.Name = "miModify";
+            this.miModify.Size = new System.Drawing.Size(120, 22);
+            this.miModify.Text = "修改(&M)";
+            this.miModify.ToolTipText = "仅仅修改客户基本信息";
+            this.miModify.Click += new System.EventHandler(this.MiModify_Click);
             // 
             // FormAllCustomers
             // 
@@ -704,7 +705,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private Controls.PagerControl pager;
-        private System.Windows.Forms.ToolStripMenuItem miModify;
         private System.Windows.Forms.ComboBox cmbProjects;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -758,5 +758,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader20;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox cbSelectAll;
+        private System.Windows.Forms.ToolStripMenuItem miModify;
     }
 }

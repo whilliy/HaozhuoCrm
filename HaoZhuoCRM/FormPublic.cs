@@ -326,6 +326,11 @@ namespace HaoZhuoCRM
             {
                 customerIds.Add(((CustomerDto)lvi.Tag).id);
             }
+            if (DialogResult.Yes != MessageBox.Show("您确认要将选择的 " + customerIds.Count + " 个客户，加入到当前项目【" + Global.CURRENT_PROJECT_NAME + "】中进行跟进吗？",
+                "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                return;
+            }
             vo.customerIds = customerIds;
             vo.projectId = Global.CURRENT_PROJECT_ID.Value;
             try

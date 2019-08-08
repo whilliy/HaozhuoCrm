@@ -375,7 +375,7 @@ namespace HaoZhuoCRM
 
         }
 
-        private void MenuItemEdit_Click(object sender, EventArgs e)
+        private void MenuItemFollow_Click(object sender, EventArgs e)
         {
             LvClients_DoubleClick(null, null);
         }
@@ -492,6 +492,59 @@ namespace HaoZhuoCRM
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void MiModify_Click(object sender, EventArgs e)
+        {
+            Modify();
+        }
+
+        private void Modify()
+        {
+            if (lvClients.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("请选择要修改的客户记录");
+                return;
+            }
+            ListViewItem lviSelected = lvClients.SelectedItems[0];
+            CustomerDto customer = (CustomerDto)lviSelected.Tag;
+            FormModifyCustomer modifyCustomer = new FormModifyCustomer(customer);
+            if (DialogResult.OK == modifyCustomer.ShowDialog())
+            {
+                if (modifyCustomer.InformationChanged)
+                {
+                    CustomerDto currentCustomer = modifyCustomer.CURRENT_CUSTOMER;
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "姓名").Value].Text = currentCustomer.name;
+                    if (currentCustomer.projectId.HasValue && ProjectService.DicProjects.ContainsKey(currentCustomer.projectId.Value))
+                    {
+                        lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "所属项目").Value].Text =
+                            ProjectService.DicProjects[currentCustomer.projectId.Value];
+                    }
+                    else
+                    {
+                        lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "所属项目").Value].Text = "";
+                    }
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "性别").Value].Text = Genders.DIC_GENDER[currentCustomer.gender];
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "手机号码").Value].Text = currentCustomer.mobile;
+                   // lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "当前跟进人").Value].Text = currentCustomer.currentUserName;
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户类型").Value].Text = currentCustomer.type.HasValue ? CustomerService.DicCustomerTypes[currentCustomer.type.Value] : "";
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户状态").Value].Text = currentCustomer.status.HasValue ? CustomerService.DicCustomerStatuses[currentCustomer.status.Value] : "";
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户来源").Value].Text = CustomerService.DicCustomerSources[currentCustomer.source];
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "省").Value].Text = currentCustomer.provinceName;
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "市").Value].Text = currentCustomer.cityName;
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "区").Value].Text = currentCustomer.countyName;
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "留言时间").Value].Text = !currentCustomer.leaveWordsTime.HasValue ? "" : currentCustomer.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat);
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "录入时间").Value].Text = currentCustomer.createdTime.ToString(GlobalConfig.DateTimeFormat);
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "上次跟进时间").Value].Text = !currentCustomer.previousFollowTime.HasValue ? "" : currentCustomer.previousFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "上次跟进人").Value].Text = currentCustomer.previousFollowUserName;
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进时间").Value].Text = !currentCustomer.lastFollowTime.HasValue ? "" : currentCustomer.lastFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进人").Value].Text = currentCustomer.lastFollowUserName;
+                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "下次跟进时间").Value].Text = !currentCustomer.nextFollowTime.HasValue ? "" : currentCustomer.nextFollowTime.Value.ToString(GlobalConfig.DateTimeFormat);
+                    lviSelected.Tag = currentCustomer;
+                }
+
+            }
+            modifyCustomer.Close();
         }
     }
 }

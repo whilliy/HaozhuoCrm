@@ -85,6 +85,7 @@
             this.menuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -554,30 +555,32 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemReturnToPublic,
             this.menuItemTransfer,
-            this.menuItemEdit});
+            this.menuItemEdit,
+            this.miModify});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
             // 
             // menuItemReturnToPublic
             // 
             this.menuItemReturnToPublic.Name = "menuItemReturnToPublic";
-            this.menuItemReturnToPublic.Size = new System.Drawing.Size(124, 22);
+            this.menuItemReturnToPublic.Size = new System.Drawing.Size(180, 22);
             this.menuItemReturnToPublic.Text = "丢回公海";
             this.menuItemReturnToPublic.Click += new System.EventHandler(this.MenuItemReturnToPublic_Click);
             // 
             // menuItemTransfer
             // 
             this.menuItemTransfer.Name = "menuItemTransfer";
-            this.menuItemTransfer.Size = new System.Drawing.Size(124, 22);
+            this.menuItemTransfer.Size = new System.Drawing.Size(180, 22);
             this.menuItemTransfer.Text = "转让...";
             this.menuItemTransfer.Click += new System.EventHandler(this.MenuItemTransfer_Click);
             // 
             // menuItemEdit
             // 
             this.menuItemEdit.Name = "menuItemEdit";
-            this.menuItemEdit.Size = new System.Drawing.Size(124, 22);
-            this.menuItemEdit.Text = "编辑...";
-            this.menuItemEdit.Click += new System.EventHandler(this.MenuItemEdit_Click);
+            this.menuItemEdit.Size = new System.Drawing.Size(180, 22);
+            this.menuItemEdit.Text = "跟进...";
+            this.menuItemEdit.ToolTipText = "添加跟进记录，同时可以修改用户基本信息";
+            this.menuItemEdit.Click += new System.EventHandler(this.MenuItemFollow_Click);
             // 
             // panel3
             // 
@@ -606,7 +609,15 @@
             this.pager.TabIndex = 4;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
-            // FormMyCustomers2
+            // miModify
+            // 
+            this.miModify.Name = "miModify";
+            this.miModify.Size = new System.Drawing.Size(180, 22);
+            this.miModify.Text = "修改(&M)";
+            this.miModify.ToolTipText = "仅仅修改一下客户的基本信息";
+            this.miModify.Click += new System.EventHandler(this.MiModify_Click);
+            // 
+            // FormMyCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -616,7 +627,7 @@
             this.Controls.Add(this.panelQuery);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FormMyCustomers2";
+            this.Name = "FormMyCustomers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "我的客户";
             this.Load += new System.EventHandler(this.FormMyClients_Load);
@@ -688,5 +699,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox cbLeaveWordsTime;
         private Controls.PagerControl pager;
+        private System.Windows.Forms.ToolStripMenuItem miModify;
     }
 }

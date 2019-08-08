@@ -509,7 +509,7 @@
             // columnHeader16
             // 
             this.columnHeader16.Text = "所属项目";
-            this.columnHeader16.Width = 0;
+            this.columnHeader16.Width = 80;
             // 
             // columnHeader2
             // 

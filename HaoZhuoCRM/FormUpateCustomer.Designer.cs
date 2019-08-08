@@ -109,10 +109,10 @@
             // 
             // txtMobile
             // 
-            this.txtMobile.Enabled = false;
             this.txtMobile.Location = new System.Drawing.Point(199, 9);
             this.txtMobile.Margin = new System.Windows.Forms.Padding(2);
             this.txtMobile.Name = "txtMobile";
+            this.txtMobile.ReadOnly = true;
             this.txtMobile.Size = new System.Drawing.Size(96, 21);
             this.txtMobile.TabIndex = 10;
             // 

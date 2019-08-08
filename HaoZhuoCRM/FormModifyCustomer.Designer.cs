@@ -46,13 +46,17 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.cmbProjects = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.cmbCustomerTypes = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmbCustomerStatus = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cmbGender
             // 
             this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.Location = new System.Drawing.Point(568, 22);
+            this.cmbGender.Location = new System.Drawing.Point(575, 22);
             this.cmbGender.Margin = new System.Windows.Forms.Padding(2);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(98, 20);
@@ -61,7 +65,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(494, 26);
+            this.label9.Location = new System.Drawing.Point(501, 26);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
@@ -72,7 +76,7 @@
             // 
             this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerSources.FormattingEnabled = true;
-            this.cmbCustomerSources.Location = new System.Drawing.Point(568, 63);
+            this.cmbCustomerSources.Location = new System.Drawing.Point(575, 63);
             this.cmbCustomerSources.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerSources.Name = "cmbCustomerSources";
             this.cmbCustomerSources.Size = new System.Drawing.Size(98, 20);
@@ -81,7 +85,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(309, 67);
+            this.label6.Location = new System.Drawing.Point(316, 67);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 12);
@@ -91,7 +95,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 26);
+            this.label1.Location = new System.Drawing.Point(13, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
@@ -102,7 +106,7 @@
             // 
             this.cmbCounties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCounties.FormattingEnabled = true;
-            this.cmbCounties.Location = new System.Drawing.Point(360, 63);
+            this.cmbCounties.Location = new System.Drawing.Point(367, 63);
             this.cmbCounties.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCounties.Name = "cmbCounties";
             this.cmbCounties.Size = new System.Drawing.Size(117, 20);
@@ -110,7 +114,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(65, 22);
+            this.txtName.Location = new System.Drawing.Point(71, 22);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(85, 21);
@@ -119,7 +123,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(161, 67);
+            this.label7.Location = new System.Drawing.Point(168, 67);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 12);
@@ -129,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(161, 26);
+            this.label2.Location = new System.Drawing.Point(168, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
@@ -140,7 +144,7 @@
             // 
             this.cmbCities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCities.FormattingEnabled = true;
-            this.cmbCities.Location = new System.Drawing.Point(206, 63);
+            this.cmbCities.Location = new System.Drawing.Point(213, 63);
             this.cmbCities.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCities.Name = "cmbCities";
             this.cmbCities.Size = new System.Drawing.Size(96, 20);
@@ -149,17 +153,17 @@
             // 
             // txtMobile
             // 
-            this.txtMobile.Enabled = false;
-            this.txtMobile.Location = new System.Drawing.Point(206, 22);
+            this.txtMobile.Location = new System.Drawing.Point(213, 22);
             this.txtMobile.Margin = new System.Windows.Forms.Padding(2);
             this.txtMobile.Name = "txtMobile";
+            this.txtMobile.ReadOnly = true;
             this.txtMobile.Size = new System.Drawing.Size(96, 21);
             this.txtMobile.TabIndex = 30;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 67);
+            this.label8.Location = new System.Drawing.Point(13, 67);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 12);
@@ -169,7 +173,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(494, 67);
+            this.label3.Location = new System.Drawing.Point(501, 67);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
@@ -180,7 +184,7 @@
             // 
             this.cmbProvinces.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvinces.FormattingEnabled = true;
-            this.cmbProvinces.Location = new System.Drawing.Point(65, 63);
+            this.cmbProvinces.Location = new System.Drawing.Point(71, 63);
             this.cmbProvinces.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProvinces.Name = "cmbProvinces";
             this.cmbProvinces.Size = new System.Drawing.Size(85, 20);
@@ -189,7 +193,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(484, 119);
+            this.btnOK.Location = new System.Drawing.Point(501, 98);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 43;
@@ -199,7 +203,8 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(581, 119);
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(598, 98);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 44;
@@ -211,7 +216,7 @@
             // 
             this.cmbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjects.FormattingEnabled = true;
-            this.cmbProjects.Location = new System.Drawing.Point(360, 23);
+            this.cmbProjects.Location = new System.Drawing.Point(367, 23);
             this.cmbProjects.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjects.Name = "cmbProjects";
             this.cmbProjects.Size = new System.Drawing.Size(117, 20);
@@ -220,12 +225,52 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(315, 27);
+            this.label4.Location = new System.Drawing.Point(322, 27);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 45;
             this.label4.Text = "项目：";
+            // 
+            // cmbCustomerTypes
+            // 
+            this.cmbCustomerTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCustomerTypes.FormattingEnabled = true;
+            this.cmbCustomerTypes.Location = new System.Drawing.Point(79, 101);
+            this.cmbCustomerTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCustomerTypes.Name = "cmbCustomerTypes";
+            this.cmbCustomerTypes.Size = new System.Drawing.Size(77, 20);
+            this.cmbCustomerTypes.TabIndex = 48;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(171, 106);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 49;
+            this.label5.Text = "客户状态：";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 104);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.TabIndex = 47;
+            this.label10.Text = "客户类型：";
+            // 
+            // cmbCustomerStatus
+            // 
+            this.cmbCustomerStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCustomerStatus.FormattingEnabled = true;
+            this.cmbCustomerStatus.Location = new System.Drawing.Point(236, 102);
+            this.cmbCustomerStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCustomerStatus.Name = "cmbCustomerStatus";
+            this.cmbCustomerStatus.Size = new System.Drawing.Size(101, 20);
+            this.cmbCustomerStatus.TabIndex = 50;
             // 
             // FormModifyCustomer
             // 
@@ -233,7 +278,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(677, 154);
+            this.ClientSize = new System.Drawing.Size(686, 137);
+            this.Controls.Add(this.cmbCustomerTypes);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.cmbCustomerStatus);
             this.Controls.Add(this.cmbProjects);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnClose);
@@ -283,5 +332,9 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ComboBox cmbProjects;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbCustomerTypes;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cmbCustomerStatus;
     }
 }
