@@ -50,7 +50,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dtpNextFollowTime = new System.Windows.Forms.DateTimePicker();
-            this.txtRemark = new System.Windows.Forms.TextBox();
+            this.txtFollowRemark = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.cmbGender = new System.Windows.Forms.ComboBox();
@@ -58,17 +58,21 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.butConfirm = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label14 = new System.Windows.Forms.Label();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtRemark = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtFirstOwnerName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -235,12 +239,16 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.txtFirstOwnerName);
+            this.panel1.Controls.Add(this.txtRemark);
+            this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.txtProjectName);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.dtpNextFollowTime);
-            this.panel1.Controls.Add(this.txtRemark);
+            this.panel1.Controls.Add(this.txtFollowRemark);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.cmbGender);
@@ -267,12 +275,12 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(879, 152);
+            this.panel1.Size = new System.Drawing.Size(879, 187);
             this.panel1.TabIndex = 0;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(785, 126);
+            this.btnClose.Location = new System.Drawing.Point(785, 159);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(68, 20);
@@ -302,7 +310,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(701, 126);
+            this.btnAdd.Location = new System.Drawing.Point(701, 159);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(68, 20);
@@ -315,26 +323,26 @@
             // 
             this.dtpNextFollowTime.CustomFormat = "yyyy-MM-dd HH:mm";
             this.dtpNextFollowTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNextFollowTime.Location = new System.Drawing.Point(542, 127);
+            this.dtpNextFollowTime.Location = new System.Drawing.Point(542, 159);
             this.dtpNextFollowTime.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNextFollowTime.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dtpNextFollowTime.Name = "dtpNextFollowTime";
             this.dtpNextFollowTime.Size = new System.Drawing.Size(140, 21);
             this.dtpNextFollowTime.TabIndex = 5;
             // 
-            // txtRemark
+            // txtFollowRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(81, 71);
-            this.txtRemark.Margin = new System.Windows.Forms.Padding(2);
-            this.txtRemark.Multiline = true;
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(772, 51);
-            this.txtRemark.TabIndex = 1;
+            this.txtFollowRemark.Location = new System.Drawing.Point(84, 101);
+            this.txtFollowRemark.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFollowRemark.Multiline = true;
+            this.txtFollowRemark.Name = "txtFollowRemark";
+            this.txtFollowRemark.Size = new System.Drawing.Size(772, 51);
+            this.txtFollowRemark.TabIndex = 1;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 80);
+            this.label11.Location = new System.Drawing.Point(15, 110);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 12);
@@ -345,7 +353,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Blue;
-            this.label12.Location = new System.Drawing.Point(449, 131);
+            this.label12.Location = new System.Drawing.Point(449, 163);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(89, 12);
@@ -366,7 +374,7 @@
             // 
             this.dtpActuallyTime.CustomFormat = "yyyy-MM-dd HH:mm";
             this.dtpActuallyTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpActuallyTime.Location = new System.Drawing.Point(103, 126);
+            this.dtpActuallyTime.Location = new System.Drawing.Point(299, 159);
             this.dtpActuallyTime.Margin = new System.Windows.Forms.Padding(2);
             this.dtpActuallyTime.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dtpActuallyTime.Name = "dtpActuallyTime";
@@ -386,7 +394,8 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 130);
+            this.label10.ForeColor = System.Drawing.Color.Blue;
+            this.label10.Location = new System.Drawing.Point(206, 163);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(89, 12);
@@ -399,11 +408,22 @@
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.butConfirm);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 464);
+            this.panel2.Location = new System.Drawing.Point(0, 505);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(879, 28);
             this.panel2.TabIndex = 2;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(10, 7);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(337, 14);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "双击任意一条跟进记录可以查看更清晰的沟通记录";
             // 
             // btnCancel
             // 
@@ -446,11 +466,11 @@
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 152);
+            this.listView1.Location = new System.Drawing.Point(0, 187);
             this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(879, 312);
+            this.listView1.Size = new System.Drawing.Size(879, 318);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -460,6 +480,11 @@
             // 
             this.columnHeader1.Text = "跟进时间";
             this.columnHeader1.Width = 150;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "跟进项目";
+            this.columnHeader7.Width = 80;
             // 
             // columnHeader4
             // 
@@ -484,27 +509,50 @@
             this.columnHeader3.Text = "沟通记录";
             this.columnHeader3.Width = 409;
             // 
-            // label14
+            // label15
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(10, 7);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(337, 14);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "双击任意一条跟进记录可以查看更清晰的沟通记录";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 76);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 12);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "数据说明：";
             // 
-            // columnHeader7
+            // txtRemark
             // 
-            this.columnHeader7.Text = "跟进项目";
-            this.columnHeader7.Width = 80;
+            this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtRemark.Location = new System.Drawing.Point(86, 69);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(769, 25);
+            this.txtRemark.TabIndex = 29;
+            this.txtRemark.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 163);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 12);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "第一跟进人：";
+            // 
+            // txtFirstOwnerName
+            // 
+            this.txtFirstOwnerName.Location = new System.Drawing.Point(89, 159);
+            this.txtFirstOwnerName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFirstOwnerName.Name = "txtFirstOwnerName";
+            this.txtFirstOwnerName.ReadOnly = true;
+            this.txtFirstOwnerName.Size = new System.Drawing.Size(106, 21);
+            this.txtFirstOwnerName.TabIndex = 31;
             // 
             // FormUpateCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 492);
+            this.ClientSize = new System.Drawing.Size(879, 533);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -554,7 +602,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbGender;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtRemark;
+        private System.Windows.Forms.TextBox txtFollowRemark;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker dtpActuallyTime;
         private System.Windows.Forms.Button btnAdd;
@@ -568,5 +616,9 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label txtRemark;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtFirstOwnerName;
     }
 }

@@ -39,13 +39,12 @@ namespace HaoZhuoCRM
             }
             catch { }
             txtStatus.Text = CURRENT_CUSTOMER.status.HasValue ? CustomerService.DicCustomerStatuses[CURRENT_CUSTOMER.status.Value] : "";
-
             txtType.Text = CURRENT_CUSTOMER.type.HasValue ? CustomerService.DicCustomerTypes[CURRENT_CUSTOMER.type.Value] : "";
-
             txtProvince.Text = CURRENT_CUSTOMER.provinceName;
-            txtCurrentUserName.Text = CURRENT_CUSTOMER.currentUserName;
+            txtFirstOwnerName.Text = CURRENT_CUSTOMER.firstOwnerName;
             txtCity.Text = CURRENT_CUSTOMER.cityName;
             txtCounty.Text = CURRENT_CUSTOMER.countyName;
+            txtRemark.Text = CURRENT_CUSTOMER.remark;
             txtNextFollowTime.Text = (CURRENT_CUSTOMER.nextFollowTime.HasValue ? CURRENT_CUSTOMER.nextFollowTime.Value.ToString(GlobalConfig.DateTimeFormat) : "");
             try
             {
@@ -53,6 +52,7 @@ namespace HaoZhuoCRM
                 foreach (CustomerFollowRecord record in records)
                 {
                     ListViewItem lvi = new ListViewItem(record.communicationTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                    lvi.SubItems.Add(record.projectName);
                     lvi.SubItems.Add(record.customerStatus.HasValue ? CustomerService.DicCustomerStatuses[record.customerStatus.Value] : "");
                     lvi.SubItems.Add(record.customerType.HasValue ? CustomerService.DicCustomerTypes[record.customerType.Value] : "");
                     lvi.SubItems.Add(record.followUserName);

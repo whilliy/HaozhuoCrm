@@ -37,6 +37,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbCustomerSources = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
@@ -49,31 +52,32 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelCount = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtRemark = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtRemark);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.butOpen);
-            this.panel1.Controls.Add(this.txtFile);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cmbProjects);
             this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.txtFile);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.cmbCustomerSources);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1013, 43);
+            this.panel1.Size = new System.Drawing.Size(982, 68);
             this.panel1.TabIndex = 0;
             // 
             // butOpen
             // 
-            this.butOpen.Location = new System.Drawing.Point(834, 9);
+            this.butOpen.Location = new System.Drawing.Point(881, 6);
             this.butOpen.Name = "butOpen";
             this.butOpen.Size = new System.Drawing.Size(75, 23);
             this.butOpen.TabIndex = 16;
@@ -83,7 +87,7 @@
             // 
             // txtFile
             // 
-            this.txtFile.Location = new System.Drawing.Point(424, 10);
+            this.txtFile.Location = new System.Drawing.Point(458, 7);
             this.txtFile.Name = "txtFile";
             this.txtFile.ReadOnly = true;
             this.txtFile.Size = new System.Drawing.Size(400, 21);
@@ -92,7 +96,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(365, 15);
+            this.label1.Location = new System.Drawing.Point(399, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 14;
@@ -102,7 +106,7 @@
             // 
             this.cmbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjects.FormattingEnabled = true;
-            this.cmbProjects.Location = new System.Drawing.Point(56, 11);
+            this.cmbProjects.Location = new System.Drawing.Point(86, 7);
             this.cmbProjects.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjects.Name = "cmbProjects";
             this.cmbProjects.Size = new System.Drawing.Size(117, 20);
@@ -111,7 +115,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 15);
+            this.label10.Location = new System.Drawing.Point(25, 11);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
@@ -121,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(193, 15);
+            this.label3.Location = new System.Drawing.Point(227, 11);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
@@ -132,7 +136,7 @@
             // 
             this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerSources.FormattingEnabled = true;
-            this.cmbCustomerSources.Location = new System.Drawing.Point(265, 11);
+            this.cmbCustomerSources.Location = new System.Drawing.Point(299, 7);
             this.cmbCustomerSources.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerSources.Name = "cmbCustomerSources";
             this.cmbCustomerSources.Size = new System.Drawing.Size(84, 20);
@@ -149,8 +153,35 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 467);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1013, 43);
+            this.panel2.Size = new System.Drawing.Size(982, 43);
             this.panel2.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(157, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "条数据";
+            // 
+            // labelCount
+            // 
+            this.labelCount.AutoSize = true;
+            this.labelCount.Location = new System.Drawing.Point(133, 15);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(11, 12);
+            this.labelCount.TabIndex = 21;
+            this.labelCount.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(110, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 12);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "共";
             // 
             // btnDelete
             // 
@@ -165,7 +196,7 @@
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(926, 10);
+            this.btnClose.Location = new System.Drawing.Point(894, 10);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 18;
@@ -175,7 +206,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(834, 10);
+            this.btnOK.Location = new System.Drawing.Point(802, 10);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 17;
@@ -198,9 +229,9 @@
             this.lvCustomers.GridLines = true;
             this.lvCustomers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvCustomers.HideSelection = false;
-            this.lvCustomers.Location = new System.Drawing.Point(0, 43);
+            this.lvCustomers.Location = new System.Drawing.Point(0, 68);
             this.lvCustomers.Name = "lvCustomers";
-            this.lvCustomers.Size = new System.Drawing.Size(1013, 424);
+            this.lvCustomers.Size = new System.Drawing.Size(982, 399);
             this.lvCustomers.TabIndex = 2;
             this.lvCustomers.UseCompatibleStateImageBehavior = false;
             this.lvCustomers.View = System.Windows.Forms.View.Details;
@@ -246,32 +277,21 @@
             this.openFileDialog.Filter = "Excel文件|*.xls;*.xlsx|逗号分隔文件|*.csv";
             this.openFileDialog.Title = "选择要导入的客户文件";
             // 
-            // label2
+            // txtRemark
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(110, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 12);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "共";
+            this.txtRemark.Location = new System.Drawing.Point(84, 36);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(774, 21);
+            this.txtRemark.TabIndex = 18;
             // 
-            // labelCount
+            // label4
             // 
-            this.labelCount.AutoSize = true;
-            this.labelCount.Location = new System.Drawing.Point(133, 15);
-            this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(11, 12);
-            this.labelCount.TabIndex = 21;
-            this.labelCount.Text = "0";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(157, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "条数据";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "备注：";
             // 
             // FormImportData
             // 
@@ -279,7 +299,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(1013, 510);
+            this.ClientSize = new System.Drawing.Size(982, 510);
             this.Controls.Add(this.lvCustomers);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -322,5 +342,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelCount;
+        private System.Windows.Forms.TextBox txtRemark;
+        private System.Windows.Forms.Label label4;
     }
 }

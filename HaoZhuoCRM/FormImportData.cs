@@ -39,6 +39,7 @@ namespace HaoZhuoCRM
             try
             {
                 IList<ProjectDto> projects = ProjectService.ProjectsCopy;
+                projects.Insert(0, new ProjectDto(-1, ""));
                 cmbProjects.DisplayMember = "name";
                 cmbProjects.ValueMember = "id";
                 cmbProjects.DataSource = projects;
@@ -224,14 +225,25 @@ namespace HaoZhuoCRM
                 MessageBox.Show("请先加载数据到列表中！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 return;
             }
-            if (MessageBox.Show("您确认要将数据导入到项目【" + cmbProjects.Text + "】，并且设定数据来源为【" + cmbCustomerSources.Text + "】？",
+            if (cmbProjects.Text == String.Empty)
+            {
+                if (DialogResult.No == MessageBox.Show("您确定不指定项目？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    return;
+                }
+            }
+            if (MessageBox.Show("您确认要将数据加入项目【" + cmbProjects.Text + "】，并指定数据来源为【" + cmbCustomerSources.Text + "】吗？",
                 "提醒", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
             }
             ImportCustomerVo vo = new ImportCustomerVo();
-            vo.projectId = Convert.ToInt32(cmbProjects.SelectedValue.ToString());
+            if (cmbProjects.Text != String.Empty)
+            {
+                vo.projectId = Convert.ToInt32(cmbProjects.SelectedValue.ToString());
+            }
             vo.source = Convert.ToInt32(cmbCustomerSources.SelectedValue.ToString());
+            vo.remark = txtRemark.Text.Trim();
             vo.customers = new List<CustomerData>();
             foreach (ListViewItem lvi in lvCustomers.Items)
             {
@@ -249,6 +261,9 @@ namespace HaoZhuoCRM
                 }
                 lvCustomers.Items.Clear();
                 txtFile.Text = String.Empty;
+                labelCount.Text = "0";
+                cmbProjects.SelectedIndex = 0;
+                cmbCustomerSources.SelectedIndex = 0;
                 butOpen.Focus();
             }
             catch (BusinessException ex)

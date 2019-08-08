@@ -36,6 +36,10 @@ namespace HaoZhuoCRM
                 {
                     txtProjectName.Text = ProjectService.DicProjects[CURRENT_CUSTOMER.projectId.Value];
                 }
+                else
+                {
+                    txtProjectName.Text = Global.CURRENT_PROJECT_NAME;
+                }
                 cmbCustomerTypes.DataSource = CustomerService.CustomerTypesCopy();
                 cmbCustomerTypes.DisplayMember = "name";
                 cmbCustomerTypes.ValueMember = "id";
@@ -60,6 +64,8 @@ namespace HaoZhuoCRM
                 cmbGender.SelectedValue = CURRENT_CUSTOMER.gender;
                 txtName.Text = CURRENT_CUSTOMER.name;
                 txtMobile.Text = CURRENT_CUSTOMER.mobile;
+                txtRemark.Text = CURRENT_CUSTOMER.remark;
+                txtFirstOwnerName.Text = CURRENT_CUSTOMER.firstOwnerName;
                 cmbProvinces.DisplayMember = "provinceName";
                 cmbProvinces.ValueMember = "provinceId";
                 cmbProvinces.DataSource = RegionService.PROVINCES_COPY;
@@ -207,11 +213,11 @@ namespace HaoZhuoCRM
                 dtpNextFollowTime.Focus();
                 return;
             }
-            txtRemark.Text = txtRemark.Text.Trim();
-            if (txtRemark.Text == String.Empty)
+            txtFollowRemark.Text = txtFollowRemark.Text.Trim();
+            if (txtFollowRemark.Text == String.Empty)
             {
                 MessageBox.Show("必须输入沟通记录");
-                txtRemark.Focus();
+                txtFollowRemark.Focus();
                 return;
             }
             if (DateTime.Compare(dtpActuallyTime.Value, DateTime.Now) > 0)
@@ -224,7 +230,7 @@ namespace HaoZhuoCRM
             {
                 AddFollowRecord vo = new AddFollowRecord();
                 vo.communicationTime = dtpActuallyTime.Value;
-                vo.remark = txtRemark.Text;
+                vo.remark = txtFollowRemark.Text;
                 vo.cityId = cmbCities.SelectedValue != null ? cmbCities.SelectedValue.ToString() : null;
                 vo.countyId = cmbCounties.SelectedValue != null ? cmbCounties.SelectedValue.ToString() : null;
                 vo.gender = cmbGender.SelectedValue == null ? 0 : Convert.ToInt32(cmbGender.SelectedValue.ToString());
@@ -243,16 +249,16 @@ namespace HaoZhuoCRM
                 lvi.SubItems.Add(cmbCustomerTypes.Text);
                 lvi.SubItems.Add(CURRENT_CUSTOMER.lastFollowUserName);
                 lvi.SubItems.Add(dtpNextFollowTime.Value.ToString("MM-dd HH:mm"));
-                lvi.SubItems.Add(txtRemark.Text);
+                lvi.SubItems.Add(txtFollowRemark.Text);
                 CustomerFollowRecord record = new CustomerFollowRecord();//供查看详细信息时使用
                 record.projectName = Global.CURRENT_PROJECT_NAME;
                 record.communicationTime = dtpActuallyTime.Value;
                 record.followUserName = Global.USER_NAME;
                 record.nextFollowTime = dtpNextFollowTime.Value;
-                record.remark = txtRemark.Text;
+                record.remark = txtFollowRemark.Text;
                 lvi.Tag = record;
                 listView1.Items.Insert(0, lvi);
-                txtRemark.Text = String.Empty;
+                txtFollowRemark.Text = String.Empty;
                 InformationChanged = true;
                 MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
