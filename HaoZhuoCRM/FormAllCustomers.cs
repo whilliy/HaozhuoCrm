@@ -462,15 +462,15 @@ namespace HaoZhuoCRM
             foreach (ListViewItem lvi in lvClients.CheckedItems)
             {
                 CustomerDto customer = (CustomerDto)lvi.Tag;
-                if (!customer.projectId.HasValue)
-                {
-                    MessageBox.Show("姓名为【" + customer.name + "】，手机号码为【" + customer.mobile + "】的客户当前不属于任何项目，不能进行该操作"
-                        ,"提示",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                    return;
-                }
-                //if (customer.currentUserId<=0||customer.currentUserName==String.Empty)
+                //if (!customer.projectId.HasValue)
                 //{
-
+                //    MessageBox.Show("姓名为【" + customer.name + "】，手机号码为【" + customer.mobile + "】的客户当前不属于任何项目，不能进行该操作"
+                //        ,"提示",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                //    return;
+                //}
+                //if (customer.currentUserId <= 0 || customer.currentUserName == String.Empty)
+                //{
+                    //如果当前不属于任何用户相当于分派了！
                 //}
                 customerIds.Add(customer.id);
             }

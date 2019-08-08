@@ -84,7 +84,7 @@ namespace HaoZhuoCRM
                 IList<CustomerFollowRecord> records = CustomerService.GetFollowerRecordsByCusotmerId(CURRENT_CUSTOMER.id, Global.USER_TOKEN);
                 foreach (CustomerFollowRecord record in records)
                 {
-                    ListViewItem lvi = new ListViewItem(record.communicationTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                    ListViewItem lvi = new ListViewItem(record.communicationTime.ToString(GlobalConfig.DateTimeFormat));
                     lvi.SubItems.Add(record.projectName);
                     lvi.SubItems.Add(record.customerStatus.HasValue ? CustomerService.DicCustomerStatuses[record.customerStatus.Value] : "");
                     lvi.SubItems.Add(record.customerType.HasValue ? CustomerService.DicCustomerTypes[record.customerType.Value] : "");
