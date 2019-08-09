@@ -115,6 +115,7 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(customer.countyName);
             lvi.SubItems.Add(customer.leaveWordsTime.HasValue ? customer.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat) : "");
             lvi.SubItems.Add(customer.createdTime == null ? "" : customer.createdTime.ToString("yyyy-MM-dd HH:mm:ss"));
+            lvi.SubItems.Add(customer.remark);
             lvi.Tag = customer;
         }
 

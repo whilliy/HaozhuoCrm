@@ -59,8 +59,9 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pager = new HaoZhuoCRM.Controls.PagerControl();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pager = new HaoZhuoCRM.Controls.PagerControl();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -298,7 +299,8 @@
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader4,
-            this.columnHeader9});
+            this.columnHeader9,
+            this.ColumnHeader11});
             this.lvClients.ContextMenuStrip = this.contextMenuStrip1;
             this.lvClients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvClients.FullRowSelect = true;
@@ -344,6 +346,16 @@
             this.columnHeader3.Text = "手机号码";
             this.columnHeader3.Width = 120;
             // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "留言时间";
+            this.columnHeader4.Width = 150;
+            // 
+            // ColumnHeader11
+            // 
+            this.ColumnHeader11.Text = "备注";
+            this.ColumnHeader11.Width = 255;
+            // 
             // pager
             // 
             this.pager.BackColor = System.Drawing.SystemColors.Control;
@@ -359,11 +371,6 @@
             this.pager.Size = new System.Drawing.Size(993, 34);
             this.pager.TabIndex = 3;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "留言时间";
-            this.columnHeader4.Width = 150;
             // 
             // FormDispatch
             // 
@@ -420,5 +427,6 @@
         private System.Windows.Forms.ToolStripMenuItem miDispatch;
         private System.Windows.Forms.CheckBox checkBoxAll;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader ColumnHeader11;
     }
 }
