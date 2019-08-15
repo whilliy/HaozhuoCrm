@@ -39,6 +39,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtRemark = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNextFollowTime = new System.Windows.Forms.TextBox();
             this.txtFirstOwnerName = new System.Windows.Forms.TextBox();
@@ -55,14 +57,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtRemark = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +88,6 @@
             // 
             // txtMobile
             // 
-            this.txtMobile.Enabled = false;
             this.txtMobile.Location = new System.Drawing.Point(218, 9);
             this.txtMobile.Margin = new System.Windows.Forms.Padding(2);
             this.txtMobile.Name = "txtMobile";
@@ -199,6 +198,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(877, 132);
             this.panel1.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(31, 110);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 12);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "备注信息：";
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Location = new System.Drawing.Point(112, 107);
+            this.txtRemark.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.ReadOnly = true;
+            this.txtRemark.Size = new System.Drawing.Size(712, 21);
+            this.txtRemark.TabIndex = 25;
             // 
             // label10
             // 
@@ -363,6 +381,11 @@
             this.columnHeader1.Text = "跟进时间";
             this.columnHeader1.Width = 150;
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "跟进项目";
+            this.columnHeader7.Width = 80;
+            // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "状态";
@@ -385,30 +408,6 @@
             // 
             this.columnHeader3.Text = "沟通结果";
             this.columnHeader3.Width = 409;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "跟进项目";
-            this.columnHeader7.Width = 80;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(31, 110);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 12);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "备注信息：";
-            // 
-            // txtRemark
-            // 
-            this.txtRemark.Location = new System.Drawing.Point(112, 107);
-            this.txtRemark.Margin = new System.Windows.Forms.Padding(2);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.ReadOnly = true;
-            this.txtRemark.Size = new System.Drawing.Size(712, 21);
-            this.txtRemark.TabIndex = 25;
             // 
             // FormViewCustomer
             // 

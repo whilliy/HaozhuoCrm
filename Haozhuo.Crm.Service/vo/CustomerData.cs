@@ -14,5 +14,6 @@ namespace Haozhuo.Crm.Service.vo
         public String provinceName;
         public String cityId;
         public String cityName;
+        public String remark { get; set; }
     }
 }

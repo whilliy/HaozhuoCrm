@@ -23,6 +23,7 @@ namespace HaoZhuoCRM
         private const int indexRegion = 5;
         private const int indexSource = 6;
         private const int ColumnCount = 6;
+        private const int indexRemark = 7;
         public FormImportData()
         {
             InitializeComponent();
@@ -118,16 +119,16 @@ namespace HaoZhuoCRM
                            Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                         WorkSheeet = (Excel.Worksheet)WorkBook.Worksheets[1];
                         int columnCount = WorkSheeet.UsedRange.Cells.Columns.Count;
-                        if (columnCount < ColumnCount)
-                        {
-                            throw new Exception("数据表格式错误，列数不能少于6");
-                        }
+                        //if (columnCount < indexRemark)
+                        //{
+                        //    throw new Exception("数据表格式错误，列数不能少于6");
+                        //}
                         int rowCount = WorkSheeet.UsedRange.Cells.Rows.Count;
                         Excel.Range range = WorkSheeet.UsedRange;
                         for (int row = 1; row <= rowCount; row++)
                         {
                             var data = new CustomerData();
-                            for (int column = 1; column < columnCount; column++)
+                            for (int column = 1; column <=indexRemark; column++)
                             {
                                 //定义单元格对象
                                 var value2 = ((Excel.Range)range.Cells[row, column]).Value2;
@@ -171,6 +172,10 @@ namespace HaoZhuoCRM
                                     data.cityId = city.cityId;
                                     data.provinceId = province.provinceId;
                                 }
+                                else if (column == indexRemark)
+                                {
+                                    data.remark = strValue;
+                                }
                             }
                             datas.Add(data);
                         }
@@ -203,6 +208,7 @@ namespace HaoZhuoCRM
                         lvi.SubItems.Add(data.Region);
                         lvi.SubItems.Add(data.provinceName == null ? "" : data.provinceName);
                         lvi.SubItems.Add(data.cityName == null ? "" : data.cityName);
+                        lvi.SubItems.Add(data.remark);
                         lvi.Tag = data;
                         lvCustomers.Items.Add(lvi);
                     }

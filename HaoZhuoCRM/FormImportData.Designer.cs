@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtRemark = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.butOpen = new System.Windows.Forms.Button();
-            this.txtFile = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.cmbProjects = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtFile = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbCustomerSources = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -52,8 +54,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.txtRemark = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +76,22 @@
             this.panel1.Size = new System.Drawing.Size(982, 68);
             this.panel1.TabIndex = 0;
             // 
+            // txtRemark
+            // 
+            this.txtRemark.Location = new System.Drawing.Point(84, 36);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(774, 21);
+            this.txtRemark.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "备注：";
+            // 
             // butOpen
             // 
             this.butOpen.Location = new System.Drawing.Point(881, 6);
@@ -84,23 +101,6 @@
             this.butOpen.Text = "打开(&O)";
             this.butOpen.UseVisualStyleBackColor = true;
             this.butOpen.Click += new System.EventHandler(this.ButOpen_Click);
-            // 
-            // txtFile
-            // 
-            this.txtFile.Location = new System.Drawing.Point(458, 7);
-            this.txtFile.Name = "txtFile";
-            this.txtFile.ReadOnly = true;
-            this.txtFile.Size = new System.Drawing.Size(400, 21);
-            this.txtFile.TabIndex = 15;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(399, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "文件：";
             // 
             // cmbProjects
             // 
@@ -121,6 +121,23 @@
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 10;
             this.label10.Text = "项目：";
+            // 
+            // txtFile
+            // 
+            this.txtFile.Location = new System.Drawing.Point(458, 7);
+            this.txtFile.Name = "txtFile";
+            this.txtFile.ReadOnly = true;
+            this.txtFile.Size = new System.Drawing.Size(400, 21);
+            this.txtFile.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(399, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "文件：";
             // 
             // label3
             // 
@@ -223,7 +240,8 @@
             this.columnHeader5,
             this.columnHeader10,
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader3});
             this.lvCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvCustomers.FullRowSelect = true;
             this.lvCustomers.GridLines = true;
@@ -277,21 +295,10 @@
             this.openFileDialog.Filter = "Excel文件|*.xls;*.xlsx|逗号分隔文件|*.csv";
             this.openFileDialog.Title = "选择要导入的客户文件";
             // 
-            // txtRemark
+            // columnHeader3
             // 
-            this.txtRemark.Location = new System.Drawing.Point(84, 36);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(774, 21);
-            this.txtRemark.TabIndex = 18;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "备注：";
+            this.columnHeader3.Text = "备注";
+            this.columnHeader3.Width = 300;
             // 
             // FormImportData
             // 
@@ -344,5 +351,6 @@
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.TextBox txtRemark;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }
