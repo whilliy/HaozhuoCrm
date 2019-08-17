@@ -114,6 +114,7 @@
             // 
             // txtMobile
             // 
+            this.txtMobile.Enabled = false;
             this.txtMobile.Location = new System.Drawing.Point(199, 9);
             this.txtMobile.Margin = new System.Windows.Forms.Padding(2);
             this.txtMobile.Name = "txtMobile";
@@ -490,7 +491,6 @@
             // 
             // btnNext
             // 
-            this.btnNext.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnNext.Enabled = false;
             this.btnNext.Location = new System.Drawing.Point(785, 4);
             this.btnNext.Margin = new System.Windows.Forms.Padding(2);
@@ -499,7 +499,6 @@
             this.btnNext.TabIndex = 5;
             this.btnNext.Text = "后一条(&N)";
             this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Visible = false;
             this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
             // 
             // btnPre
