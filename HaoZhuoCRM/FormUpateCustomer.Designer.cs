@@ -45,6 +45,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cmbProvinces = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtFirstOwnerName = new System.Windows.Forms.TextBox();
+            this.txtRemark = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -58,6 +62,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.labelCurrentSeq = new System.Windows.Forms.Label();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPre = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.butConfirm = new System.Windows.Forms.Button();
@@ -69,10 +78,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtRemark = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtFirstOwnerName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -278,6 +283,45 @@
             this.panel1.Size = new System.Drawing.Size(879, 187);
             this.panel1.TabIndex = 0;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 163);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 12);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "第一跟进人：";
+            // 
+            // txtFirstOwnerName
+            // 
+            this.txtFirstOwnerName.Location = new System.Drawing.Point(89, 159);
+            this.txtFirstOwnerName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFirstOwnerName.Name = "txtFirstOwnerName";
+            this.txtFirstOwnerName.ReadOnly = true;
+            this.txtFirstOwnerName.Size = new System.Drawing.Size(106, 21);
+            this.txtFirstOwnerName.TabIndex = 31;
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.txtRemark.Location = new System.Drawing.Point(86, 69);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(769, 25);
+            this.txtRemark.TabIndex = 29;
+            this.txtRemark.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 76);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 12);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "数据说明：";
+            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(785, 159);
@@ -404,6 +448,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.labelCount);
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.labelCurrentSeq);
+            this.panel2.Controls.Add(this.btnNext);
+            this.panel2.Controls.Add(this.btnPre);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.butConfirm);
@@ -413,6 +462,57 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(879, 28);
             this.panel2.TabIndex = 2;
+            // 
+            // labelCount
+            // 
+            this.labelCount.Location = new System.Drawing.Point(640, 7);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(24, 13);
+            this.labelCount.TabIndex = 31;
+            this.labelCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(620, 8);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(18, 13);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "/";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelCurrentSeq
+            // 
+            this.labelCurrentSeq.Location = new System.Drawing.Point(598, 8);
+            this.labelCurrentSeq.Name = "labelCurrentSeq";
+            this.labelCurrentSeq.Size = new System.Drawing.Size(24, 13);
+            this.labelCurrentSeq.TabIndex = 29;
+            this.labelCurrentSeq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnNext
+            // 
+            this.btnNext.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnNext.Enabled = false;
+            this.btnNext.Location = new System.Drawing.Point(785, 4);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(83, 20);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Text = "后一条(&N)";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Visible = false;
+            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
+            // 
+            // btnPre
+            // 
+            this.btnPre.Enabled = false;
+            this.btnPre.Location = new System.Drawing.Point(685, 4);
+            this.btnPre.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPre.Name = "btnPre";
+            this.btnPre.Size = new System.Drawing.Size(80, 20);
+            this.btnPre.TabIndex = 4;
+            this.btnPre.Text = "前一条(&P)";
+            this.btnPre.UseVisualStyleBackColor = true;
+            this.btnPre.Click += new System.EventHandler(this.BtnPrevious_Click);
             // 
             // label14
             // 
@@ -429,7 +529,7 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(806, 2);
+            this.btnCancel.Location = new System.Drawing.Point(438, 6);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(60, 20);
@@ -441,7 +541,7 @@
             // butConfirm
             // 
             this.butConfirm.Enabled = false;
-            this.butConfirm.Location = new System.Drawing.Point(728, 2);
+            this.butConfirm.Location = new System.Drawing.Point(360, 6);
             this.butConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.butConfirm.Name = "butConfirm";
             this.butConfirm.Size = new System.Drawing.Size(68, 20);
@@ -508,45 +608,6 @@
             // 
             this.columnHeader3.Text = "沟通记录";
             this.columnHeader3.Width = 409;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(15, 76);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 12);
-            this.label15.TabIndex = 28;
-            this.label15.Text = "数据说明：";
-            // 
-            // txtRemark
-            // 
-            this.txtRemark.Font = new System.Drawing.Font("宋体", 10.5F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.txtRemark.Location = new System.Drawing.Point(86, 69);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(769, 25);
-            this.txtRemark.TabIndex = 29;
-            this.txtRemark.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 163);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(77, 12);
-            this.label16.TabIndex = 30;
-            this.label16.Text = "第一跟进人：";
-            // 
-            // txtFirstOwnerName
-            // 
-            this.txtFirstOwnerName.Location = new System.Drawing.Point(89, 159);
-            this.txtFirstOwnerName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFirstOwnerName.Name = "txtFirstOwnerName";
-            this.txtFirstOwnerName.ReadOnly = true;
-            this.txtFirstOwnerName.Size = new System.Drawing.Size(106, 21);
-            this.txtFirstOwnerName.TabIndex = 31;
             // 
             // FormUpateCustomer
             // 
@@ -620,5 +681,10 @@
         private System.Windows.Forms.Label txtRemark;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtFirstOwnerName;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPre;
+        private System.Windows.Forms.Label labelCount;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label labelCurrentSeq;
     }
 }

@@ -10,18 +10,50 @@ namespace HaoZhuoCRM
     public partial class FormViewCustomer : Form
     {
         public CustomerDto CURRENT_CUSTOMER { get; set; }
+        private IList<CustomerDto> customers;
+        private int CURRENT_INDEX;
         public FormViewCustomer()
         {
             InitializeComponent();
         }
 
-        public FormViewCustomer(CustomerDto customer) : this()
+        private void UpdateButtonStatus(int index)
         {
-            this.CURRENT_CUSTOMER = customer;
+            btnNext.Enabled = btnPrevious.Enabled = true;
+            if (index == 0)
+            {
+                btnPrevious.Enabled = false;
+            }
+            if (index == customers.Count - 1)
+            {
+                btnNext.Enabled = false;
+            }
+
         }
 
-        private void FormUpateCustomer_Load(object sender, System.EventArgs e)
+        public FormViewCustomer(IList<CustomerDto> customers, int index) : this()
         {
+            this.customers = customers;
+            this.CURRENT_INDEX = index;
+            if (customers.Count == 1)
+            {
+                btnPrevious.Enabled = btnNext.Enabled = false;
+            }
+            labelCount.Text = customers.Count.ToString();
+            AssignCustomer(index);
+        }
+
+        private void Clear()
+        {
+            listView1.Items.Clear();
+        }
+
+        private void AssignCustomer(int index)
+        {
+            Clear();
+            UpdateButtonStatus(index);
+            this.CURRENT_CUSTOMER = customers[index];
+            labelCurrentSeq.Text = Convert.ToString(this.CURRENT_INDEX + 1);
             txtName.Text = CURRENT_CUSTOMER.name;
             txtMobile.Text = CURRENT_CUSTOMER.mobile;
             if (CURRENT_CUSTOMER.projectId.HasValue && ProjectService.DicProjects.ContainsKey(CURRENT_CUSTOMER.projectId.Value))
@@ -66,6 +98,11 @@ namespace HaoZhuoCRM
             {
                 MessageBox.Show("加载客户沟通记录失败：" + ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+        }
+
+        private void FormUpateCustomer_Load(object sender, System.EventArgs e)
+        {
         }
 
         private void ListView1_DoubleClick(object sender, EventArgs e)
@@ -77,6 +114,27 @@ namespace HaoZhuoCRM
             FormFollowRecordInfo frmFollowRecordInfo = new FormFollowRecordInfo((CustomerFollowRecord)listView1.SelectedItems[0].Tag);
             frmFollowRecordInfo.ShowDialog();
             frmFollowRecordInfo.Close();
+        }
+
+        private void BtnPrevious_Click(object sender, EventArgs e)
+        {
+            if (CURRENT_INDEX == 0)
+            {
+                return;
+            }
+            CURRENT_INDEX--;
+            AssignCustomer(CURRENT_INDEX);
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            if (CURRENT_INDEX >= customers.Count - 1)
+            {
+                return;
+            }
+            CURRENT_INDEX++;
+            AssignCustomer(CURRENT_INDEX);
+
         }
     }
 }

@@ -420,8 +420,13 @@ namespace HaoZhuoCRM
                 MessageBox.Show("请选择要查看的客户记录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            IList<CustomerDto> customers = new List<CustomerDto>();
+            foreach (ListViewItem lvi in lvClients.Items)
+            {
+                customers.Add((CustomerDto)lvi.Tag);
+            }
             var customer = (CustomerDto)lvClients.SelectedItems[0].Tag;
-            FormViewCustomer formViewCustomer = new FormViewCustomer(customer);
+            FormViewCustomer formViewCustomer = new FormViewCustomer(customers,lvClients.SelectedItems[0].Index);
             formViewCustomer.ShowDialog();
             formViewCustomer.Close();
         }
@@ -470,7 +475,7 @@ namespace HaoZhuoCRM
                 //}
                 //if (customer.currentUserId <= 0 || customer.currentUserName == String.Empty)
                 //{
-                    //如果当前不属于任何用户相当于分派了！
+                //如果当前不属于任何用户相当于分派了！
                 //}
                 customerIds.Add(customer.id);
             }

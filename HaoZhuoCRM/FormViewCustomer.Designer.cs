@@ -63,6 +63,11 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.labelCurrentSeq = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.labelCount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,6 +171,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelCount);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.labelCurrentSeq);
+            this.panel1.Controls.Add(this.btnPrevious);
+            this.panel1.Controls.Add(this.btnNext);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.txtRemark);
             this.panel1.Controls.Add(this.label10);
@@ -409,6 +419,51 @@
             this.columnHeader3.Text = "沟通结果";
             this.columnHeader3.Width = 409;
             // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Location = new System.Drawing.Point(573, 76);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(75, 23);
+            this.btnPrevious.TabIndex = 2;
+            this.btnPrevious.Text = "上一个（&U)";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(749, 76);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 3;
+            this.btnNext.Text = "下一条(&N)";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
+            // 
+            // labelCurrentSeq
+            // 
+            this.labelCurrentSeq.Location = new System.Drawing.Point(665, 81);
+            this.labelCurrentSeq.Name = "labelCurrentSeq";
+            this.labelCurrentSeq.Size = new System.Drawing.Size(24, 13);
+            this.labelCurrentSeq.TabIndex = 26;
+            this.labelCurrentSeq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label14
+            // 
+            this.label14.Location = new System.Drawing.Point(687, 81);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(18, 13);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "/";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelCount
+            // 
+            this.labelCount.Location = new System.Drawing.Point(707, 80);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(24, 13);
+            this.labelCount.TabIndex = 28;
+            this.labelCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FormViewCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -467,5 +522,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtRemark;
+        private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Label labelCurrentSeq;
+        private System.Windows.Forms.Label labelCount;
+        private System.Windows.Forms.Label label14;
     }
 }

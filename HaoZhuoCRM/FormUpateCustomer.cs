@@ -11,19 +11,52 @@ namespace HaoZhuoCRM
     public partial class FormUpateCustomer : Form
     {
         public CustomerDto CURRENT_CUSTOMER { get; set; }
+        private IList<CustomerDto> customers;
+        private int CURRENT_INDEX;
         public Boolean InformationChanged = false;
         public FormUpateCustomer()
         {
             InitializeComponent();
         }
 
-        public FormUpateCustomer(CustomerDto customer) : this()
+        public FormUpateCustomer(IList<CustomerDto> customers, int index) : this()
         {
-            this.CURRENT_CUSTOMER = customer;
+            this.customers = customers;
+            this.CURRENT_INDEX = index;
+            if (customers.Count == 1)
+            {
+                btnPre.Enabled = btnNext.Enabled = false;
+            }
+            labelCount.Text = customers.Count.ToString();
+            AssignCustomer(index);
         }
 
-        private void FormUpateCustomer_Load(object sender, System.EventArgs e)
+
+        private void UpdateButtonStatus(int index)
         {
+            btnNext.Enabled = btnPre.Enabled = true;
+            if (index == 0)
+            {
+                btnPre.Enabled = false;
+            }
+            if (index == customers.Count - 1)
+            {
+                btnNext.Enabled = false;
+            }
+
+        }
+
+        private void Clear()
+        {
+            listView1.Items.Clear();
+        }
+
+        private void AssignCustomer(int index)
+        {
+            Clear();
+            UpdateButtonStatus(index);
+            this.CURRENT_CUSTOMER = customers[index];
+            labelCurrentSeq.Text = Convert.ToString(this.CURRENT_INDEX + 1);
             if (!Global.CURRENT_PROJECT_ID.HasValue)
             {
                 btnAdd.Enabled = false;
@@ -99,6 +132,10 @@ namespace HaoZhuoCRM
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void FormUpateCustomer_Load(object sender, System.EventArgs e)
+        {
         }
 
         private void CmbProvinces_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -347,6 +384,27 @@ namespace HaoZhuoCRM
             FormFollowRecordInfo frmFollowRecordInfo = new FormFollowRecordInfo((CustomerFollowRecord)listView1.SelectedItems[0].Tag);
             frmFollowRecordInfo.ShowDialog();
             frmFollowRecordInfo.Close();
+        }
+
+        private void BtnPrevious_Click(object sender, EventArgs e)
+        {
+            if (CURRENT_INDEX == 0)
+            {
+                return;
+            }
+            CURRENT_INDEX--;
+            AssignCustomer(CURRENT_INDEX);
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            if (CURRENT_INDEX >= customers.Count - 1)
+            {
+                return;
+            }
+            CURRENT_INDEX++;
+            AssignCustomer(CURRENT_INDEX);
+
         }
     }
 }
