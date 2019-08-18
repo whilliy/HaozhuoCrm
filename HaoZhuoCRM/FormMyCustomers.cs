@@ -287,10 +287,10 @@ namespace HaoZhuoCRM
             lvi.SubItems.Add(Genders.DIC_GENDER[customer.gender]);
             lvi.SubItems.Add(customer.mobile);
             lvi.SubItems.Add(customer.type.HasValue ? CustomerService.DicCustomerTypes[customer.type.Value] : "");
-            ListViewItem.ListViewSubItem lviType = lvi.SubItems.Add(customer.status.HasValue ? CustomerService.DicCustomerStatuses[customer.status.Value] : "");
+            ListViewItem.ListViewSubItem lviStatus = lvi.SubItems.Add(customer.status.HasValue ? CustomerService.DicCustomerStatuses[customer.status.Value] : "");
             if (customer.status.HasValue && CustomerService.CUSTOMER_STATUS_INIT == customer.status.Value)
             {
-                lviType.BackColor = Color.MistyRose;//.Red;
+                lviStatus.BackColor = Color.MistyRose;//.Red;
             }
             ListViewItem.ListViewSubItem lviSource = lvi.SubItems.Add(CustomerService.DicCustomerSources[customer.source]);
             if (CustomerService.CUSTOMER_SOURCE_DATABASE == customer.source)
@@ -346,10 +346,12 @@ namespace HaoZhuoCRM
             //this.Hide();
             FormUpateCustomer frmUpdateCustomer = new FormUpateCustomer(customers, lvClients.SelectedItems[0].Index);
             DialogResult dialogResult = frmUpdateCustomer.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-                if (frmUpdateCustomer.InformationChanged)
+            if (frmUpdateCustomer.InformationChanged)
+            {
+                foreach (KeyValuePair<int, CustomerDto> item in frmUpdateCustomer.ModifiedCustomers)
                 {
-                    CustomerDto currentCustomer = frmUpdateCustomer.CURRENT_CUSTOMER;
+                    lviSelected = lvClients.Items[item.Key];
+                    CustomerDto currentCustomer = item.Value;
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "姓名").Value].Text = currentCustomer.name;
                     if (currentCustomer.projectId.HasValue && ProjectService.DicProjects.ContainsKey(currentCustomer.projectId.Value))
                     {
@@ -362,7 +364,16 @@ namespace HaoZhuoCRM
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "性别").Value].Text = Genders.DIC_GENDER[currentCustomer.gender];
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "手机号码").Value].Text = currentCustomer.mobile;
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户类型").Value].Text = currentCustomer.type.HasValue ? CustomerService.DicCustomerTypes[currentCustomer.type.Value] : "";
-                    lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户状态").Value].Text = currentCustomer.status.HasValue ? CustomerService.DicCustomerStatuses[currentCustomer.status.Value] : "";
+                    var lviStatus = lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户状态").Value];
+                    lviStatus.Text = currentCustomer.status.HasValue ? CustomerService.DicCustomerStatuses[currentCustomer.status.Value] : "";
+                    if (currentCustomer.status.HasValue && CustomerService.CUSTOMER_STATUS_INIT == currentCustomer.status.Value)
+                    {
+                        lviStatus.BackColor = Color.MistyRose;//.Red;
+                    }
+                    else
+                    {
+                        lviStatus.BackColor = Color.White;
+                    }
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "客户来源").Value].Text = CustomerService.DicCustomerSources[currentCustomer.source];
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "省").Value].Text = currentCustomer.provinceName;
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "市").Value].Text = currentCustomer.cityName;
@@ -376,8 +387,9 @@ namespace HaoZhuoCRM
                     lviSelected.SubItems[ListViewHelper.getIndexByText(lvClients, "最后跟进人").Value].Text = frmUpdateCustomer.CURRENT_CUSTOMER.lastFollowUserName;
                     lviSelected.Tag = currentCustomer;
                 }
-            frmUpdateCustomer.Close();
+                frmUpdateCustomer.Close();
 
+            }
         }
 
         private void MenuItemFollow_Click(object sender, EventArgs e)

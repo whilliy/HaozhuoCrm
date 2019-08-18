@@ -13,7 +13,10 @@ namespace HaoZhuoCRM
         public CustomerDto CURRENT_CUSTOMER { get; set; }
         private IList<CustomerDto> customers;
         private int CURRENT_INDEX;
+        //数据是否做了修改
         public Boolean InformationChanged = false;
+        //那些客户信息做了修改,key为数据在父页ListView中的index
+        public IDictionary<int, CustomerDto> ModifiedCustomers = new Dictionary<int, CustomerDto>();
         public FormUpateCustomer()
         {
             InitializeComponent();
@@ -279,7 +282,7 @@ namespace HaoZhuoCRM
                 vo.type = Convert.ToInt32(cmbCustomerTypes.SelectedValue.ToString());
                 vo.projectId = Global.CURRENT_PROJECT_ID.Value;
                 vo.status = Convert.ToInt32(cmbCustomerStatus.SelectedValue.ToString());
-                CURRENT_CUSTOMER = CustomerService.AddFllowRecord(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
+                CustomerDto thisCustomer = CustomerService.AddFllowRecord(CURRENT_CUSTOMER.id, Global.USER_TOKEN, vo);
                 ListViewItem lvi = new ListViewItem(vo.communicationTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 lvi.SubItems.Add(Global.CURRENT_PROJECT_NAME);
                 lvi.SubItems.Add(cmbCustomerStatus.Text);
@@ -297,6 +300,8 @@ namespace HaoZhuoCRM
                 listView1.Items.Insert(0, lvi);
                 txtFollowRemark.Text = String.Empty;
                 InformationChanged = true;
+                ModifiedCustomers[CURRENT_INDEX] = thisCustomer;
+                CURRENT_CUSTOMER = this.CURRENT_CUSTOMER;
                 MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (BusinessException ex)
