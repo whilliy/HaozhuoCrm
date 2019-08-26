@@ -39,6 +39,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.labelCurrentSeq = new System.Windows.Forms.Label();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtRemark = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -63,11 +68,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnPrevious = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.labelCurrentSeq = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.labelCount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -206,8 +206,53 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(877, 132);
+            this.panel1.Size = new System.Drawing.Size(973, 132);
             this.panel1.TabIndex = 0;
+            // 
+            // labelCount
+            // 
+            this.labelCount.Location = new System.Drawing.Point(707, 80);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(24, 13);
+            this.labelCount.TabIndex = 28;
+            this.labelCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            this.label14.Location = new System.Drawing.Point(687, 81);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(18, 13);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "/";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelCurrentSeq
+            // 
+            this.labelCurrentSeq.Location = new System.Drawing.Point(665, 81);
+            this.labelCurrentSeq.Name = "labelCurrentSeq";
+            this.labelCurrentSeq.Size = new System.Drawing.Size(24, 13);
+            this.labelCurrentSeq.TabIndex = 26;
+            this.labelCurrentSeq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Location = new System.Drawing.Point(573, 76);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(75, 23);
+            this.btnPrevious.TabIndex = 2;
+            this.btnPrevious.Text = "上一个（&U)";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(749, 76);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 3;
+            this.btnNext.Text = "下一条(&N)";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
             // 
             // label11
             // 
@@ -380,7 +425,7 @@
             this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(877, 339);
+            this.listView1.Size = new System.Drawing.Size(973, 339);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -419,56 +464,11 @@
             this.columnHeader3.Text = "沟通结果";
             this.columnHeader3.Width = 409;
             // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Location = new System.Drawing.Point(573, 76);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(75, 23);
-            this.btnPrevious.TabIndex = 2;
-            this.btnPrevious.Text = "上一个（&U)";
-            this.btnPrevious.UseVisualStyleBackColor = true;
-            this.btnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(749, 76);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 3;
-            this.btnNext.Text = "下一条(&N)";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
-            // 
-            // labelCurrentSeq
-            // 
-            this.labelCurrentSeq.Location = new System.Drawing.Point(665, 81);
-            this.labelCurrentSeq.Name = "labelCurrentSeq";
-            this.labelCurrentSeq.Size = new System.Drawing.Size(24, 13);
-            this.labelCurrentSeq.TabIndex = 26;
-            this.labelCurrentSeq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label14
-            // 
-            this.label14.Location = new System.Drawing.Point(687, 81);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(18, 13);
-            this.label14.TabIndex = 27;
-            this.label14.Text = "/";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelCount
-            // 
-            this.labelCount.Location = new System.Drawing.Point(707, 80);
-            this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(24, 13);
-            this.labelCount.TabIndex = 28;
-            this.labelCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // FormViewCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 471);
+            this.ClientSize = new System.Drawing.Size(973, 471);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

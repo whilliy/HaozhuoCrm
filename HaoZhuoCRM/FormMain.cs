@@ -1,8 +1,10 @@
 ﻿using Haozhuo.Crm.Service;
 using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
+using OAUS.Core;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace HaoZhuoCRM

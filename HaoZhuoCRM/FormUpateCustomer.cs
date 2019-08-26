@@ -11,7 +11,7 @@ namespace HaoZhuoCRM
     public partial class FormUpateCustomer : Form
     {
         public CustomerDto CURRENT_CUSTOMER { get; set; }
-        private IList<CustomerDto> customers;
+        private readonly IList<CustomerDto> customers;
         private int CURRENT_INDEX;
         //数据是否做了修改
         public Boolean InformationChanged = false;

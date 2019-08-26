@@ -1,7 +1,9 @@
 ﻿using Haozhuo.Crm.Service;
 using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.vo;
+using OAUS.Core;
 using System;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace HaoZhuoCRM
@@ -10,6 +12,15 @@ namespace HaoZhuoCRM
     {
         public FormLogin()
         {
+            String oausServerIP = ConfigurationManager.AppSettings["oausServerIP"];
+            int oausServerPort = Convert.ToInt32(ConfigurationManager.AppSettings["oausServerPort"]);
+            if (VersionHelper.HasNewVersion(oausServerIP, oausServerPort))
+            {
+                MessageBox.Show("发现新版本，即将升级", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string updateExePath = AppDomain.CurrentDomain.BaseDirectory + "AutoUpdater\\AutoUpdater.exe";
+                System.Diagnostics.Process myProcess = System.Diagnostics.Process.Start(updateExePath);
+                Application.Exit();
+            }
             InitializeComponent();
         }
 

@@ -49,6 +49,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -309,6 +310,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AutoUpdater\AutoUpdater.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -349,6 +351,10 @@
     <None Include="Resources\alipay.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\OAUS源码\OAUS.Core\OAUS.Core.csproj">
+      <Project>{44b0583b-f58e-4ec2-9255-454546222c66}</Project>
+      <Name>OAUS.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Haozhuo.Crm.Service\Haozhuo.Crm.Service.csproj">
       <Project>{79fdbb56-9952-43fa-b9c9-56b9a109cedc}</Project>
       <Name>Haozhuo.Crm.Service</Name>
@@ -356,6 +362,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <Content Include="AutoUpdater\AutoUpdater.exe" />
+    <Content Include="AutoUpdater\ESBasic.dll" />
+    <Content Include="AutoUpdater\ESFramework.dll" />
+    <Content Include="AutoUpdater\OAUS.Core.dll" />
     <None Include="Images\my_customers.ico" />
     <None Include="Images\public.ico" />
   </ItemGroup>

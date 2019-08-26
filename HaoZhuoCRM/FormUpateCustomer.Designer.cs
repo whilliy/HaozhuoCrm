@@ -114,7 +114,6 @@
             // 
             // txtMobile
             // 
-            this.txtMobile.Enabled = false;
             this.txtMobile.Location = new System.Drawing.Point(199, 9);
             this.txtMobile.Margin = new System.Windows.Forms.Padding(2);
             this.txtMobile.Name = "txtMobile";
@@ -281,7 +280,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(879, 187);
+            this.panel1.Size = new System.Drawing.Size(1022, 187);
             this.panel1.TabIndex = 0;
             // 
             // label16
@@ -458,10 +457,10 @@
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.butConfirm);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 505);
+            this.panel2.Location = new System.Drawing.Point(0, 490);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(879, 28);
+            this.panel2.Size = new System.Drawing.Size(1022, 28);
             this.panel2.TabIndex = 2;
             // 
             // labelCount
@@ -569,7 +568,7 @@
             this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(879, 318);
+            this.listView1.Size = new System.Drawing.Size(1022, 303);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -612,7 +611,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 533);
+            this.ClientSize = new System.Drawing.Size(1022, 518);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
