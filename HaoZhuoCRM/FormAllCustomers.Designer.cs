@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miView = new System.Windows.Forms.ToolStripMenuItem();
+            this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.butReset = new System.Windows.Forms.Button();
             this.panelQuery = new System.Windows.Forms.Panel();
             this.cbLeaveWordsTime = new System.Windows.Forms.CheckBox();
@@ -88,8 +89,9 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnExport = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -112,6 +114,14 @@
             this.miView.Text = "查看(&V)";
             this.miView.Click += new System.EventHandler(this.MiView_Click);
             // 
+            // miModify
+            // 
+            this.miModify.Name = "miModify";
+            this.miModify.Size = new System.Drawing.Size(120, 22);
+            this.miModify.Text = "修改(&M)";
+            this.miModify.ToolTipText = "仅仅修改客户基本信息";
+            this.miModify.Click += new System.EventHandler(this.MiModify_Click);
+            // 
             // butReset
             // 
             this.butReset.Location = new System.Drawing.Point(989, 44);
@@ -125,6 +135,7 @@
             // 
             // panelQuery
             // 
+            this.panelQuery.Controls.Add(this.btnExport);
             this.panelQuery.Controls.Add(this.cbLeaveWordsTime);
             this.panelQuery.Controls.Add(this.label17);
             this.panelQuery.Controls.Add(this.dtpLeaveWordsTimeEnd);
@@ -156,7 +167,7 @@
             this.panelQuery.Location = new System.Drawing.Point(0, 0);
             this.panelQuery.Margin = new System.Windows.Forms.Padding(2);
             this.panelQuery.Name = "panelQuery";
-            this.panelQuery.Size = new System.Drawing.Size(1058, 76);
+            this.panelQuery.Size = new System.Drawing.Size(1135, 76);
             this.panelQuery.TabIndex = 0;
             // 
             // cbLeaveWordsTime
@@ -436,7 +447,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 477);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1058, 34);
+            this.panel1.Size = new System.Drawing.Size(1135, 34);
             this.panel1.TabIndex = 1;
             // 
             // cbSelectAll
@@ -464,7 +475,7 @@
             // 
             this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(855, 0);
+            this.panel3.Location = new System.Drawing.Point(932, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(203, 34);
             this.panel3.TabIndex = 2;
@@ -508,7 +519,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 76);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1058, 401);
+            this.panel2.Size = new System.Drawing.Size(1135, 401);
             this.panel2.TabIndex = 6;
             // 
             // lvClients
@@ -545,7 +556,7 @@
             this.lvClients.Margin = new System.Windows.Forms.Padding(2);
             this.lvClients.MultiSelect = false;
             this.lvClients.Name = "lvClients";
-            this.lvClients.Size = new System.Drawing.Size(1058, 367);
+            this.lvClients.Size = new System.Drawing.Size(1135, 367);
             this.lvClients.TabIndex = 0;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
@@ -650,6 +661,23 @@
             this.columnHeader14.Text = "下次跟进时间";
             this.columnHeader14.Width = 150;
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(1066, 43);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(58, 21);
+            this.btnExport.TabIndex = 27;
+            this.btnExport.Text = "导出(&E)";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "*.xlsx";
+            this.saveFileDialog.Filter = "Excel文件|*.xlsx";
+            this.saveFileDialog.Title = "导出客户信息";
+            // 
             // pager
             // 
             this.pager.BackColor = System.Drawing.SystemColors.Control;
@@ -662,23 +690,15 @@
             this.pager.PageIndex = 1;
             this.pager.PageSize = 20;
             this.pager.RecordCount = 0;
-            this.pager.Size = new System.Drawing.Size(1058, 34);
+            this.pager.Size = new System.Drawing.Size(1135, 34);
             this.pager.TabIndex = 1;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
-            // 
-            // miModify
-            // 
-            this.miModify.Name = "miModify";
-            this.miModify.Size = new System.Drawing.Size(120, 22);
-            this.miModify.Text = "修改(&M)";
-            this.miModify.ToolTipText = "仅仅修改客户基本信息";
-            this.miModify.Click += new System.EventHandler(this.MiModify_Click);
             // 
             // FormAllCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1058, 511);
+            this.ClientSize = new System.Drawing.Size(1135, 511);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelQuery);
@@ -759,5 +779,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox cbSelectAll;
         private System.Windows.Forms.ToolStripMenuItem miModify;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

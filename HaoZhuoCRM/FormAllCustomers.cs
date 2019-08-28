@@ -2,15 +2,20 @@
 using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
 using HaoZhuoCRM.Utils;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace HaoZhuoCRM
 {
     public partial class FormAllCustomers : Form
     {
+        private ResultsWithCount<CustomerDto> customers = new ResultsWithCount<CustomerDto>();
         public FormAllCustomers()
         {
             InitializeComponent();
@@ -229,7 +234,7 @@ namespace HaoZhuoCRM
             try
             {
                 //查询符合条件的记录
-                ResultsWithCount<CustomerDto> customers = QueryCustomers();
+                customers = QueryCustomers();
                 pager.PageIndex = 1;
                 pager.DrawControl((int)customers.getCount());
                 //将数据绑定到ListView
@@ -274,6 +279,7 @@ namespace HaoZhuoCRM
             cbLeaveWordsTime.Checked = false;
             pager.Reset();
             txtName.Focus();
+            customers = new ResultsWithCount<CustomerDto>();
 
         }
 
@@ -426,7 +432,7 @@ namespace HaoZhuoCRM
                 customers.Add((CustomerDto)lvi.Tag);
             }
             var customer = (CustomerDto)lvClients.SelectedItems[0].Tag;
-            FormViewCustomer formViewCustomer = new FormViewCustomer(customers,lvClients.SelectedItems[0].Index);
+            FormViewCustomer formViewCustomer = new FormViewCustomer(customers, lvClients.SelectedItems[0].Index);
             formViewCustomer.ShowDialog();
             formViewCustomer.Close();
         }
@@ -509,6 +515,86 @@ namespace HaoZhuoCRM
             foreach (ListViewItem lvi in lvClients.Items)
             {
                 lvi.Checked = cbSelectAll.Checked;
+            }
+        }
+
+        private void BtnExport_Click(object sender, EventArgs e)
+        {
+            if (lvClients.Items.Count < 1)
+            {
+                MessageBox.Show("请先根据条件查询，再进行到处操作", "提示");
+                return;
+            }
+            DialogResult dialogResult = saveFileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                //MessageBox.Show(saveFileDialog.FileName);
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet sheet = (XSSFSheet)workbook.CreateSheet();
+                IRow rowTitle = sheet.CreateRow(0);
+                ICell cellSequence = rowTitle.CreateCell(0);
+                cellSequence.SetCellValue("序号");
+                ICellStyle style = workbook.CreateCellStyle();
+                style.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
+                style.VerticalAlignment = VerticalAlignment.Center;
+                cellSequence.CellStyle = style;
+                ICell cellCustomerName = rowTitle.CreateCell(1);
+                cellCustomerName.SetCellValue("姓名");
+                ICell cellLeaveWordsTime = rowTitle.CreateCell(2);
+                sheet.SetColumnWidth(cellLeaveWordsTime.ColumnIndex, 20 * 256);//列宽
+                cellLeaveWordsTime.SetCellValue("留言时间");
+                cellLeaveWordsTime.CellStyle = style;
+                ICell cellCurrentUserName = rowTitle.CreateCell(3);
+                cellCurrentUserName.SetCellValue("当前跟进人");
+                ICell cellRemark = rowTitle.CreateCell(4);
+                cellRemark.SetCellValue("跟进信息");
+                sheet.SetColumnWidth(cellRemark.ColumnIndex, 100 * 256);//指定列宽
+                for (int i = 0; i < customers.getResults().Count; i++)
+                {
+                    CustomerDto customer = customers.getResults()[i];
+                    IRow row = sheet.CreateRow(1 + i);
+                    row.CreateCell(cellSequence.ColumnIndex).SetCellValue(i + 1);
+                    row.CreateCell(cellCustomerName.ColumnIndex).SetCellValue(customer.name);
+                    row.CreateCell(cellLeaveWordsTime.ColumnIndex).SetCellValue(customer.leaveWordsTime.HasValue ? customer.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat) : "");
+                    row.CreateCell(cellCurrentUserName.ColumnIndex).SetCellValue(customer.currentUserName);
+                    IList<CustomerFollowRecord> records = CustomerService.GetFollowerRecordsByCusotmerId(customer.id, Global.USER_TOKEN);
+                    if (records != null)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        for (int j = records.Count; j >= 1; j--)
+                        {
+                            sb.Append("第 ").Append(records.Count - j + 1).Append(" 次（").Append(records[j - 1].followUserName).Append("）去电时间：").Append(records[j - 1].communicationTime.ToString(GlobalConfig.DateTimeFormat)).Append("，备注：")
+                                .Append(records[j - 1].remark);
+
+                            if (j != 1)
+                            {
+                                sb.Append("\r\n");
+                            }
+                        }
+                        row.CreateCell(cellRemark.ColumnIndex).SetCellValue(sb.ToString());
+                    }
+                    else
+                    {
+                        row.CreateCell(cellRemark.ColumnIndex).SetCellValue("");
+                    }
+                }
+                try
+                {
+                    using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write))
+                    {
+                        workbook.Write(fs);
+                        workbook.Close();
+                        MessageBox.Show("导出成功！", "提示");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("导出失败:" + ex.Message, "提示");
+                }
+                finally
+                {
+                    workbook.Close();
+                }
             }
         }
     }

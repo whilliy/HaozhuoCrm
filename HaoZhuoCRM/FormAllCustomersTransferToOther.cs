@@ -53,6 +53,12 @@ namespace HaoZhuoCRM
                 MessageBox.Show("请选择一个用户", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            bool reDispatch = false;
+            if (MessageBox.Show("是否是重新分派（如果是，那么将重新指定分派人）？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
+                == DialogResult.Yes)
+            {
+                reDispatch = true;
+            }
             ListViewItem lviSelected = lvUsers.SelectedItems[0];
             UserDto target = (UserDto)lviSelected.Tag;
             try
@@ -60,6 +66,7 @@ namespace HaoZhuoCRM
                 TransterCustomerVo vo = new TransterCustomerVo();
                 vo.customerIds = customerIds;
                 vo.targetUserId = target.id;
+                vo.reDispatch = reDispatch;
                 CustomerService.AdminTransferCustomersToTargetUsers(vo, Global.USER_TOKEN);
                 DialogResult = DialogResult.OK;
             }

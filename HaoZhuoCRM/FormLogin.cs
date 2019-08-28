@@ -16,7 +16,7 @@ namespace HaoZhuoCRM
             int oausServerPort = Convert.ToInt32(ConfigurationManager.AppSettings["oausServerPort"]);
             if (VersionHelper.HasNewVersion(oausServerIP, oausServerPort))
             {
-                MessageBox.Show("发现新版本，即将升级", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("发现新版本，让我们开始升级吧~~~", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string updateExePath = AppDomain.CurrentDomain.BaseDirectory + "AutoUpdater\\AutoUpdater.exe";
                 System.Diagnostics.Process myProcess = System.Diagnostics.Process.Start(updateExePath);
                 Application.Exit();

@@ -40,7 +40,7 @@
             // labelWelcome
             // 
             this.labelWelcome.AutoSize = true;
-            this.labelWelcome.Location = new System.Drawing.Point(136, 36);
+            this.labelWelcome.Location = new System.Drawing.Point(109, 20);
             this.labelWelcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelWelcome.Name = "labelWelcome";
             this.labelWelcome.Size = new System.Drawing.Size(107, 12);
@@ -50,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(70, 76);
+            this.label2.Location = new System.Drawing.Point(35, 49);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
@@ -60,7 +60,7 @@
             // txtAccountNo
             // 
             this.txtAccountNo.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.txtAccountNo.Location = new System.Drawing.Point(132, 74);
+            this.txtAccountNo.Location = new System.Drawing.Point(92, 47);
             this.txtAccountNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtAccountNo.MaxLength = 20;
             this.txtAccountNo.Name = "txtAccountNo";
@@ -70,7 +70,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(132, 121);
+            this.txtPassword.Location = new System.Drawing.Point(92, 84);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.MaxLength = 20;
             this.txtPassword.Name = "txtPassword";
@@ -83,7 +83,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 124);
+            this.label1.Location = new System.Drawing.Point(35, 87);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
@@ -92,7 +92,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(58, 170);
+            this.btnLogin.Location = new System.Drawing.Point(37, 122);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(84, 28);
@@ -104,7 +104,7 @@
             // butExit
             // 
             this.butExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.butExit.Location = new System.Drawing.Point(239, 170);
+            this.butExit.Location = new System.Drawing.Point(186, 122);
             this.butExit.Margin = new System.Windows.Forms.Padding(2);
             this.butExit.Name = "butExit";
             this.butExit.Size = new System.Drawing.Size(84, 28);
@@ -118,7 +118,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.butExit;
-            this.ClientSize = new System.Drawing.Size(400, 225);
+            this.ClientSize = new System.Drawing.Size(316, 161);
             this.Controls.Add(this.butExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);

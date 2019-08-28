@@ -7,5 +7,6 @@ namespace Haozhuo.Crm.Service.vo
     {
         public IList<String> customerIds { get; set; }
         public Int64 targetUserId { get; set; }
+        public Boolean reDispatch { get; set; }
     }
 }
