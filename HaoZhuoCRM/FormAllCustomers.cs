@@ -540,7 +540,8 @@ namespace HaoZhuoCRM
                 //headerFont.IsBold = true;
                 headerFont.Boldweight = 20;
                 headerFont.FontHeightInPoints = 12;
-                headerFont.Color = HSSFColor.Blue.Index;
+                headerFont.Color = HSSFColor.Black.Index;
+                //headerStyle.FillBackgroundColor = HSSFColor.LightYellow.Index;
                 headerStyle.SetFont(headerFont);
                 headerStyle.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
                 headerStyle.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -558,18 +559,21 @@ namespace HaoZhuoCRM
                     ICell cellSequence = rowTitle.CreateCell(indexSequence);
                     cellSequence.SetCellValue("序号");
                     cellSequence.CellStyle = headerStyle;
+                    sheet.SetColumnWidth(indexSequence, 5 * 256);
                     ICell cellCustomerName = rowTitle.CreateCell(indexCustomerName);
-                    cellCustomerName.SetCellValue("姓名");
+                    cellCustomerName.SetCellValue("客户姓名");
+                    sheet.SetColumnWidth(indexCustomerName, 10 * 256);
                     cellCustomerName.CellStyle = headerStyle;
                     ICell cellLeaveWordsTime = rowTitle.CreateCell(indexLeaveWordsTime);
-                    sheet.SetColumnWidth(cellLeaveWordsTime.ColumnIndex, 20 * 256);//列宽                
+                    sheet.SetColumnWidth(cellLeaveWordsTime.ColumnIndex, 18 * 256);//列宽                
                     cellLeaveWordsTime.SetCellValue("留言时间");
                     cellLeaveWordsTime.CellStyle = headerStyle;
-                    ICell cellCurrentUserName = rowTitle.CreateCell(indexFirstOwnerName);
-                    cellCurrentUserName.SetCellValue("招商经理");
-                    cellCurrentUserName.CellStyle = headerStyle;
-                    sheet.SetColumnWidth(cellCurrentUserName.ColumnIndex, 12 * 256);
+                    ICell cellFirstOwnerName = rowTitle.CreateCell(indexFirstOwnerName);
+                    cellFirstOwnerName.SetCellValue("招商经理");
+                    sheet.SetColumnWidth(indexFirstOwnerName, 10 * 256);
+                    cellFirstOwnerName.CellStyle = headerStyle;
                     ICell cellTimes = rowTitle.CreateCell(indexTimes);
+                    sheet.SetColumnWidth(indexTimes, 5 * 256);
                     cellTimes.SetCellValue("次数");
                     cellTimes.CellStyle = headerStyle;
                     //sheet.SetColumnWidth(cellRemark.ColumnIndex, 100 * 256);//指定列宽
@@ -578,7 +582,7 @@ namespace HaoZhuoCRM
                     cellFollowerName.CellStyle = headerStyle;
                     ICell cellFollowTime = rowTitle.CreateCell(indexFollowTime);
                     cellFollowTime.SetCellValue("跟进时间");
-                    sheet.SetColumnWidth(cellFollowTime.ColumnIndex, 15 * 256);//列宽       
+                    sheet.SetColumnWidth(indexFollowTime, 11 * 256);//列宽       
                     cellFollowTime.CellStyle = headerStyle;
                     ICell cellRemark = rowTitle.CreateCell(indexRemark);
                     cellRemark.SetCellValue("沟通记录");
@@ -595,34 +599,35 @@ namespace HaoZhuoCRM
                 ICellStyle followInfoSytle = workbook.CreateCellStyle();
                 followInfoSytle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Left;
                 followInfoSytle.VerticalAlignment = VerticalAlignment.Center;
+                followInfoSytle.BorderRight=NPOI.SS.UserModel.BorderStyle.Thin;
                 followInfoSytle.SetFont(headerFont);
-                cellFollowInformation.CellStyle = followInfoSytle;
-                followInfoSytle.Indention = 4;
+                //cellFollowInformation.CellStyle = followInfoSytle;
+                //followInfoSytle.Indention = 4;
                 ICell cellRemark2 = sheet.GetRow(1).GetCell(indexRemark);
                 cellRemark2.CellStyle = followInfoSytle;
                 #endregion
 
                 int startRowIndex = 2;
-                ICellStyle styleCenter = workbook.CreateCellStyle();               
+                ICellStyle styleCenter = workbook.CreateCellStyle();
                 styleCenter.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
                 styleCenter.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
-                styleCenter.BorderTop= NPOI.SS.UserModel.BorderStyle.Thin;
-                styleCenter.BorderLeft= NPOI.SS.UserModel.BorderStyle.Thin; 
-                styleCenter.BorderRight= NPOI.SS.UserModel.BorderStyle.Thin; 
+                styleCenter.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
+                styleCenter.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
+                styleCenter.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
                 styleCenter.VerticalAlignment = VerticalAlignment.Center;
                 ICellStyle styleDefault = workbook.CreateCellStyle();
                 styleDefault.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Left;
                 styleDefault.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
                 styleDefault.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
                 styleDefault.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
-                styleDefault.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin; 
+                styleDefault.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
                 styleDefault.VerticalAlignment = VerticalAlignment.Center;
                 ICellStyle styleTopLeft = workbook.CreateCellStyle();
                 styleTopLeft.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Left;
                 styleTopLeft.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
                 styleTopLeft.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
                 styleTopLeft.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
-                styleTopLeft.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin; 
+                styleTopLeft.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
                 styleTopLeft.VerticalAlignment = VerticalAlignment.Top;
                 styleTopLeft.WrapText = true;
                 for (int i = 0; i < customers.getResults().Count; i++)
@@ -695,10 +700,10 @@ namespace HaoZhuoCRM
                         {
                             //合并
                             int mergeStartRowIndex = startRowIndex - records.Count;
-                            sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex -1, 0, 0));
-                            sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex -1, indexCustomerName, indexCustomerName));
-                            sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex -1, indexLeaveWordsTime, indexLeaveWordsTime));
-                            sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex -1, indexFirstOwnerName, indexFirstOwnerName));
+                            sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex - 1, 0, 0));
+                            sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex - 1, indexCustomerName, indexCustomerName));
+                            sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex - 1, indexLeaveWordsTime, indexLeaveWordsTime));
+                            sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex - 1, indexFirstOwnerName, indexFirstOwnerName));
                         }
                     }
                 }
