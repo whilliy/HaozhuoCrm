@@ -236,7 +236,9 @@
             "10",
             "20",
             "30",
-            "50"});
+            "50",
+            "100",
+            "200"});
             this.cmbPageSizes.Location = new System.Drawing.Point(90, 9);
             this.cmbPageSizes.Name = "cmbPageSizes";
             this.cmbPageSizes.Size = new System.Drawing.Size(49, 20);

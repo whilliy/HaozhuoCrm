@@ -264,7 +264,7 @@ namespace HaoZhuoCRM
         {
             try
             {
-                ResultsWithCount<CustomerDto> customers = QueryCustomers();
+                customers = QueryCustomers();
                 //将数据绑定到ListView
                 BindingDatas(customers);
             }
