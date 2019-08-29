@@ -8,6 +8,7 @@ using NPOI.SS.Util;
 using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -157,6 +158,11 @@ namespace HaoZhuoCRM
             {
                 currentUserId = Convert.ToInt64(txtFollowUserName.Tag.ToString());
             }
+            Int64? firstOwnerId = null;
+            if (txtFirstOwnerName.Tag != null && !String.IsNullOrEmpty(txtFirstOwnerName.Text))
+            {
+                firstOwnerId = Convert.ToInt64(txtFirstOwnerName.Tag.ToString());
+            }
             String leaveWordsTimeBegin = null, leaveWordsTimeEnd = null;
             if (cbLeaveWordsTime.Checked)
             {
@@ -168,7 +174,8 @@ namespace HaoZhuoCRM
                 leaveWordsTimeEnd = dtpLeaveWordsTimeEnd.Value.ToString("yyyy-MM-dd");
             }
             ResultsWithCount<CustomerDto> customers = CustomerService.QueryCustomers(Global.USER_TOKEN, pager.PageIndex, pager.PageSize,
-                projectId, status, source, type, txtName.Text, txtMobile.Text, currentUserId, provinceId, cityId, countyId, leaveWordsTimeBegin, leaveWordsTimeEnd);
+                projectId, status, source, type, txtName.Text, txtMobile.Text, firstOwnerId, currentUserId, provinceId, cityId, countyId, leaveWordsTimeBegin,
+                leaveWordsTimeEnd);
             return customers;
         }
 
@@ -280,6 +287,8 @@ namespace HaoZhuoCRM
             cbLeaveWordsTime.Checked = false;
             pager.Reset();
             txtName.Focus();
+            txtFirstOwnerName.Tag = null;
+            txtFirstOwnerName.Text = "";
             customers = new ResultsWithCount<CustomerDto>();
 
         }
@@ -599,7 +608,7 @@ namespace HaoZhuoCRM
                 ICellStyle followInfoSytle = workbook.CreateCellStyle();
                 followInfoSytle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Left;
                 followInfoSytle.VerticalAlignment = VerticalAlignment.Center;
-                followInfoSytle.BorderRight=NPOI.SS.UserModel.BorderStyle.Thin;
+                followInfoSytle.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
                 followInfoSytle.SetFont(headerFont);
                 //cellFollowInformation.CellStyle = followInfoSytle;
                 //followInfoSytle.Indention = 4;
@@ -714,7 +723,11 @@ namespace HaoZhuoCRM
                         workbook.Write(fs);
                         workbook.Close();
                         Cursor = Cursors.Default;
-                        MessageBox.Show("导出成功！", "提示");
+                        if(MessageBox.Show("导出成功！是否现在打开文件？", "提示",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button1)
+                            == DialogResult.Yes)
+                        {
+                            Process.Start(saveFileDialog.FileName);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -728,6 +741,17 @@ namespace HaoZhuoCRM
                     workbook.Close();
                 }
             }
+        }
+
+        private void BtnSelectFirstOwner_Click(object sender, EventArgs e)
+        {
+            FormSelectUser frmSelectUser = new FormSelectUser();
+            if (DialogResult.OK == frmSelectUser.ShowDialog())
+            {
+                txtFirstOwnerName.Text = frmSelectUser.SelectedUser.name;
+                txtFirstOwnerName.Tag = frmSelectUser.SelectedUser.id;
+            }
+            frmSelectUser.Close();
         }
     }
 }

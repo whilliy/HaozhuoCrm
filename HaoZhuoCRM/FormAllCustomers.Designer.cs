@@ -34,6 +34,7 @@
             this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.butReset = new System.Windows.Forms.Button();
             this.panelQuery = new System.Windows.Forms.Panel();
+            this.btnExport = new System.Windows.Forms.Button();
             this.cbLeaveWordsTime = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.dtpLeaveWordsTimeEnd = new System.Windows.Forms.DateTimePicker();
@@ -89,9 +90,11 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnExport = new System.Windows.Forms.Button();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.btnSelectFirstOwner = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtFirstOwnerName = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -124,7 +127,7 @@
             // 
             // butReset
             // 
-            this.butReset.Location = new System.Drawing.Point(989, 44);
+            this.butReset.Location = new System.Drawing.Point(1005, 45);
             this.butReset.Margin = new System.Windows.Forms.Padding(2);
             this.butReset.Name = "butReset";
             this.butReset.Size = new System.Drawing.Size(58, 21);
@@ -135,6 +138,9 @@
             // 
             // panelQuery
             // 
+            this.panelQuery.Controls.Add(this.btnSelectFirstOwner);
+            this.panelQuery.Controls.Add(this.label10);
+            this.panelQuery.Controls.Add(this.txtFirstOwnerName);
             this.panelQuery.Controls.Add(this.btnExport);
             this.panelQuery.Controls.Add(this.cbLeaveWordsTime);
             this.panelQuery.Controls.Add(this.label17);
@@ -167,24 +173,35 @@
             this.panelQuery.Location = new System.Drawing.Point(0, 0);
             this.panelQuery.Margin = new System.Windows.Forms.Padding(2);
             this.panelQuery.Name = "panelQuery";
-            this.panelQuery.Size = new System.Drawing.Size(1135, 76);
+            this.panelQuery.Size = new System.Drawing.Size(1180, 76);
             this.panelQuery.TabIndex = 0;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(1082, 45);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(58, 21);
+            this.btnExport.TabIndex = 27;
+            this.btnExport.Text = "导出(&E)";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // cbLeaveWordsTime
             // 
             this.cbLeaveWordsTime.AutoSize = true;
-            this.cbLeaveWordsTime.Location = new System.Drawing.Point(9, 46);
+            this.cbLeaveWordsTime.Location = new System.Drawing.Point(9, 47);
             this.cbLeaveWordsTime.Name = "cbLeaveWordsTime";
-            this.cbLeaveWordsTime.Size = new System.Drawing.Size(108, 16);
+            this.cbLeaveWordsTime.Size = new System.Drawing.Size(84, 16);
             this.cbLeaveWordsTime.TabIndex = 12;
-            this.cbLeaveWordsTime.Text = "留言时间范围：";
+            this.cbLeaveWordsTime.Text = "留言时间：";
             this.cbLeaveWordsTime.UseVisualStyleBackColor = true;
             this.cbLeaveWordsTime.CheckedChanged += new System.EventHandler(this.CbLeaveWordsTime_CheckedChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(232, 48);
+            this.label17.Location = new System.Drawing.Point(204, 49);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(17, 12);
@@ -196,10 +213,10 @@
             this.dtpLeaveWordsTimeEnd.CustomFormat = "yyyy-MM-dd";
             this.dtpLeaveWordsTimeEnd.Enabled = false;
             this.dtpLeaveWordsTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpLeaveWordsTimeEnd.Location = new System.Drawing.Point(254, 44);
+            this.dtpLeaveWordsTimeEnd.Location = new System.Drawing.Point(226, 45);
             this.dtpLeaveWordsTimeEnd.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dtpLeaveWordsTimeEnd.Name = "dtpLeaveWordsTimeEnd";
-            this.dtpLeaveWordsTimeEnd.Size = new System.Drawing.Size(104, 21);
+            this.dtpLeaveWordsTimeEnd.Size = new System.Drawing.Size(94, 21);
             this.dtpLeaveWordsTimeEnd.TabIndex = 15;
             // 
             // dtpLeaveWordsTimeBegin
@@ -207,15 +224,15 @@
             this.dtpLeaveWordsTimeBegin.CustomFormat = "yyyy-MM-dd";
             this.dtpLeaveWordsTimeBegin.Enabled = false;
             this.dtpLeaveWordsTimeBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpLeaveWordsTimeBegin.Location = new System.Drawing.Point(123, 44);
+            this.dtpLeaveWordsTimeBegin.Location = new System.Drawing.Point(95, 45);
             this.dtpLeaveWordsTimeBegin.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dtpLeaveWordsTimeBegin.Name = "dtpLeaveWordsTimeBegin";
-            this.dtpLeaveWordsTimeBegin.Size = new System.Drawing.Size(104, 21);
+            this.dtpLeaveWordsTimeBegin.Size = new System.Drawing.Size(94, 21);
             this.dtpLeaveWordsTimeBegin.TabIndex = 13;
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(945, 43);
+            this.btnSelect.Location = new System.Drawing.Point(967, 44);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(33, 23);
             this.btnSelect.TabIndex = 24;
@@ -226,21 +243,21 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(761, 48);
+            this.label9.Location = new System.Drawing.Point(857, 49);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 12);
+            this.label9.Size = new System.Drawing.Size(53, 12);
             this.label9.TabIndex = 22;
-            this.label9.Text = "当前跟进人：";
+            this.label9.Text = "跟进人：";
             // 
             // txtFollowUserName
             // 
-            this.txtFollowUserName.Location = new System.Drawing.Point(845, 44);
+            this.txtFollowUserName.Location = new System.Drawing.Point(912, 45);
             this.txtFollowUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFollowUserName.MaxLength = 11;
             this.txtFollowUserName.Name = "txtFollowUserName";
             this.txtFollowUserName.ReadOnly = true;
-            this.txtFollowUserName.Size = new System.Drawing.Size(94, 21);
+            this.txtFollowUserName.Size = new System.Drawing.Size(52, 21);
             this.txtFollowUserName.TabIndex = 23;
             this.txtFollowUserName.WordWrap = false;
             // 
@@ -267,7 +284,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(832, 12);
+            this.label7.Location = new System.Drawing.Point(785, 12);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
@@ -278,7 +295,7 @@
             // 
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(903, 8);
+            this.cmbStatus.Location = new System.Drawing.Point(856, 8);
             this.cmbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(73, 20);
@@ -287,7 +304,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(638, 12);
+            this.label6.Location = new System.Drawing.Point(591, 12);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
@@ -298,7 +315,7 @@
             // 
             this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerSources.FormattingEnabled = true;
-            this.cmbCustomerSources.Location = new System.Drawing.Point(722, 8);
+            this.cmbCustomerSources.Location = new System.Drawing.Point(675, 8);
             this.cmbCustomerSources.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerSources.Name = "cmbCustomerSources";
             this.cmbCustomerSources.Size = new System.Drawing.Size(94, 20);
@@ -327,7 +344,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(632, 48);
+            this.label4.Location = new System.Drawing.Point(568, 49);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
@@ -338,7 +355,7 @@
             // 
             this.cmbCounties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCounties.FormattingEnabled = true;
-            this.cmbCounties.Location = new System.Drawing.Point(664, 44);
+            this.cmbCounties.Location = new System.Drawing.Point(600, 45);
             this.cmbCounties.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCounties.Name = "cmbCounties";
             this.cmbCounties.Size = new System.Drawing.Size(93, 20);
@@ -347,7 +364,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(503, 48);
+            this.label3.Location = new System.Drawing.Point(439, 49);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
@@ -358,7 +375,7 @@
             // 
             this.cmbCities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCities.FormattingEnabled = true;
-            this.cmbCities.Location = new System.Drawing.Point(536, 44);
+            this.cmbCities.Location = new System.Drawing.Point(472, 45);
             this.cmbCities.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCities.Name = "cmbCities";
             this.cmbCities.Size = new System.Drawing.Size(92, 20);
@@ -368,7 +385,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(374, 48);
+            this.label2.Location = new System.Drawing.Point(332, 49);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
@@ -389,10 +406,10 @@
             // 
             this.cmbProvinces.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvinces.FormattingEnabled = true;
-            this.cmbProvinces.Location = new System.Drawing.Point(408, 44);
+            this.cmbProvinces.Location = new System.Drawing.Point(366, 45);
             this.cmbProvinces.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProvinces.Name = "cmbProvinces";
-            this.cmbProvinces.Size = new System.Drawing.Size(87, 20);
+            this.cmbProvinces.Size = new System.Drawing.Size(67, 20);
             this.cmbProvinces.TabIndex = 17;
             this.cmbProvinces.SelectedIndexChanged += new System.EventHandler(this.CmbProvinces_SelectedIndexChanged);
             // 
@@ -427,7 +444,7 @@
             // 
             // butQuery
             // 
-            this.butQuery.Location = new System.Drawing.Point(989, 8);
+            this.butQuery.Location = new System.Drawing.Point(1005, 8);
             this.butQuery.Margin = new System.Windows.Forms.Padding(2);
             this.butQuery.Name = "butQuery";
             this.butQuery.Size = new System.Drawing.Size(58, 21);
@@ -447,7 +464,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 477);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1135, 34);
+            this.panel1.Size = new System.Drawing.Size(1180, 34);
             this.panel1.TabIndex = 1;
             // 
             // cbSelectAll
@@ -475,7 +492,7 @@
             // 
             this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(932, 0);
+            this.panel3.Location = new System.Drawing.Point(977, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(203, 34);
             this.panel3.TabIndex = 2;
@@ -519,7 +536,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 76);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1135, 401);
+            this.panel2.Size = new System.Drawing.Size(1180, 401);
             this.panel2.TabIndex = 6;
             // 
             // lvClients
@@ -556,7 +573,7 @@
             this.lvClients.Margin = new System.Windows.Forms.Padding(2);
             this.lvClients.MultiSelect = false;
             this.lvClients.Name = "lvClients";
-            this.lvClients.Size = new System.Drawing.Size(1135, 367);
+            this.lvClients.Size = new System.Drawing.Size(1180, 367);
             this.lvClients.TabIndex = 0;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
@@ -661,23 +678,6 @@
             this.columnHeader14.Text = "下次跟进时间";
             this.columnHeader14.Width = 150;
             // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(1066, 43);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(2);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(58, 21);
-            this.btnExport.TabIndex = 27;
-            this.btnExport.Text = "导出(&E)";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
-            // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.DefaultExt = "*.xlsx";
-            this.saveFileDialog.Filter = "Excel文件|*.xlsx";
-            this.saveFileDialog.Title = "导出客户信息";
-            // 
             // pager
             // 
             this.pager.BackColor = System.Drawing.SystemColors.Control;
@@ -690,15 +690,52 @@
             this.pager.PageIndex = 1;
             this.pager.PageSize = 20;
             this.pager.RecordCount = 0;
-            this.pager.Size = new System.Drawing.Size(1135, 34);
+            this.pager.Size = new System.Drawing.Size(1180, 34);
             this.pager.TabIndex = 1;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "*.xlsx";
+            this.saveFileDialog.Filter = "Excel文件|*.xlsx";
+            this.saveFileDialog.Title = "导出客户信息";
+            // 
+            // btnSelectFirstOwner
+            // 
+            this.btnSelectFirstOwner.Location = new System.Drawing.Point(813, 44);
+            this.btnSelectFirstOwner.Name = "btnSelectFirstOwner";
+            this.btnSelectFirstOwner.Size = new System.Drawing.Size(33, 23);
+            this.btnSelectFirstOwner.TabIndex = 30;
+            this.btnSelectFirstOwner.Text = "选";
+            this.btnSelectFirstOwner.UseVisualStyleBackColor = true;
+            this.btnSelectFirstOwner.Click += new System.EventHandler(this.BtnSelectFirstOwner_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(700, 49);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "分派给：";
+            // 
+            // txtFirstOwnerName
+            // 
+            this.txtFirstOwnerName.Location = new System.Drawing.Point(755, 45);
+            this.txtFirstOwnerName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFirstOwnerName.MaxLength = 11;
+            this.txtFirstOwnerName.Name = "txtFirstOwnerName";
+            this.txtFirstOwnerName.ReadOnly = true;
+            this.txtFirstOwnerName.Size = new System.Drawing.Size(52, 21);
+            this.txtFirstOwnerName.TabIndex = 29;
+            this.txtFirstOwnerName.WordWrap = false;
             // 
             // FormAllCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 511);
+            this.ClientSize = new System.Drawing.Size(1180, 511);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelQuery);
@@ -781,5 +818,8 @@
         private System.Windows.Forms.ToolStripMenuItem miModify;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button btnSelectFirstOwner;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtFirstOwnerName;
     }
 }

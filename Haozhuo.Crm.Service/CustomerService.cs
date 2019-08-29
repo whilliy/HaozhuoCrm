@@ -610,6 +610,7 @@ namespace Haozhuo.Crm.Service
                                                         Int32? type,
                                                         String name,
                                                         String mobile,
+                                                        Int64? firstOwnerId,
                                                         Int64? currentUserId,
                                                         String provinceId,
                                                         String cityId,
@@ -643,6 +644,10 @@ namespace Haozhuo.Crm.Service
             if (type != null)
             {
                 request.AddParameter("type", type);
+            }
+            if (firstOwnerId.HasValue)
+            {
+                request.AddParameter("first_owner_id", firstOwnerId);
             }
             if (currentUserId.HasValue)
             {
