@@ -83,9 +83,13 @@
             this.menuItemReturnToPublic = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemTransfer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.miModify = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbNextFollowTime = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtpNextFollowTimeEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpNextFollowTimeStart = new System.Windows.Forms.DateTimePicker();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -107,7 +111,7 @@
             // 
             this.cmbProvinces.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvinces.FormattingEnabled = true;
-            this.cmbProvinces.Location = new System.Drawing.Point(497, 43);
+            this.cmbProvinces.Location = new System.Drawing.Point(515, 43);
             this.cmbProvinces.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProvinces.Name = "cmbProvinces";
             this.cmbProvinces.Size = new System.Drawing.Size(87, 20);
@@ -116,7 +120,7 @@
             // 
             // butQuery
             // 
-            this.butQuery.Location = new System.Drawing.Point(917, 9);
+            this.butQuery.Location = new System.Drawing.Point(777, 76);
             this.butQuery.Margin = new System.Windows.Forms.Padding(2);
             this.butQuery.Name = "butQuery";
             this.butQuery.Size = new System.Drawing.Size(58, 21);
@@ -136,6 +140,10 @@
             // 
             // panelQuery
             // 
+            this.panelQuery.Controls.Add(this.cbNextFollowTime);
+            this.panelQuery.Controls.Add(this.label9);
+            this.panelQuery.Controls.Add(this.dtpNextFollowTimeEnd);
+            this.panelQuery.Controls.Add(this.dtpNextFollowTimeStart);
             this.panelQuery.Controls.Add(this.cbLeaveWordsTime);
             this.panelQuery.Controls.Add(this.label17);
             this.panelQuery.Controls.Add(this.dtpLeaveWordsTimeEnd);
@@ -164,7 +172,7 @@
             this.panelQuery.Location = new System.Drawing.Point(0, 0);
             this.panelQuery.Margin = new System.Windows.Forms.Padding(2);
             this.panelQuery.Name = "panelQuery";
-            this.panelQuery.Size = new System.Drawing.Size(1084, 82);
+            this.panelQuery.Size = new System.Drawing.Size(1084, 104);
             this.panelQuery.TabIndex = 0;
             // 
             // cbLeaveWordsTime
@@ -181,7 +189,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(266, 47);
+            this.label17.Location = new System.Drawing.Point(282, 47);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(17, 12);
@@ -193,10 +201,10 @@
             this.dtpLeaveWordsTimeEnd.CustomFormat = "yyyy-MM-dd";
             this.dtpLeaveWordsTimeEnd.Enabled = false;
             this.dtpLeaveWordsTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpLeaveWordsTimeEnd.Location = new System.Drawing.Point(309, 43);
+            this.dtpLeaveWordsTimeEnd.Location = new System.Drawing.Point(325, 43);
             this.dtpLeaveWordsTimeEnd.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dtpLeaveWordsTimeEnd.Name = "dtpLeaveWordsTimeEnd";
-            this.dtpLeaveWordsTimeEnd.Size = new System.Drawing.Size(104, 21);
+            this.dtpLeaveWordsTimeEnd.Size = new System.Drawing.Size(133, 21);
             this.dtpLeaveWordsTimeEnd.TabIndex = 18;
             // 
             // dtpLeaveWordsTimeBegin
@@ -207,7 +215,7 @@
             this.dtpLeaveWordsTimeBegin.Location = new System.Drawing.Point(126, 41);
             this.dtpLeaveWordsTimeBegin.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dtpLeaveWordsTimeBegin.Name = "dtpLeaveWordsTimeBegin";
-            this.dtpLeaveWordsTimeBegin.Size = new System.Drawing.Size(116, 21);
+            this.dtpLeaveWordsTimeBegin.Size = new System.Drawing.Size(136, 21);
             this.dtpLeaveWordsTimeBegin.TabIndex = 16;
             // 
             // cmbProjects
@@ -233,7 +241,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(756, 13);
+            this.label7.Location = new System.Drawing.Point(774, 13);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
@@ -244,7 +252,7 @@
             // 
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(827, 9);
+            this.cmbStatus.Location = new System.Drawing.Point(845, 9);
             this.cmbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(73, 20);
@@ -253,7 +261,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(596, 13);
+            this.label6.Location = new System.Drawing.Point(614, 13);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
@@ -264,7 +272,7 @@
             // 
             this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerSources.FormattingEnabled = true;
-            this.cmbCustomerSources.Location = new System.Drawing.Point(669, 9);
+            this.cmbCustomerSources.Location = new System.Drawing.Point(687, 9);
             this.cmbCustomerSources.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerSources.Name = "cmbCustomerSources";
             this.cmbCustomerSources.Size = new System.Drawing.Size(76, 20);
@@ -272,7 +280,7 @@
             // 
             // butReset
             // 
-            this.butReset.Location = new System.Drawing.Point(917, 43);
+            this.butReset.Location = new System.Drawing.Point(861, 75);
             this.butReset.Margin = new System.Windows.Forms.Padding(2);
             this.butReset.Name = "butReset";
             this.butReset.Size = new System.Drawing.Size(58, 21);
@@ -284,7 +292,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(465, 13);
+            this.label5.Location = new System.Drawing.Point(483, 13);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
@@ -295,7 +303,7 @@
             // 
             this.cmbCustomerTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerTypes.FormattingEnabled = true;
-            this.cmbCustomerTypes.Location = new System.Drawing.Point(536, 9);
+            this.cmbCustomerTypes.Location = new System.Drawing.Point(554, 9);
             this.cmbCustomerTypes.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCustomerTypes.Name = "cmbCustomerTypes";
             this.cmbCustomerTypes.Size = new System.Drawing.Size(44, 20);
@@ -304,7 +312,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(766, 47);
+            this.label4.Location = new System.Drawing.Point(784, 47);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
@@ -315,7 +323,7 @@
             // 
             this.cmbCounties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCounties.FormattingEnabled = true;
-            this.cmbCounties.Location = new System.Drawing.Point(798, 43);
+            this.cmbCounties.Location = new System.Drawing.Point(816, 43);
             this.cmbCounties.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCounties.Name = "cmbCounties";
             this.cmbCounties.Size = new System.Drawing.Size(104, 20);
@@ -324,7 +332,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(592, 47);
+            this.label3.Location = new System.Drawing.Point(610, 47);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
@@ -335,7 +343,7 @@
             // 
             this.cmbCities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCities.FormattingEnabled = true;
-            this.cmbCities.Location = new System.Drawing.Point(625, 43);
+            this.cmbCities.Location = new System.Drawing.Point(643, 43);
             this.cmbCities.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCities.Name = "cmbCities";
             this.cmbCities.Size = new System.Drawing.Size(112, 20);
@@ -345,7 +353,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(463, 47);
+            this.label2.Location = new System.Drawing.Point(481, 47);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
@@ -410,10 +418,10 @@
             this.panel2.Controls.Add(this.lvClients);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 82);
+            this.panel2.Location = new System.Drawing.Point(0, 104);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1084, 392);
+            this.panel2.Size = new System.Drawing.Size(1084, 370);
             this.panel2.TabIndex = 3;
             // 
             // lvClients
@@ -449,7 +457,7 @@
             this.lvClients.Margin = new System.Windows.Forms.Padding(2);
             this.lvClients.MultiSelect = false;
             this.lvClients.Name = "lvClients";
-            this.lvClients.Size = new System.Drawing.Size(1084, 356);
+            this.lvClients.Size = new System.Drawing.Size(1084, 334);
             this.lvClients.TabIndex = 2;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
@@ -558,36 +566,44 @@
             this.menuItemEdit,
             this.miModify});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 92);
             // 
             // menuItemReturnToPublic
             // 
             this.menuItemReturnToPublic.Name = "menuItemReturnToPublic";
-            this.menuItemReturnToPublic.Size = new System.Drawing.Size(180, 22);
+            this.menuItemReturnToPublic.Size = new System.Drawing.Size(124, 22);
             this.menuItemReturnToPublic.Text = "丢回公海";
             this.menuItemReturnToPublic.Click += new System.EventHandler(this.MenuItemReturnToPublic_Click);
             // 
             // menuItemTransfer
             // 
             this.menuItemTransfer.Name = "menuItemTransfer";
-            this.menuItemTransfer.Size = new System.Drawing.Size(180, 22);
+            this.menuItemTransfer.Size = new System.Drawing.Size(124, 22);
             this.menuItemTransfer.Text = "转让...";
             this.menuItemTransfer.Click += new System.EventHandler(this.MenuItemTransfer_Click);
             // 
             // menuItemEdit
             // 
             this.menuItemEdit.Name = "menuItemEdit";
-            this.menuItemEdit.Size = new System.Drawing.Size(180, 22);
+            this.menuItemEdit.Size = new System.Drawing.Size(124, 22);
             this.menuItemEdit.Text = "跟进...";
             this.menuItemEdit.ToolTipText = "添加跟进记录，同时可以修改用户基本信息";
             this.menuItemEdit.Click += new System.EventHandler(this.MenuItemFollow_Click);
+            // 
+            // miModify
+            // 
+            this.miModify.Name = "miModify";
+            this.miModify.Size = new System.Drawing.Size(124, 22);
+            this.miModify.Text = "修改(&M)";
+            this.miModify.ToolTipText = "仅仅修改一下客户的基本信息";
+            this.miModify.Click += new System.EventHandler(this.MiModify_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel3.Controls.Add(this.pager);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 356);
+            this.panel3.Location = new System.Drawing.Point(0, 334);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1084, 36);
@@ -609,13 +625,48 @@
             this.pager.TabIndex = 4;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
-            // miModify
+            // cbNextFollowTime
             // 
-            this.miModify.Name = "miModify";
-            this.miModify.Size = new System.Drawing.Size(180, 22);
-            this.miModify.Text = "修改(&M)";
-            this.miModify.ToolTipText = "仅仅修改一下客户的基本信息";
-            this.miModify.Click += new System.EventHandler(this.MiModify_Click);
+            this.cbNextFollowTime.AutoSize = true;
+            this.cbNextFollowTime.Location = new System.Drawing.Point(11, 78);
+            this.cbNextFollowTime.Name = "cbNextFollowTime";
+            this.cbNextFollowTime.Size = new System.Drawing.Size(108, 16);
+            this.cbNextFollowTime.TabIndex = 24;
+            this.cbNextFollowTime.Text = "下次沟通时间：";
+            this.cbNextFollowTime.UseVisualStyleBackColor = true;
+            this.cbNextFollowTime.CheckedChanged += new System.EventHandler(this.CbNextFollowTime_CheckedChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(281, 80);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(17, 12);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "至";
+            // 
+            // dtpNextFollowTimeEnd
+            // 
+            this.dtpNextFollowTimeEnd.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpNextFollowTimeEnd.Enabled = false;
+            this.dtpNextFollowTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNextFollowTimeEnd.Location = new System.Drawing.Point(324, 76);
+            this.dtpNextFollowTimeEnd.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpNextFollowTimeEnd.Name = "dtpNextFollowTimeEnd";
+            this.dtpNextFollowTimeEnd.Size = new System.Drawing.Size(136, 21);
+            this.dtpNextFollowTimeEnd.TabIndex = 27;
+            // 
+            // dtpNextFollowTimeStart
+            // 
+            this.dtpNextFollowTimeStart.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpNextFollowTimeStart.Enabled = false;
+            this.dtpNextFollowTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNextFollowTimeStart.Location = new System.Drawing.Point(125, 74);
+            this.dtpNextFollowTimeStart.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpNextFollowTimeStart.Name = "dtpNextFollowTimeStart";
+            this.dtpNextFollowTimeStart.Size = new System.Drawing.Size(136, 21);
+            this.dtpNextFollowTimeStart.TabIndex = 25;
             // 
             // FormMyCustomers
             // 
@@ -700,5 +751,9 @@
         private System.Windows.Forms.CheckBox cbLeaveWordsTime;
         private Controls.PagerControl pager;
         private System.Windows.Forms.ToolStripMenuItem miModify;
+        private System.Windows.Forms.CheckBox cbNextFollowTime;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dtpNextFollowTimeEnd;
+        private System.Windows.Forms.DateTimePicker dtpNextFollowTimeStart;
     }
 }

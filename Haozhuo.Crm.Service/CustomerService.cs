@@ -738,7 +738,9 @@ namespace Haozhuo.Crm.Service
                                                         String cityId,
                                                         String countyId,
                                                         String leaveWordsTimeBegin,
-                                                        String leaveWordsTimeEnd)
+                                                        String leaveWordsTimeEnd,
+                                                        String nextFollowTimeStart,
+                                                        String nextFollowTimeEnd)
         {
             RestClient rc = new RestClient();
             var request = new RestRequest(GlobalConfig.MY_CUSTOMERS, Method.GET);
@@ -790,6 +792,14 @@ namespace Haozhuo.Crm.Service
             if (!String.IsNullOrEmpty(leaveWordsTimeBegin))
             {
                 request.AddParameter("leave_words_begin", leaveWordsTimeBegin);
+            }
+            if (!String.IsNullOrEmpty(nextFollowTimeStart))
+            {
+                request.AddParameter("next_follow_time_start", nextFollowTimeStart);
+            }
+            if (!String.IsNullOrEmpty(nextFollowTimeEnd))
+            {
+                request.AddParameter("next_follow_time_end", nextFollowTimeEnd);
             }
             if (!String.IsNullOrEmpty(leaveWordsTimeEnd))
             {

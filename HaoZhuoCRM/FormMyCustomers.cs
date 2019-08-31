@@ -207,6 +207,7 @@ namespace HaoZhuoCRM
             cmbProvinces.SelectedIndex = 0;
             lvClients.Items.Clear();
             cbLeaveWordsTime.Checked = false;
+            cbNextFollowTime.Checked = false;
             pager.Reset();
             txtName.Focus();
 
@@ -266,8 +267,19 @@ namespace HaoZhuoCRM
                 leaveWordsTimeBegin = dtpLeaveWordsTimeBegin.Value.ToString("yyyy-MM-dd");
                 leaveWordsTimeEnd = dtpLeaveWordsTimeEnd.Value.ToString("yyyy-MM-dd");
             }
+            String nextFollowTimeBegin = null, nextFollowTimeEnd = null;
+            if (cbNextFollowTime.Checked)
+            {
+                if (dtpNextFollowTimeStart.Value.CompareTo(dtpNextFollowTimeEnd.Value) > 0)
+                {
+                    throw new BusinessException("下次跟进时间范围截至时间不能早于起始时间");
+                }
+                nextFollowTimeBegin = dtpNextFollowTimeStart.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                nextFollowTimeEnd = dtpNextFollowTimeEnd.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            }
             ResultsWithCount<CustomerDto> customers = CustomerService.QueryMyCustomers(Global.USER_TOKEN, pager.PageIndex, pager.PageSize, projectId,
-                 status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId, leaveWordsTimeBegin, leaveWordsTimeEnd);
+                 status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId, leaveWordsTimeBegin, leaveWordsTimeEnd,
+                 nextFollowTimeBegin, nextFollowTimeEnd);
             return customers;
         }
 
@@ -562,6 +574,11 @@ namespace HaoZhuoCRM
 
             }
             modifyCustomer.Close();
+        }
+
+        private void CbNextFollowTime_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpNextFollowTimeStart.Enabled = dtpNextFollowTimeEnd.Enabled = cbNextFollowTime.Checked;
         }
     }
 }

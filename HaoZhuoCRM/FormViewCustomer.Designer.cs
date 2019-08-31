@@ -47,7 +47,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtRemark = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtNextFollowTime = new System.Windows.Forms.TextBox();
+            this.txtLeaveWordsTime = new System.Windows.Forms.TextBox();
             this.txtFirstOwnerName = new System.Windows.Forms.TextBox();
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.txtType = new System.Windows.Forms.TextBox();
@@ -142,7 +142,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(321, 48);
+            this.label6.Location = new System.Drawing.Point(315, 48);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 12);
@@ -179,7 +179,7 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.txtRemark);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.txtNextFollowTime);
+            this.panel1.Controls.Add(this.txtLeaveWordsTime);
             this.panel1.Controls.Add(this.txtFirstOwnerName);
             this.panel1.Controls.Add(this.txtStatus);
             this.panel1.Controls.Add(this.txtType);
@@ -206,7 +206,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(973, 132);
+            this.panel1.Size = new System.Drawing.Size(973, 161);
             this.panel1.TabIndex = 0;
             // 
             // labelCount
@@ -266,11 +266,13 @@
             // 
             // txtRemark
             // 
+            this.txtRemark.Font = new System.Drawing.Font("宋体", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtRemark.Location = new System.Drawing.Point(112, 107);
             this.txtRemark.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.ReadOnly = true;
-            this.txtRemark.Size = new System.Drawing.Size(712, 21);
+            this.txtRemark.Size = new System.Drawing.Size(712, 50);
             this.txtRemark.TabIndex = 25;
             // 
             // label10
@@ -279,18 +281,18 @@
             this.label10.Location = new System.Drawing.Point(31, 79);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 12);
+            this.label10.Size = new System.Drawing.Size(53, 12);
             this.label10.TabIndex = 20;
-            this.label10.Text = "第一跟进人：";
+            this.label10.Text = "分配给：";
             // 
-            // txtNextFollowTime
+            // txtLeaveWordsTime
             // 
-            this.txtNextFollowTime.Location = new System.Drawing.Point(372, 76);
-            this.txtNextFollowTime.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNextFollowTime.Name = "txtNextFollowTime";
-            this.txtNextFollowTime.ReadOnly = true;
-            this.txtNextFollowTime.Size = new System.Drawing.Size(174, 21);
-            this.txtNextFollowTime.TabIndex = 23;
+            this.txtLeaveWordsTime.Location = new System.Drawing.Point(372, 76);
+            this.txtLeaveWordsTime.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLeaveWordsTime.Name = "txtLeaveWordsTime";
+            this.txtLeaveWordsTime.ReadOnly = true;
+            this.txtLeaveWordsTime.Size = new System.Drawing.Size(129, 21);
+            this.txtLeaveWordsTime.TabIndex = 23;
             // 
             // txtFirstOwnerName
             // 
@@ -298,7 +300,7 @@
             this.txtFirstOwnerName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFirstOwnerName.Name = "txtFirstOwnerName";
             this.txtFirstOwnerName.ReadOnly = true;
-            this.txtFirstOwnerName.Size = new System.Drawing.Size(137, 21);
+            this.txtFirstOwnerName.Size = new System.Drawing.Size(102, 21);
             this.txtFirstOwnerName.TabIndex = 21;
             // 
             // txtStatus
@@ -325,7 +327,7 @@
             this.txtCounty.Margin = new System.Windows.Forms.Padding(2);
             this.txtCounty.Name = "txtCounty";
             this.txtCounty.ReadOnly = true;
-            this.txtCounty.Size = new System.Drawing.Size(117, 21);
+            this.txtCounty.Size = new System.Drawing.Size(129, 21);
             this.txtCounty.TabIndex = 15;
             // 
             // txtCity
@@ -373,7 +375,7 @@
             this.txtProjectName.Margin = new System.Windows.Forms.Padding(2);
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.ReadOnly = true;
-            this.txtProjectName.Size = new System.Drawing.Size(117, 21);
+            this.txtProjectName.Size = new System.Drawing.Size(129, 21);
             this.txtProjectName.TabIndex = 5;
             // 
             // label13
@@ -389,12 +391,12 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(272, 80);
+            this.label12.Location = new System.Drawing.Point(297, 81);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 12);
+            this.label12.Size = new System.Drawing.Size(65, 12);
             this.label12.TabIndex = 22;
-            this.label12.Text = "下次跟进时间：";
+            this.label12.Text = "留言时间：";
             // 
             // label9
             // 
@@ -421,11 +423,11 @@
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 132);
+            this.listView1.Location = new System.Drawing.Point(0, 161);
             this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(973, 339);
+            this.listView1.Size = new System.Drawing.Size(973, 310);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -508,7 +510,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.TextBox txtNextFollowTime;
+        private System.Windows.Forms.TextBox txtLeaveWordsTime;
         private System.Windows.Forms.TextBox txtFirstOwnerName;
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.TextBox txtType;

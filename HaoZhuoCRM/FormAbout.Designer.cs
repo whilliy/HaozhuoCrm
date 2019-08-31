@@ -72,7 +72,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 4;
-            this.label4.Text = "0.99.1";
+            this.label4.Text = "0.99.2";
             // 
             // pictureBox1
             // 
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(181, 296);
+            this.ClientSize = new System.Drawing.Size(177, 292);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);

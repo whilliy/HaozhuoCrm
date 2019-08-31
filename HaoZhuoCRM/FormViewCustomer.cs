@@ -77,7 +77,7 @@ namespace HaoZhuoCRM
             txtCity.Text = CURRENT_CUSTOMER.cityName;
             txtCounty.Text = CURRENT_CUSTOMER.countyName;
             txtRemark.Text = CURRENT_CUSTOMER.remark;
-            txtNextFollowTime.Text = (CURRENT_CUSTOMER.nextFollowTime.HasValue ? CURRENT_CUSTOMER.nextFollowTime.Value.ToString(GlobalConfig.DateTimeFormat) : "");
+            txtLeaveWordsTime.Text = (CURRENT_CUSTOMER.leaveWordsTime.HasValue ? CURRENT_CUSTOMER.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat) : "");
             try
             {
                 IList<CustomerFollowRecord> records = CustomerService.GetFollowerRecordsByCusotmerId(CURRENT_CUSTOMER.id, Global.USER_TOKEN);
