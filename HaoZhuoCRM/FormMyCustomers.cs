@@ -34,6 +34,7 @@ namespace HaoZhuoCRM
         private void FormMyClients_Load(object sender, EventArgs e)
         {
             dtpLeaveWordsTimeEnd.Value = dtpLeaveWordsTimeBegin.Value = DateTime.Now;
+            dtpNextFollowTimeStart.Value = dtpNextFollowTimeEnd.Value = DateTime.Now;
             //获取项目列表
             try
             {
@@ -274,8 +275,8 @@ namespace HaoZhuoCRM
                 {
                     throw new BusinessException("下次跟进时间范围截至时间不能早于起始时间");
                 }
-                nextFollowTimeBegin = dtpNextFollowTimeStart.Value.ToString("yyyy-MM-dd HH:mm:ss");
-                nextFollowTimeEnd = dtpNextFollowTimeEnd.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                nextFollowTimeBegin = dtpNextFollowTimeStart.Value.ToString("yyyy-MM-dd HH:mm");
+                nextFollowTimeEnd = dtpNextFollowTimeEnd.Value.ToString("yyyy-MM-dd HH:mm");
             }
             ResultsWithCount<CustomerDto> customers = CustomerService.QueryMyCustomers(Global.USER_TOKEN, pager.PageIndex, pager.PageSize, projectId,
                  status, source, type, txtName.Text, txtMobile.Text, provinceId, cityId, countyId, leaveWordsTimeBegin, leaveWordsTimeEnd,
