@@ -1,10 +1,9 @@
 ﻿using Haozhuo.Crm.Service;
 using Haozhuo.Crm.Service.Dto;
 using Haozhuo.Crm.Service.Utils;
-using OAUS.Core;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace HaoZhuoCRM
@@ -12,6 +11,7 @@ namespace HaoZhuoCRM
     public partial class FormMain : Form
     {
         private Dictionary<String, ToolStripItem> PermissionControl = new Dictionary<string, ToolStripItem>();
+        public static FormPop formPop;
         public FormMain()
         {
             InitializeComponent();
@@ -77,6 +77,8 @@ namespace HaoZhuoCRM
             labelCurrentName.Text = Global.USER_NAME;
             lableCurrentOrganization.Text = Global.ORGANIZAITON_NAME;
             labelCurrentProject.Text = Global.CURRENT_PROJECT_NAME;
+            //formPop = new FormPop(this.statusStrip1.Height);
+            //formPop.Show();
         }
 
         private void SelectProject()
@@ -208,6 +210,20 @@ namespace HaoZhuoCRM
             FormAllCustomers formAllCustomers = new FormAllCustomers();
             formAllCustomers.MdiParent = this;
             formAllCustomers.Show();
+        }
+
+        private void miHighPriorityCustomers_Click(object sender, EventArgs e)
+        {
+            //FormMain.formPop.Pop();
+        }
+
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            //if (FormPop.SHOW)
+            //{
+            //    Rectangle rect = Screen.PrimaryScreen.WorkingArea;
+            //    formPop.Location = new Point(rect.Width - formPop.Width, rect.Height - formPop.Height);
+            //}
         }
     }
 }

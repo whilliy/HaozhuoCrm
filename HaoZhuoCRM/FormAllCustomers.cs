@@ -25,6 +25,14 @@ namespace HaoZhuoCRM
 
         private void FormPublic_Load(object sender, EventArgs e)
         {
+            if (Global.PERMISSION_IDS.Contains("EXPORT_CUSTOMERS"))
+            {
+                btnExport.Visible = true;
+            }
+            else
+            {
+                btnExport.Visible = false;
+            }
             dtpLeaveWordsTimeEnd.Value = dtpLeaveWordsTimeBegin.Value = DateTime.Now;
             //获取所有的客户状态
             IList<CustomerStatus> customerStatuses = new List<CustomerStatus>();
@@ -539,8 +547,9 @@ namespace HaoZhuoCRM
             if (dialogResult == DialogResult.OK)
             {
                 Cursor = Cursors.WaitCursor;
-                int indexSequence = 0, indexCustomerName = 1, indexLeaveWordsTime = 2, indexFirstOwnerName = 3, indexTimes = 4, indexFollowerName = 5,
-                    indexFollowTime = 6, indexRemark = 7;
+                int indexSequence = 0, indexCustomerName = 1,indexMobile=2, indexLeaveWordsTime = 3, 
+                    indexFirstOwnerName = 4, indexTimes = 5, indexFollowerName = 6,
+                    indexFollowTime = 7, indexRemark = 8;
                 XSSFWorkbook workbook = new XSSFWorkbook();
                 ICellStyle headerStyle = workbook.CreateCellStyle();
                 headerStyle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
@@ -573,6 +582,12 @@ namespace HaoZhuoCRM
                     cellCustomerName.SetCellValue("客户姓名");
                     sheet.SetColumnWidth(indexCustomerName, 10 * 256);
                     cellCustomerName.CellStyle = headerStyle;
+
+                    ICell cellMobile = rowTitle.CreateCell(indexMobile);
+                    cellMobile.SetCellValue("手机号码");
+                    sheet.SetColumnWidth(indexMobile, 12 * 256);
+                    cellMobile.CellStyle = headerStyle;
+
                     ICell cellLeaveWordsTime = rowTitle.CreateCell(indexLeaveWordsTime);
                     sheet.SetColumnWidth(cellLeaveWordsTime.ColumnIndex, 18 * 256);//列宽                
                     cellLeaveWordsTime.SetCellValue("留言时间");
@@ -600,6 +615,7 @@ namespace HaoZhuoCRM
                 }
                 sheet.AddMergedRegion(new CellRangeAddress(0, 1, indexSequence, indexSequence));
                 sheet.AddMergedRegion(new CellRangeAddress(0, 1, indexCustomerName, indexCustomerName));
+                sheet.AddMergedRegion(new CellRangeAddress(0, 1, indexMobile, indexMobile));
                 sheet.AddMergedRegion(new CellRangeAddress(0, 1, indexLeaveWordsTime, indexLeaveWordsTime));
                 sheet.AddMergedRegion(new CellRangeAddress(0, 1, indexFirstOwnerName, indexFirstOwnerName));
                 sheet.AddMergedRegion(new CellRangeAddress(0, 0, indexTimes, indexRemark));//合并沟通信息
@@ -652,6 +668,12 @@ namespace HaoZhuoCRM
                         ICell cellCustomer = row.CreateCell(indexCustomerName);
                         cellCustomer.SetCellValue(customer.name);
                         cellCustomer.CellStyle = styleDefault;
+
+
+                        ICell cellMobile = row.CreateCell(indexMobile);
+                        cellMobile.SetCellValue(customer.mobile);
+                        cellMobile.CellStyle = styleDefault;
+
                         ICell cellLeaveWordsTime = row.CreateCell(indexLeaveWordsTime);
                         cellLeaveWordsTime.SetCellValue(customer.leaveWordsTime.HasValue ? customer.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat) : "");
                         cellLeaveWordsTime.CellStyle = styleCenter;
@@ -685,6 +707,12 @@ namespace HaoZhuoCRM
                             ICell cellCustomer = row.CreateCell(indexCustomerName);
                             cellCustomer.SetCellValue(customer.name);
                             cellCustomer.CellStyle = styleDefault;
+
+
+                            ICell cellMobile = row.CreateCell(indexMobile);
+                            cellMobile.SetCellValue(customer.mobile);
+                            cellMobile.CellStyle = styleDefault;
+
                             ICell cellLeaveWordsTime = row.CreateCell(indexLeaveWordsTime);
                             cellLeaveWordsTime.SetCellValue(customer.leaveWordsTime.HasValue ? customer.leaveWordsTime.Value.ToString(GlobalConfig.DateTimeFormat) : "");
                             cellLeaveWordsTime.CellStyle = styleCenter;
@@ -711,6 +739,7 @@ namespace HaoZhuoCRM
                             int mergeStartRowIndex = startRowIndex - records.Count;
                             sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex - 1, 0, 0));
                             sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex - 1, indexCustomerName, indexCustomerName));
+                            sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex - 1, indexMobile, indexMobile));
                             sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex - 1, indexLeaveWordsTime, indexLeaveWordsTime));
                             sheet.AddMergedRegion(new CellRangeAddress(mergeStartRowIndex, startRowIndex - 1, indexFirstOwnerName, indexFirstOwnerName));
                         }

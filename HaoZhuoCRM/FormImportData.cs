@@ -128,7 +128,7 @@ namespace HaoZhuoCRM
                         for (int row = 1; row <= rowCount; row++)
                         {
                             var data = new CustomerData();
-                            for (int column = 1; column <=indexRemark; column++)
+                            for (int column = 1; column <= indexRemark; column++)
                             {
                                 //定义单元格对象
                                 var value2 = ((Excel.Range)range.Cells[row, column]).Value2;
@@ -258,9 +258,9 @@ namespace HaoZhuoCRM
             try
             {
                 Cursor = Cursors.WaitCursor;
-                CustomerService.ImportCustomerData(vo, Global.USER_TOKEN);
+                Int32 count = CustomerService.ImportCustomerData(vo, Global.USER_TOKEN);
                 Cursor = Cursors.Default;
-                if (DialogResult.Yes != MessageBox.Show("导入数据成功！您是否需要继续导入新的数据？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information))
+                if (DialogResult.Yes != MessageBox.Show("成功导入数据（ " + count + " 条）！您是否需要继续导入新的数据？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information))
                 {
                     DialogResult = DialogResult.OK;
                     return;

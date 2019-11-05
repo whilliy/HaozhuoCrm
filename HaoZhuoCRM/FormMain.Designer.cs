@@ -37,6 +37,7 @@
             this.miClients = new System.Windows.Forms.ToolStripMenuItem();
             this.miMyClients = new System.Windows.Forms.ToolStripMenuItem();
             this.miPublic = new System.Windows.Forms.ToolStripMenuItem();
+            this.miHighPriorityCustomers = new System.Windows.Forms.ToolStripMenuItem();
             this.miDispatch = new System.Windows.Forms.ToolStripMenuItem();
             this.miImport = new System.Windows.Forms.ToolStripMenuItem();
             this.miAllCustomers = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +88,7 @@
             // miModifyPassword
             // 
             this.miModifyPassword.Name = "miModifyPassword";
-            this.miModifyPassword.Size = new System.Drawing.Size(180, 22);
+            this.miModifyPassword.Size = new System.Drawing.Size(153, 22);
             this.miModifyPassword.Text = "修改密码(&M)...";
             this.miModifyPassword.Visible = false;
             this.miModifyPassword.Click += new System.EventHandler(this.MenuModifyPassword_Click);
@@ -95,7 +96,7 @@
             // miChangeUser
             // 
             this.miChangeUser.Name = "miChangeUser";
-            this.miChangeUser.Size = new System.Drawing.Size(180, 22);
+            this.miChangeUser.Size = new System.Drawing.Size(153, 22);
             this.miChangeUser.Text = "切换用户(&C)...";
             this.miChangeUser.Visible = false;
             this.miChangeUser.Click += new System.EventHandler(this.MiChangeUser_Click);
@@ -103,7 +104,7 @@
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(180, 22);
+            this.miExit.Size = new System.Drawing.Size(153, 22);
             this.miExit.Text = "退出(&E)";
             this.miExit.Visible = false;
             this.miExit.Click += new System.EventHandler(this.MiExit_Click);
@@ -113,6 +114,7 @@
             this.miClients.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miMyClients,
             this.miPublic,
+            this.miHighPriorityCustomers,
             this.miDispatch,
             this.miImport,
             this.miAllCustomers,
@@ -126,7 +128,7 @@
             // 
             this.miMyClients.Image = global::HaoZhuoCRM.Properties.Resources.my_customers;
             this.miMyClients.Name = "miMyClients";
-            this.miMyClients.Size = new System.Drawing.Size(120, 22);
+            this.miMyClients.Size = new System.Drawing.Size(196, 38);
             this.miMyClients.Text = "我的(&M)";
             this.miMyClients.Visible = false;
             this.miMyClients.Click += new System.EventHandler(this.MiMyClients_Click);
@@ -135,15 +137,23 @@
             // 
             this.miPublic.Image = global::HaoZhuoCRM.Properties.Resources._public;
             this.miPublic.Name = "miPublic";
-            this.miPublic.Size = new System.Drawing.Size(120, 22);
+            this.miPublic.Size = new System.Drawing.Size(196, 38);
             this.miPublic.Text = "公海(&P)";
             this.miPublic.Visible = false;
             this.miPublic.Click += new System.EventHandler(this.MiPublic_Click);
             // 
+            // miHighPriorityCustomers
+            // 
+            this.miHighPriorityCustomers.Name = "miHighPriorityCustomers";
+            this.miHighPriorityCustomers.Size = new System.Drawing.Size(196, 38);
+            this.miHighPriorityCustomers.Text = "优先客户";
+            this.miHighPriorityCustomers.Visible = false;
+            this.miHighPriorityCustomers.Click += new System.EventHandler(this.miHighPriorityCustomers_Click);
+            // 
             // miDispatch
             // 
             this.miDispatch.Name = "miDispatch";
-            this.miDispatch.Size = new System.Drawing.Size(120, 22);
+            this.miDispatch.Size = new System.Drawing.Size(196, 38);
             this.miDispatch.Text = "分派(&D)";
             this.miDispatch.Visible = false;
             this.miDispatch.Click += new System.EventHandler(this.MiDispatch_Click);
@@ -151,7 +161,7 @@
             // miImport
             // 
             this.miImport.Name = "miImport";
-            this.miImport.Size = new System.Drawing.Size(120, 22);
+            this.miImport.Size = new System.Drawing.Size(196, 38);
             this.miImport.Text = "导入(&I)";
             this.miImport.Visible = false;
             this.miImport.Click += new System.EventHandler(this.MiImport_Click);
@@ -159,7 +169,7 @@
             // miAllCustomers
             // 
             this.miAllCustomers.Name = "miAllCustomers";
-            this.miAllCustomers.Size = new System.Drawing.Size(120, 22);
+            this.miAllCustomers.Size = new System.Drawing.Size(196, 38);
             this.miAllCustomers.Text = "所有(&A)";
             this.miAllCustomers.Visible = false;
             this.miAllCustomers.Click += new System.EventHandler(this.MiAllCustomers_Click);
@@ -167,7 +177,7 @@
             // miAddCustomer
             // 
             this.miAddCustomer.Name = "miAddCustomer";
-            this.miAddCustomer.Size = new System.Drawing.Size(120, 22);
+            this.miAddCustomer.Size = new System.Drawing.Size(196, 38);
             this.miAddCustomer.Text = "新增(&N)";
             this.miAddCustomer.Visible = false;
             this.miAddCustomer.Click += new System.EventHandler(this.MiAddCustomer_Click);
@@ -292,6 +302,7 @@
             this.Text = "CRM系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -315,7 +326,6 @@
         private System.Windows.Forms.ToolStripMenuItem miUserManagement;
         private System.Windows.Forms.ToolStripMenuItem miOrganizationManagement;
         private System.Windows.Forms.ToolStripMenuItem miChangeUser;
-        private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel labelCurrentName;
         private System.Windows.Forms.ToolStripMenuItem miDispatch;
@@ -328,6 +338,8 @@
         private System.Windows.Forms.ToolStripMenuItem miAllCustomers;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel labelCurrentProject;
+        private System.Windows.Forms.ToolStripMenuItem miHighPriorityCustomers;
+        public System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
 

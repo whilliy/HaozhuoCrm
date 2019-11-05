@@ -39,7 +39,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(55, 267);
+            this.btnOK.Location = new System.Drawing.Point(52, 263);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
@@ -70,9 +70,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(103, 240);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 4;
-            this.label4.Text = "0.99.2";
+            this.label4.Text = "2019.11.05";
             // 
             // pictureBox1
             // 
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(177, 292);
+            this.ClientSize = new System.Drawing.Size(180, 288);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);

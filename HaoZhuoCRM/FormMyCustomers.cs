@@ -473,6 +473,10 @@ namespace HaoZhuoCRM
                 CustomerDto customer = (CustomerDto)lvi.Tag;
                 customerIds.Add(customer.id);
             }
+            if (MessageBox.Show("您确认要将选中的[ " + customerIds.Count + " ]条数据转移给他人吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
+            {
+                return;
+            }
             IList<UserDto> userTargets = null;
             try
             {

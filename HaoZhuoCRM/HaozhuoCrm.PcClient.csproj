@@ -125,6 +125,12 @@
     <Compile Include="FormMyCustomers.Designer.cs">
       <DependentUpon>FormMyCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPop.Designer.cs">
+      <DependentUpon>FormPop.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPublic.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,7 @@
       <DependentUpon>FormUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="PopWindow\PopWindowHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -265,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMyCustomers.resx">
       <DependentUpon>FormMyCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPop.resx">
+      <DependentUpon>FormPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPublic.resx">
       <DependentUpon>FormPublic.cs</DependentUpon>

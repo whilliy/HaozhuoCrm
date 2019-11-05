@@ -516,7 +516,7 @@ namespace Haozhuo.Crm.Service
         /// <param name="customers">客户列表</param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static void ImportCustomerData(ImportCustomerVo vo, String token)
+        public static Int32 ImportCustomerData(ImportCustomerVo vo, String token)
         {
             RestClient rc = new RestClient();
             var request = new RestRequest(GlobalConfig.IMPORT_CUSTOMERS);
@@ -540,6 +540,15 @@ namespace Haozhuo.Crm.Service
                 var res = rc.Deserialize<CustomException>(response);
                 var customException = res.Data;
                 throw new BusinessException(customException.message);
+            }
+            try
+            {
+                var types = rc.Deserialize<Int32>(response);
+                return types.Data;
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
             }
         }
         /// <summary>

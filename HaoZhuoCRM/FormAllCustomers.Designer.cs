@@ -93,8 +93,8 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -104,6 +104,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miView,
             this.miModify});
@@ -128,7 +129,7 @@
             // butReset
             // 
             this.butReset.Location = new System.Drawing.Point(1005, 45);
-            this.butReset.Margin = new System.Windows.Forms.Padding(2);
+            this.butReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.butReset.Name = "butReset";
             this.butReset.Size = new System.Drawing.Size(58, 21);
             this.butReset.TabIndex = 26;
@@ -171,9 +172,9 @@
             this.panelQuery.Controls.Add(this.butQuery);
             this.panelQuery.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelQuery.Location = new System.Drawing.Point(0, 0);
-            this.panelQuery.Margin = new System.Windows.Forms.Padding(2);
+            this.panelQuery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelQuery.Name = "panelQuery";
-            this.panelQuery.Size = new System.Drawing.Size(1180, 76);
+            this.panelQuery.Size = new System.Drawing.Size(1137, 76);
             this.panelQuery.TabIndex = 0;
             // 
             // btnSelectFirstOwner
@@ -199,7 +200,7 @@
             // txtFirstOwnerName
             // 
             this.txtFirstOwnerName.Location = new System.Drawing.Point(755, 45);
-            this.txtFirstOwnerName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFirstOwnerName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFirstOwnerName.MaxLength = 11;
             this.txtFirstOwnerName.Name = "txtFirstOwnerName";
             this.txtFirstOwnerName.ReadOnly = true;
@@ -210,12 +211,13 @@
             // btnExport
             // 
             this.btnExport.Location = new System.Drawing.Point(1082, 45);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(58, 21);
             this.btnExport.TabIndex = 27;
             this.btnExport.Text = "导出(&E)";
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // cbLeaveWordsTime
@@ -284,7 +286,7 @@
             // txtFollowUserName
             // 
             this.txtFollowUserName.Location = new System.Drawing.Point(912, 45);
-            this.txtFollowUserName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFollowUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFollowUserName.MaxLength = 11;
             this.txtFollowUserName.Name = "txtFollowUserName";
             this.txtFollowUserName.ReadOnly = true;
@@ -297,7 +299,7 @@
             this.cmbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjects.FormattingEnabled = true;
             this.cmbProjects.Location = new System.Drawing.Point(384, 8);
-            this.cmbProjects.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbProjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbProjects.Name = "cmbProjects";
             this.cmbProjects.Size = new System.Drawing.Size(84, 20);
             this.cmbProjects.TabIndex = 5;
@@ -327,7 +329,7 @@
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Location = new System.Drawing.Point(889, 8);
-            this.cmbStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(108, 20);
             this.cmbStatus.TabIndex = 11;
@@ -347,7 +349,7 @@
             this.cmbCustomerSources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerSources.FormattingEnabled = true;
             this.cmbCustomerSources.Location = new System.Drawing.Point(711, 8);
-            this.cmbCustomerSources.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCustomerSources.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbCustomerSources.Name = "cmbCustomerSources";
             this.cmbCustomerSources.Size = new System.Drawing.Size(94, 20);
             this.cmbCustomerSources.TabIndex = 9;
@@ -367,7 +369,7 @@
             this.cmbCustomerTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomerTypes.FormattingEnabled = true;
             this.cmbCustomerTypes.Location = new System.Drawing.Point(564, 8);
-            this.cmbCustomerTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCustomerTypes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbCustomerTypes.Name = "cmbCustomerTypes";
             this.cmbCustomerTypes.Size = new System.Drawing.Size(44, 20);
             this.cmbCustomerTypes.TabIndex = 7;
@@ -387,7 +389,7 @@
             this.cmbCounties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCounties.FormattingEnabled = true;
             this.cmbCounties.Location = new System.Drawing.Point(600, 45);
-            this.cmbCounties.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCounties.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbCounties.Name = "cmbCounties";
             this.cmbCounties.Size = new System.Drawing.Size(93, 20);
             this.cmbCounties.TabIndex = 21;
@@ -407,7 +409,7 @@
             this.cmbCities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCities.FormattingEnabled = true;
             this.cmbCities.Location = new System.Drawing.Point(472, 45);
-            this.cmbCities.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCities.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbCities.Name = "cmbCities";
             this.cmbCities.Size = new System.Drawing.Size(92, 20);
             this.cmbCities.TabIndex = 19;
@@ -438,7 +440,7 @@
             this.cmbProvinces.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvinces.FormattingEnabled = true;
             this.cmbProvinces.Location = new System.Drawing.Point(366, 45);
-            this.cmbProvinces.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbProvinces.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbProvinces.Name = "cmbProvinces";
             this.cmbProvinces.Size = new System.Drawing.Size(67, 20);
             this.cmbProvinces.TabIndex = 17;
@@ -447,7 +449,7 @@
             // txtMobile
             // 
             this.txtMobile.Location = new System.Drawing.Point(229, 8);
-            this.txtMobile.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMobile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMobile.MaxLength = 11;
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(88, 21);
@@ -467,7 +469,7 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(83, 8);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtName.MaxLength = 20;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(73, 21);
@@ -476,7 +478,7 @@
             // butQuery
             // 
             this.butQuery.Location = new System.Drawing.Point(1005, 8);
-            this.butQuery.Margin = new System.Windows.Forms.Padding(2);
+            this.butQuery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.butQuery.Name = "butQuery";
             this.butQuery.Size = new System.Drawing.Size(58, 21);
             this.butQuery.TabIndex = 25;
@@ -492,10 +494,10 @@
             this.panel1.Controls.Add(this.btnView);
             this.panel1.Controls.Add(this.btnModify);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 477);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(0, 482);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1180, 34);
+            this.panel1.Size = new System.Drawing.Size(1137, 34);
             this.panel1.TabIndex = 1;
             // 
             // cbSelectAll
@@ -523,7 +525,7 @@
             // 
             this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(977, 0);
+            this.panel3.Location = new System.Drawing.Point(934, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(203, 34);
             this.panel3.TabIndex = 2;
@@ -565,9 +567,9 @@
             this.panel2.Controls.Add(this.pager);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 76);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1180, 401);
+            this.panel2.Size = new System.Drawing.Size(1137, 406);
             this.panel2.TabIndex = 6;
             // 
             // lvClients
@@ -601,10 +603,10 @@
             this.lvClients.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvClients.HideSelection = false;
             this.lvClients.Location = new System.Drawing.Point(0, 0);
-            this.lvClients.Margin = new System.Windows.Forms.Padding(2);
+            this.lvClients.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lvClients.MultiSelect = false;
             this.lvClients.Name = "lvClients";
-            this.lvClients.Size = new System.Drawing.Size(1180, 367);
+            this.lvClients.Size = new System.Drawing.Size(1137, 372);
             this.lvClients.TabIndex = 0;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
@@ -709,33 +711,34 @@
             this.columnHeader14.Text = "下次跟进时间";
             this.columnHeader14.Width = 150;
             // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.DefaultExt = "*.xlsx";
-            this.saveFileDialog.Filter = "Excel文件|*.xlsx";
-            this.saveFileDialog.Title = "导出客户信息";
-            // 
             // pager
             // 
             this.pager.BackColor = System.Drawing.SystemColors.Control;
             this.pager.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(78)))), ((int)(((byte)(151)))));
             this.pager.JumpText = "Go";
-            this.pager.Location = new System.Drawing.Point(0, 367);
+            this.pager.Location = new System.Drawing.Point(0, 372);
+            this.pager.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pager.Name = "pager";
             this.pager.NeedExcuteQuery = true;
             this.pager.PageIndex = 1;
             this.pager.PageSize = 20;
             this.pager.RecordCount = 0;
-            this.pager.Size = new System.Drawing.Size(1180, 34);
+            this.pager.Size = new System.Drawing.Size(1137, 34);
             this.pager.TabIndex = 1;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "*.xlsx";
+            this.saveFileDialog.Filter = "Excel文件|*.xlsx";
+            this.saveFileDialog.Title = "导出客户信息";
             // 
             // FormAllCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1180, 511);
+            this.ClientSize = new System.Drawing.Size(1137, 516);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelQuery);
