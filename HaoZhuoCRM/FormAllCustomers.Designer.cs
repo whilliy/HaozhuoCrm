@@ -93,8 +93,9 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pager = new HaoZhuoCRM.Controls.PagerControl();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.pager = new HaoZhuoCRM.Controls.PagerControl();
+            this.miDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -107,21 +108,23 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miView,
-            this.miModify});
+            this.miModify,
+            this.miDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(121, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1_Opening);
             // 
             // miView
             // 
             this.miView.Name = "miView";
-            this.miView.Size = new System.Drawing.Size(120, 22);
+            this.miView.Size = new System.Drawing.Size(180, 22);
             this.miView.Text = "查看(&V)";
             this.miView.Click += new System.EventHandler(this.MiView_Click);
             // 
             // miModify
             // 
             this.miModify.Name = "miModify";
-            this.miModify.Size = new System.Drawing.Size(120, 22);
+            this.miModify.Size = new System.Drawing.Size(180, 22);
             this.miModify.Text = "修改(&M)";
             this.miModify.ToolTipText = "仅仅修改客户基本信息";
             this.miModify.Click += new System.EventHandler(this.MiModify_Click);
@@ -711,6 +714,12 @@
             this.columnHeader14.Text = "下次跟进时间";
             this.columnHeader14.Width = 150;
             // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "*.xlsx";
+            this.saveFileDialog.Filter = "Excel文件|*.xlsx";
+            this.saveFileDialog.Title = "导出客户信息";
+            // 
             // pager
             // 
             this.pager.BackColor = System.Drawing.SystemColors.Control;
@@ -718,7 +727,7 @@
             this.pager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(78)))), ((int)(((byte)(151)))));
             this.pager.JumpText = "Go";
             this.pager.Location = new System.Drawing.Point(0, 372);
-            this.pager.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pager.Margin = new System.Windows.Forms.Padding(6);
             this.pager.Name = "pager";
             this.pager.NeedExcuteQuery = true;
             this.pager.PageIndex = 1;
@@ -728,11 +737,12 @@
             this.pager.TabIndex = 1;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
             // 
-            // saveFileDialog
+            // miDelete
             // 
-            this.saveFileDialog.DefaultExt = "*.xlsx";
-            this.saveFileDialog.Filter = "Excel文件|*.xlsx";
-            this.saveFileDialog.Title = "导出客户信息";
+            this.miDelete.Name = "miDelete";
+            this.miDelete.Size = new System.Drawing.Size(180, 22);
+            this.miDelete.Text = "彻底删除(&D)";
+            this.miDelete.Click += new System.EventHandler(this.MiDelete_Click);
             // 
             // FormAllCustomers
             // 
@@ -824,5 +834,6 @@
         private System.Windows.Forms.Button btnSelectFirstOwner;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtFirstOwnerName;
+        private System.Windows.Forms.ToolStripMenuItem miDelete;
     }
 }

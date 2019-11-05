@@ -1184,5 +1184,39 @@ namespace Haozhuo.Crm.Service
                 throw new BusinessException(customException.message);
             }
         }
+
+
+        /// <summary>
+        /// 删除指定客户
+        /// </summary>
+        /// <param name="vo"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static void DeleteCustomer(String customerId, String token)
+        {
+            RestClient rc = new RestClient();
+            var request = new RestRequest(GlobalConfig.CUSTOER_SOMEONE);
+            request.AddHeader(GlobalConfig.AUTHORIZATION, token);
+            request.AddUrlSegment("customerId", customerId);
+            IRestResponse response;
+            try
+            {
+                response = rc.Execute(request, Method.DELETE);
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message);
+            }
+            if (response.StatusCode == 0)
+            {
+                throw new BusinessException("请检查网络");
+            }
+            if (response.StatusCode != HttpStatusCode.NoContent)
+            {
+                var res = rc.Deserialize<CustomException>(response);
+                var customException = res.Data;
+                throw new BusinessException(customException.message);
+            }
+        }
     }
 }

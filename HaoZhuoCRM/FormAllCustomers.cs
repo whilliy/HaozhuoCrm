@@ -547,7 +547,7 @@ namespace HaoZhuoCRM
             if (dialogResult == DialogResult.OK)
             {
                 Cursor = Cursors.WaitCursor;
-                int indexSequence = 0, indexCustomerName = 1,indexMobile=2, indexLeaveWordsTime = 3, 
+                int indexSequence = 0, indexCustomerName = 1, indexMobile = 2, indexLeaveWordsTime = 3,
                     indexFirstOwnerName = 4, indexTimes = 5, indexFollowerName = 6,
                     indexFollowTime = 7, indexRemark = 8;
                 XSSFWorkbook workbook = new XSSFWorkbook();
@@ -752,7 +752,7 @@ namespace HaoZhuoCRM
                         workbook.Write(fs);
                         workbook.Close();
                         Cursor = Cursors.Default;
-                        if(MessageBox.Show("导出成功！是否现在打开文件？", "提示",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button1)
+                        if (MessageBox.Show("导出成功！是否现在打开文件？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
                             == DialogResult.Yes)
                         {
                             Process.Start(saveFileDialog.FileName);
@@ -781,6 +781,45 @@ namespace HaoZhuoCRM
                 txtFirstOwnerName.Tag = frmSelectUser.SelectedUser.id;
             }
             frmSelectUser.Close();
+        }
+
+        private void ContextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (Global.PERMISSION_IDS.Contains("DELETE_CUSTOMER"))
+            {
+                miDelete.Visible = true;
+            }
+            else
+            {
+                miDelete.Visible = false;
+            }
+        }
+
+        private void MiDelete_Click(object sender, EventArgs e)
+        {
+            if (lvClients.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            ListViewItem lviSelected = lvClients.SelectedItems[0];
+            CustomerDto customer = (CustomerDto)lviSelected.Tag;
+            if (MessageBox.Show("您确认要彻底删除选中的客户信息？客户姓名：" + customer.name, "提示",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) != DialogResult.Yes)
+            {
+                return;
+            }
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                CustomerService.DeleteCustomer(customer.id, Global.USER_TOKEN);
+                lvClients.Items.Remove(lviSelected);
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show(ex.Message, "提示");
+            }
         }
     }
 }
