@@ -39,10 +39,12 @@ namespace HaoZhuoCRM
             try
             {
                 IList<ProjectDto> projects = ProjectService.ProjectsCopy;
-                projects.Insert(0, new ProjectDto(-1, ""));
+                //projects.Insert(0, new ProjectDto(-1, ""));
                 cmbProjects.DisplayMember = "name";
                 cmbProjects.ValueMember = "id";
                 cmbProjects.DataSource = projects;
+                cmbProjects.SelectedValue = Global.CURRENT_PROJECT_ID;
+                
             }
             catch (BusinessException ex)
             {
@@ -156,7 +158,7 @@ namespace HaoZhuoCRM
             }
             catch (BusinessException ex)
             {
-                MessageBox.Show("获取省/自治区/直辖市列表失败:" + ex.Message);
+                MessageBox.Show("获取市列表失败:" + ex.Message);
                 return;
 
             }
@@ -221,14 +223,19 @@ namespace HaoZhuoCRM
             String provinceId = cmbProvinces.SelectedValue != null ? cmbProvinces.SelectedValue.ToString() : String.Empty;
             String cityId = cmbCities.SelectedValue != null ? cmbCities.SelectedValue.ToString() : String.Empty;
             String countyId = cmbCounties.SelectedValue != null ? cmbCounties.SelectedValue.ToString() : String.Empty;
-            Int32? projectId = null;
-            if (cmbProjects.SelectedValue != null)
+            //Int32? projectId = null;
+            //if (cmbProjects.SelectedValue != null)
+            //{
+            //    projectId = Convert.ToInt32(cmbProjects.SelectedValue.ToString());
+            //    if (projectId == -1)
+            //    {
+            //        projectId = null;
+            //    }
+            //}
+            Int32? projectId = Global.CURRENT_PROJECT_ID;
+            if (projectId.HasValue)
             {
-                projectId = Convert.ToInt32(cmbProjects.SelectedValue.ToString());
-                if (projectId == -1)
-                {
-                    projectId = null;
-                }
+                cmbProjects.SelectedValue = projectId;
             }
             Int32? status = null;
             if (cmbStatus.SelectedValue != null)

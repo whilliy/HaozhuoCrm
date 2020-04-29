@@ -4,10 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaozhuoCrm.PcClient", "HaoZhuoCRM\HaozhuoCrm.PcClient.csproj", "{580E3CFC-BF1C-4D3C-8FA6-ECD5CCDD6A72}"
+	ProjectSection(ProjectDependencies) = postProject
+		{44B0583B-F58E-4EC2-9255-454546222C66} = {44B0583B-F58E-4EC2-9255-454546222C66}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haozhuo.Crm.Service", "Haozhuo.Crm.Service\Haozhuo.Crm.Service.csproj", "{79FDBB56-9952-43FA-B9C9-56B9A109CEDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAUS.Core", "..\OAUS源码\OAUS.Core\OAUS.Core.csproj", "{44B0583B-F58E-4EC2-9255-454546222C66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAUS.Core", "OAUS.Core\OAUS.Core.csproj", "{44B0583B-F58E-4EC2-9255-454546222C66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

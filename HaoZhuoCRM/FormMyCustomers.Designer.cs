@@ -35,6 +35,10 @@
             this.butQuery = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.panelQuery = new System.Windows.Forms.Panel();
+            this.cbNextFollowTime = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtpNextFollowTimeEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpNextFollowTimeStart = new System.Windows.Forms.DateTimePicker();
             this.cbLeaveWordsTime = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.dtpLeaveWordsTimeEnd = new System.Windows.Forms.DateTimePicker();
@@ -86,10 +90,6 @@
             this.miModify = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pager = new HaoZhuoCRM.Controls.PagerControl();
-            this.cbNextFollowTime = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dtpNextFollowTimeEnd = new System.Windows.Forms.DateTimePicker();
-            this.dtpNextFollowTimeStart = new System.Windows.Forms.DateTimePicker();
             this.panelQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -175,6 +175,49 @@
             this.panelQuery.Size = new System.Drawing.Size(1084, 104);
             this.panelQuery.TabIndex = 0;
             // 
+            // cbNextFollowTime
+            // 
+            this.cbNextFollowTime.AutoSize = true;
+            this.cbNextFollowTime.Location = new System.Drawing.Point(11, 78);
+            this.cbNextFollowTime.Name = "cbNextFollowTime";
+            this.cbNextFollowTime.Size = new System.Drawing.Size(108, 16);
+            this.cbNextFollowTime.TabIndex = 24;
+            this.cbNextFollowTime.Text = "下次沟通时间：";
+            this.cbNextFollowTime.UseVisualStyleBackColor = true;
+            this.cbNextFollowTime.CheckedChanged += new System.EventHandler(this.CbNextFollowTime_CheckedChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(281, 80);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(17, 12);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "至";
+            // 
+            // dtpNextFollowTimeEnd
+            // 
+            this.dtpNextFollowTimeEnd.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpNextFollowTimeEnd.Enabled = false;
+            this.dtpNextFollowTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNextFollowTimeEnd.Location = new System.Drawing.Point(324, 76);
+            this.dtpNextFollowTimeEnd.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpNextFollowTimeEnd.Name = "dtpNextFollowTimeEnd";
+            this.dtpNextFollowTimeEnd.Size = new System.Drawing.Size(136, 21);
+            this.dtpNextFollowTimeEnd.TabIndex = 27;
+            // 
+            // dtpNextFollowTimeStart
+            // 
+            this.dtpNextFollowTimeStart.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpNextFollowTimeStart.Enabled = false;
+            this.dtpNextFollowTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNextFollowTimeStart.Location = new System.Drawing.Point(125, 74);
+            this.dtpNextFollowTimeStart.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpNextFollowTimeStart.Name = "dtpNextFollowTimeStart";
+            this.dtpNextFollowTimeStart.Size = new System.Drawing.Size(136, 21);
+            this.dtpNextFollowTimeStart.TabIndex = 25;
+            // 
             // cbLeaveWordsTime
             // 
             this.cbLeaveWordsTime.AutoSize = true;
@@ -221,6 +264,7 @@
             // cmbProjects
             // 
             this.cmbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProjects.Enabled = false;
             this.cmbProjects.FormattingEnabled = true;
             this.cmbProjects.Location = new System.Drawing.Point(367, 9);
             this.cmbProjects.Margin = new System.Windows.Forms.Padding(2);
@@ -476,7 +520,7 @@
             // columnHeader16
             // 
             this.columnHeader16.Text = "所属项目";
-            this.columnHeader16.Width = 70;
+            this.columnHeader16.Width = 86;
             // 
             // columnHeader2
             // 
@@ -624,49 +668,6 @@
             this.pager.Size = new System.Drawing.Size(1084, 34);
             this.pager.TabIndex = 4;
             this.pager.OnPageChanged += new System.EventHandler(this.Pager_OnPageChanged);
-            // 
-            // cbNextFollowTime
-            // 
-            this.cbNextFollowTime.AutoSize = true;
-            this.cbNextFollowTime.Location = new System.Drawing.Point(11, 78);
-            this.cbNextFollowTime.Name = "cbNextFollowTime";
-            this.cbNextFollowTime.Size = new System.Drawing.Size(108, 16);
-            this.cbNextFollowTime.TabIndex = 24;
-            this.cbNextFollowTime.Text = "下次沟通时间：";
-            this.cbNextFollowTime.UseVisualStyleBackColor = true;
-            this.cbNextFollowTime.CheckedChanged += new System.EventHandler(this.CbNextFollowTime_CheckedChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(281, 80);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 12);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "至";
-            // 
-            // dtpNextFollowTimeEnd
-            // 
-            this.dtpNextFollowTimeEnd.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtpNextFollowTimeEnd.Enabled = false;
-            this.dtpNextFollowTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNextFollowTimeEnd.Location = new System.Drawing.Point(324, 76);
-            this.dtpNextFollowTimeEnd.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
-            this.dtpNextFollowTimeEnd.Name = "dtpNextFollowTimeEnd";
-            this.dtpNextFollowTimeEnd.Size = new System.Drawing.Size(136, 21);
-            this.dtpNextFollowTimeEnd.TabIndex = 27;
-            // 
-            // dtpNextFollowTimeStart
-            // 
-            this.dtpNextFollowTimeStart.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtpNextFollowTimeStart.Enabled = false;
-            this.dtpNextFollowTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNextFollowTimeStart.Location = new System.Drawing.Point(125, 74);
-            this.dtpNextFollowTimeStart.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
-            this.dtpNextFollowTimeStart.Name = "dtpNextFollowTimeStart";
-            this.dtpNextFollowTimeStart.Size = new System.Drawing.Size(136, 21);
-            this.dtpNextFollowTimeStart.TabIndex = 25;
             // 
             // FormMyCustomers
             // 

@@ -60,6 +60,7 @@ namespace HaoZhuoCRM
                 TransterCustomerVo vo = new TransterCustomerVo();
                 vo.customerIds = customerIds;
                 vo.targetUserId = target.id;
+                vo.currentProjectId = Global.CURRENT_PROJECT_ID;
                 CustomerService.DispatchCustomersToTargetUsers(vo, Global.USER_TOKEN);
                 DialogResult = DialogResult.OK;
             }
